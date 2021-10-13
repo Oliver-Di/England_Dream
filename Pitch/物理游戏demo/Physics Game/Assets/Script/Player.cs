@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public LayerMask table;
     public GameObject point;
     public LineRenderer arrows;
-
+    public Transform arrowHead;
     public float force;
     public float length;
     public float startWidth;
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
         //记录鼠标位置
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if(GameManager.instance.gameMode==GameManager.GameMode.Player)
+        if (GameManager.instance.gameMode == GameManager.GameMode.Player)
             ForcePoint();
 
         if (point.activeSelf == true)
@@ -81,11 +81,17 @@ public class Player : MonoBehaviour
                 arrows.gameObject.SetActive(true);
             }
             //箭头长度
+
+
+            var endPos = originPos - length * distance;
             arrows.SetPosition(0, originPos);
-            arrows.SetPosition(1, originPos - length * distance);
+            arrows.SetPosition(1, endPos);
+            arrowHead.position = endPos;
+            arrowHead.rotation = Quaternion.LookRotation(endPos - originPos, Vector3.up);
+            //arrowHead.eulerAngles = new Vector3(0, (endPos - originPos), 0);
             //箭头宽度
-            arrows.startWidth = startWidth * distance.magnitude;
-            arrows.endWidth = endWidth * distance.magnitude;
+            arrows.startWidth = startWidth;// * distance.magnitude;
+            arrows.endWidth = endWidth;// * distance.magnitude;
 
             //计算拉开的距离
             distance = hitInfo2.point - originPos;
