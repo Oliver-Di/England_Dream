@@ -25,7 +25,7 @@ public class InputService : MonoBehaviour
         RaycastHit raycastHit;
         Ray ray = Camera.main.ScreenPointToRay(eventData.position);
 
-        if (Physics.Raycast(ray, out raycastHit, 100f, LayerMask.NameToLayer("Interactable")))
+        if (Physics.Raycast(ray, out raycastHit, 100f))
         {
             if (raycastHit.transform != null)
             {

@@ -1,6 +1,10 @@
 ﻿[System.Serializable]
 public class ChessData
 {
+    public ChessData(ChessType t = ChessType.None)
+    {
+        chessType = t;
+    }
     public enum ChessType
     {
         None,

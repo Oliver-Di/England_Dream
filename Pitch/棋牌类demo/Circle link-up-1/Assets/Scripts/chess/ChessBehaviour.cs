@@ -8,7 +8,7 @@ public class ChessBehaviour : MonoBehaviour
 
     public ChessData data;
 
-    public GameObject viewNone;
+    public GameObject viewChess;
     public GameObject viewA;
     public GameObject viewB;
     public GameObject viewC;
@@ -35,15 +35,20 @@ public class ChessBehaviour : MonoBehaviour
         instances.Add(this);
     }
 
-    public void SetChessType(ChessData newData)
+    public void SetChessTypeNone()
     {
-        data = newData;
+        SetChessType(ChessData.ChessType.None);
+    }
+
+    public void SetChessType(ChessData.ChessType type)
+    {
+        data.chessType = type;
         SetChessType();
     }
 
     public void SetChessType()
     {
-        viewNone.SetActive(false);
+        viewChess.SetActive(true);
         viewA.SetActive(false);
         viewB.SetActive(false);
         viewC.SetActive(false);
@@ -53,7 +58,7 @@ public class ChessBehaviour : MonoBehaviour
         switch (data.chessType)
         {
             case ChessData.ChessType.None:
-                viewNone.SetActive(true);
+                viewChess.SetActive(false);
                 break;
 
             case ChessData.ChessType.A:
@@ -115,21 +120,44 @@ public class ChessBehaviour : MonoBehaviour
         SetChessState(false, false, false, false);
     }
 
-    public void Spawn(ChessData newData)
+    public void Spawn()
     {
         psSpawn.Play(true);
-        SetChessType(newData);
+        SetChessType(GetNewChessType());
         ResetChessState();
         //TODO dotween
+    }
+
+    private ChessData.ChessType GetNewChessType()
+    {
+        var cfg = GameService.instance.gameConfig;
+
+        var list = new List<ChessData.ChessType>();
+
+        list.Add(ChessData.ChessType.A);
+        list.Add(ChessData.ChessType.A);
+        list.Add(ChessData.ChessType.B);
+        list.Add(ChessData.ChessType.B);
+
+        if (cfg.hasChessTypeC)
+        {
+            list.Add(ChessData.ChessType.C);
+        }
+        if (cfg.hasChessTypeD)
+        {
+            list.Add(ChessData.ChessType.D);
+        }
+        if (cfg.hasChessTypeE)
+        {
+            list.Add(ChessData.ChessType.E);
+        }
+        return list[Random.Range(0, list.Count)];
     }
 
     public void Erase()
     {
         psErase.Play(true);
-
-        var cd = new ChessData();
-        cd.chessType = ChessData.ChessType.None;
-        SetChessType(cd);
+        SetChessTypeNone();
     }
 
     public void OnClick()

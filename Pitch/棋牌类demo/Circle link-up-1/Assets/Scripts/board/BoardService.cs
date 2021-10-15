@@ -8,6 +8,8 @@ public class BoardService : MonoBehaviour
     public Transform roundCenter;
     public float radius;
 
+    public ChessBehaviour center;
+
     public List<ChessBehaviour> ring1;//small 6
     public List<ChessBehaviour> ring2;//middle 12
     public List<ChessBehaviour> ring3;//big 18
@@ -16,30 +18,125 @@ public class BoardService : MonoBehaviour
     public List<ChessBehaviour> axis2;
     public List<ChessBehaviour> axis3;
 
-    private List<ChessBehaviour> _spawnArea;
-    private List<ChessBehaviour> _allArea;
+    public List<ChessBehaviour> spawnArea;
+    public List<ChessBehaviour> allArea;
 
-    public ChessBehaviour center;
+    public bool stepAxis;
+    public bool stepRing;
+    private int _testAxis = 0;
+    private int _testRing = 0;
+
+    private void Update()
+    {
+        if (stepAxis)
+        {
+            stepAxis = false;
+            axis1[_testAxis].gameObject.SetActive(false);
+            axis2[_testAxis].gameObject.SetActive(false);
+            axis3[_testAxis].gameObject.SetActive(false);
+            _testAxis++;
+        }
+        if (stepRing)
+        {
+            stepRing = false;
+            ring1[_testRing].gameObject.SetActive(false);
+            ring2[_testRing].gameObject.SetActive(false);
+            ring3[_testRing].gameObject.SetActive(false);
+            _testRing++;
+        }
+    }
+
+    int ringComparer(ChessBehaviour c1, ChessBehaviour c2)
+    {
+        var x1 = c1.transform.position.x;
+        var x2 = c2.transform.position.x;
+        var z1 = c1.transform.position.z + 0.5f;
+        var z2 = c2.transform.position.z + 0.5f;
+        if (Mathf.Approximately(x1, 0))
+            x1 = 0;
+        if (Mathf.Approximately(x2, 0))
+            x2 = 0;
+        if (Mathf.Approximately(z1, 0))
+            z1 = 0;
+        if (Mathf.Approximately(z2, 0))
+            z2 = 0;
+        if (Mathf.Atan2(z1, x1) < Mathf.Atan2(z2, x2))
+        {
+            return 1;
+        }
+        if (Mathf.Atan2(z1, x1) > Mathf.Atan2(z2, x2))
+        {
+            return -1;
+        }
+        return 0;
+    }
+
+    int axisComparer(ChessBehaviour c1, ChessBehaviour c2)
+    {
+        var x1 = c1.transform.position.x;
+        var x2 = c2.transform.position.x;
+        var z1 = c1.transform.position.z;
+        var z2 = c2.transform.position.z;
+        if (x1 - z1 > x2 - z2)
+        {
+            return 1;
+        }
+        if (x1 - z1 < x2 - z2)
+        {
+            return -1;
+        }
+        return 0;
+    }
 
     private void Awake()
     {
         instance = this;
-        InitChessLists();
     }
 
     public void InitChessLists()
     {
-        _spawnArea = new List<ChessBehaviour>();
-        _spawnArea.InsertRange(0, ring1);
-        _spawnArea.InsertRange(0, ring2);
-        _spawnArea.InsertRange(0, ring3);
-        _spawnArea.Add(center);
+        allArea = new List<ChessBehaviour>();
+        allArea.Add(center);
+        allArea.InsertRange(0, ring1);
+        allArea.InsertRange(0, ring2);
+        allArea.InsertRange(0, ring3);
 
-        _allArea = new List<ChessBehaviour>();
-        _allArea.InsertRange(0, ring1);
-        _allArea.InsertRange(0, ring2);
-        _allArea.InsertRange(0, ring3);
-        _allArea.Add(center);
+        spawnArea = new List<ChessBehaviour>();
+        spawnArea.InsertRange(0, allArea);
+
+        axis1 = new List<ChessBehaviour>();
+        axis2 = new List<ChessBehaviour>();
+        axis3 = new List<ChessBehaviour>();
+
+        foreach (var c in allArea)
+        {
+            var radian = Mathf.Atan2(c.transform.position.x, c.transform.position.z) / Mathf.PI;
+            // Debug.Log(c.gameObject.name + " " + radian);
+            if (radian < 0)
+            {
+                radian += 1;
+            }
+            if (Mathf.Approximately(radian, 0.5f) || c == center)
+            {
+                axis1.Add(c);
+            }
+            if (Mathf.Approximately(radian, 5f / 6f) || c == center)
+            {
+                axis2.Add(c);
+            }
+            if (Mathf.Approximately(radian, 1f / 6f) || c == center)
+            {
+                axis3.Add(c);
+            }
+        }
+
+        //re-order
+        // ring1.Sort(ringComparer);
+        // ring2.Sort(ringComparer);
+        // ring3.Sort(ringComparer);
+        axis1.Sort(axisComparer);
+        axis2.Sort(axisComparer);
+        axis3.Sort(axisComparer);
     }
 
     public ChessBehaviour GetChessRing1(bool clockwise, int originIndex)
