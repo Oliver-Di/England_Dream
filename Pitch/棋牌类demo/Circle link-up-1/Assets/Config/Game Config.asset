@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 649e1ce110b796747b0de13b5077b67c, type: 3}
-  m_Name: New Game Config
+  m_Name: Game Config
   m_EditorClassIdentifier: 
   animationTime_base: 0.5
   animationTime_interval: 0.2
@@ -47,7 +47,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  startingChessCount: 10
+  startingChessCount: 8
   hasChessTypeC: 1
-  hasChessTypeD: 1
-  hasChessTypeE: 1
+  hasChessTypeD: 0
+  hasChessTypeE: 0

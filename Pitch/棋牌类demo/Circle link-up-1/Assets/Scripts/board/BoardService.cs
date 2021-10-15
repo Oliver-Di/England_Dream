@@ -238,9 +238,93 @@ public class BoardService : MonoBehaviour
         return null;
     }
 
-    public bool isBoardFull()
+    public void SetCurrentChess(ChessBehaviour target)
     {
+        GameSystem.instance.gameState = GameSystem.GameState.ChessClicked;
 
-        return false;
+        foreach (var chess in allArea)
+        {
+            chess.ResetChessState();
+        }
+
+        target.SetCurrentTarget(true);
+        DisplayGoals(target);
+    }
+
+    public void DisplayGoals(ChessBehaviour target)
+    {
+        var indexAxis1 = IndexOfAxis1(target);
+        var indexAxis2 = IndexOfAxis2(target);
+        var indexAxis3 = IndexOfAxis3(target);
+
+        var indexRing1 = IndexOfRing1(target);
+        var indexRing2 = IndexOfRing2(target);
+        var indexRing3 = IndexOfRing3(target);
+
+        if (indexAxis1 > -1)
+        {
+            foreach (var chess in axis1)
+            {
+                if (chess != target && chess.data.chessType == ChessData.ChessType.None)
+                    chess.SetClickableGoal(true);
+            }
+        }
+
+        if (indexAxis2 > -1)
+        {
+            foreach (var chess in axis2)
+            {
+                if (chess != target && chess.data.chessType == ChessData.ChessType.None)
+                    chess.SetClickableGoal(true);
+            }
+        }
+
+        if (indexAxis3 > -1)
+        {
+            foreach (var chess in axis3)
+            {
+                if (chess != target && chess.data.chessType == ChessData.ChessType.None)
+                    chess.SetClickableGoal(true);
+            }
+        }
+
+        if (indexRing1 > -1)
+        {
+            foreach (var chess in ring1)
+            {
+                if (chess != target && chess.data.chessType == ChessData.ChessType.None)
+                    chess.SetClickableGoal(true);
+            }
+        }
+
+        if (indexRing2 > -1)
+        {
+            foreach (var chess in ring2)
+            {
+                if (chess != target && chess.data.chessType == ChessData.ChessType.None)
+                    chess.SetClickableGoal(true);
+            }
+        }
+
+        if (indexRing3 > -1)
+        {
+            foreach (var chess in ring3)
+            {
+                if (chess != target && chess.data.chessType == ChessData.ChessType.None)
+                    chess.SetClickableGoal(true);
+            }
+        }
+    }
+
+    public void SetClickableGoal(ChessBehaviour target)
+    {
+        GameSystem.instance.gameState = GameSystem.GameState.Wait;
+
+        foreach (var chess in allArea)
+        {
+            chess.ResetChessState();
+        }
+
+        //  target.SetCurrentTarget(true);
     }
 }

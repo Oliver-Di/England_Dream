@@ -21,9 +21,13 @@ public class GameSystem : MonoBehaviour
 
     public GameState gameState;
 
+    private void Start()
+    {
+        gameState = GameState.None;
+    }
+
     public void RestartGame()
     {
-        gameState = GameState.Wait;
         ClearAllChess();
 
         int count = GameService.instance.gameConfig.startingChessCount;
@@ -31,6 +35,8 @@ public class GameSystem : MonoBehaviour
         {
             TrySpawnChess();
         }
+
+        gameState = GameState.Wait;
     }
 
     private void ClearAllChess()

@@ -91,25 +91,25 @@ public class ChessBehaviour : MonoBehaviour
         SetPushTo(isPushTo);
     }
 
-    private void SetCurrentTarget(bool b)
+    public void SetCurrentTarget(bool b)
     {
         _isCurrentTarget = b;
         viewCurrentTarget.SetActive(_isCurrentTarget);
     }
 
-    private void SetClickableGoal(bool b)
+    public void SetClickableGoal(bool b)
     {
         _isClickableGoal = b;
         viewCanClick.SetActive(_isClickableGoal);
     }
 
-    private void SetPushFrom(bool b)
+    public void SetPushFrom(bool b)
     {
         _isPushFrom = b;
         viewMultiPushFrom.SetActive(_isPushFrom);
     }
 
-    private void SetPushTo(bool b)
+    public void SetPushTo(bool b)
     {
         _isPushTo = b;
         viewMultiPushTo.SetActive(_isPushTo);
@@ -122,6 +122,7 @@ public class ChessBehaviour : MonoBehaviour
 
     public void Spawn()
     {
+        ResetChessState();
         psSpawn.Play(true);
         SetChessType(GetNewChessType());
         ResetChessState();
@@ -182,12 +183,9 @@ public class ChessBehaviour : MonoBehaviour
 
     private void TrySetToClickableGoal()
     {
-        Debug.Log("TrySetToMoveTarget");
-        switch (data.chessType)
-        {
-            case ChessData.ChessType.None:
-                return;
-        }
+        Debug.Log("TrySetToClickableGoal");
+        if (data.chessType == ChessData.ChessType.None)
+            return;
 
         SetToClickableGoal();
     }
@@ -195,19 +193,22 @@ public class ChessBehaviour : MonoBehaviour
     private void SetToClickableGoal()
     {
         Debug.Log("SetToClickableGoal");
-        SetClickableGoal(true);
+        BoardService.instance.SetClickableGoal(this);
     }
 
     public void TrySetToCurrentTarget()
     {
         Debug.Log("TrySetToCurrentTarget");
+        if (data.chessType == ChessData.ChessType.None)
+            return;
+
         SetToCurrentTarget();
     }
 
     private void SetToCurrentTarget()
     {
         Debug.Log("SetCurrentTarget");
-        SetCurrentTarget(true);
+        BoardService.instance.SetCurrentChess(this);
     }
 
 }
