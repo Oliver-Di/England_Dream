@@ -28,7 +28,7 @@ public class GameSystem : MonoBehaviour
 
     public void RestartGame()
     {
-        ClearAllChess();
+        ClearBoard();
 
         int count = GameService.instance.gameConfig.startingChessCount;
         for (int i = 0; i < count; i++)
@@ -39,12 +39,12 @@ public class GameSystem : MonoBehaviour
         gameState = GameState.Wait;
     }
 
-    private void ClearAllChess()
+    private void ClearBoard()
     {
-        Debug.Log("ClearAllChess");
+        Debug.Log("ClearBoard");
         foreach (var c in BoardService.instance.allArea)
         {
-            c.SetChessTypeNone();
+            c.RemoveChess();
         }
     }
 
@@ -56,10 +56,10 @@ public class GameSystem : MonoBehaviour
     public bool TrySpawnChess()
     {
         var suc = false;
-        var emptySlots = new List<ChessBehaviour>();
+        var emptySlots = new List<SlotBehaviour>();
         foreach (var c in BoardService.instance.spawnArea)
         {
-            if (c.data.chessType == ChessData.ChessType.None)
+            if (c.chess == null)
             {
                 emptySlots.Add(c);
             }

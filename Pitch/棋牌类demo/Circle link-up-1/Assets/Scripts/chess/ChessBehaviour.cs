@@ -1,43 +1,27 @@
-﻿using System.Collections;
+﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class ChessBehaviour : MonoBehaviour
 {
-    public static List<ChessBehaviour> instances;
+    //public static List<ChessBehaviour> instances;
 
-    public ChessData data;
-
-    public GameObject viewChess;
+    //public GameObject viewChess;
     public GameObject viewA;
     public GameObject viewB;
     public GameObject viewC;
     public GameObject viewD;
     public GameObject viewE;
 
-    public GameObject viewCurrentTarget;
-    public GameObject viewCanClick;
-    public GameObject viewMultiPushFrom;
-    public GameObject viewMultiPushTo;
-
-    public ParticleSystem psErase;
-    public ParticleSystem psSpawn;
-
-    private bool _isCurrentTarget = false;
-    private bool _isClickableGoal = false;
-    private bool _isPushFrom = false;
-    private bool _isPushTo = false;
+    public ChessData data;
 
     void Awake()
     {
-        if (instances == null)
-            instances = new List<ChessBehaviour>();
-        instances.Add(this);
     }
 
-    public void SetChessTypeNone()
+    public void SetSpawnChessType()
     {
-        SetChessType(ChessData.ChessType.None);
+        data.chessType = GetNewChessType();
+        SetChessType();
     }
 
     public void SetChessType(ChessData.ChessType type)
@@ -48,7 +32,6 @@ public class ChessBehaviour : MonoBehaviour
 
     public void SetChessType()
     {
-        viewChess.SetActive(true);
         viewA.SetActive(false);
         viewB.SetActive(false);
         viewC.SetActive(false);
@@ -57,10 +40,6 @@ public class ChessBehaviour : MonoBehaviour
 
         switch (data.chessType)
         {
-            case ChessData.ChessType.None:
-                viewChess.SetActive(false);
-                break;
-
             case ChessData.ChessType.A:
                 viewA.SetActive(true);
                 break;
@@ -81,52 +60,6 @@ public class ChessBehaviour : MonoBehaviour
                 viewE.SetActive(true);
                 break;
         }
-    }
-
-    public void SetChessState(bool isCurrentTarget, bool isClickableGoal, bool isPushFrom, bool isPushTo)
-    {
-        SetCurrentTarget(isCurrentTarget);
-        SetClickableGoal(isClickableGoal);
-        SetPushFrom(isPushFrom);
-        SetPushTo(isPushTo);
-    }
-
-    public void SetCurrentTarget(bool b)
-    {
-        _isCurrentTarget = b;
-        viewCurrentTarget.SetActive(_isCurrentTarget);
-    }
-
-    public void SetClickableGoal(bool b)
-    {
-        _isClickableGoal = b;
-        viewCanClick.SetActive(_isClickableGoal);
-    }
-
-    public void SetPushFrom(bool b)
-    {
-        _isPushFrom = b;
-        viewMultiPushFrom.SetActive(_isPushFrom);
-    }
-
-    public void SetPushTo(bool b)
-    {
-        _isPushTo = b;
-        viewMultiPushTo.SetActive(_isPushTo);
-    }
-
-    public void ResetChessState()
-    {
-        SetChessState(false, false, false, false);
-    }
-
-    public void Spawn()
-    {
-        ResetChessState();
-        psSpawn.Play(true);
-        SetChessType(GetNewChessType());
-        ResetChessState();
-        //TODO dotween
     }
 
     private ChessData.ChessType GetNewChessType()
@@ -154,61 +87,4 @@ public class ChessBehaviour : MonoBehaviour
         }
         return list[Random.Range(0, list.Count)];
     }
-
-    public void Erase()
-    {
-        psErase.Play(true);
-        SetChessTypeNone();
-    }
-
-    public void OnClick()
-    {
-        Debug.Log("OnClick " + data.chessType);
-        switch (GameSystem.instance.gameState)
-        {
-            case GameSystem.GameState.None:
-                //nothing to dp
-                break;
-            case GameSystem.GameState.ChessClicked:
-                TrySetToClickableGoal();
-                break;
-            case GameSystem.GameState.Moving:
-                //nothing to dp
-                break;
-            case GameSystem.GameState.Wait:
-                TrySetToCurrentTarget();
-                break;
-        }
-    }
-
-    private void TrySetToClickableGoal()
-    {
-        Debug.Log("TrySetToClickableGoal");
-        if (data.chessType == ChessData.ChessType.None)
-            return;
-
-        SetToClickableGoal();
-    }
-
-    private void SetToClickableGoal()
-    {
-        Debug.Log("SetToClickableGoal");
-        BoardService.instance.SetClickableGoal(this);
-    }
-
-    public void TrySetToCurrentTarget()
-    {
-        Debug.Log("TrySetToCurrentTarget");
-        if (data.chessType == ChessData.ChessType.None)
-            return;
-
-        SetToCurrentTarget();
-    }
-
-    private void SetToCurrentTarget()
-    {
-        Debug.Log("SetCurrentTarget");
-        BoardService.instance.SetCurrentChess(this);
-    }
-
 }

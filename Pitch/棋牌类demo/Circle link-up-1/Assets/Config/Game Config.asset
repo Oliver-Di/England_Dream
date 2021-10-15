@@ -48,6 +48,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   startingChessCount: 8
-  hasChessTypeC: 1
+  hasChessTypeC: 0
   hasChessTypeD: 0
   hasChessTypeE: 0

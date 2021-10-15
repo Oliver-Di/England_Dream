@@ -10,7 +10,7 @@ public class BoardBehaviour : MonoBehaviour
     private float _movingTime;
     private int _startIndex;
     private int _endIndex;
-    public ChessBehaviour heroChess;// ring 3
+    public SlotBehaviour heroChess;// ring 3
 
     public void OnGameStart()
     {
@@ -67,7 +67,7 @@ public class BoardBehaviour : MonoBehaviour
     void StartMoveHero()
     {
         var cfg = GameService.instance.gameConfig;
-        heroChess.SetChessType();
+        //heroChess.SetChessType();
         var centerPos = BoardService.instance.roundCenter.position;
         var chessPos = heroChess.transform.position;
 
