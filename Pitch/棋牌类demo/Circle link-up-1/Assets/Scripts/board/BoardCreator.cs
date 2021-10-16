@@ -4,49 +4,59 @@ using UnityEngine;
 
 public class BoardCreator : MonoBehaviour
 {
-    public GameObject prefabChess;
-
+    public SlotBehaviour prefabSlot;
     public Transform parent;
-    public bool toCreate;
 
     void Start()
     {
-        if (toCreate)
-            CreateAllChess();
+        CreateSlots();
     }
 
-    void CreateAllChess()
+    void CreateSlots()
     {
-        var go1 = Instantiate(prefabChess, BoardService.instance.roundCenter);//center 1
-        go1.SetActive(true);
-        go1.transform.SetParent(parent);
+        prefabSlot.gameObject.SetActive(true);
+
+        var center = Instantiate(prefabSlot, BoardService.instance.roundCenter);//center 1
+        center.transform.SetParent(parent);
+        center.gameObject.name = "c-center";
+
+        BoardService.instance.center = center;
 
         for (int i = 0; i < 6; i++)
         {
-            var x = Mathf.Cos(i * 60 * Mathf.Deg2Rad) * BoardService.instance.radius * 1;
-            var z = Mathf.Sin(i * 60 * Mathf.Deg2Rad) * BoardService.instance.radius * 1;
-            var go = Instantiate(prefabChess, BoardService.instance.roundCenter.position + new Vector3(x, 0, z), Quaternion.identity);//ring 1
-            go.SetActive(true);
-            go.transform.SetParent(parent);
+            var deg = i * 60 - 180;
+            var x = Mathf.Cos(deg * Mathf.Deg2Rad) * BoardService.instance.radius * 1;
+            var z = Mathf.Sin(-deg * Mathf.Deg2Rad) * BoardService.instance.radius * 1;
+            var slot = Instantiate(prefabSlot, BoardService.instance.roundCenter.position + new Vector3(x, 0, z), Quaternion.identity);//ring 1
+            slot.transform.SetParent(parent);
+            slot.gameObject.name = "c-r1-" + i;
+            BoardService.instance.ring1.Add(slot);
         }
 
         for (int i = 0; i < 12; i++)
         {
-            var x = Mathf.Cos(i * 30 * Mathf.Deg2Rad) * BoardService.instance.radius * 2;
-            var z = Mathf.Sin(i * 30 * Mathf.Deg2Rad) * BoardService.instance.radius * 2;
-            var go = Instantiate(prefabChess, BoardService.instance.roundCenter.position + new Vector3(x, 0, z), Quaternion.identity);//ring 2
-            go.SetActive(true);
-            go.transform.SetParent(parent);
-            go.transform.SetParent(parent);
+            var deg = i * 30 - 180;
+            var x = Mathf.Cos(deg * Mathf.Deg2Rad) * BoardService.instance.radius * 2;
+            var z = Mathf.Sin(-deg * Mathf.Deg2Rad) * BoardService.instance.radius * 2;
+            var slot = Instantiate(prefabSlot, BoardService.instance.roundCenter.position + new Vector3(x, 0, z), Quaternion.identity);//ring 2
+            slot.transform.SetParent(parent);
+            slot.gameObject.name = "c-r2-" + i;
+            BoardService.instance.ring2.Add(slot);
         }
 
         for (int i = 0; i < 18; i++)
         {
-            var x = Mathf.Cos(i * 20 * Mathf.Deg2Rad) * BoardService.instance.radius * 3;
-            var z = Mathf.Sin(i * 20 * Mathf.Deg2Rad) * BoardService.instance.radius * 3;
-            var go = Instantiate(prefabChess, BoardService.instance.roundCenter.position + new Vector3(x, 0, z), Quaternion.identity);//ring 3
-            go.SetActive(true);
-            go.transform.SetParent(parent);
+            var deg = i * 20 - 180;
+            var x = Mathf.Cos(deg * Mathf.Deg2Rad) * BoardService.instance.radius * 3;
+            var z = Mathf.Sin(-deg * Mathf.Deg2Rad) * BoardService.instance.radius * 3;
+            var slot = Instantiate(prefabSlot, BoardService.instance.roundCenter.position + new Vector3(x, 0, z), Quaternion.identity);//ring 3
+            slot.transform.SetParent(parent);
+            slot.gameObject.name = "c-r3-" + i;
+            BoardService.instance.ring3.Add(slot);
         }
+
+        BoardService.instance.InitSlots();
+
+        prefabSlot.gameObject.SetActive(false);
     }
 }

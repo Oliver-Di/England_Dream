@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 649e1ce110b796747b0de13b5077b67c, type: 3}
-  m_Name: New Game Config
+  m_Name: Game Config
   m_EditorClassIdentifier: 
   animationTime_base: 0.5
   animationTime_interval: 0.2
@@ -18,8 +18,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.0028152466
-      value: 0.99765015
+      time: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -27,8 +27,17 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.9962158
-      value: 0.014152527
+      time: 0.7251669
+      value: 0.5687948
+      inSlope: -1.1448144
+      outSlope: -1.1448144
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
       inSlope: -2.8745298
       outSlope: -2.8745298
       tangentMode: 0
@@ -38,3 +47,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  startingChessCount: 8
+  hasChessTypeC: 0
+  hasChessTypeD: 0
+  hasChessTypeE: 0

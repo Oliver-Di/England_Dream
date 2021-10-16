@@ -20,17 +20,17 @@ public class InputService : MonoBehaviour
         }
     }
 
-    private ChessBehaviour GetPointerChess(PointerEventData eventData)
+    private SlotBehaviour GetPointerChess(PointerEventData eventData)
     {
         RaycastHit raycastHit;
         Ray ray = Camera.main.ScreenPointToRay(eventData.position);
 
-        if (Physics.Raycast(ray, out raycastHit, 100f, LayerMask.NameToLayer("Interactable")))
+        if (Physics.Raycast(ray, out raycastHit, 100f))
         {
             if (raycastHit.transform != null)
             {
                 var go = raycastHit.transform.gameObject;
-                foreach (var instance in ChessBehaviour.instances)
+                foreach (var instance in SlotBehaviour.instances)
                 {
                     if (go.transform == instance.transform)
                     {
