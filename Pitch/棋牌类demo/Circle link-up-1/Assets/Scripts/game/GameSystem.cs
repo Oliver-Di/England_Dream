@@ -45,6 +45,7 @@ public class GameSystem : MonoBehaviour
         foreach (var c in BoardService.instance.allArea)
         {
             c.RemoveChess();
+            c.ResetState();
         }
     }
 
