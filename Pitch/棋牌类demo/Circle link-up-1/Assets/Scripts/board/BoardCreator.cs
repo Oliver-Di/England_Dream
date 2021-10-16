@@ -18,7 +18,7 @@ public class BoardCreator : MonoBehaviour
 
         var center = Instantiate(prefabSlot, BoardService.instance.roundCenter);//center 1
         center.transform.SetParent(parent);
-        center.gameObject.name = "c-center";
+        center.gameObject.name = "center";
 
         BoardService.instance.center = center;
 
@@ -29,7 +29,7 @@ public class BoardCreator : MonoBehaviour
             var z = Mathf.Sin(-deg * Mathf.Deg2Rad) * BoardService.instance.radius * 1;
             var slot = Instantiate(prefabSlot, BoardService.instance.roundCenter.position + new Vector3(x, 0, z), Quaternion.identity);//ring 1
             slot.transform.SetParent(parent);
-            slot.gameObject.name = "c-r1-" + i;
+            slot.gameObject.name = "r1-" + i;
             BoardService.instance.ring1.Add(slot);
         }
 
@@ -40,7 +40,7 @@ public class BoardCreator : MonoBehaviour
             var z = Mathf.Sin(-deg * Mathf.Deg2Rad) * BoardService.instance.radius * 2;
             var slot = Instantiate(prefabSlot, BoardService.instance.roundCenter.position + new Vector3(x, 0, z), Quaternion.identity);//ring 2
             slot.transform.SetParent(parent);
-            slot.gameObject.name = "c-r2-" + i;
+            slot.gameObject.name = "r2-" + i;
             BoardService.instance.ring2.Add(slot);
         }
 
@@ -51,7 +51,7 @@ public class BoardCreator : MonoBehaviour
             var z = Mathf.Sin(-deg * Mathf.Deg2Rad) * BoardService.instance.radius * 3;
             var slot = Instantiate(prefabSlot, BoardService.instance.roundCenter.position + new Vector3(x, 0, z), Quaternion.identity);//ring 3
             slot.transform.SetParent(parent);
-            slot.gameObject.name = "c-r3-" + i;
+            slot.gameObject.name = "r3-" + i;
             BoardService.instance.ring3.Add(slot);
         }
 

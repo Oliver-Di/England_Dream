@@ -171,36 +171,6 @@ public class BoardService : MonoBehaviour
         return GetSlot(forwardDirection, originIndex, axis3, false);
     }
 
-    public int IndexOfRing1(SlotBehaviour cd)
-    {
-        return IndexOfRingOrAxis(cd, ring1);
-    }
-
-    public int IndexOfRing2(SlotBehaviour cd)
-    {
-        return IndexOfRingOrAxis(cd, ring2);
-    }
-
-    public int IndexOfRing3(SlotBehaviour cd)
-    {
-        return IndexOfRingOrAxis(cd, ring3);
-    }
-
-    public int IndexOfAxis1(SlotBehaviour cd)
-    {
-        return IndexOfRingOrAxis(cd, axis1);
-    }
-
-    public int IndexOfAxis2(SlotBehaviour cd)
-    {
-        return IndexOfRingOrAxis(cd, axis2);
-    }
-
-    public int IndexOfAxis3(SlotBehaviour cd)
-    {
-        return IndexOfRingOrAxis(cd, axis3);
-    }
-
     private int IndexOfRingOrAxis(SlotBehaviour cd, List<SlotBehaviour> list)
     {
         return list.IndexOf(cd);
@@ -251,67 +221,128 @@ public class BoardService : MonoBehaviour
 
     public void DisplayGoals(SlotBehaviour target)
     {
-        var indexAxis1 = IndexOfAxis1(target);
-        var indexAxis2 = IndexOfAxis2(target);
-        var indexAxis3 = IndexOfAxis3(target);
+        var chess = target.chess;
+        Debug.Log("DisplayGoals " + chess.data.chessType);
 
-        var indexRing1 = IndexOfRing1(target);
-        var indexRing2 = IndexOfRing2(target);
-        var indexRing3 = IndexOfRing3(target);
-
-        if (indexAxis1 > -1)
+        foreach (var slot in axis1)
         {
-            foreach (var slot in axis1)
+            if (canReachThoughRingOrAxis(target, slot, axis1, false))
+                slot.SetClickableGoal(true);
+        }
+
+        foreach (var slot in axis2)
+        {
+            if (canReachThoughRingOrAxis(target, slot, axis2, false))
+                slot.SetClickableGoal(true);
+        }
+
+        foreach (var slot in axis3)
+        {
+            if (canReachThoughRingOrAxis(target, slot, axis3, false))
+                slot.SetClickableGoal(true);
+        }
+
+        foreach (var slot in ring1)
+        {
+            if (canReachThoughRingOrAxis(target, slot, ring1, true))
+                slot.SetClickableGoal(true);
+        }
+
+        foreach (var slot in ring2)
+        {
+            if (canReachThoughRingOrAxis(target, slot, ring2, true))
+                slot.SetClickableGoal(true);
+        }
+
+        foreach (var slot in ring3)
+        {
+            if (canReachThoughRingOrAxis(target, slot, ring3, true))
+                slot.SetClickableGoal(true);
+        }
+    }
+    private bool canReachThoughRingOrAxis(SlotBehaviour chess, SlotBehaviour goal, List<SlotBehaviour> list, bool canLoop)
+    {
+        var indexChess = list.IndexOf(chess);
+        var indexGoal = list.IndexOf(goal);
+        if (indexChess > -1 && indexGoal > -1)
+        {
+            Debug.Log("canReachThoughRingOrAxis " + list.Count);
+            Debug.Log("indexes chess-goal " + indexChess + "-" + indexGoal);
+            Debug.Log(indexChess != indexGoal);
+            Debug.Log(goal.chess == null);
+            //Debug.Log(isConnected(list, indexChess, indexGoal, canLoop));
+            return indexChess != indexGoal
+                && goal.chess == null
+                 && isConnected(list, indexChess, indexGoal, canLoop);
+        }
+
+        return false;
+    }
+
+    public bool isConnected(List<SlotBehaviour> list, int indexA, int indexB, bool canLoop)
+    {
+        bool connectedCw = true;
+        bool connectedAcw = true;
+
+        for (int i = 1; i < list.Count; i++)
+        {
+            int tpIndex = indexA + i;
+         
+            if (tpIndex >= list.Count)
             {
-                if (slot != target && slot.chess == null)
-                    slot.SetClickableGoal(true);
+                if (!canLoop)
+                {
+                    connectedCw = false;
+                    break;
+                }
+                else
+                {
+                    tpIndex -= list.Count;//ring can loop once
+                }
+            }
+            if (tpIndex == indexB || tpIndex == indexA)
+            {
+                break;
+            }
+            var tpSlot = list[tpIndex];
+            if (tpSlot.chess != null)
+            {
+                Debug.Log("tpIndex " + tpIndex + " type" + tpSlot.chess.data.chessType);
+                connectedCw = false;
+                break;
             }
         }
 
-        if (indexAxis2 > -1)
+        for (int i = 1; i < list.Count; i++)
         {
-            foreach (var slot in axis2)
+            int tpIndex = indexA - i;
+        
+            if (tpIndex < 0)
             {
-                if (slot != target && slot.chess == null)
-                    slot.SetClickableGoal(true);
+                if (!canLoop)
+                {
+                    connectedAcw = false;
+                    break;
+                }
+                else
+                {
+                    tpIndex += list.Count;//ring can loop once
+                }
+            }
+            if (tpIndex == indexB || tpIndex == indexA)
+            {
+                break;
+            }
+            var tpSlot = list[tpIndex];
+            if (tpSlot.chess != null)
+            {
+                Debug.Log("tpIndex " + tpIndex + " type" + tpSlot.chess.data.chessType);
+                connectedAcw = false;
+                break;
             }
         }
-
-        if (indexAxis3 > -1)
-        {
-            foreach (var slot in axis3)
-            {
-                if (slot != target && slot.chess == null)
-                    slot.SetClickableGoal(true);
-            }
-        }
-
-        if (indexRing1 > -1)
-        {
-            foreach (var slot in ring1)
-            {
-                if (slot != target && slot.chess == null)
-                    slot.SetClickableGoal(true);
-            }
-        }
-
-        if (indexRing2 > -1)
-        {
-            foreach (var slot in ring2)
-            {
-                if (slot != target && slot.chess == null)
-                    slot.SetClickableGoal(true);
-            }
-        }
-
-        if (indexRing3 > -1)
-        {
-            foreach (var slot in ring3)
-            {
-                if (slot != target && slot.chess == null)
-                    slot.SetClickableGoal(true);
-            }
-        }
+        Debug.Log("isConnected " + connectedCw + " - " + connectedAcw);
+        return connectedCw || connectedAcw;
     }
 
     public void SetClickableGoalSlot(SlotBehaviour target)
