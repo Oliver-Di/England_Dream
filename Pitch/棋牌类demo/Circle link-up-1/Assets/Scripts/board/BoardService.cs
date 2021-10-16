@@ -28,6 +28,8 @@ public class BoardService : MonoBehaviour
     private int _testAxis = 0;
     private int _testRing = 0;
 
+    private SlotBehaviour _current;
+
     private void Update()
     {
         if (stepAxis)
@@ -217,77 +219,80 @@ public class BoardService : MonoBehaviour
 
         target.SetCurrentTarget(true);
         DisplayGoals(target);
+        _current = target;
     }
 
     public void DisplayGoals(SlotBehaviour target)
     {
         var chess = target.chess;
         Debug.Log("DisplayGoals " + chess.data.chessType);
-
+        bool cw = true;
         foreach (var slot in axis1)
         {
-            if (canReachThoughRingOrAxis(target, slot, axis1, false))
+            if (canReachThoughRingOrAxis(target, slot, axis1, false, ref cw))
                 slot.SetClickableGoal(true);
         }
 
         foreach (var slot in axis2)
         {
-            if (canReachThoughRingOrAxis(target, slot, axis2, false))
+            if (canReachThoughRingOrAxis(target, slot, axis2, false, ref cw))
                 slot.SetClickableGoal(true);
         }
 
         foreach (var slot in axis3)
         {
-            if (canReachThoughRingOrAxis(target, slot, axis3, false))
+            if (canReachThoughRingOrAxis(target, slot, axis3, false, ref cw))
                 slot.SetClickableGoal(true);
         }
 
         foreach (var slot in ring1)
         {
-            if (canReachThoughRingOrAxis(target, slot, ring1, true))
+            if (canReachThoughRingOrAxis(target, slot, ring1, true, ref cw))
                 slot.SetClickableGoal(true);
         }
 
         foreach (var slot in ring2)
         {
-            if (canReachThoughRingOrAxis(target, slot, ring2, true))
+            if (canReachThoughRingOrAxis(target, slot, ring2, true, ref cw))
                 slot.SetClickableGoal(true);
         }
 
         foreach (var slot in ring3)
         {
-            if (canReachThoughRingOrAxis(target, slot, ring3, true))
+            if (canReachThoughRingOrAxis(target, slot, ring3, true, ref cw))
                 slot.SetClickableGoal(true);
         }
     }
-    private bool canReachThoughRingOrAxis(SlotBehaviour chess, SlotBehaviour goal, List<SlotBehaviour> list, bool canLoop)
+
+    private bool canReachThoughRingOrAxis(SlotBehaviour chess, SlotBehaviour goal, List<SlotBehaviour> list, bool canLoop, ref bool cw)
     {
         var indexChess = list.IndexOf(chess);
         var indexGoal = list.IndexOf(goal);
         if (indexChess > -1 && indexGoal > -1)
         {
-            Debug.Log("canReachThoughRingOrAxis " + list.Count);
-            Debug.Log("indexes chess-goal " + indexChess + "-" + indexGoal);
-            Debug.Log(indexChess != indexGoal);
-            Debug.Log(goal.chess == null);
+            //Debug.Log("canReachThoughRingOrAxis " + list.Count);
+            //Debug.Log("indexes chess-goal " + indexChess + "-" + indexGoal);
+            //Debug.Log(indexChess != indexGoal);
+            //Debug.Log(goal.chess == null);
             //Debug.Log(isConnected(list, indexChess, indexGoal, canLoop));
             return indexChess != indexGoal
                 && goal.chess == null
-                 && isConnected(list, indexChess, indexGoal, canLoop);
+                 && isConnected(list, indexChess, indexGoal, canLoop, ref cw);
         }
 
         return false;
     }
 
-    public bool isConnected(List<SlotBehaviour> list, int indexA, int indexB, bool canLoop)
+    public bool isConnected(List<SlotBehaviour> list, int indexA, int indexB, bool canLoop, ref bool cw)
     {
         bool connectedCw = true;
         bool connectedAcw = true;
-
+        int deltaCw = 0;
+        int deltaAcw = 0;
         for (int i = 1; i < list.Count; i++)
         {
             int tpIndex = indexA + i;
-         
+            deltaCw = i;
             if (tpIndex >= list.Count)
             {
                 if (!canLoop)
@@ -307,7 +312,7 @@ public class BoardService : MonoBehaviour
             var tpSlot = list[tpIndex];
             if (tpSlot.chess != null)
             {
-                Debug.Log("tpIndex " + tpIndex + " type" + tpSlot.chess.data.chessType);
+                //Debug.Log("tpIndex " + tpIndex + " type" + tpSlot.chess.data.chessType);
                 connectedCw = false;
                 break;
             }
@@ -316,7 +321,7 @@ public class BoardService : MonoBehaviour
         for (int i = 1; i < list.Count; i++)
         {
             int tpIndex = indexA - i;
-        
+            deltaAcw = i;
             if (tpIndex < 0)
             {
                 if (!canLoop)
@@ -336,22 +341,135 @@ public class BoardService : MonoBehaviour
             var tpSlot = list[tpIndex];
             if (tpSlot.chess != null)
             {
-                Debug.Log("tpIndex " + tpIndex + " type" + tpSlot.chess.data.chessType);
+                //Debug.Log("tpIndex " + tpIndex + " type" + tpSlot.chess.data.chessType);
                 connectedAcw = false;
                 break;
             }
         }
-        Debug.Log("isConnected " + connectedCw + " - " + connectedAcw);
+        //Debug.Log("isConnected " + connectedCw + " - " + connectedAcw);
+        if (connectedCw && connectedAcw)
+        {
+            if (deltaAcw > deltaCw)
+            {
+                cw = true;
+            }
+            else
+            {
+                cw = false;
+            }
+        }
+        else
+        {
+            if (connectedCw)
+            {
+                cw = true;
+            }
+            else if (connectedAcw)
+            {
+                cw = false;
+            }
+        }
         return connectedCw || connectedAcw;
     }
 
-    public void SetClickableGoalSlot(SlotBehaviour target)
+    public void SetClickableGoalSlot(SlotBehaviour goal)
     {
-        GameSystem.instance.gameState = GameSystem.GameState.Moving;
-
-        foreach (var slot in allArea)
+        Debug.Log("SetClickableGoalSlot");
+        Debug.Log("will move " + _current.gameObject.name + " to " + goal.gameObject.name);
+        bool suc = false;
+        bool cw = true;
+        if (!suc && canReachThoughRingOrAxis(_current, goal, axis1, false, ref cw))
         {
-            slot.ResetState();
+            MoveChess(_current, goal, axis1, false, cw);
+            suc = true;
         }
+        if (!suc && canReachThoughRingOrAxis(_current, goal, axis2, false, ref cw))
+        {
+            MoveChess(_current, goal, axis2, false, cw);
+            suc = true;
+        }
+        if (!suc && canReachThoughRingOrAxis(_current, goal, axis3, false, ref cw))
+        {
+            MoveChess(_current, goal, axis3, false, cw);
+            suc = true;
+        }
+        if (!suc && canReachThoughRingOrAxis(_current, goal, ring1, true, ref cw))
+        {
+            MoveChess(_current, goal, ring1, true, cw);
+            suc = true;
+        }
+        if (!suc && canReachThoughRingOrAxis(_current, goal, ring2, true, ref cw))
+        {
+            MoveChess(_current, goal, ring2, true, cw);
+            suc = true;
+        }
+        if (!suc && canReachThoughRingOrAxis(_current, goal, ring3, true, ref cw))
+        {
+            MoveChess(_current, goal, ring3, true, cw);
+            suc = true;
+        }
+
+        if (suc)
+        {
+            GameSystem.instance.gameState = GameSystem.GameState.Moving;
+            foreach (var slot in allArea)
+            {
+                slot.ResetState();
+            }
+        }
+        else
+        {
+            Debug.Log("can not move there");
+        }
+
+    }
+
+    private void MoveChess(SlotBehaviour from, SlotBehaviour to, List<SlotBehaviour> list, bool isRing, bool cw)
+    {
+        var chess = from.chess;
+        int indexFrom = list.IndexOf(from);
+        int indexTo = list.IndexOf(to);
+        int delta = Mathf.Abs(indexFrom - indexTo);
+        var cfg = GameService.instance.gameConfig;
+        if (!isRing)
+        {
+            var timeAxis = cfg.animationTime_base + cfg.animationTime_interval * delta;
+            chess.move.MoveAlongAxis(from.transform.position, to.transform.position, timeAxis, () =>
+            {
+                MoveEnd(from, to);
+            });
+            return;
+        }
+
+        //isRing
+        if (cw)
+        {
+            delta = indexTo - indexFrom;
+            if (delta < 0)
+            {
+                delta += list.Count;
+            }
+        }
+        else
+        {
+            delta = indexFrom - indexTo;
+            if (delta < 0)
+            {
+                delta += list.Count;
+            }
+        }
+        var timeRing = cfg.animationTime_base + cfg.animationTime_interval * delta;
+        chess.move.MoveAlongRing(from.transform.position, to.transform.position, cw, timeRing, () =>
+        {
+            MoveEnd(from, to);
+        });
+    }
+
+    private void MoveEnd(SlotBehaviour from, SlotBehaviour to)
+    {
+        GameSystem.instance.gameState = GameSystem.GameState.Wait;
+        var chess = from.chess;
+        to.ReceiveChess(chess);
+        from.ReleaseChess();
     }
 }

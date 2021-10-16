@@ -13,10 +13,7 @@ public class ChessBehaviour : MonoBehaviour
     public GameObject viewE;
 
     public ChessData data;
-
-    void Awake()
-    {
-    }
+    public ChessMove move;
 
     public void SetSpawnChessType()
     {

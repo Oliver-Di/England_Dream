@@ -28,6 +28,17 @@ public class SlotBehaviour : MonoBehaviour
         instances.Add(this);
     }
 
+    public void ReleaseChess()
+    {
+        chess = null;
+    }
+
+    public void ReceiveChess(ChessBehaviour c)
+    {
+        chess = c;
+        chess.transform.position = this.transform.position;
+    }
+
     public void RemoveChess()
     {
         if (chess == null)
@@ -117,8 +128,8 @@ public class SlotBehaviour : MonoBehaviour
 
     private void TrySetToClickableGoal()
     {
-        Debug.Log("TrySetToClickableGoal");
-        if (chess == null)
+        // Debug.Log("TrySetToClickableGoal");
+        if (chess != null)
             return;
 
         SetToClickableGoal();
@@ -132,7 +143,7 @@ public class SlotBehaviour : MonoBehaviour
 
     public void TrySetToCurrentTarget()
     {
-        Debug.Log("TrySetToCurrentTarget");
+        // Debug.Log("TrySetToCurrentTarget");
         if (chess == null)
             return;
 
