@@ -1,22 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
+    [Header("位置信息")]
     public GameObject[] tables;
     public Transform[] playerBorn;
     public Transform[] enemyBorn;
-
+    public GameObject[] objects;
+    [Header("玩家信息")]
     public GameObject player;
     public GameObject enemy;
-    public int number;
+    public int tableNum;
+    public int playerNum;
+    [Header("UI")]
+    public GameObject victory;
+    public GameObject fail;
+    public GameObject ready;
+    [Header("摄像机")]
+    public GameObject folllowCam;
 
     public GameMode gameMode;
     public enum GameMode
     {
+        Ready,
         Player,
         Enemy,
     }
@@ -32,24 +42,97 @@ public class GameManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(this);
 
-        //开局玩家先动
+        //开局等待
+        gameMode = GameMode.Ready;
+        Time.timeScale = 0;
+
+
+    }
+
+    public void StartGame()
+    {
+        ready.SetActive(false);
+        //激活选中物块
+        for (int i = 0; i < objects.Length; i++)
+        {
+            if (i == playerNum)
+                objects[i].SetActive(true);
+            else
+                objects[i].SetActive(false);
+        }
+        //玩家操作模式
         gameMode = GameMode.Player;
+        Time.timeScale = 1;
+        findObject();
+    }
+
+    public void QuitGame()
+    {
+
+    }
+
+    public void findObject()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
+        //相机寻找玩家
+        folllowCam.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
     }
 
     public void ChangeTable()
     {
-        if (number < 2)
-            number++;
-        else if (number == 2)
-            number = 0;
-
+        if (tableNum < tables.Length-1)
+            tableNum++;
+        else if (tableNum == tables.Length-1)
+            tableNum = 0;
+        //换桌子
         for (int i = 0; i < tables.Length; i++)
         {
             tables[i].SetActive(false);
         }
-        tables[number].SetActive(true);
+        tables[tableNum].SetActive(true);
+        //结算界面关闭
+        victory.SetActive(false);
+        fail.SetActive(false);
 
-        player.transform.position = playerBorn[number].position;
-        enemy.transform.position = enemyBorn[number].position;
+        //重新寻找人物和敌人
+        findObject();
+
+        //人物和敌人激活
+        player.SetActive(true);
+        enemy.SetActive(true);
+        //人物和敌人速度清零
+        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        enemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //人物和敌人位置归正
+        player.transform.position = playerBorn[tableNum].position;
+        enemy.transform.position = enemyBorn[tableNum].position;
+        player.transform.rotation = Quaternion.Euler(0, 0, 0);
+        enemy.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        Debug.Log("change");
+    }
+
+    public void RestartTable()
+    {
+        //重新寻找人物和敌人
+        findObject();
+        //人物和敌人激活
+        player.SetActive(true);
+        enemy.SetActive(true);
+        //人物和敌人速度清零
+        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        enemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //人物和敌人位置归正
+        player.transform.position = playerBorn[tableNum].position;
+        enemy.transform.position = enemyBorn[tableNum].position;
+        player.transform.rotation = Quaternion.Euler(0, 0, 0);
+        enemy.transform.rotation= Quaternion.Euler(0, 0, 0);
+
+        //结算界面关闭
+        victory.SetActive(false);
+        fail.SetActive(false);
+
+        Debug.Log("restart");
     }
 }
