@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             //计算力
-            F = force * 10000 * -distance;
+            F = force * -distance.normalized * distance.magnitude;
 
             var size = transform.GetComponent<Renderer>().bounds.size;
             rb.AddForceAtPosition(new Vector3(F.x, 0, F.z), new Vector3(originPos.x, originPos.y - size.y * 0.5f, originPos.z));

@@ -22,11 +22,11 @@ public class Border : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Fail.SetActive(true);
+            GameManager.instance.FailGame();
         }
         else if (other.CompareTag("Enemy"))
         {
-            Victory.SetActive(true);
+            GameManager.instance.WinGame();
         }
     }
 }

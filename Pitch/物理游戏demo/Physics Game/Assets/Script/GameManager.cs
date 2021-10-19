@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         //相机寻找玩家
         folllowCam.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
+        folllowCam.GetComponent<CinemachineVirtualCamera>().LookAt = enemy.transform;
     }
 
     public void ChangeTable()
@@ -134,5 +135,17 @@ public class GameManager : MonoBehaviour
         fail.SetActive(false);
 
         Debug.Log("restart");
+    }
+
+    public void WinGame()
+    {
+        victory.SetActive(true);
+        gameMode = GameMode.Player;
+    }
+
+    public void FailGame()
+    {
+        fail.SetActive(true);
+        gameMode = GameMode.Player;
     }
 }

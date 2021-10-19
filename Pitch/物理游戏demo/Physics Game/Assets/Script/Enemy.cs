@@ -33,8 +33,18 @@ public class Enemy : MonoBehaviour
         Vector3 direction = player.transform.position - transform.position;
         distance = direction.magnitude;
 
-        rb.AddForce(direction * force * 10000);
-        Debug.Log("Attack");
+        if (distance >= 20f)
+        {
+            rb.AddForce(direction.normalized * 20 * force);
+        }
+        else if (distance < 15f)
+        {
+            rb.AddForce(direction.normalized * 15 * force);
+        }
+        else
+        {
+            rb.AddForce(direction.normalized * distance * force);
+        }
 
         GameManager.instance.gameMode = GameManager.GameMode.Player;
         timer = 2;

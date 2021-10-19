@@ -8,7 +8,9 @@ public class SpikeRoller : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<Rigidbody>().
-            AddForce((other.transform.position - transform.position) * 10000 * force);
+        if (other.CompareTag("Player") || other.CompareTag("Enemy"))
+        {
+            other.GetComponent<Rigidbody>().AddForce((other.transform.position - transform.position) * force);
+        }
     }
 }
