@@ -132,11 +132,6 @@ public class SlotBehaviour : MonoBehaviour
         if (chess != null)
             return;
 
-        SetToClickableGoal();
-    }
-
-    private void SetToClickableGoal()
-    {
         Debug.Log("SetToClickableGoal");
         BoardService.instance.SetClickableGoalSlot(this);
     }
@@ -147,13 +142,7 @@ public class SlotBehaviour : MonoBehaviour
         if (chess == null)
             return;
 
-        SetToCurrentTarget();
-    }
-
-    private void SetToCurrentTarget()
-    {
         Debug.Log("SetCurrentTarget");
         BoardService.instance.SetCurrentSlot(this);
     }
-
 }
