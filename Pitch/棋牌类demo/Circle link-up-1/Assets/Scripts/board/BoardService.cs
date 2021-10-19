@@ -89,6 +89,7 @@ public class BoardService : MonoBehaviour
         {
             return -1;
         }
+
         return 0;
     }
 
@@ -143,36 +144,6 @@ public class BoardService : MonoBehaviour
         axis3.Sort(axisComparer);
     }
 
-    private SlotBehaviour GetSlot(bool dir, int originIndex, List<SlotBehaviour> list, bool canLoop)
-    {
-        for (int i = 0; i < list.Count - 1; i++)
-        {
-            int tpIndex = dir ? (originIndex + i) : (originIndex - i);
-            if (tpIndex >= list.Count)
-            {
-                if (!canLoop)
-                    return null;
-
-                tpIndex -= list.Count;//ring can loop once
-            }
-            else if (tpIndex < 0)
-            {
-                if (!canLoop)
-                    return null;
-
-                tpIndex += list.Count;//ring can loop once
-            }
-
-            var tpSlot = list[tpIndex];
-            if (tpSlot.chess == null)
-            {
-                return tpSlot;
-            }
-        }
-
-        return null;
-    }
-
     public void SetCurrentSlot(SlotBehaviour target)
     {
         GameSystem.instance.gameState = GameSystem.GameState.ChessClicked;
@@ -194,42 +165,42 @@ public class BoardService : MonoBehaviour
         bool cw = true;
         foreach (var slot in axis1)
         {
-            if (canReachThoughRingOrAxis(target, slot, axis1, false, ref cw))
+            if (CanReachThoughRingOrAxis(target, slot, axis1, false, ref cw))
                 slot.SetClickableGoal(true);
         }
 
         foreach (var slot in axis2)
         {
-            if (canReachThoughRingOrAxis(target, slot, axis2, false, ref cw))
+            if (CanReachThoughRingOrAxis(target, slot, axis2, false, ref cw))
                 slot.SetClickableGoal(true);
         }
 
         foreach (var slot in axis3)
         {
-            if (canReachThoughRingOrAxis(target, slot, axis3, false, ref cw))
+            if (CanReachThoughRingOrAxis(target, slot, axis3, false, ref cw))
                 slot.SetClickableGoal(true);
         }
 
         foreach (var slot in ring1)
         {
-            if (canReachThoughRingOrAxis(target, slot, ring1, true, ref cw))
+            if (CanReachThoughRingOrAxis(target, slot, ring1, true, ref cw))
                 slot.SetClickableGoal(true);
         }
 
         foreach (var slot in ring2)
         {
-            if (canReachThoughRingOrAxis(target, slot, ring2, true, ref cw))
+            if (CanReachThoughRingOrAxis(target, slot, ring2, true, ref cw))
                 slot.SetClickableGoal(true);
         }
 
         foreach (var slot in ring3)
         {
-            if (canReachThoughRingOrAxis(target, slot, ring3, true, ref cw))
+            if (CanReachThoughRingOrAxis(target, slot, ring3, true, ref cw))
                 slot.SetClickableGoal(true);
         }
     }
 
-    private bool canReachThoughRingOrAxis(SlotBehaviour chess, SlotBehaviour goal, List<SlotBehaviour> list, bool canLoop, ref bool cw)
+    private bool CanReachThoughRingOrAxis(SlotBehaviour chess, SlotBehaviour goal, List<SlotBehaviour> list, bool canLoop, ref bool cw)
     {
         var indexChess = list.IndexOf(chess);
         var indexGoal = list.IndexOf(goal);
@@ -343,32 +314,32 @@ public class BoardService : MonoBehaviour
         Debug.Log("will move " + _current.gameObject.name + " to " + goal.gameObject.name);
         bool suc = false;
         bool cw = true;
-        if (!suc && canReachThoughRingOrAxis(_current, goal, axis1, false, ref cw))
+        if (!suc && CanReachThoughRingOrAxis(_current, goal, axis1, false, ref cw))
         {
             MoveChess(_current, goal, axis1, false, cw);
             suc = true;
         }
-        if (!suc && canReachThoughRingOrAxis(_current, goal, axis2, false, ref cw))
+        if (!suc && CanReachThoughRingOrAxis(_current, goal, axis2, false, ref cw))
         {
             MoveChess(_current, goal, axis2, false, cw);
             suc = true;
         }
-        if (!suc && canReachThoughRingOrAxis(_current, goal, axis3, false, ref cw))
+        if (!suc && CanReachThoughRingOrAxis(_current, goal, axis3, false, ref cw))
         {
             MoveChess(_current, goal, axis3, false, cw);
             suc = true;
         }
-        if (!suc && canReachThoughRingOrAxis(_current, goal, ring1, true, ref cw))
+        if (!suc && CanReachThoughRingOrAxis(_current, goal, ring1, true, ref cw))
         {
             MoveChess(_current, goal, ring1, true, cw);
             suc = true;
         }
-        if (!suc && canReachThoughRingOrAxis(_current, goal, ring2, true, ref cw))
+        if (!suc && CanReachThoughRingOrAxis(_current, goal, ring2, true, ref cw))
         {
             MoveChess(_current, goal, ring2, true, cw);
             suc = true;
         }
-        if (!suc && canReachThoughRingOrAxis(_current, goal, ring3, true, ref cw))
+        if (!suc && CanReachThoughRingOrAxis(_current, goal, ring3, true, ref cw))
         {
             MoveChess(_current, goal, ring3, true, cw);
             suc = true;
@@ -386,7 +357,6 @@ public class BoardService : MonoBehaviour
         {
             Debug.Log("can not move there");
         }
-
     }
 
     private void MoveChess(SlotBehaviour from, SlotBehaviour to, List<SlotBehaviour> list, bool isRing, bool cw)
@@ -398,6 +368,7 @@ public class BoardService : MonoBehaviour
         var cfg = GameService.instance.gameConfig;
         if (!isRing)
         {
+            //is axis
             var timeAxis = cfg.animationTime_base + cfg.animationTime_interval * delta;
             chess.move.MoveAlongAxis(from.transform.position, to.transform.position, timeAxis, () =>
             {
@@ -432,7 +403,12 @@ public class BoardService : MonoBehaviour
 
     private void MoveEnd(SlotBehaviour from, SlotBehaviour to)
     {
+        //消除
         GameSystem.instance.gameState = GameSystem.GameState.Wait;
+
+
+
+        //两个格子slot交接棋子chess
         var chess = from.chess;
         to.ReceiveChess(chess);
         from.ReleaseChess();
