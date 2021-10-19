@@ -143,41 +143,6 @@ public class BoardService : MonoBehaviour
         axis3.Sort(axisComparer);
     }
 
-    public SlotBehaviour GetChessRing1(bool clockwise, int originIndex)
-    {
-        return GetSlot(clockwise, originIndex, ring1, true);
-    }
-
-    public SlotBehaviour GetChessRing2(bool clockwise, int originIndex)
-    {
-        return GetSlot(clockwise, originIndex, ring2, true);
-    }
-
-    public SlotBehaviour GetChessRing3(bool clockwise, int originIndex)
-    {
-        return GetSlot(clockwise, originIndex, ring3, true);
-    }
-
-    public SlotBehaviour GetChessAxis1(bool forwardDirection, int originIndex)
-    {
-        return GetSlot(forwardDirection, originIndex, axis1, false);
-    }
-
-    public SlotBehaviour GetChessAxis2(bool forwardDirection, int originIndex)
-    {
-        return GetSlot(forwardDirection, originIndex, axis2, false);
-    }
-
-    public SlotBehaviour GetChessAxis3(bool forwardDirection, int originIndex)
-    {
-        return GetSlot(forwardDirection, originIndex, axis3, false);
-    }
-
-    private int IndexOfRingOrAxis(SlotBehaviour cd, List<SlotBehaviour> list)
-    {
-        return list.IndexOf(cd);
-    }
-
     private SlotBehaviour GetSlot(bool dir, int originIndex, List<SlotBehaviour> list, bool canLoop)
     {
         for (int i = 0; i < list.Count - 1; i++)
@@ -225,7 +190,7 @@ public class BoardService : MonoBehaviour
     public void DisplayGoals(SlotBehaviour target)
     {
         var chess = target.chess;
-        Debug.Log("DisplayGoals " + chess.data.chessType);
+        //Debug.Log("DisplayGoals " + chess.data.chessType);
         bool cw = true;
         foreach (var slot in axis1)
         {
@@ -374,7 +339,7 @@ public class BoardService : MonoBehaviour
 
     public void SetClickableGoalSlot(SlotBehaviour goal)
     {
-        Debug.Log("SetClickableGoalSlot");
+        //Debug.Log("SetClickableGoalSlot");
         Debug.Log("will move " + _current.gameObject.name + " to " + goal.gameObject.name);
         bool suc = false;
         bool cw = true;
