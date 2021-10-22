@@ -215,13 +215,13 @@ public class BoardService : MonoBehaviour
             //Debug.Log(isConnected(list, indexChess, indexGoal, canLoop));
             return indexChess != indexGoal
                 && goal.chess == null
-                 && isConnected(list, indexChess, indexGoal, canLoop, ref cw);
+                 && IsConnected(list, indexChess, indexGoal, canLoop, ref cw);
         }
 
         return false;
     }
 
-    public bool isConnected(List<SlotBehaviour> list, int indexA, int indexB, bool canLoop, ref bool cw)
+    public bool IsConnected(List<SlotBehaviour> list, int indexA, int indexB, bool canLoop, ref bool cw)
     {
         bool connectedCw = true;
         bool connectedAcw = true;
@@ -418,9 +418,7 @@ public class BoardService : MonoBehaviour
         from.ReleaseChess();
     }
 
-
-
-    public void SetErasSlot(SlotBehaviour target)
+    public void SetEraseSlot(SlotBehaviour target)
     {
         //添加待消除棋子位置
         if (erase2[0] == null)

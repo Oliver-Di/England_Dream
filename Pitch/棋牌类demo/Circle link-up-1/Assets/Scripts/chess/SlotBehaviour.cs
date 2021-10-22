@@ -155,6 +155,6 @@ public class SlotBehaviour : MonoBehaviour
             return;
 
         Debug.Log("TrySetEraseChess");
-        BoardService.instance.SetErasSlot(this);
+        BoardService.instance.SetEraseSlot(this);
     }
 }
