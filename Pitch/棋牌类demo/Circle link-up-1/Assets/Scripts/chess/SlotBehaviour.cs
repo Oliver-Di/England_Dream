@@ -123,6 +123,9 @@ public class SlotBehaviour : MonoBehaviour
             case GameSystem.GameState.Wait:
                 TrySetToCurrentTarget();
                 break;
+            case GameSystem.GameState.Erase:
+                TrySetEraseChess();
+                break;
         }
     }
 
@@ -144,5 +147,14 @@ public class SlotBehaviour : MonoBehaviour
 
         Debug.Log("SetCurrentTarget");
         BoardService.instance.SetCurrentSlot(this);
+    }
+
+    public void TrySetEraseChess()
+    {
+        if (chess == null)
+            return;
+
+        Debug.Log("TrySetEraseChess");
+        BoardService.instance.SetErasSlot(this);
     }
 }

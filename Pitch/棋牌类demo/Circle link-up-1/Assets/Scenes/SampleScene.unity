@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.12514597, g: 0.23566917, b: 0.3513308, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -157,12 +157,6 @@ Transform:
   m_Father: {fileID: 2024959756}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &46118823 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
-  m_PrefabInstance: {fileID: 680374798}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &53820749
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,7 +267,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1159842640}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -400,11 +394,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
---- !u!4 &103336469 stripped
+--- !u!4 &87573393 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
-  m_PrefabInstance: {fileID: 1309727287}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 87573392}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &125400141
 GameObject:
@@ -585,8 +578,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &141044531 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 141044530}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &141044532 stripped
@@ -619,20 +611,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 313424773}
   viewA: {fileID: 141044533}
   viewB: {fileID: 1138945907}
   viewC: {fileID: 1003508230}
   viewD: {fileID: 921038696}
   viewE: {fileID: 1571289634}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!1 &176154990
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,8 +800,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &185692806 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 185692805}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &216888912
@@ -899,8 +884,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &216888913 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 216888912}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &296660414
@@ -1047,7 +1031,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 141044532}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1434,6 +1418,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
+--- !u!4 &440524586 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 440524585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &450974530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,7 +1545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &466867936
 Transform:
   m_ObjectHideFlags: 0
@@ -1572,6 +1561,7 @@ Transform:
   - {fileID: 2143514992}
   - {fileID: 296660415}
   - {fileID: 176154991}
+  - {fileID: 1277074969}
   m_Father: {fileID: 876845322}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1605,7 +1595,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1159842640}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1734,8 +1724,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &477495048 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 477495047}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &500803607
@@ -1831,12 +1820,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &512173459 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
-  m_PrefabInstance: {fileID: 87573392}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &525399255
 Transform:
   m_ObjectHideFlags: 0
@@ -2235,20 +2218,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 1147164933}
   viewA: {fileID: 753637837}
   viewB: {fileID: 470601277}
   viewC: {fileID: 68455036}
   viewD: {fileID: 1493948238}
   viewE: {fileID: 1257396034}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!1001 &605987508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2335,8 +2312,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &605987509 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 605987508}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &606475277
@@ -2420,8 +2396,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &606475278 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 606475277}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &615031782
@@ -3010,10 +2985,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 141044531}
-  - {fileID: 3870547544544785164}
   - {fileID: 811606164}
+  - {fileID: 141044531}
   - {fileID: 729064031}
+  - {fileID: 7327279762846874443}
   - {fileID: 706133545}
   m_Father: {fileID: 876845322}
   m_RootOrder: 3
@@ -3099,8 +3074,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &678725207 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 678725206}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &680374798
@@ -3182,6 +3156,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
+--- !u!4 &680374799 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 680374798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &687829223
 GameObject:
   m_ObjectHideFlags: 0
@@ -3310,8 +3289,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &690939372 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 690939371}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &693839234
@@ -3600,24 +3578,24 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1932389113}
   - {fileID: 185692806}
   - {fileID: 216888913}
-  - {fileID: 1828024089}
+  - {fileID: 477495048}
+  - {fileID: 678725207}
+  - {fileID: 690939372}
+  - {fileID: 912782984}
+  - {fileID: 945213401}
+  - {fileID: 989298204}
+  - {fileID: 1057162811}
+  - {fileID: 1162181863}
   - {fileID: 1504638792}
   - {fileID: 1726673834}
-  - {fileID: 1842277732}
   - {fileID: 1731585097}
-  - {fileID: 945213401}
-  - {fileID: 2034076008}
+  - {fileID: 1828024089}
+  - {fileID: 1842277732}
   - {fileID: 1896403230}
-  - {fileID: 678725207}
-  - {fileID: 477495048}
-  - {fileID: 1057162811}
-  - {fileID: 912782984}
-  - {fileID: 989298204}
-  - {fileID: 690939372}
-  - {fileID: 1162181863}
+  - {fileID: 1932389113}
+  - {fileID: 2034076008}
   m_Father: {fileID: 662676808}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3662,20 +3640,20 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1703584745}
   - {fileID: 605987509}
   - {fileID: 606475278}
+  - {fileID: 885965742}
   - {fileID: 976699510}
-  - {fileID: 1940535523}
+  - {fileID: 1196310300}
+  - {fileID: 1198251445}
   - {fileID: 1207256572}
   - {fileID: 1379380954}
-  - {fileID: 885965742}
-  - {fileID: 1196310300}
-  - {fileID: 1775976843}
-  - {fileID: 1198251445}
+  - {fileID: 1703584745}
   - {fileID: 1705517264}
+  - {fileID: 1775976843}
+  - {fileID: 1940535523}
   m_Father: {fileID: 662676808}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &753637837 stripped
 GameObject:
@@ -3752,14 +3730,14 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 512173459}
-  - {fileID: 1523010313}
-  - {fileID: 1512982319}
-  - {fileID: 46118823}
-  - {fileID: 1463654208}
-  - {fileID: 103336469}
+  - {fileID: 87573393}
+  - {fileID: 440524586}
+  - {fileID: 680374799}
+  - {fileID: 1309727288}
+  - {fileID: 1895664387}
+  - {fileID: 1963685702}
   m_Father: {fileID: 662676808}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &866770637 stripped
 GameObject:
@@ -3814,9 +3792,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9d74cce8d1b004eb6a99ecf75fa398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabChess: {fileID: 581630905}
+  prefabSlot: {fileID: 0}
   parent: {fileID: 1667573831}
-  toCreate: 0
 --- !u!1001 &885965741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3898,8 +3875,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &885965742 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 885965741}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &907336405
@@ -4002,8 +3978,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &912782984 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 912782983}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &921038696
@@ -4036,7 +4011,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 141044532}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4165,8 +4140,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &945213401 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 945213400}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
@@ -4338,8 +4312,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &976699510 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 976699509}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &989298203
@@ -4423,8 +4396,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &989298204 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 989298203}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &994364667
@@ -4471,7 +4443,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 141044532}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4698,8 +4670,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &1057162811 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1057162810}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1081741296
@@ -4944,7 +4915,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 141044532}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5022,7 +4993,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1159842640}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5176,8 +5147,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &1162181863 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1162181862}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1163821963
@@ -5429,8 +5399,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &1196310300 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1196310299}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1198251444
@@ -5519,8 +5488,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &1198251445 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1198251444}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1204026804
@@ -5682,8 +5650,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &1207256572 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1207256571}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1207523001
@@ -5914,13 +5881,141 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1159842640}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1277074968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1277074969}
+  - component: {fileID: 1277074970}
+  m_Layer: 0
+  m_Name: Line
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1277074969
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277074968}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 466867936}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!120 &1277074970
+LineRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277074968}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    serializedVersion: 3
+    widthMultiplier: 0.1
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    numCornerVertices: 0
+    numCapVertices: 0
+    alignment: 0
+    textureMode: 0
+    shadowBias: 0.5
+    generateLightingData: 0
+  m_UseWorldSpace: 0
+  m_Loop: 0
 --- !u!1 &1279600940
 GameObject:
   m_ObjectHideFlags: 0
@@ -6379,6 +6474,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
+--- !u!4 &1309727288 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1309727287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1360530456
 GameObject:
   m_ObjectHideFlags: 0
@@ -6753,8 +6853,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &1379380954 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1379380953}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1414450619
@@ -6885,13 +6984,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roundCenter: {fileID: 876845322}
   radius: 1
+  prefabChess: {fileID: 0}
+  center: {fileID: 0}
   ring1: []
   ring2: []
   ring3: []
   axis1: []
   axis2: []
   axis3: []
-  center: {fileID: 0}
+  spawnArea: []
+  allArea: []
+  erase2: []
+  stepAxis: 0
+  stepRing: 0
 --- !u!114 &1414450626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6998,12 +7103,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1463654208 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
-  m_PrefabInstance: {fileID: 440524585}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1493948238
 GameObject:
   m_ObjectHideFlags: 0
@@ -7034,7 +7133,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1159842640}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7163,15 +7262,8 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &1504638792 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1504638791}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1512982319 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
-  m_PrefabInstance: {fileID: 1963685701}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1515295023
 GameObject:
@@ -7370,12 +7462,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!4 &1523010313 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
-  m_PrefabInstance: {fileID: 1895664386}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1544831149
 Transform:
   m_ObjectHideFlags: 0
@@ -7508,7 +7594,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 141044532}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7992,8 +8078,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &1703584745 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1703584744}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1705517263
@@ -8077,8 +8162,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &1705517264 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1705517263}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1726673833
@@ -8162,8 +8246,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &1726673834 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1726673833}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1731585096
@@ -8252,8 +8335,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &1731585097 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1731585096}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1733943452
@@ -8425,8 +8507,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &1775976843 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1775976842}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1802601933
@@ -8524,8 +8605,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &1828024089 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1828024088}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1842277731
@@ -8609,8 +8689,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &1842277732 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1842277731}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1855024808
@@ -8706,6 +8785,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
+--- !u!4 &1895664387 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1895664386}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1896403229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8787,8 +8871,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &1896403230 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1896403229}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1919711304
@@ -9044,8 +9127,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &1932389113 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1932389112}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1940535522
@@ -9129,8 +9211,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &1940535523 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1940535522}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1951023977 stripped
@@ -9223,6 +9304,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
+--- !u!4 &1963685702 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1963685701}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1976290525
 GameObject:
   m_ObjectHideFlags: 0
@@ -9345,7 +9431,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2024959756
 Transform:
   m_ObjectHideFlags: 0
@@ -9557,8 +9643,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
 --- !u!4 &2034076008 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 2034076007}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2041514600
@@ -10312,20 +10397,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 684186538004518418}
   viewA: {fileID: 8690962709276416795}
   viewB: {fileID: 4341732272862281478}
   viewC: {fileID: 5086309806640088208}
   viewD: {fileID: 4816461831845806624}
   viewE: {fileID: 2613571087639798248}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!33 &44244125815836431
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10764,20 +10843,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 3978676244400408127}
   viewA: {fileID: 3673633452326572577}
   viewB: {fileID: 3308686128965573167}
   viewC: {fileID: 3629797767133206141}
   viewD: {fileID: 134885780702831209}
   viewE: {fileID: 2415244946696259647}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!222 &211927948684842754
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10908,7 +10981,7 @@ Transform:
   m_Children:
   - {fileID: 329179097398004798}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &244205768785396281
 CanvasRenderer:
@@ -11105,20 +11178,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 8569033761641586258}
   viewA: {fileID: 1445307131936837618}
   viewB: {fileID: 3303078843451060225}
   viewC: {fileID: 7914282065562292920}
   viewD: {fileID: 7742343381966685692}
   viewE: {fileID: 3581003783839561936}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!1 &322454049355692026
 GameObject:
   m_ObjectHideFlags: 0
@@ -11358,7 +11425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &385625290686396181
 Transform:
   m_ObjectHideFlags: 0
@@ -11370,7 +11437,6 @@ Transform:
   m_LocalPosition: {x: 2.543116, y: -1.2736235, z: 0.036749125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3839827451080158263}
   - {fileID: 4698690011867610373}
   - {fileID: 239730506421551378}
   - {fileID: 6216882039738712184}
@@ -11406,6 +11472,7 @@ Transform:
   - {fileID: 2839614693108047346}
   - {fileID: 7982455570187425732}
   - {fileID: 656029802099172735}
+  - {fileID: 7190037595139198207}
   - {fileID: 17935089174541740}
   m_Father: {fileID: 876845322}
   m_RootOrder: 0
@@ -12205,7 +12272,7 @@ Transform:
   m_Children:
   - {fileID: 7617047739042157449}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 35
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &660634013711892865
 RectTransform:
@@ -12698,20 +12765,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 2559332768275857351}
   viewA: {fileID: 3951258631778258586}
   viewB: {fileID: 4769048030023293982}
   viewC: {fileID: 3481664705077693341}
   viewD: {fileID: 5124750352857072741}
   viewE: {fileID: 524373891591253061}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!222 &850863197494799380
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13014,20 +13075,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 2632507360587784978}
   viewA: {fileID: 3723531752699294446}
   viewB: {fileID: 7552571964340428099}
   viewC: {fileID: 5940133367639689774}
   viewD: {fileID: 1354382436668128278}
   viewE: {fileID: 1850627781760639240}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!23 &937802901558604539
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13117,7 +13172,7 @@ Transform:
   m_Children:
   - {fileID: 1281025232791372163}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 26
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &982289819406941001
 MonoBehaviour:
@@ -13268,20 +13323,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 8784889109761239251}
   viewA: {fileID: 4247387323416324757}
   viewB: {fileID: 4659796795933754979}
   viewC: {fileID: 4538565195920292412}
   viewD: {fileID: 1548444625076346967}
   viewE: {fileID: 8398027495860130047}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!1 &1034277440623000461
 GameObject:
   m_ObjectHideFlags: 0
@@ -13873,7 +13922,7 @@ Transform:
   m_Children:
   - {fileID: 3271279746773235559}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 30
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1306603143001994048
 MonoBehaviour:
@@ -14716,20 +14765,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 174844865506993817}
   viewA: {fileID: 404909937209612882}
   viewB: {fileID: 7438551616532906367}
   viewC: {fileID: 3251848468011758755}
   viewD: {fileID: 3773167394306210221}
   viewE: {fileID: 1207430004680464087}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!222 &1607884229041344307
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15465,7 +15508,7 @@ Transform:
   m_Children:
   - {fileID: 5752131479705157367}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &1884549367490497888
 CanvasRenderer:
@@ -16417,7 +16460,7 @@ Transform:
   m_Children:
   - {fileID: 8617160238226274913}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &2257013593289158866
 RectTransform:
@@ -16510,20 +16553,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 5471543183920333521}
   viewA: {fileID: 8352983340449590398}
   viewB: {fileID: 712667753431420193}
   viewC: {fileID: 3506440048320012547}
   viewD: {fileID: 619275126036407088}
   viewE: {fileID: 4579158155794854067}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!222 &2307759662455829420
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17024,20 +17061,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 5452667149560285597}
   viewA: {fileID: 6053733563549593336}
   viewB: {fileID: 2943039962897129450}
   viewC: {fileID: 3233622747615378319}
   viewD: {fileID: 7802212147895832034}
   viewE: {fileID: 215704721034377078}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!1 &2467887533842410775
 GameObject:
   m_ObjectHideFlags: 0
@@ -17086,20 +17117,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 1178294028061799721}
   viewA: {fileID: 5195979919069226941}
   viewB: {fileID: 7198340864064280532}
   viewC: {fileID: 4729676392618857708}
   viewD: {fileID: 892362774213477605}
   viewE: {fileID: 6982175893314327975}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!222 &2483156482728398025
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17726,7 +17751,7 @@ Transform:
   m_Children:
   - {fileID: 3443152878310044422}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &2677693310032885568
 CanvasRenderer:
@@ -18121,7 +18146,7 @@ Transform:
   m_Children:
   - {fileID: 107813905876178118}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 33
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2845048454658651119
 MonoBehaviour:
@@ -18205,7 +18230,7 @@ Transform:
   m_Children:
   - {fileID: 1507966047644957774}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &2904551988129175179
 MeshCollider:
@@ -18451,20 +18476,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 8321273530731062175}
   viewA: {fileID: 3254876155339782908}
   viewB: {fileID: 984431261359110941}
   viewC: {fileID: 5715596462538747911}
   viewD: {fileID: 8298235721400231300}
   viewE: {fileID: 6445499012434774845}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!114 &3015195193435526045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19178,20 +19197,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 7598684886893045336}
   viewA: {fileID: 3356630412559511938}
   viewB: {fileID: 5069414381799505195}
   viewC: {fileID: 929167354469779317}
   viewD: {fileID: 8728327206991009820}
   viewE: {fileID: 7142647271873873467}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!1 &3210564107491827238
 GameObject:
   m_ObjectHideFlags: 0
@@ -19374,20 +19387,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 9137097784439648970}
   viewA: {fileID: 7103272970388180944}
   viewB: {fileID: 1480293314267767145}
   viewC: {fileID: 5562234162778868366}
   viewD: {fileID: 8741650971443260778}
   viewE: {fileID: 505736924322764737}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!222 &3268709785412232499
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19953,7 +19960,7 @@ Transform:
   m_Children:
   - {fileID: 8389459894344093195}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 32
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &3525390101768890470
 RectTransform:
@@ -20315,20 +20322,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 2470886856139582555}
   viewA: {fileID: 3856550900990561791}
   viewB: {fileID: 3126505049921191032}
   viewC: {fileID: 6488773250233753282}
   viewD: {fileID: 4663432546976937017}
   viewE: {fileID: 4620661249411905878}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!1 &3673633452326572577
 GameObject:
   m_ObjectHideFlags: 0
@@ -20549,20 +20550,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 202555417609038282}
   viewA: {fileID: 4974079212717193726}
   viewB: {fileID: 1653545391294586009}
   viewC: {fileID: 298604397585762040}
   viewD: {fileID: 2653124322517096795}
   viewE: {fileID: 2198272151294234046}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!114 &3755938934047001858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20680,7 +20675,7 @@ Transform:
   m_Children:
   - {fileID: 7264433985883954947}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 27
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &3815894035042286247
 RectTransform:
@@ -20752,12 +20747,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3839827451080158263 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6233522439730815177, guid: cdbcc5870a1dc174e9fa037315da044a,
-    type: 3}
-  m_PrefabInstance: {fileID: 7190037595139198206}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3840042924523727894
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20871,12 +20860,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7802212147895832034}
   m_CullTransparentMesh: 0
---- !u!4 &3870547544544785164 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5771723989583874118, guid: f72f01d89016d8141a70c9797ae7bee9,
-    type: 3}
-  m_PrefabInstance: {fileID: 7327279762846874442}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3871696821157148981
 GameObject:
   m_ObjectHideFlags: 0
@@ -21609,20 +21592,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 2360998554229160591}
   viewA: {fileID: 2689005496711580523}
   viewB: {fileID: 4950469518260783487}
   viewC: {fileID: 4820130106040584715}
   viewD: {fileID: 7470679792439604937}
   viewE: {fileID: 4574320768473655375}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!224 &4194674764395250440
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21825,20 +21802,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 8034331201971610097}
   viewA: {fileID: 8827525494560541814}
   viewB: {fileID: 5639539119258376110}
   viewC: {fileID: 6487607538377524812}
   viewD: {fileID: 8740300620462679420}
   viewE: {fileID: 6659684866203597283}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!1 &4247387323416324757
 GameObject:
   m_ObjectHideFlags: 0
@@ -22057,7 +22028,7 @@ Transform:
   m_Children:
   - {fileID: 5312043260618535433}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4311184830041534184
 GameObject:
@@ -22373,7 +22344,7 @@ Transform:
   m_Children:
   - {fileID: 3817075377523367416}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &4392791078134965622
 CanvasRenderer:
@@ -22522,20 +22493,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 376030200753117385}
   viewA: {fileID: 4762495441135331193}
   viewB: {fileID: 7664155236973760779}
   viewC: {fileID: 4293126054721013837}
   viewD: {fileID: 1034277440623000461}
   viewE: {fileID: 147883490921923059}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!64 &4496990929602665767
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23069,7 +23034,7 @@ Transform:
   m_Children:
   - {fileID: 6097313553620428894}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &4698810202262696587
 RectTransform:
@@ -23614,20 +23579,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 7842640606717835785}
   viewA: {fileID: 8524150209422714357}
   viewB: {fileID: 8252083859356049879}
   viewC: {fileID: 4933312649997927691}
   viewD: {fileID: 2541957158032741530}
   viewE: {fileID: 7355566163408035288}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!223 &4884689513685988660
 Canvas:
   m_ObjectHideFlags: 0
@@ -23661,20 +23620,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 7182618788322371288}
   viewA: {fileID: 8386535554372678285}
   viewB: {fileID: 4290309116232624495}
   viewC: {fileID: 2083290919739286921}
   viewD: {fileID: 5853825053881862766}
   viewE: {fileID: 352108457805334824}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!114 &4891410872033086422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24470,7 +24423,7 @@ Transform:
   m_Children:
   - {fileID: 632937232971500608}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5239553515510815287
 GameObject:
@@ -24981,7 +24934,7 @@ Transform:
   m_Children:
   - {fileID: 356673115529392653}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &5413184022335103091
 RectTransform:
@@ -25014,20 +24967,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 8812178876160312716}
   viewA: {fileID: 5341755025533818658}
   viewB: {fileID: 1795760505907237785}
   viewC: {fileID: 2927556536709459885}
   viewD: {fileID: 2979566820374763524}
   viewE: {fileID: 3878557847201129595}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!222 &5429275782421877938
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25772,7 +25719,7 @@ Transform:
   m_Children:
   - {fileID: 7285154136689290804}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5726905741080696507
 MonoBehaviour:
@@ -26103,7 +26050,7 @@ Transform:
   m_Children:
   - {fileID: 8427895115079362733}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &5872472373624843091
 MeshRenderer:
@@ -26209,7 +26156,7 @@ Transform:
   m_Children:
   - {fileID: 7797574537509577691}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &5905481757069036674
 Transform:
@@ -26224,7 +26171,7 @@ Transform:
   m_Children:
   - {fileID: 6531392199311638540}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &5933989916321365502
 CanvasRenderer:
@@ -26901,7 +26848,7 @@ Transform:
   m_Children:
   - {fileID: 8461929095164063149}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &6218310902239939746
 CanvasRenderer:
@@ -27189,20 +27136,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 4625902209251746143}
   viewA: {fileID: 3822239043654838336}
   viewB: {fileID: 2042139758429393402}
   viewC: {fileID: 1818115445440593860}
   viewD: {fileID: 7135500231106414964}
   viewE: {fileID: 8632249203501064815}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!114 &6371057366696669380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27338,7 +27279,7 @@ Transform:
   m_Children:
   - {fileID: 6705812707195353738}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6425947968483372287
 MonoBehaviour:
@@ -27457,7 +27398,7 @@ Transform:
   m_Children:
   - {fileID: 2274640106641042026}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6445499012434774845
 GameObject:
@@ -27846,20 +27787,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 7350836021505632036}
   viewA: {fileID: 8139534755905314322}
   viewB: {fileID: 794993634105110390}
   viewC: {fileID: 9105933977866767738}
   viewD: {fileID: 6834901763671189404}
   viewE: {fileID: 8608335855468889447}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!114 &6605675224484259698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27962,20 +27897,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 4348379126871264851}
   viewA: {fileID: 563946625247062633}
   viewB: {fileID: 4926869346650896912}
   viewC: {fileID: 8205332610931511239}
   viewD: {fileID: 1999197814283528865}
   viewE: {fileID: 376073235642601259}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!224 &6628686723219182494
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28161,7 +28090,7 @@ Transform:
   m_Children:
   - {fileID: 4103868070631517425}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &6701318781201160888
 RectTransform:
@@ -28626,7 +28555,7 @@ Transform:
   m_Children:
   - {fileID: 1131968666362252994}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 28
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &6893724789387445298
 CanvasRenderer:
@@ -28720,7 +28649,7 @@ Transform:
   m_Children:
   - {fileID: 7787951774206665372}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &6944086237515611740
 MeshCollider:
@@ -28949,20 +28878,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 5773577545811587157}
   viewA: {fileID: 3105512753609572387}
   viewB: {fileID: 4374342248556669762}
   viewC: {fileID: 7167635661857770080}
   viewD: {fileID: 8819828257302670392}
   viewE: {fileID: 6355676854887759133}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!1 &7029343915831975261
 GameObject:
   m_ObjectHideFlags: 0
@@ -29742,20 +29665,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 6059607562122055979}
   viewA: {fileID: 2165028115331806292}
   viewB: {fileID: 6965936942262245317}
   viewC: {fileID: 2483963660792884977}
   viewD: {fileID: 7157491516109512687}
   viewE: {fileID: 3113658935432424672}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!223 &7113280464962573487
 Canvas:
   m_ObjectHideFlags: 0
@@ -29910,20 +29827,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 3966523530019078770}
   viewA: {fileID: 8440888973067284183}
   viewB: {fileID: 556716672082934559}
   viewC: {fileID: 2524231699390453141}
   viewD: {fileID: 2778351283804886264}
   viewE: {fileID: 4788946733622491642}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!222 &7152634373058735396
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30159,6 +30070,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6233522439730815177, guid: cdbcc5870a1dc174e9fa037315da044a,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6233522439730815177, guid: cdbcc5870a1dc174e9fa037315da044a,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.543116
       objectReference: {fileID: 0}
@@ -30171,6 +30087,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.036749125
+      objectReference: {fileID: 0}
+    - target: {fileID: 6233522439730815177, guid: cdbcc5870a1dc174e9fa037315da044a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6233522439730815177, guid: cdbcc5870a1dc174e9fa037315da044a,
         type: 3}
@@ -30189,16 +30110,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6233522439730815177, guid: cdbcc5870a1dc174e9fa037315da044a,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6233522439730815177, guid: cdbcc5870a1dc174e9fa037315da044a,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6233522439730815177, guid: cdbcc5870a1dc174e9fa037315da044a,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -30214,6 +30125,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdbcc5870a1dc174e9fa037315da044a, type: 3}
+--- !u!4 &7190037595139198207 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 7190037595139198206}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7197072475163916788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30226,20 +30142,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 2174900328285891893}
   viewA: {fileID: 3059121894905833659}
   viewB: {fileID: 6247670647036639005}
   viewC: {fileID: 7087558323815473326}
   viewD: {fileID: 3210564107491827238}
   viewE: {fileID: 6799198255715564893}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!1 &7198340864064280532
 GameObject:
   m_ObjectHideFlags: 0
@@ -30368,7 +30278,7 @@ Transform:
   m_Children:
   - {fileID: 6157599614467144193}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 25
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7234137137036415904
 MonoBehaviour:
@@ -30640,6 +30550,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f72f01d89016d8141a70c9797ae7bee9, type: 3}
+--- !u!4 &7327279762846874443 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 7327279762846874442}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7327799338066092505
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31563,20 +31478,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 4311184830041534184}
   viewA: {fileID: 2668563969256841826}
   viewB: {fileID: 8764173756436264238}
   viewC: {fileID: 7187996894581837312}
   viewD: {fileID: 4385257681445080755}
   viewE: {fileID: 4778376997746072611}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!222 &7705858492798264357
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -31919,7 +31828,7 @@ Transform:
   m_Children:
   - {fileID: 6473342686131352517}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7802212147895832034
 GameObject:
@@ -32006,20 +31915,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 2819404179011889099}
   viewA: {fileID: 7716568885833669724}
   viewB: {fileID: 3757672692905572676}
   viewC: {fileID: 932358366677710373}
   viewD: {fileID: 8669154996986577068}
   viewE: {fileID: 7029343915831975261}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!1 &7814254556106463938
 GameObject:
   m_ObjectHideFlags: 0
@@ -32060,20 +31963,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 6029442805448877690}
   viewA: {fileID: 4821602477293734193}
   viewB: {fileID: 8066047221063167287}
   viewC: {fileID: 5847145577803588068}
   viewD: {fileID: 8705754223520099975}
   viewE: {fileID: 6120294399931923635}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!114 &7824319847838201306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32282,20 +32179,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 9171345607243691267}
   viewA: {fileID: 5942946312471686908}
   viewB: {fileID: 943453866536428080}
   viewC: {fileID: 1391083961642290}
   viewD: {fileID: 3218416486056206613}
   viewE: {fileID: 506179035568127551}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!224 &7875848606737772452
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32576,20 +32467,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 2955545840319465581}
   viewA: {fileID: 4800752149345815584}
   viewB: {fileID: 7266816986452298986}
   viewC: {fileID: 2352195812137303046}
   viewD: {fileID: 7752407618223955696}
   viewE: {fileID: 5250334814820130971}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!222 &7920230281190078292
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -32649,20 +32534,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 7034772029919875141}
   viewA: {fileID: 4981385781263549185}
   viewB: {fileID: 8351983807331031206}
   viewC: {fileID: 5609353427034868620}
   viewD: {fileID: 4764324157358970640}
   viewE: {fileID: 7623642842653035228}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!1 &7945299763188201272
 GameObject:
   m_ObjectHideFlags: 0
@@ -32752,7 +32631,7 @@ Transform:
   m_Children:
   - {fileID: 3638883065083417610}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7982455570187425732
 Transform:
@@ -32767,7 +32646,7 @@ Transform:
   m_Children:
   - {fileID: 4224475532248288193}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 34
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &7982595122635864056
 MeshRenderer:
@@ -33150,20 +33029,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 2066021256547152151}
   viewA: {fileID: 2467887533842410775}
   viewB: {fileID: 8001691232537585915}
   viewC: {fileID: 3278602226887715631}
   viewD: {fileID: 7300274228668180382}
   viewE: {fileID: 322454049355692026}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!222 &8132861453082705978
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -33274,7 +33147,7 @@ Transform:
   m_Children:
   - {fileID: 8973366463125146707}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &8180810078943620117
 CanvasRenderer:
@@ -35069,7 +34942,7 @@ Transform:
   m_Children:
   - {fileID: 8914138584914447862}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 31
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &8852957756656283313
 MeshRenderer:
@@ -35306,7 +35179,7 @@ Transform:
   m_Children:
   - {fileID: 1602233200972887080}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8929288750150326994
 Transform:
@@ -35321,7 +35194,7 @@ Transform:
   m_Children:
   - {fileID: 2866155866902453247}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8938509975695705430
 MonoBehaviour:
@@ -35844,20 +35717,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a24e6b0e23ee46ab2edbe8bd50187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    chessType: 2
-  viewNone: {fileID: 4020769106024493481}
   viewA: {fileID: 6525277287883398754}
   viewB: {fileID: 4623272905742251687}
   viewC: {fileID: 255370989061452323}
   viewD: {fileID: 7843229779056027618}
   viewE: {fileID: 5218560515904195309}
-  viewCurrentTarget: {fileID: 0}
-  viewCanClick: {fileID: 0}
-  viewMultiPushFrom: {fileID: 0}
-  viewMultiPushTo: {fileID: 0}
-  psErase: {fileID: 0}
-  psSpawn: {fileID: 0}
+  data:
+    chessType: 2
+  move: {fileID: 0}
 --- !u!1 &9137097784439648970
 GameObject:
   m_ObjectHideFlags: 0
@@ -36071,5 +35938,5 @@ Transform:
   m_Children:
   - {fileID: 909013885713748325}
   m_Father: {fileID: 385625290686396181}
-  m_RootOrder: 29
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

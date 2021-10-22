@@ -17,6 +17,7 @@ public class GameSystem : MonoBehaviour
         Wait,
         ChessClicked,
         Moving,
+        Erase,
     }
 
     public GameState gameState;

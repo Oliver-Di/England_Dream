@@ -23,6 +23,8 @@ public class BoardService : MonoBehaviour
     public List<SlotBehaviour> spawnArea;
     public List<SlotBehaviour> allArea;
 
+    public SlotBehaviour[] erase2;
+
     public bool stepAxis;
     public bool stepRing;
     private int _testAxis = 0;
@@ -404,7 +406,9 @@ public class BoardService : MonoBehaviour
     private void MoveEnd(SlotBehaviour from, SlotBehaviour to)
     {
         //消除
-        GameSystem.instance.gameState = GameSystem.GameState.Wait;
+        GameSystem.instance.gameState = GameSystem.GameState.Erase;
+
+        //GameSystem.instance.gameState = GameSystem.GameState.Wait;
 
 
 
@@ -412,5 +416,95 @@ public class BoardService : MonoBehaviour
         var chess = from.chess;
         to.ReceiveChess(chess);
         from.ReleaseChess();
+    }
+
+
+
+    public void SetErasSlot(SlotBehaviour target)
+    {
+        //添加待消除棋子位置
+        if (erase2[0] == null)
+        {
+            erase2[0] = target;
+        }
+        else if(erase2[1] == null)
+        {
+            erase2[1] = target;
+        }
+        //若两颗棋子被添加
+        if (erase2[0] != null && erase2[1] != null)
+        {
+            //判断是否可消除
+            if (erase2[0].chess.data.chessType == erase2[1].chess.data.chessType //两个棋子是一个类型
+                && Vector3.Distance(erase2[0].transform.position, erase2[1].transform.position) < 1.3f) //两个棋子间距小于1.3
+            {
+                if (ring1.IndexOf(erase2[0]) > -1 && ring1.IndexOf(erase2[1]) > -1)
+                {
+                    erase2[0].Erase();
+                    erase2[1].Erase();
+                    erase2[0] = erase2[1] = null;
+
+                    Debug.Log("Erase successful");
+                    GameSystem.instance.gameState = GameSystem.GameState.Wait;
+                    return;
+                }
+                else if (ring2.IndexOf(erase2[0]) > -1 && ring2.IndexOf(erase2[1]) > -1)
+                {
+                    erase2[0].Erase();
+                    erase2[1].Erase();
+                    erase2[0] = erase2[1] = null;
+
+                    Debug.Log("Erase successful");
+                    GameSystem.instance.gameState = GameSystem.GameState.Wait;
+                    return;
+                }
+                else if (ring3.IndexOf(erase2[0]) > -1 && ring3.IndexOf(erase2[1]) > -1)
+                {
+                    erase2[0].Erase();
+                    erase2[1].Erase();
+                    erase2[0] = erase2[1] = null;
+
+                    Debug.Log("Erase successful");
+                    GameSystem.instance.gameState = GameSystem.GameState.Wait;
+                    return;
+                }
+                else if (axis1.IndexOf(erase2[0]) > -1 && axis1.IndexOf(erase2[1]) > -1)
+                {
+                    erase2[0].Erase();
+                    erase2[1].Erase();
+                    erase2[0] = erase2[1] = null;
+
+                    Debug.Log("Erase successful");
+                    GameSystem.instance.gameState = GameSystem.GameState.Wait;
+                    return;
+                }
+                else if (axis2.IndexOf(erase2[0]) > -1 && axis2.IndexOf(erase2[1]) > -1)
+                {
+                    erase2[0].Erase();
+                    erase2[1].Erase();
+                    erase2[0] = erase2[1] = null;
+
+                    Debug.Log("Erase successful");
+                    GameSystem.instance.gameState = GameSystem.GameState.Wait;
+                    return;
+                }
+                else if (axis3.IndexOf(erase2[0]) > -1 && axis3.IndexOf(erase2[1]) > -1)
+                {
+                    erase2[0].Erase();
+                    erase2[1].Erase();
+                    erase2[0] = erase2[1] = null;
+
+                    Debug.Log("Erase successful");
+                    GameSystem.instance.gameState = GameSystem.GameState.Wait;
+                    return;
+                }
+                else
+                {
+                    erase2[0] = erase2[1] = null;
+
+                    Debug.Log("Erase Fail");
+                }
+            }
+        }
     }
 }
