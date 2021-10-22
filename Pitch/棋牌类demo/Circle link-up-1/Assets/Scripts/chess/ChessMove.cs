@@ -41,11 +41,16 @@ public class ChessMove : MonoBehaviour
             {
                 timeRatio = 0;
                 _isMovingAlongAxis = false;
-                _endAction?.Invoke();
             }
             var timeRatioScaled = cfg.ac.Evaluate(1 - timeRatio);
             transform.position = Vector3.Lerp(_posStart, _posEnd, timeRatioScaled);
+
+            if (timeRatio == 0)
+            {
+                _endAction?.Invoke();
+            }
         }
+
         if (_isMovingAlongRing)
         {
             _timer -= Time.deltaTime;
@@ -54,17 +59,22 @@ public class ChessMove : MonoBehaviour
             {
                 timeRatio = 0;
                 _isMovingAlongRing = false;
-                _endAction?.Invoke();
             }
+
             var timeRatioScaled = cfg.ac.Evaluate(1 - timeRatio);
             var eular = Mathf.Lerp(_eularStart, _eularEnd, timeRatioScaled);
-            Debug.Log("eular " + eular);
+            //Debug.Log("eular " + eular);
             var r = eular * Mathf.Deg2Rad;
             var x = Mathf.Sin(r);
             var z = Mathf.Cos(r);
 
             var centerPos = BoardService.instance.roundCenter.position;
             transform.position = centerPos + new Vector3(x * _radius, 0, z * _radius);
+
+            if (timeRatio == 0)
+            {
+                _endAction?.Invoke();
+            }
         }
     }
 

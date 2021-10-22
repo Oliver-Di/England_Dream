@@ -8,6 +8,7 @@ public class SlotBehaviour : MonoBehaviour
 
     public GameObject viewCurrentTarget;
     public GameObject viewCanClick;
+    public GameObject viewCanErase;
     public GameObject viewMultiPushFrom;
     public GameObject viewMultiPushTo;
 
@@ -16,6 +17,7 @@ public class SlotBehaviour : MonoBehaviour
 
     private bool _isCurrentTarget = false;
     private bool _isClickableGoal = false;
+    private bool _isErasable= false;
     private bool _isPushFrom = false;
     private bool _isPushTo = false;
 
@@ -36,7 +38,9 @@ public class SlotBehaviour : MonoBehaviour
     public void ReceiveChess(ChessBehaviour c)
     {
         chess = c;
-        chess.transform.position = this.transform.position;
+        chess.transform.parent = transform;
+        chess.transform.localPosition = Vector3.zero;
+        Debug.Log("ReceiveChess");
     }
 
     public void RemoveChess()
@@ -55,10 +59,11 @@ public class SlotBehaviour : MonoBehaviour
         BoardService.instance.prefabChess.gameObject.SetActive(false);
     }
 
-    public void SetState(bool isCurrentTarget, bool isClickableGoal, bool isPushFrom, bool isPushTo)
+    public void SetState(bool isCurrentTarget, bool isClickableGoal, bool isErasable, bool isPushFrom, bool isPushTo)
     {
         SetCurrentTarget(isCurrentTarget);
         SetClickableGoal(isClickableGoal);
+        SetCanErase(isErasable);
         SetPushFrom(isPushFrom);
         SetPushTo(isPushTo);
     }
@@ -75,6 +80,12 @@ public class SlotBehaviour : MonoBehaviour
         viewCanClick.SetActive(_isClickableGoal);
     }
 
+    public void SetCanErase(bool b)
+    {
+        _isErasable = b;
+        viewCanErase.SetActive(_isErasable);
+    }
+    
     public void SetPushFrom(bool b)
     {
         _isPushFrom = b;
@@ -89,7 +100,7 @@ public class SlotBehaviour : MonoBehaviour
 
     public void ResetState()
     {
-        SetState(false, false, false, false);
+        SetState(false, false, false, false,false);
     }
 
     public void Spawn()
@@ -133,7 +144,11 @@ public class SlotBehaviour : MonoBehaviour
     {
         // Debug.Log("TrySetToClickableGoal");
         if (chess != null)
+        {
+            BoardService.instance.SetCurrentSlot(this);
             return;
+        }
+          
 
         Debug.Log("SetToClickableGoal");
         BoardService.instance.SetClickableGoalSlot(this);

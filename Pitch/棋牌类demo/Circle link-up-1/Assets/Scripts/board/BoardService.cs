@@ -23,7 +23,7 @@ public class BoardService : MonoBehaviour
     public List<SlotBehaviour> spawnArea;
     public List<SlotBehaviour> allArea;
 
-    public SlotBehaviour[] erase2;
+    public SlotBehaviour eraseTarget;
 
     public bool stepAxis;
     public bool stepRing;
@@ -146,18 +146,20 @@ public class BoardService : MonoBehaviour
         axis3.Sort(axisComparer);
     }
 
+    public void ResetAllSlots()
+    {
+        foreach (var slot in allArea)
+            slot.ResetState();
+    }
+
     public void SetCurrentSlot(SlotBehaviour target)
     {
         GameSystem.instance.gameState = GameSystem.GameState.ChessClicked;
-
-        foreach (var slot in allArea)
-        {
-            slot.ResetState();
-        }
-
+        ResetAllSlots();
         target.SetCurrentTarget(true);
         DisplayGoals(target);
         _current = target;
+        SoundService.instance.Play("select");
     }
 
     public void DisplayGoals(SlotBehaviour target)
@@ -313,6 +315,7 @@ public class BoardService : MonoBehaviour
     public void SetClickableGoalSlot(SlotBehaviour goal)
     {
         //Debug.Log("SetClickableGoalSlot");
+        SoundService.instance.Play("select");
         Debug.Log("will move " + _current.gameObject.name + " to " + goal.gameObject.name);
         bool suc = false;
         bool cw = true;
@@ -350,10 +353,7 @@ public class BoardService : MonoBehaviour
         if (suc)
         {
             GameSystem.instance.gameState = GameSystem.GameState.Moving;
-            foreach (var slot in allArea)
-            {
-                slot.ResetState();
-            }
+            ResetAllSlots();
         }
         else
         {
@@ -361,7 +361,7 @@ public class BoardService : MonoBehaviour
         }
     }
 
-    private void MoveChess(SlotBehaviour from, SlotBehaviour to, List<SlotBehaviour> list, bool isRing, bool cw)
+    private void MoveChess(SlotBehaviour from, SlotBehaviour to, List<SlotBehaviour> list, bool isRing, bool cw, bool isRevert = false)
     {
         var chess = from.chess;
         int indexFrom = list.IndexOf(from);
@@ -374,7 +374,14 @@ public class BoardService : MonoBehaviour
             var timeAxis = cfg.animationTime_base + cfg.animationTime_interval * delta;
             chess.move.MoveAlongAxis(from.transform.position, to.transform.position, timeAxis, () =>
             {
-                MoveEnd(from, to);
+                if (isRevert)
+                {
+                    Revert(to, from);
+                }
+                else
+                {
+                    MoveEnd(from, to, list, isRing, cw);
+                }
             });
             return;
         }
@@ -399,110 +406,113 @@ public class BoardService : MonoBehaviour
         var timeRing = cfg.animationTime_base + cfg.animationTime_interval * delta;
         chess.move.MoveAlongRing(from.transform.position, to.transform.position, cw, timeRing, () =>
         {
-            MoveEnd(from, to);
+            if (isRevert)
+            {
+                Revert(to, from);
+            }
+            else
+            {
+                MoveEnd(from, to, list, isRing, cw);
+            }
         });
     }
 
-    private void MoveEnd(SlotBehaviour from, SlotBehaviour to)
+    private void MoveEnd(SlotBehaviour from, SlotBehaviour to, List<SlotBehaviour> list, bool isRing, bool cw)
     {
         //消除
         GameSystem.instance.gameState = GameSystem.GameState.Erase;
-
-        //GameSystem.instance.gameState = GameSystem.GameState.Wait;
-
-
 
         //两个格子slot交接棋子chess
         var chess = from.chess;
         to.ReceiveChess(chess);
         from.ReleaseChess();
+        _current = to;
+        SoundService.instance.Play("moved");
+        var count = ShowAndGetErasableChesses();
+        if (count == 0)
+        {
+            MoveChess(to, from, list, isRing, !cw, true);
+        }
+        else
+        {
+            _current.SetCanErase(true);
+        }
+    }
+
+    void Revert(SlotBehaviour from, SlotBehaviour to)
+    {
+        Debug.Log("Revert");
+        var chess = to.chess;
+        from.ReceiveChess(chess);
+        to.ReleaseChess();
+
+        GameSystem.instance.gameState = GameSystem.GameState.Wait;
+        ResetAllSlots();
+        _current = null;
+    }
+
+    int ShowAndGetErasableChesses()
+    {
+        int count = 0;
+        foreach (var slot in allArea)
+        {
+            if (IsNearbySameTypeChess(_current, slot))
+            {
+                slot.SetCanErase(true);
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    private void EraseChesses()
+    {
+        eraseTarget.Erase();
+        _current.Erase();
+        _current = eraseTarget = null;
+        GameSystem.instance.gameState = GameSystem.GameState.Wait;
+        ResetAllSlots();
+        Debug.Log("Erase Suc!");
+        SoundService.instance.Play("erase");
+    }
+
+    private bool InSameAxisOrRing(SlotBehaviour a, SlotBehaviour b)
+    {
+        bool bAxis1 = axis1.IndexOf(a) > -1 && axis1.IndexOf(b) > -1;
+        bool bAxis2 = axis2.IndexOf(a) > -1 && axis2.IndexOf(b) > -1;
+        bool bAxis3 = axis3.IndexOf(a) > -1 && axis3.IndexOf(b) > -1;
+        bool bRing1 = ring1.IndexOf(a) > -1 && ring1.IndexOf(b) > -1;
+        bool bRing2 = ring2.IndexOf(a) > -1 && ring2.IndexOf(b) > -1;
+        bool bRing3 = ring3.IndexOf(a) > -1 && ring3.IndexOf(b) > -1;
+
+        return bAxis1 || bAxis2 || bAxis3 || bRing1 || bRing2 || bRing3;
     }
 
     public void SetEraseSlot(SlotBehaviour target)
     {
-        //添加待消除棋子位置
-        if (erase2[0] == null)
+        eraseTarget = target;
+        //判断是否可消除
+        if (IsNearbySameTypeChess(_current, eraseTarget))
         {
-            erase2[0] = target;
+            EraseChesses();
+            return;
         }
-        else if(erase2[1] == null)
+
+        eraseTarget = null;
+        Debug.Log("Erase Fail");
+    }
+
+    bool IsNearbySameTypeChess(SlotBehaviour a, SlotBehaviour b)
+    {
+        if (a != b && a.chess != null && b.chess != null
+          && a.chess.data.chessType == b.chess.data.chessType //两个棋子是一个类型
+          && Vector3.Distance(a.transform.position, b.transform.position) < 1.3f //两个棋子间距小于1.3
+          && InSameAxisOrRing(a, b))
         {
-            erase2[1] = target;
+            return true;
         }
-        //若两颗棋子被添加
-        if (erase2[0] != null && erase2[1] != null)
-        {
-            //判断是否可消除
-            if (erase2[0].chess.data.chessType == erase2[1].chess.data.chessType //两个棋子是一个类型
-                && Vector3.Distance(erase2[0].transform.position, erase2[1].transform.position) < 1.3f) //两个棋子间距小于1.3
-            {
-                if (ring1.IndexOf(erase2[0]) > -1 && ring1.IndexOf(erase2[1]) > -1)
-                {
-                    erase2[0].Erase();
-                    erase2[1].Erase();
-                    erase2[0] = erase2[1] = null;
 
-                    Debug.Log("Erase successful");
-                    GameSystem.instance.gameState = GameSystem.GameState.Wait;
-                    return;
-                }
-                else if (ring2.IndexOf(erase2[0]) > -1 && ring2.IndexOf(erase2[1]) > -1)
-                {
-                    erase2[0].Erase();
-                    erase2[1].Erase();
-                    erase2[0] = erase2[1] = null;
-
-                    Debug.Log("Erase successful");
-                    GameSystem.instance.gameState = GameSystem.GameState.Wait;
-                    return;
-                }
-                else if (ring3.IndexOf(erase2[0]) > -1 && ring3.IndexOf(erase2[1]) > -1)
-                {
-                    erase2[0].Erase();
-                    erase2[1].Erase();
-                    erase2[0] = erase2[1] = null;
-
-                    Debug.Log("Erase successful");
-                    GameSystem.instance.gameState = GameSystem.GameState.Wait;
-                    return;
-                }
-                else if (axis1.IndexOf(erase2[0]) > -1 && axis1.IndexOf(erase2[1]) > -1)
-                {
-                    erase2[0].Erase();
-                    erase2[1].Erase();
-                    erase2[0] = erase2[1] = null;
-
-                    Debug.Log("Erase successful");
-                    GameSystem.instance.gameState = GameSystem.GameState.Wait;
-                    return;
-                }
-                else if (axis2.IndexOf(erase2[0]) > -1 && axis2.IndexOf(erase2[1]) > -1)
-                {
-                    erase2[0].Erase();
-                    erase2[1].Erase();
-                    erase2[0] = erase2[1] = null;
-
-                    Debug.Log("Erase successful");
-                    GameSystem.instance.gameState = GameSystem.GameState.Wait;
-                    return;
-                }
-                else if (axis3.IndexOf(erase2[0]) > -1 && axis3.IndexOf(erase2[1]) > -1)
-                {
-                    erase2[0].Erase();
-                    erase2[1].Erase();
-                    erase2[0] = erase2[1] = null;
-
-                    Debug.Log("Erase successful");
-                    GameSystem.instance.gameState = GameSystem.GameState.Wait;
-                    return;
-                }
-                else
-                {
-                    erase2[0] = erase2[1] = null;
-
-                    Debug.Log("Erase Fail");
-                }
-            }
-        }
+        return false;
     }
 }

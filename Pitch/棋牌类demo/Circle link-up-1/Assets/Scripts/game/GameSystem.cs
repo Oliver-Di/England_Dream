@@ -38,6 +38,7 @@ public class GameSystem : MonoBehaviour
         }
 
         gameState = GameState.Wait;
+        SoundService.instance.Play("start game");
     }
 
     private void ClearBoard()
