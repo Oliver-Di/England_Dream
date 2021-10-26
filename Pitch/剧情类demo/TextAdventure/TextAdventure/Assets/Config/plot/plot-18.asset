@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18babe0966456ad448a8c30597c38ae6, type: 3}
+  m_Name: plot-18
+  m_EditorClassIdentifier: 
+  text: "\u56DE\u7B54\u4E86\u8FD9\u4E9B\u7E41\u7410\u7684\u95EE\u9898\uFF0C\u4F60\u5BF9\u5B66\u4E60\u8FD1\u73B0\u4EE3\u827A\u672F\u6709\u5174\u8DA3\u4E48\uFF0C\u6216\u8005\u8BF4\uFF0C\u4F60\u7684\u6E38\u620F\u8BBE\u8BA1\u7528\u7684\u4E0A\u4E48\uFF1F"
+  optionLT: {fileID: 11400000, guid: 0240a5fead48cc94386b3a30d12b6595, type: 2}
+  optionRT: {fileID: 11400000, guid: 53e101f86cfcf994ca37e4d88592bc14, type: 2}
+  optionLB: {fileID: 11400000, guid: 6807706be697cbd4fbb7a6e77538c27c, type: 2}
+  optionRB: {fileID: 11400000, guid: d33fcb4e451dc92438f53e911b9ffe71, type: 2}
+  soundName: 
+  locationName: Hall
+  color: 0

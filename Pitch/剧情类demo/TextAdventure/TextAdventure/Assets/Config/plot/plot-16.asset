@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18babe0966456ad448a8c30597c38ae6, type: 3}
+  m_Name: plot-16
+  m_EditorClassIdentifier: 
+  text: "\u4F60\u77E5\u9053\u886C\u7EBF\u5B57\u4F53\u548C\u65E0\u886C\u7EBF\u5B57\u4F53\u4E48\uFF1F"
+  optionLT: {fileID: 0}
+  optionRT: {fileID: 11400000, guid: d5465708df81b744fa0abff6098ab2f4, type: 2}
+  optionLB: {fileID: 0}
+  optionRB: {fileID: 11400000, guid: cc196046c0607804ba4a3e90da33660f, type: 2}
+  soundName: 
+  locationName: Hall
+  color: 0

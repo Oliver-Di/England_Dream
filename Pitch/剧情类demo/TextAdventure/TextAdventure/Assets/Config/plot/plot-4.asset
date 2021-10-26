@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18babe0966456ad448a8c30597c38ae6, type: 3}
+  m_Name: plot-4
+  m_EditorClassIdentifier: 
+  text: "\u7ED8\u753B\u3001\u96D5\u523B\u3001\u5EFA\u7B51\u3001\u97F3\u4E50\u3001\u6587\u5B66\u3001\u821E\u8E48\u3001\u620F\u5267\u3001\u7535\u5F71"
+  optionLT: {fileID: 0}
+  optionRT: {fileID: 0}
+  optionLB: {fileID: 0}
+  optionRB: {fileID: 11400000, guid: 74f68983ed1b8ec4fb38cf8948d121e4, type: 2}
+  soundName: 
+  locationName: Classroom
+  color: 3

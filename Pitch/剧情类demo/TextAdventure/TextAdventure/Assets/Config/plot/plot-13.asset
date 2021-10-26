@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18babe0966456ad448a8c30597c38ae6, type: 3}
+  m_Name: plot-13
+  m_EditorClassIdentifier: 
+  text: "\u4F60\u77E5\u9053\u683C\u5F0F\u5854\u5FC3\u7406\u5B66(Gestalt Psychology)\u4E48\uFF1F"
+  optionLT: {fileID: 11400000, guid: ee51520b476c145488bbddbdbf0d4dea, type: 2}
+  optionRT: {fileID: 0}
+  optionLB: {fileID: 11400000, guid: 3941f95aa00549143889d78743c0c8d3, type: 2}
+  optionRB: {fileID: 0}
+  soundName: 
+  locationName: Hall
+  color: 0
