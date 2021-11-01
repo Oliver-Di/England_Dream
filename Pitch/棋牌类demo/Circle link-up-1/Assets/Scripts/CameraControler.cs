@@ -29,19 +29,19 @@ public class CameraControler : MonoBehaviour
 
     private void SwagCamera()
     {
-        if (transform.rotation.eulerAngles.x == targetRotateX) 
+        if (false && transform.rotation.eulerAngles.x == targetRotateX)
         {
             ChangeRotateTarget();
         }
         else
         {
-            transform.rotation = Quaternion.Euler(Mathf.MoveTowards(transform.rotation.eulerAngles.x,
-                targetRotateX, rotateSpeed), 0, 0);
+            //transform.rotation = Quaternion.Euler(Mathf.MoveTowards(transform.rotation.eulerAngles.x, targetRotateX, rotateSpeed), 0, 0);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(80, 0, 0), Time.deltaTime * rotateSpeed);
         }
 
-        if (transform.position.x!=targetTranX)
+        if (transform.position.x != targetTranX)
         {
-            transform.position = new Vector3(Mathf.MoveTowards(transform.position.x, targetTranX, 
+            transform.position = new Vector3(Mathf.MoveTowards(transform.position.x, targetTranX,
                 horizontalSpeed), transform.position.y, transform.position.z);
         }
         else

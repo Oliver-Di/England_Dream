@@ -354,9 +354,6 @@ public class BoardService : MonoBehaviour
         {
             GameSystem.instance.gameState = GameSystem.GameState.Moving;
             ResetAllSlots();
-
-            //如果成功移动，增加棋子
-            GameSystem.instance.TestSpawnChess();
         }
         else
         {
@@ -422,9 +419,6 @@ public class BoardService : MonoBehaviour
 
     private void MoveEnd(SlotBehaviour from, SlotBehaviour to, List<SlotBehaviour> list, bool isRing, bool cw)
     {
-        //如果成功移动，增加棋子
-        GameSystem.instance.TestSpawnChess();
-
         //消除
         GameSystem.instance.gameState = GameSystem.GameState.Erase;
 
@@ -443,11 +437,21 @@ public class BoardService : MonoBehaviour
         {
             _current.SetCanErase(true);
         }
+
+        SpawnChess();
+    }
+
+    void SpawnChess()
+    {
+        var suc = GameSystem.instance.TrySpawnChess();
+        if (!suc)
+        {
+            Debug.Log("成功移动增加棋子但是棋盘满了，是否应结束游戏？");
+        }
     }
 
     void Revert(SlotBehaviour from, SlotBehaviour to)
     {
-        Debug.Log("Revert");
         var chess = to.chess;
         from.ReceiveChess(chess);
         to.ReleaseChess();
