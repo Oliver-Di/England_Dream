@@ -354,6 +354,9 @@ public class BoardService : MonoBehaviour
         {
             GameSystem.instance.gameState = GameSystem.GameState.Moving;
             ResetAllSlots();
+
+            //如果成功移动，增加棋子
+            GameSystem.instance.TestSpawnChess();
         }
         else
         {
@@ -419,6 +422,9 @@ public class BoardService : MonoBehaviour
 
     private void MoveEnd(SlotBehaviour from, SlotBehaviour to, List<SlotBehaviour> list, bool isRing, bool cw)
     {
+        //如果成功移动，增加棋子
+        GameSystem.instance.TestSpawnChess();
+
         //消除
         GameSystem.instance.gameState = GameSystem.GameState.Erase;
 
@@ -498,6 +504,8 @@ public class BoardService : MonoBehaviour
             EraseChesses();
             return;
         }
+        //无法消除则改为选定该目标
+        SetCurrentSlot(eraseTarget);
 
         eraseTarget = null;
         Debug.Log("Erase Fail");

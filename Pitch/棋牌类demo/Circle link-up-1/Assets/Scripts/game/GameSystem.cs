@@ -41,7 +41,7 @@ public class GameSystem : MonoBehaviour
         SoundService.instance.Play("start game");
     }
 
-    private void ClearBoard()
+    public void ClearBoard()
     {
         Debug.Log("ClearBoard");
         foreach (var c in BoardService.instance.allArea)

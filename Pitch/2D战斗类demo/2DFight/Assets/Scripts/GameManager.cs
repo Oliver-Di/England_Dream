@@ -17,16 +17,16 @@ public class GameManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(this);
     }
+}
 
-    // Start is called before the first frame update
-    void Start()
+public class MyTime
+{
+    public static float timescale = 1;
+    public static float deltaTime
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        get
+        {
+            return Time.deltaTime * timescale;
+        }
     }
 }

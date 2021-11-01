@@ -145,7 +145,10 @@ public class SlotBehaviour : MonoBehaviour
         // Debug.Log("TrySetToClickableGoal");
         if (chess != null)
         {
-            BoardService.instance.SetCurrentSlot(this);
+            //尝试消除
+            BoardService.instance.SetEraseSlot(this);
+
+            //BoardService.instance.SetCurrentSlot(this);
             return;
         }
           

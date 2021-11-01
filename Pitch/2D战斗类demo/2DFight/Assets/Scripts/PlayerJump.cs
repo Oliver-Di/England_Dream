@@ -46,8 +46,8 @@ public class PlayerJump : MonoBehaviour
         {
             isJumping = false;
             //设置动画
-            //anim.SetBool("JumpDown", false);
-            //anim.SetBool("JumpUp", false);
+            anim.SetBool("drop", false);
+            anim.SetBool("rise", false);
         }
         //玩家下坠
         if (rb.velocity.y < 0)
@@ -66,14 +66,14 @@ public class PlayerJump : MonoBehaviour
             if (rb.velocity.y > 0)
             {
                 //设置动画
-                //anim.SetBool("JumpDown", false);
-                //anim.SetBool("JumpUp", true);
+                anim.SetBool("drop", false);
+                anim.SetBool("rise", true);
             }
             else if (rb.velocity.y < 0)
             {
                 //设置动画
-                //anim.SetBool("JumpDown", true);
-                //anim.SetBool("JumpUp", false);
+                anim.SetBool("drop", true);
+                anim.SetBool("rise", false);
             }
         }
     }
