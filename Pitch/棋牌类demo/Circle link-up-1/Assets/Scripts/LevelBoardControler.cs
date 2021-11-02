@@ -11,6 +11,8 @@ public class LevelBoardControler : MonoBehaviour
     public void Awake()
     {
         instance = this;
+
+        ChangeLevelIcon();
     }
 
     public void ChangeLevelIcon()
