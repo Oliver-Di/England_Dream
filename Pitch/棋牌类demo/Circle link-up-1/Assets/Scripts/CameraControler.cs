@@ -11,6 +11,8 @@ public class CameraControler : MonoBehaviour
 
     private float rand1;
     private float rand2;
+    private float lastRotateX;
+    private float timer = 0.3f;
 
     public float rotateSpeed;
     public float horizontalSpeed;
@@ -24,41 +26,57 @@ public class CameraControler : MonoBehaviour
 
     void Update()
     {
-        SwagCamera();
+        SwayCamera();
+        ChangeRotateTarget();
+        ChangeTransformTarget();
     }
 
-    private void SwagCamera()
+    private void SwayCamera()
     {
-        if (false && transform.rotation.eulerAngles.x == targetRotateX)
-        {
-            ChangeRotateTarget();
-        }
-        else
-        {
-            //transform.rotation = Quaternion.Euler(Mathf.MoveTowards(transform.rotation.eulerAngles.x, targetRotateX, rotateSpeed), 0, 0);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(80, 0, 0), Time.deltaTime * rotateSpeed);
-        }
-
-        if (transform.position.x != targetTranX)
-        {
-            transform.position = new Vector3(Mathf.MoveTowards(transform.position.x, targetTranX,
-                horizontalSpeed), transform.position.y, transform.position.z);
-        }
-        else
-        {
-            ChangeTransformTarget();
-        }
+        //rotation的X变化
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, 
+            Quaternion.Euler(targetRotateX, 0, 0), Time.deltaTime * rotateSpeed);
+        //transform的X变化
+        transform.position = new Vector3(Mathf.MoveTowards(transform.position.x,
+            targetTranX, Time.deltaTime * horizontalSpeed), transform.position.y, transform.position.z);
     }
 
     private void ChangeRotateTarget()
     {
-        rand1 = Random.Range(-2, 2);
-        targetRotateX = origanRotateX + rand1;
+        //x = sin(Y/2)sin(Z/2)cos(X/2)+cos(Y/2)cos(Z/2)sin(X/2)
+
+        //w = cos(Y/2)cos(Z/2)cos(X/2)-sin(Y/2)sin(Z/2)sin(X/2)
+        //if (Mathf.Abs(transform.rotation.eulerAngles.x - targetRotateX) < 0.1f) 
+        //{
+        //    rand1 = Random.Range(-2f, 2f);
+        //    targetRotateX = origanRotateX + rand1;
+        //}
+
+        timer -= Time.deltaTime;
+        var rotateX = transform.rotation.eulerAngles.x;
+        //每0.3s检测一次镜头rotateX是否滞留
+        if(timer <= 0)
+        {
+            if (lastRotateX != rotateX)
+            {
+                lastRotateX = rotateX;
+            }
+            else
+            {
+                rand1 = Random.Range(-2f, 2f);
+                targetRotateX = origanRotateX + rand1;
+            }
+
+            timer = 0.3f;
+        }
     }
 
     private void ChangeTransformTarget()
     {
-        rand2 = Random.Range(-0.5f, 0.5f);
-        targetTranX = origanTranX + rand2;
+        if (Mathf.Approximately(transform.position.x, targetTranX))
+        {
+            rand2 = Random.Range(-0.5f, 0.5f);
+            targetTranX = origanTranX + rand2;
+        }
     }
 }
