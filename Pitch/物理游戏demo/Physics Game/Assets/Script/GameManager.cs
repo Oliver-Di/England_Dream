@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject ready;
     [Header("摄像机")]
     public GameObject folllowCam;
-    public GameObject targetGroup;
+    public GameObject StartCam;
 
     public GameMode gameMode;
     public enum GameMode
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         ready.SetActive(false);
-        table.SetActive(true);
+        StartCam.SetActive(false);
 
         //激活选中物块
         for (int i = 0; i < objects.Length; i++)
@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
         //玩家操作模式
         gameMode = GameMode.Player;
         Time.timeScale = 1;
+
         findObject();
     }
 
@@ -80,10 +81,7 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         //相机寻找玩家
-        targetGroup.GetComponent<CinemachineTargetGroup>().RemoveMember(player.transform);
         folllowCam.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
-        //folllowCam.GetComponent<CinemachineVirtualCamera>().LookAt = enemy.transform;
-        targetGroup.GetComponent<CinemachineTargetGroup>().AddMember(player.transform, 4, 1);
     }
 
     public void ChangeTable()
