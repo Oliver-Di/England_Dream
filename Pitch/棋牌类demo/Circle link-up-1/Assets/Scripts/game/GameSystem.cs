@@ -39,6 +39,8 @@ public class GameSystem : MonoBehaviour
 
         gameState = GameState.Wait;
         SoundService.instance.Play("start game");
+        //选定分数倍率
+        ScorceControler.instance.ChangeMultiply();
     }
 
     public void ClearBoard()
@@ -49,6 +51,8 @@ public class GameSystem : MonoBehaviour
             c.RemoveChess();
             c.ResetState();
         }
+        //清除分数
+        ScorceControler.instance.ResetScorce();
     }
 
     public void TestSpawnChess()

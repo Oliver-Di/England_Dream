@@ -47,7 +47,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  startingChessCount: 15
-  hasChessTypeC: 1
-  hasChessTypeD: 1
-  hasChessTypeE: 1
+  startingChessCount: 14
+  hasChessTypeC: 0
+  hasChessTypeD: 0
+  hasChessTypeE: 0

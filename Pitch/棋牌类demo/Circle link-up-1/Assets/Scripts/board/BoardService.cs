@@ -428,16 +428,20 @@ public class BoardService : MonoBehaviour
         from.ReleaseChess();
         _current = to;
         SoundService.instance.Play("moved");
+        //计算是否有可消除目标
         var count = ShowAndGetErasableChesses();
         if (count == 0)
         {
             MoveChess(to, from, list, isRing, !cw, true);
+            //无消除目标则清零奖励
+            ScorceControler.instance.reward = 0;
         }
         else
         {
             _current.SetCanErase(true);
         }
 
+        SpawnChess();
         SpawnChess();
     }
 
@@ -485,6 +489,8 @@ public class BoardService : MonoBehaviour
         ResetAllSlots();
         Debug.Log("Erase Suc!");
         SoundService.instance.Play("erase");
+        //加分
+        ScorceControler.instance.AddScorce();
     }
 
     private bool InSameAxisOrRing(SlotBehaviour a, SlotBehaviour b)

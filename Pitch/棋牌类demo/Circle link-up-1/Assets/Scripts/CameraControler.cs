@@ -15,7 +15,11 @@ public class CameraControler : MonoBehaviour
     private float timer = 0.3f;
 
     public float rotateSpeed;
+    public float rotate1;
+    public float rotate2;
     public float horizontalSpeed;
+    public float horizontal1;
+    public float horizontal2;
 
     void Start()
     {
@@ -63,7 +67,7 @@ public class CameraControler : MonoBehaviour
             }
             else
             {
-                rand1 = Random.Range(-2f, 2f);
+                rand1 = Random.Range(rotate1, rotate2);
                 targetRotateX = origanRotateX + rand1;
             }
 
@@ -75,7 +79,7 @@ public class CameraControler : MonoBehaviour
     {
         if (Mathf.Approximately(transform.position.x, targetTranX))
         {
-            rand2 = Random.Range(-0.5f, 0.5f);
+            rand2 = Random.Range(horizontal1, horizontal2);
             targetTranX = origanTranX + rand2;
         }
     }
