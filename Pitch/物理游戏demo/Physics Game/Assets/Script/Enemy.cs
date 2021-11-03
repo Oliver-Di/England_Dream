@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
 
     [Tooltip("AI config")]
     public float turnTime=2;
-    public float force=10000;
+    public float force;
 
     [Range(0, 45)]
     public float angleVariantPercent;
