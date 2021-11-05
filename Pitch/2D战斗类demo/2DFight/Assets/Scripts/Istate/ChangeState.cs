@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ChangeState : IState
 {
-    private Walker1 manager;
+    private FSM manager;
     private Parameter parameter;
 
     private AnimatorStateInfo info;
 
-    public ChangeState(Walker1 manager)
+    public ChangeState(FSM manager)
     {
         this.manager = manager;
         this.parameter = manager.parameter;

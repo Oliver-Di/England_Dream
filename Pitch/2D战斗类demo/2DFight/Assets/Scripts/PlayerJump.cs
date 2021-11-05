@@ -30,8 +30,6 @@ public class PlayerJump : MonoBehaviour
     {
         Jump();
         isOnGround = OnGround();
-
-        Debug.Log(Input.GetAxisRaw("Jump"));
     }
 
     //跳跃

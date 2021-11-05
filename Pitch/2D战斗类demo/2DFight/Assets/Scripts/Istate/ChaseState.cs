@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ChaseState : IState
 {
-    private Walker1 manager;
+    private FSM manager;
     private Parameter parameter;
 
-    public ChaseState(Walker1 manager)
+    public ChaseState(FSM manager)
     {
         this.manager = manager;
         this.parameter = manager.parameter;
@@ -16,7 +16,7 @@ public class ChaseState : IState
     {
         if (parameter.isChanged == false)
         {
-            parameter.anim.Play("walk1");
+            parameter.anim.Play("walk");
         }
         else
         {
@@ -40,7 +40,9 @@ public class ChaseState : IState
         }
 
         //丢失目标恢复静止
-        if (parameter.target == null )
+        if (parameter.target == null ||
+            manager.transform.position.x < parameter.chasePoints[0].position.x ||
+            manager.transform.position.x > parameter.chasePoints[1].position.x) 
         {
             manager.TransitionState(StateType.Idle);
         }

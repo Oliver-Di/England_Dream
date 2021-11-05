@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class IdleState : IState
 {
-    private Walker1 manager;
+    private FSM manager;
     private Parameter parameter;
 
     private float timer;
 
-    public IdleState(Walker1 manager)
+    public IdleState(FSM manager)
     {
         this.manager = manager;
         this.parameter = manager.parameter;
@@ -18,7 +18,7 @@ public class IdleState : IState
     {
         if (parameter.isChanged == false)
         {
-            parameter.anim.Play("idle1");
+            parameter.anim.Play("idle");
         }
         else
         {
@@ -32,8 +32,8 @@ public class IdleState : IState
 
         //接近目标切换为追击状态
         if (parameter.target != null &&
-            parameter.target.position.x >= parameter.chasePoints[0].x &&
-            parameter.target.position.x <= parameter.chasePoints[1].x) 
+            parameter.target.position.x >= parameter.chasePoints[0].position.x &&
+            parameter.target.position.x <= parameter.chasePoints[1].position.x) 
         {
             manager.TransitionState(StateType.Chase);
         }
@@ -54,10 +54,10 @@ public class IdleState : IState
 
 public class NullState : IState
 {
-    private Walker1 manager;
+    private FSM manager;
     private Parameter parameter;
 
-    public NullState(Walker1 manager)
+    public NullState(FSM manager)
     {
         this.manager = manager;
         this.parameter = manager.parameter;

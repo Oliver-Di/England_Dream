@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PatrolState : IState
 {
-    private Walker1 manager;
+    private FSM manager;
     private Parameter parameter;
 
     private int patrolPosition;
     private int sign;
 
-    public PatrolState(Walker1 manager)
+    public PatrolState(FSM manager)
     {
         this.manager = manager;
         this.parameter = manager.parameter;
@@ -19,7 +19,7 @@ public class PatrolState : IState
     {
         if (parameter.isChanged == false)
         {
-            parameter.anim.Play("walk1");
+            parameter.anim.Play("walk");
         }
         else
         {
@@ -30,11 +30,11 @@ public class PatrolState : IState
     public void OnUpdate()
     {
         //持续朝向巡逻方向
-        manager.FlipTo(parameter.patrolPoints[patrolPosition]);
+        manager.FlipTo(parameter.patrolPoints[patrolPosition].position);
 
         //移动到巡逻点
         manager.transform.position = Vector2.MoveTowards(manager.transform.position,
-            parameter.patrolPoints[patrolPosition], parameter.moveSpeed * Time.deltaTime);
+            parameter.patrolPoints[patrolPosition].position, parameter.moveSpeed * Time.deltaTime);
 
         //if (manager.transform.position.x > parameter.patrolPoints[patrolPosition].transform.position.x)
         //{
@@ -53,7 +53,7 @@ public class PatrolState : IState
         }
 
         //到达巡逻点
-        if (Mathf.Abs(manager.transform.position.x - parameter.patrolPoints[patrolPosition].x) < 0.1f) 
+        if (Mathf.Abs(manager.transform.position.x - parameter.patrolPoints[patrolPosition].position.x) < 0.1f) 
         {
             //结束巡逻开始静止
             manager.TransitionState(StateType.Idle);
@@ -66,7 +66,7 @@ public class PatrolState : IState
         patrolPosition++;
 
         //防止超出数量
-        if (patrolPosition >= parameter.patrolPoints.Count)
+        if (patrolPosition >= parameter.patrolPoints.Length)
         {
             patrolPosition = 0;
         }

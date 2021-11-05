@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class AttackState : IState
 {
-    private Walker1 manager;
+    private FSM manager;
     private Parameter parameter;
 
     private AnimatorStateInfo info;
 
-    public AttackState(Walker1 manager)
+    public AttackState(FSM manager)
     {
         this.manager = manager;
         this.parameter = manager.parameter;
@@ -18,7 +18,7 @@ public class AttackState : IState
     {
         if (parameter.isChanged == false)
         {
-            parameter.anim.Play("attack1");
+            parameter.anim.Play("attack");
         }
         else
         {

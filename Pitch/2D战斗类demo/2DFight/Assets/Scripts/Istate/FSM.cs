@@ -31,19 +31,22 @@ public class Parameter
     public Rigidbody2D rb;
     public SpriteRenderer sp;
 
-    public List<Vector2> patrolPoints = new List<Vector2>();
-    public List<Vector2> chasePoints = new List<Vector2>();
-    public Vector2 patrolPoint1;
-    public Vector2 patrolPoint2;
-    public Vector2 chasePoint1;
-    public Vector2 chasePoint2;
+    //public List<Vector2> patrolPoints = new List<Vector2>();
+    //public List<Vector2> chasePoints = new List<Vector2>();
+    //public Vector2 patrolPoint1;
+    //public Vector2 patrolPoint2;
+    //public Vector2 chasePoint1;
+    //public Vector2 chasePoint2;
+
+    public Transform[] patrolPoints;
+    public Transform[] chasePoints;
 
     public Transform player;
     public bool isChanged;
     public bool isChanging;
 }
 
-public class Walker1 : MonoBehaviour,InterFaces
+public class FSM : MonoBehaviour,InterFaces
 {
     public Parameter parameter;
 
@@ -59,21 +62,23 @@ public class Walker1 : MonoBehaviour,InterFaces
         states.Add(StateType.Change, new ChangeState(this));
         states.Add(StateType.Null, new NullState(this));
 
-        TransitionState(StateType.Idle);
+
 
         parameter.anim = GetComponent<Animator>();
         parameter.rb = GetComponent<Rigidbody2D>();
         parameter.sp = GetComponent<SpriteRenderer>();
         parameter.player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        parameter.patrolPoint1 = new Vector2(transform.position.x - 20, transform.position.y);
-        parameter.patrolPoint2 = new Vector2(transform.position.x + 20, transform.position.y);
-        parameter.chasePoint1 = new Vector2(transform.position.x - 25, transform.position.y);
-        parameter.chasePoint2 = new Vector2(transform.position.x + 25, transform.position.y);
-        parameter.patrolPoints.Add(parameter.patrolPoint1);
-        parameter.patrolPoints.Add(parameter.patrolPoint2);
-        parameter.chasePoints.Add(parameter.chasePoint1);
-        parameter.chasePoints.Add(parameter.chasePoint2);
+        TransitionState(StateType.Idle);
+
+        //parameter.patrolPoint1 = new Vector2(transform.position.x - 20, transform.position.y);
+        //parameter.patrolPoint2 = new Vector2(transform.position.x + 20, transform.position.y);
+        //parameter.chasePoint1 = new Vector2(transform.position.x - 25, transform.position.y);
+        //parameter.chasePoint2 = new Vector2(transform.position.x + 25, transform.position.y);
+        //parameter.patrolPoints.Add(parameter.patrolPoint1);
+        //parameter.patrolPoints.Add(parameter.patrolPoint2);
+        //parameter.chasePoints.Add(parameter.chasePoint1);
+        //parameter.chasePoints.Add(parameter.chasePoint2);
     }
 
 
@@ -132,7 +137,7 @@ public class Walker1 : MonoBehaviour,InterFaces
         {
             parameter.target = parameter.player;
         }
-        else if (Vector3.Distance(transform.position, parameter.player.position) > 30) 
+        else
         {
             parameter.target = null;
         }
@@ -163,11 +168,11 @@ public class Walker1 : MonoBehaviour,InterFaces
             //StartCoroutine(Stop());
         }
         //判断变身
-        if (parameter.hp <= 0.5f * parameter.maxHp && parameter.isChanged == false)
-        {
-            StartCoroutine(ChangeToRed());
-            parameter.isChanged = true;
-        }
+        //if (parameter.hp <= 0.5f * parameter.maxHp && parameter.isChanged == false)
+        //{
+        //    StartCoroutine(ChangeToRed());
+        //    parameter.isChanged = true;
+        //}
     }
 
     //受击掉血且击退
@@ -184,11 +189,11 @@ public class Walker1 : MonoBehaviour,InterFaces
         if (parameter.hp <= 0)
             Dead();
         //判断变身
-        if (parameter.hp <= 0.5f * parameter.maxHp && parameter.isChanged == false)
-        {
-            ChangeToRed();
-            parameter.isChanged = true;
-        }
+        //if (parameter.hp <= 0.5f * parameter.maxHp && parameter.isChanged == false)
+        //{
+        //    ChangeToRed();
+        //    parameter.isChanged = true;
+        //}
     }
 
     //受击闪白
@@ -203,7 +208,7 @@ public class Walker1 : MonoBehaviour,InterFaces
     {
         if (parameter.isChanged == false)
         {
-            parameter.anim.Play("dead1");
+            parameter.anim.Play("dead");
         }
         else
         {
