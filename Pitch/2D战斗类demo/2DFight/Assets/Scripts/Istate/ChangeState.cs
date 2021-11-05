@@ -35,7 +35,7 @@ public class ChangeState : IState
 
     public void OnExit()
     {
-        parameter.hp = parameter.maxHp = 300;
+        //parameter.hp = parameter.maxHp = 300;
         parameter.attack = 30;
         parameter.moveSpeed = 4;
         parameter.chaseSpeed = 5;

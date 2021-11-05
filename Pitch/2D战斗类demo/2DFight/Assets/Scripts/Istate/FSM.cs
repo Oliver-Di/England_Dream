@@ -5,14 +5,12 @@ using UnityEngine;
 
 public enum StateType
 {
-    Idle,Patrol,Chase,Attack,Change,Null
+    Idle,Patrol,Chase,Attack,Change,Vertigo
 }
 
 [Serializable]
 public class Parameter
 {
-    public float maxHp;
-    public float hp;
     public float attack;
     public float moveSpeed;
     public float chaseSpeed;
@@ -46,12 +44,25 @@ public class Parameter
     public bool isChanging;
 }
 
-public class FSM : MonoBehaviour,InterFaces
+public class FSM : MonoBehaviour
 {
     public Parameter parameter;
 
     private IState currentState;
     private Dictionary<StateType, IState> states = new Dictionary<StateType, IState>();
+
+    public static FSM instance;
+    private void Awake()
+    {
+        //单例
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(this);
+    }
 
     void Start()
     {
@@ -60,7 +71,7 @@ public class FSM : MonoBehaviour,InterFaces
         states.Add(StateType.Chase, new ChaseState(this));
         states.Add(StateType.Attack, new AttackState(this));
         states.Add(StateType.Change, new ChangeState(this));
-        states.Add(StateType.Null, new NullState(this));
+        states.Add(StateType.Vertigo, new VertigoState(this));
 
 
 
@@ -152,71 +163,7 @@ public class FSM : MonoBehaviour,InterFaces
         Gizmos.DrawWireCube(parameter.viewPoint.position,parameter.viewArea);
     }
 
-    //受击掉血
-    public void GetHit(float damage)
-    {
-        //造成伤害
-        parameter.hp -= damage;
-        //判断死亡
-        if (parameter.hp <= 0)
-        {
-            Dead();
-        }
-        else
-        {
-            //停顿
-            //StartCoroutine(Stop());
-        }
-        //判断变身
-        //if (parameter.hp <= 0.5f * parameter.maxHp && parameter.isChanged == false)
-        //{
-        //    StartCoroutine(ChangeToRed());
-        //    parameter.isChanged = true;
-        //}
-    }
 
-    //受击掉血且击退
-    public void GetHitBack(float damage, Vector3 dir, float force)
-    {
-        //造成伤害
-        parameter.hp -= damage;
-        parameter.anim.SetTrigger("Hurt");
-        //闪白
-        StartCoroutine(HurtShader());
-        //后退
-        parameter.rb.AddForce(-dir * force);
-        //判断死亡
-        if (parameter.hp <= 0)
-            Dead();
-        //判断变身
-        //if (parameter.hp <= 0.5f * parameter.maxHp && parameter.isChanged == false)
-        //{
-        //    ChangeToRed();
-        //    parameter.isChanged = true;
-        //}
-    }
-
-    //受击闪白
-    IEnumerator HurtShader()
-    {
-        parameter.sp.material.SetFloat("_FlashAmount", 1);
-        yield return new WaitForSeconds(0.1f);
-        parameter.sp.material.SetFloat("_FlashAmount", 0);
-    }
-
-    void Dead()
-    {
-        if (parameter.isChanged == false)
-        {
-            parameter.anim.Play("dead");
-        }
-        else
-        {
-            parameter.anim.Play("dead2");
-        }
-        enabled = false;
-        transform.gameObject.layer = LayerMask.NameToLayer("Dead");
-    }
     ////受击停顿
     //IEnumerator Stop()
     //{

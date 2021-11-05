@@ -51,29 +51,3 @@ public class IdleState : IState
         timer = 0;
     }
 }
-
-public class NullState : IState
-{
-    private FSM manager;
-    private Parameter parameter;
-
-    public NullState(FSM manager)
-    {
-        this.manager = manager;
-        this.parameter = manager.parameter;
-    }
-    public void OnEnter()
-    {
-
-    }
-
-    public void OnExit()
-    {
-
-    }
-
-    public void OnUpdate()
-    {
-
-    }
-}

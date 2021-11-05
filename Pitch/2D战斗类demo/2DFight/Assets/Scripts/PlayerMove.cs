@@ -30,20 +30,17 @@ public class PlayerMove : MonoBehaviour
         //移动
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            rb.velocity = new Vector2(Mathf.SmoothDamp(rb.velocity.x,
-                speed * dt * 60, ref velocityX, 0.1f), rb.velocity.y);
+            rb.velocity = new Vector2(speed * dt * 60, rb.velocity.y);
             anim.SetBool("running", true);
         }
         else if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            rb.velocity = new Vector2(Mathf.SmoothDamp(rb.velocity.x,
-                speed * dt * -60, ref velocityX, 0.1f), rb.velocity.y);
+            rb.velocity = new Vector2(speed * dt * -60, rb.velocity.y);
             anim.SetBool("running", true);
         }
         else
         {
-            rb.velocity = new Vector2(Mathf.SmoothDamp(rb.velocity.x, 0, ref velocityX, 0.1f),
-                rb.velocity.y);
+            rb.velocity = new Vector2(0, rb.velocity.y);
             anim.SetBool("running", false);
         }
 

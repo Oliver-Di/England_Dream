@@ -20,7 +20,7 @@ public class PlayerAttack : MonoBehaviour
         GetSkillKey();
     }
 
-    //攻击
+    //传递攻击
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //造成伤害
@@ -30,19 +30,32 @@ public class PlayerAttack : MonoBehaviour
             InterFaces interfaces = collision.gameObject.GetComponent<InterFaces>();
             //计算方向
             Vector3 dir = transform.position - collision.transform.position;
-            //传递伤害
-            interfaces.GetHitBack(attack, dir, 500);
+            if (collision.GetComponent<FSM>().parameter.target == null &&
+                collision.GetComponent<GetHit>().isVertigo == false) 
+            {
+                //击昏
+                GetHit.instance.GetVertigo(attack);
+            }
+            else if (collision.GetComponent<GetHit>().isVertigo == true)
+            {
+                GetHit.instance.GetExecute(attack * 10);
+            }
+            else
+            {
+                //传递伤害
+                GetHit.instance.GetHitBack(attack, dir, 500);
+            }
         }
     }
 
     private void GetSkillKey()
     {
-        if (Input.GetKey(KeyCode.Alpha1))
+        if (Input.GetMouseButton(0))
             Attack1();
     }
 
     private void Attack1()
     {
-
+        anim.SetTrigger("attack1");
     }
 }
