@@ -439,10 +439,10 @@ public class BoardService : MonoBehaviour
         else
         {
             _current.SetCanErase(true);
-        }
 
-        SpawnChess();
-        SpawnChess();
+            SpawnChess();//消除成功，生成棋子
+            SpawnChess();
+        }
     }
 
     void SpawnChess()
@@ -463,6 +463,9 @@ public class BoardService : MonoBehaviour
         GameSystem.instance.gameState = GameSystem.GameState.Wait;
         ResetAllSlots();
         _current = null;
+
+        SpawnChess();//消除成功，生成棋子
+        SpawnChess();
     }
 
     int ShowAndGetErasableChesses()
