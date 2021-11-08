@@ -1,0 +1,64 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerExecute : MonoBehaviour
+{
+    public float attack;
+    public Transform executePoint;
+    public LayerMask targetLayer;
+    public GameObject executeIcon;
+
+    private Animator anim;
+    private GameObject target;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        CanExecute();
+    }
+
+    void CanExecute()
+    {
+        float direction = transform.localScale.x;
+        Vector3 Dir = new Vector3(direction * 0.5f, 0, 0);
+        RaycastHit2D executeRay = Physics2D.Raycast(executePoint.position, Dir, 0.5f, targetLayer);
+
+        if (executeRay.collider != null)
+        {
+            Debug.DrawLine(executePoint.position, executeRay.point, Color.red);
+            target = executeRay.collider.gameObject;
+
+            if(executeRay.collider.GetComponent<GetHit>().isVertigo == true)
+            {
+                //提示处决
+                executeIcon.SetActive(true);
+
+                if (Input.GetMouseButton(1))
+                {
+                    anim.SetTrigger("execute");
+                }
+            }
+        }
+        else
+        {
+            Debug.DrawLine(executePoint.position, executePoint.position + Dir, Color.green);
+            target = null;
+            executeIcon.SetActive(false);
+        }
+    }
+
+    public void Execute()
+    {
+        target.GetComponent<GetHit>().GetExecute(attack * 10);
+    }
+
+    public void TryExplode()
+    {
+        target.GetComponent<GetHit>().Explode();
+    }
+}

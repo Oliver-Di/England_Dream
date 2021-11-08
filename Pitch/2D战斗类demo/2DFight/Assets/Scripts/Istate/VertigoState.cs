@@ -16,11 +16,13 @@ public class VertigoState : IState
     public void OnEnter()
     {
         timer = 5f;
+        parameter.target = parameter.player;
+        parameter.anim.Play("vertigo");
     }
 
     public void OnExit()
     {
-        GetHit.instance.isVertigo = false;
+        manager.GetComponent<GetHit>().isVertigo = false;
     }
 
     public void OnUpdate()

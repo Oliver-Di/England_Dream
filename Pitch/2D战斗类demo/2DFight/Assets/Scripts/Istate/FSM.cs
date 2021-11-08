@@ -5,7 +5,13 @@ using UnityEngine;
 
 public enum StateType
 {
-    Idle,Patrol,Chase,Attack,Change,Vertigo
+    Idle,
+    Patrol,
+    Chase,
+    Attack,
+    Change,
+    Vertigo,
+    Dead
 }
 
 [Serializable]
@@ -21,20 +27,15 @@ public class Parameter
     public LayerMask targetLayer;
     public Transform attackPoint;
     public float attackArea;
-    public Transform viewPoint;
-    public Vector3 viewArea;
+    //public Transform viewPoint;
+    //public Vector3 viewArea;
+    //public float distance;
+    public bool lostTarget;
 
     [Header("DeBug")]
     public Animator anim;
     public Rigidbody2D rb;
     public SpriteRenderer sp;
-
-    //public List<Vector2> patrolPoints = new List<Vector2>();
-    //public List<Vector2> chasePoints = new List<Vector2>();
-    //public Vector2 patrolPoint1;
-    //public Vector2 patrolPoint2;
-    //public Vector2 chasePoint1;
-    //public Vector2 chasePoint2;
 
     public Transform[] patrolPoints;
     public Transform[] chasePoints;
@@ -48,21 +49,9 @@ public class FSM : MonoBehaviour
 {
     public Parameter parameter;
 
+    private float timer;
     private IState currentState;
     private Dictionary<StateType, IState> states = new Dictionary<StateType, IState>();
-
-    public static FSM instance;
-    private void Awake()
-    {
-        //单例
-        if (instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        instance = this;
-        DontDestroyOnLoad(this);
-    }
 
     void Start()
     {
@@ -72,8 +61,7 @@ public class FSM : MonoBehaviour
         states.Add(StateType.Attack, new AttackState(this));
         states.Add(StateType.Change, new ChangeState(this));
         states.Add(StateType.Vertigo, new VertigoState(this));
-
-
+        states.Add(StateType.Dead, new DeadState(this));
 
         parameter.anim = GetComponent<Animator>();
         parameter.rb = GetComponent<Rigidbody2D>();
@@ -82,20 +70,14 @@ public class FSM : MonoBehaviour
 
         TransitionState(StateType.Idle);
 
-        //parameter.patrolPoint1 = new Vector2(transform.position.x - 20, transform.position.y);
-        //parameter.patrolPoint2 = new Vector2(transform.position.x + 20, transform.position.y);
-        //parameter.chasePoint1 = new Vector2(transform.position.x - 25, transform.position.y);
-        //parameter.chasePoint2 = new Vector2(transform.position.x + 25, transform.position.y);
-        //parameter.patrolPoints.Add(parameter.patrolPoint1);
-        //parameter.patrolPoints.Add(parameter.patrolPoint2);
-        //parameter.chasePoints.Add(parameter.chasePoint1);
-        //parameter.chasePoints.Add(parameter.chasePoint2);
+        timer = 3;
+        Physics2D.queriesStartInColliders = false;
     }
 
 
     void Update()
     {
-        FindTarget();
+        LostTarget();
         currentState.OnUpdate();
     }
 
@@ -126,31 +108,72 @@ public class FSM : MonoBehaviour
         }
     }
 
-    //攻击
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //造成伤害
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && currentState == states[StateType.Attack]) 
         {
-            //获取interface
-            InterFaces interfaces = collision.gameObject.GetComponent<InterFaces>();
             //计算方向
             Vector3 dir = transform.position - parameter.target.position;
             //传递伤害
-            interfaces.GetHitBack(parameter.attack, dir, 500);
+            collision.GetComponent<PlayerGetHit>().GetHitBack(parameter.attack, dir, 150);
+        }
+
+        //发现敌人
+        if (collision.CompareTag("Player"))
+        {
+            parameter.target = parameter.player;
+            timer = 3;
         }
     }
 
-    //发现敌人
-    void FindTarget()
+    //敌人离开视野
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (Physics2D.OverlapBox(parameter.viewPoint.position, parameter.viewArea, 0, parameter.targetLayer))
+        if (collision.CompareTag("Player"))
         {
-            parameter.target = parameter.player;
+            parameter.lostTarget = true;
         }
-        else
+    }
+
+    //丢失计时
+    void LostTarget()
+    {
+        //if (Physics2D.OverlapBox(parameter.viewPoint.position, parameter.viewArea, 0, parameter.targetLayer))
+        //{
+        //    parameter.target = parameter.player;
+        //    timer = 3;
+        //    Debug.Log("init");
+        //}
+        //RaycastHit2D view = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, parameter.distance);
+        //Debug.Log(transform.localScale.x);
+        //if (view.collider != null)
+        //{
+        //    Debug.Log(view.collider.gameObject.name);
+        //    Debug.DrawLine(transform.position, view.point, Color.red);
+        //}
+        //else
+        //{
+        //    Debug.DrawLine(transform.position, Vector2.right * transform.localScale.x * parameter.distance, Color.green);
+        //}
+
+        //if(parameter.target!=null&&
+        //    !Physics2D.OverlapBox(parameter.viewPoint.position, parameter.viewArea, 0, parameter.targetLayer))
+        //{
+        //    timer -= Time.deltaTime;
+        //}
+
+        if (timer <= 0)
         {
             parameter.target = null;
+            timer = 3;
+        }
+
+        if (parameter.lostTarget &&
+            timer > 0 &&
+            GetComponent<GetHit>().isVertigo == false) 
+        {
+            timer -= Time.deltaTime;
         }
     }
 
@@ -159,8 +182,8 @@ public class FSM : MonoBehaviour
     {
         //攻击范围
         Gizmos.DrawWireSphere(parameter.attackPoint.position, parameter.attackArea);
-        //视野范围
-        Gizmos.DrawWireCube(parameter.viewPoint.position,parameter.viewArea);
+        ////视野范围
+        //Gizmos.DrawWireCube(parameter.viewPoint.position,parameter.viewArea);
     }
 
 

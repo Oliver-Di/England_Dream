@@ -34,6 +34,12 @@ public class AttackState : IState
         {
             manager.TransitionState(StateType.Chase);
         }
+
+        //朝向目标
+        if (parameter.target != null)
+        {
+            manager.FlipTo(parameter.target.position);
+        }
     }
 
     public void OnExit()

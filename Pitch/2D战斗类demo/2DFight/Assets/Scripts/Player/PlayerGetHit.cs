@@ -1,0 +1,63 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerGetHit : MonoBehaviour
+{
+    private SpriteRenderer sr;
+    private Rigidbody2D rb;
+    private Animator anim;
+
+    public float maxHp;
+    public float hp;
+    public bool isDead;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    //受击掉血且击退
+    public void GetHitBack(float damage, Vector3 dir, float force)
+    {
+        hp -= damage;
+
+        //闪白
+        StartCoroutine(HurtShader());
+        //后退
+        rb.AddForce(-dir * force);
+        //判断死亡
+        if (hp <= 0)
+        {
+            Dead();
+        }
+        else
+        {
+            anim.SetTrigger("hurt");
+        }
+
+    }
+
+    //受击闪白
+    IEnumerator HurtShader()
+    {
+        sr.material.SetFloat("_FlashAmount", 1);
+        yield return new WaitForSeconds(0.1f);
+        sr.material.SetFloat("_FlashAmount", 0);
+    }
+
+    public void Dead()
+    {
+        anim.SetTrigger("dead");
+        isDead = true;
+    }
+}

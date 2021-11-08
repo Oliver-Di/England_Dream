@@ -10,20 +10,11 @@ public class GetHit : MonoBehaviour
 
     public float maxHp;
     public float hp;
+    public GameObject blood8Prefab;
+    public GameObject blood4Prefab;
+    public GameObject blood7Prefab;
+    public GameObject blood9Prefab;
     public bool isVertigo;
-
-    public static GetHit instance;
-    private void Awake()
-    {
-        //单例
-        if (instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        instance = this;
-        DontDestroyOnLoad(this);
-    }
 
     private void Start()
     {
@@ -47,8 +38,6 @@ public class GetHit : MonoBehaviour
         if (hp <= 0)
             Dead();
 
-        Debug.Log("hitback");
-
         //判断变身
         //if (parameter.hp <= 0.5f * parameter.maxHp && parameter.isChanged == false)
         //{
@@ -59,10 +48,16 @@ public class GetHit : MonoBehaviour
 
     public void GetVertigo(float damage)
     {
+        //掉血
+        hp -= damage;
         //眩晕状态
-        FSM.instance.TransitionState(StateType.Vertigo);
+        GetComponent<FSM>().TransitionState(StateType.Vertigo);
         isVertigo = true;
         //眩晕动画
+
+        //判断死亡
+        if (hp <= 0)
+            Dead();
 
         Debug.Log("vertigo");
     }
@@ -70,11 +65,31 @@ public class GetHit : MonoBehaviour
     public void GetExecute(float damage)
     {
         hp -= damage;
-        //回到追击状态
-        FSM.instance.parameter.target = FSM.instance.parameter.player;
-        FSM.instance.TransitionState(StateType.Chase);
+
+        //发现敌人
+        GetComponent<FSM>().parameter.target = GetComponent<FSM>().parameter.player;
 
         Debug.Log("execute!!!");
+    }
+
+    public void BloodVFX1()
+    {
+        //喷血特效8
+        GameObject blood8 = ObjectPool.Instance.GetObject(blood8Prefab);
+        blood8.transform.position = new Vector2(transform.position.x, transform.position.y + 0.5f);
+    }
+
+    public void BloodVFX2()
+    {
+        //喷血特效4
+        GameObject blood4 = ObjectPool.Instance.GetObject(blood4Prefab);
+        blood4.transform.position = new Vector2(transform.position.x, transform.position.y + 0.5f);
+        //喷血特效7
+        GameObject blood7 = ObjectPool.Instance.GetObject(blood7Prefab);
+        blood7.transform.position = new Vector2(transform.position.x, transform.position.y + 0.5f);
+        //喷血特效9
+        GameObject blood9 = ObjectPool.Instance.GetObject(blood9Prefab);
+        blood9.transform.position = new Vector2(transform.position.x, transform.position.y + 0.5f);
     }
 
     //受击闪白
@@ -87,9 +102,21 @@ public class GetHit : MonoBehaviour
 
     void Dead()
     {
-        anim.Play("dead");
+        GetComponent<FSM>().TransitionState(StateType.Dead);
 
         //enabled = false;
         //transform.gameObject.layer = LayerMask.NameToLayer("Dead");
+    }
+
+    public void Explode()
+    {
+        //判断死亡
+        if (hp <= 0)
+        {
+            BloodVFX2();
+            //生成残肢
+
+            gameObject.SetActive(false);
+        }
     }
 }
