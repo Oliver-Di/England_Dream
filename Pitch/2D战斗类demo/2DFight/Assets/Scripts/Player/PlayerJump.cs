@@ -13,18 +13,17 @@ public class PlayerJump : MonoBehaviour
     public float jumpF;
     public float fallMultiplier;
     public float jumpMultiplier;
+
     [Header("地面检测")]
     public Vector2 pointOffset;
     public Vector2 size;
     public LayerMask groundLayerMask;
-
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
-
 
     void Update()
     {
@@ -50,14 +49,12 @@ public class PlayerJump : MonoBehaviour
         }
         //玩家下坠
         if (rb.velocity.y < 0)
-        {
             rb.velocity += Vector2.up * Physics2D.gravity * (fallMultiplier - 1) * Time.fixedDeltaTime;
-        }
+
         //玩家上升且没按space
         else if (rb.velocity.y > 0 && Input.GetAxisRaw("Jump") != 1)
-        {
             rb.velocity += Vector2.up * Physics2D.gravity * (jumpMultiplier - 1) * Time.fixedDeltaTime;
-        }
+
         //设置动画
         if (!isOnGround)
         {
@@ -125,11 +122,10 @@ public class PlayerJump : MonoBehaviour
     {
         Collider2D Coll = Physics2D.OverlapBox((Vector2)transform.position + pointOffset,
             size, 0, groundLayerMask);
-        if (Coll != null)
-            return true;
-        else
-            return false;
+
+        return Coll != null;
     }
+
     //显示地面碰撞器
     private void OnDrawGizmos()
     {
