@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HpBar : MonoBehaviour
 {
-    public GameObject parent;
+    public GameObject obj;
     public Image hpBg;
     public Image hp_fill;
 
@@ -18,18 +18,19 @@ public class HpBar : MonoBehaviour
     protected virtual void Start()
     {
         lastData = hp;
+        GetComponent<Canvas>().worldCamera = Camera.main;
     }
 
     protected virtual void Update()
     {
         HideBar();
 
-        hp = GetComponent<GetHit>().hp;
-        maxHp = GetComponent<GetHit>().maxHp;
+        hp = obj.GetComponent<GetHit>().hp;
+        maxHp = obj.GetComponent<GetHit>().maxHp;
         //血条随血量变动
         hp_fill.fillAmount = hp / maxHp;
         //不随主体翻转
-        transform.localScale = parent.transform.localScale;
+        transform.localScale = obj.transform.localScale;
 
         if (timer > 0)
         {

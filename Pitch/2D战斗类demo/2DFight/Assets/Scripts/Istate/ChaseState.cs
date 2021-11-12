@@ -27,7 +27,7 @@ public class ChaseState : IState
     public void OnUpdate()
     {
         //朝向目标
-        if(parameter.target!= null)
+        if (parameter.target != null) 
         {
             manager.FlipTo(parameter.target.position);
         }

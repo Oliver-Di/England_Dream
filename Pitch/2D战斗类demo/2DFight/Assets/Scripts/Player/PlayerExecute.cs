@@ -62,5 +62,6 @@ public class PlayerExecute : MonoBehaviour
     public void TryExplode()
     {
         target.GetComponent<GetHit>().Explode();
+        isExecute = false;
     }
 }
