@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using DG.Tweening;
+//using DG.Tweening;
 
 public class SimpleCcMove : MonoBehaviour
 {
@@ -37,16 +37,16 @@ public class SimpleCcMove : MonoBehaviour
 
     private void ReadKeyDown()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.D))
             _rightKeyDown = true;
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.A))
             _leftKeyDown = true;
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.W))
             _upKeyDown = true;
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.S))
             _downKeyDown = true;
 
         if (Input.GetKey(KeyCode.Space))
@@ -100,7 +100,8 @@ public class SimpleCcMove : MonoBehaviour
         cc.Move(moveDir.normalized * speed * Time.deltaTime);
 
         var rot = Quaternion.LookRotation(moveDir);
-        transform.DOLocalRotate(new Vector3(0, rot.eulerAngles.y, 0), 0.6f);//turn round
+        //turn round
+        //transform.DOLocalRotate(new Vector3(0, rot.eulerAngles.y, 0), 0.6f);
     }
 
     private void ApplyExtraForce()

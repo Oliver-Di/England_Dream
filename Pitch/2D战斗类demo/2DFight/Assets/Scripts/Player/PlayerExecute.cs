@@ -8,6 +8,7 @@ public class PlayerExecute : MonoBehaviour
     public Transform executePoint;
     public LayerMask targetLayer;
     public GameObject executeIcon;
+    public bool isExecute;
 
     private Animator anim;
     private GameObject target;
@@ -38,8 +39,9 @@ public class PlayerExecute : MonoBehaviour
                 //提示处决
                 executeIcon.SetActive(true);
 
-                if (Input.GetMouseButton(1))
+                if (Input.GetMouseButton(1) && isExecute == false) 
                 {
+                    isExecute = true;
                     anim.SetTrigger("execute");
                 }
             }

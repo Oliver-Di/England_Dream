@@ -65,6 +65,7 @@ public class GetHit : MonoBehaviour
     public void GetExecute(float damage)
     {
         hp -= damage;
+        BloodVFX1();
 
         //发现敌人
         GetComponent<FSM>().parameter.target = GetComponent<FSM>().parameter.player;

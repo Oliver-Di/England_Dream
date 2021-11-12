@@ -30,11 +30,14 @@ public class PlayerGetHit : MonoBehaviour
     public void GetHitBack(float damage, Vector3 dir, float force)
     {
         hp -= damage;
-
         //闪白
         StartCoroutine(HurtShader());
         //后退
         rb.AddForce(-dir * force);
+        //修正状态
+        GetComponent<PlayerAttack>().isAttack = false;
+        GetComponent<PlayerExecute>().isExecute = false;
+        
         //判断死亡
         if (hp <= 0)
         {
@@ -44,7 +47,6 @@ public class PlayerGetHit : MonoBehaviour
         {
             anim.SetTrigger("hurt");
         }
-
     }
 
     //受击闪白
@@ -59,5 +61,6 @@ public class PlayerGetHit : MonoBehaviour
     {
         anim.SetTrigger("dead");
         isDead = true;
+        transform.gameObject.layer = LayerMask.NameToLayer("Dead");
     }
 }

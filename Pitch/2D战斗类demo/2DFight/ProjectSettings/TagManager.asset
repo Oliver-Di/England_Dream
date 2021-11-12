@@ -20,8 +20,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - LightAttack
+  - HeavyAttack
   - Player
   - Enemy
   - 
@@ -31,7 +31,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Dead
   - Ground
   - 
   - 

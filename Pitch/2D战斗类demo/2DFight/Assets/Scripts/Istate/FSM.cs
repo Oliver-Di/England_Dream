@@ -27,9 +27,8 @@ public class Parameter
     public LayerMask targetLayer;
     public Transform attackPoint;
     public float attackArea;
-    //public Transform viewPoint;
-    //public Vector3 viewArea;
-    //public float distance;
+    public Transform viewPoint;
+    public float viewDistance;
     public bool lostTarget;
 
     [Header("DeBug")]
@@ -77,7 +76,7 @@ public class FSM : MonoBehaviour
 
     void Update()
     {
-        LostTarget();
+        FindTarget();
         currentState.OnUpdate();
     }
 
@@ -120,21 +119,53 @@ public class FSM : MonoBehaviour
         }
 
         //发现敌人
-        if (collision.CompareTag("Player"))
+        //if (collision.CompareTag("Player"))
+        //{
+        //    parameter.target = parameter.player;
+        //    timer = 3;
+        //}
+    }
+
+    private void FindTarget()
+    {
+        float direction = transform.localScale.x;
+        Vector3 Dir = new Vector3(direction * parameter.viewDistance, 0, 0);
+        RaycastHit2D viewRay = Physics2D.Raycast(parameter.viewPoint.position, Dir, parameter.viewDistance, parameter.targetLayer);
+
+        if (viewRay.collider != null)
         {
+            Debug.DrawLine(parameter.viewPoint.position, viewRay.point, Color.red);
+
             parameter.target = parameter.player;
+            timer = 3;
+        }
+        else
+        {
+            Debug.DrawLine(parameter.viewPoint.position, parameter.viewPoint.position + Dir, Color.green);
+        }
+        //丢失计时
+        if (viewRay.collider == null && 
+            timer > 0 && 
+            GetComponent<GetHit>().isVertigo == false) 
+        {
+            timer -= Time.deltaTime;
+        }
+
+        if (timer <= 0)
+        {
+            parameter.target = null;
             timer = 3;
         }
     }
 
     //敌人离开视野
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            parameter.lostTarget = true;
-        }
-    }
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Player"))
+    //    {
+    //        parameter.lostTarget = true;
+    //    }
+    //}
 
     //丢失计时
     void LostTarget()
@@ -162,19 +193,6 @@ public class FSM : MonoBehaviour
         //{
         //    timer -= Time.deltaTime;
         //}
-
-        if (timer <= 0)
-        {
-            parameter.target = null;
-            timer = 3;
-        }
-
-        if (parameter.lostTarget &&
-            timer > 0 &&
-            GetComponent<GetHit>().isVertigo == false) 
-        {
-            timer -= Time.deltaTime;
-        }
     }
 
     //绘制范围
