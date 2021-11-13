@@ -22,6 +22,14 @@ public class Parameter
     public float chaseSpeed;
     public float idleTime;
 
+    public Type type;
+    public enum Type
+    {
+        normal,
+        red,
+        green,
+    }
+
     [Header("Attack Data")]
     public Transform target;
     public LayerMask targetLayer;
@@ -73,7 +81,6 @@ public class FSM : MonoBehaviour
         Physics2D.queriesStartInColliders = false;
     }
 
-
     void Update()
     {
         FindTarget();
@@ -118,12 +125,6 @@ public class FSM : MonoBehaviour
             collision.GetComponent<PlayerGetHit>().GetHitBack(parameter.attack, dir, 150);
         }
 
-        //发现敌人
-        //if (collision.CompareTag("Player"))
-        //{
-        //    parameter.target = parameter.player;
-        //    timer = 3;
-        //}
     }
 
     private void FindTarget()
@@ -158,69 +159,15 @@ public class FSM : MonoBehaviour
         }
     }
 
-    //敌人离开视野
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Player"))
-    //    {
-    //        parameter.lostTarget = true;
-    //    }
-    //}
-
-    //丢失计时
-    void LostTarget()
-    {
-        //if (Physics2D.OverlapBox(parameter.viewPoint.position, parameter.viewArea, 0, parameter.targetLayer))
-        //{
-        //    parameter.target = parameter.player;
-        //    timer = 3;
-        //    Debug.Log("init");
-        //}
-        //RaycastHit2D view = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, parameter.distance);
-        //Debug.Log(transform.localScale.x);
-        //if (view.collider != null)
-        //{
-        //    Debug.Log(view.collider.gameObject.name);
-        //    Debug.DrawLine(transform.position, view.point, Color.red);
-        //}
-        //else
-        //{
-        //    Debug.DrawLine(transform.position, Vector2.right * transform.localScale.x * parameter.distance, Color.green);
-        //}
-
-        //if(parameter.target!=null&&
-        //    !Physics2D.OverlapBox(parameter.viewPoint.position, parameter.viewArea, 0, parameter.targetLayer))
-        //{
-        //    timer -= Time.deltaTime;
-        //}
-    }
-
     //绘制范围
     private void OnDrawGizmos()
     {
         //攻击范围
         Gizmos.DrawWireSphere(parameter.attackPoint.position, parameter.attackArea);
-        ////视野范围
-        //Gizmos.DrawWireCube(parameter.viewPoint.position,parameter.viewArea);
     }
 
-
-    ////受击停顿
-    //IEnumerator Stop()
-    //{
-    //    if (parameter.isChanging == false)
-    //    {
-    //        TransitionState(StateType.Null);
-    //        yield return new WaitForSeconds(0.1f);
-    //        parameter.target = parameter.player;
-    //        TransitionState(StateType.Chase);
-    //    }
-    //}
-
-    //变身
-    IEnumerator ChangeToRed()
+    public void Change()
     {
-        yield return new WaitForSeconds(0.1f);
         TransitionState(StateType.Change);
     }
 }

@@ -62,6 +62,7 @@ public class PlayerGetHit : MonoBehaviour
     public void Vertigo()
     {
         isVertigo = true;
+        rb.velocity = Vector2.zero;
         anim.SetTrigger("vertigo");
     }
 

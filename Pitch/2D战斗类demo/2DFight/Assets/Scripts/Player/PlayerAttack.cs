@@ -44,7 +44,7 @@ public class PlayerAttack : MonoBehaviour
             else
             {
                 //传递伤害
-                collision.GetComponent<GetHit>().GetHitBack(attack, dir, 150);
+                collision.GetComponent<GetHit>().GetHitBack(attack, dir, 50);
             }
         }
     }

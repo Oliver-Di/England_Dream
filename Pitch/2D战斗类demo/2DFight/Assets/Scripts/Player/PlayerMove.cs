@@ -22,7 +22,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (GetComponent<PlayerAttack>().isAttack == false &&
             GetComponent<PlayerGetHit>().isDead == false &&
-            GetComponent<PlayerGetHit>().isVertigo == false) 
+            GetComponent<PlayerGetHit>().isVertigo == false )  
         {
             movement();
         }

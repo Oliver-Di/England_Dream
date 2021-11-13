@@ -18,6 +18,8 @@ public class GetHit : MonoBehaviour
     public GameObject blood9Prefab;
     [Header("Bodies")]
     public GameObject[] bodiesPrefab;
+    public GameObject[] redBodiesPrefab;
+    public GameObject[] greenBodiesPrefab;
 
     private void Start()
     {
@@ -42,22 +44,27 @@ public class GetHit : MonoBehaviour
             Dead();
 
         //判断变身
-        //if (parameter.hp <= 0.5f * parameter.maxHp && parameter.isChanged == false)
-        //{
-        //    ChangeToRed();
-        //    parameter.isChanged = true;
-        //}
+        if (hp <= 0.5f * maxHp &&
+            GetComponent<FSM>().parameter.isChanged == false &&
+            GetComponent<FSM>().parameter.type != Parameter.Type.normal) 
+        {
+
+            GetComponent<FSM>().Change();
+            GetComponent<FSM>().parameter.isChanged = true;
+        }
     }
 
     public void GetVertigo(float damage)
     {
         //掉血
         hp -= damage;
-        //眩晕状态
-        GetComponent<FSM>().TransitionState(StateType.Vertigo);
-        isVertigo = true;
-        //眩晕动画
-
+        //没在变身可晕
+        if (GetComponent<FSM>().parameter.isChanging == false)
+        {
+            //眩晕状态
+            GetComponent<FSM>().TransitionState(StateType.Vertigo);
+            isVertigo = true;
+        }
         //判断死亡
         if (hp <= 0)
             Dead();
@@ -119,23 +126,37 @@ public class GetHit : MonoBehaviour
         {
             BloodVFX2();
             //生成尸块
-            CreateBodies();
+            ChooseBodiesType();
 
             gameObject.SetActive(false);
         }
     }
 
-    private void CreateBodies()
+    private void ChooseBodiesType()
+    {
+        if (GetComponent<FSM>().parameter.type == Parameter.Type.normal ||
+            GetComponent<FSM>().parameter.type == Parameter.Type.red ||
+            GetComponent<FSM>().parameter.type == Parameter.Type.green) 
+            CreateBodies(bodiesPrefab);
+        else if (GetComponent<FSM>().parameter.type == Parameter.Type.red &&
+            GetComponent<FSM>().parameter.isChanged == true) 
+            CreateBodies(redBodiesPrefab);
+        else if (GetComponent<FSM>().parameter.type == Parameter.Type.green &&
+            GetComponent<FSM>().parameter.isChanged == true)
+            CreateBodies(greenBodiesPrefab);
+    }
+
+    private void CreateBodies(GameObject[] prefab)
     {
         for (int i = 0; i < 6; i++)
         {
             //生成尸块
-            GameObject body = ObjectPool.Instance.GetObject(bodiesPrefab[i]);
+            GameObject body = ObjectPool.Instance.GetObject(prefab[i]);
             body.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
             //随机抛飞
             float rand1 = Random.Range(-1.7f, 1.7f);
             float rand2 = Random.Range(3, 5);
-            body.GetComponent<Rigidbody2D>().velocity = new Vector2(rand1*1.5f , rand2);
+            body.GetComponent<Rigidbody2D>().velocity = new Vector2(rand1 * 1.5f, rand2);
         }
     }
 }

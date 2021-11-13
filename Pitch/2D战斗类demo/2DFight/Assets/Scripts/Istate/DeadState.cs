@@ -14,7 +14,14 @@ public class DeadState : IState
     }
     public void OnEnter()
     {
-        parameter.anim.Play("dead");
+        if (parameter.isChanged == false)
+        {
+            parameter.anim.Play("dead");
+        }
+        else
+        {
+            parameter.anim.Play("dead2");
+        }
     }
 
     public void OnExit()
