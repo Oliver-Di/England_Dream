@@ -21,8 +21,11 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         if (GetComponent<PlayerAttack>().isAttack == false &&
-            GetComponent<PlayerGetHit>().isDead == false) 
+            GetComponent<PlayerGetHit>().isDead == false &&
+            GetComponent<PlayerGetHit>().isVertigo == false) 
+        {
             movement();
+        }
     }
 
     //2D移动

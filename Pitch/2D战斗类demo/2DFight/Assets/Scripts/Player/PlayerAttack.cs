@@ -20,8 +20,11 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (GetComponent<PlayerGetHit>().isDead == false)
+        if (GetComponent<PlayerGetHit>().isDead == false &&
+            GetComponent<PlayerGetHit>().isVertigo == false) 
+        {
             Attack();
+        }
     }
 
     //传递攻击

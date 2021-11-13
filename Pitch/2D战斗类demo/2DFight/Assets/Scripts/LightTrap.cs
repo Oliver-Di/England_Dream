@@ -49,11 +49,17 @@ public class LightTrap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !createEnemy) 
+        if (collision.CompareTag("Player")) 
         {
-            GameManager.instance.CreateWalker(collision.transform.position);
-            createEnemy = true;
-            enemy.SetActive(true);
+            if (!createEnemy)
+            {
+                GameManager.instance.CreateWalker(collision.transform.position);
+                enemy.SetActive(true);
+
+                createEnemy = true;
+            }
+            //眩晕主角
+            collision.transform.GetComponent<PlayerGetHit>().Vertigo();
         }
     }
 }

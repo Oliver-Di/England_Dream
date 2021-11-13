@@ -11,6 +11,7 @@ public class PlayerGetHit : MonoBehaviour
     public float maxHp;
     public float hp;
     public bool isDead;
+    public bool isVertigo;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,7 @@ public class PlayerGetHit : MonoBehaviour
         //修正状态
         GetComponent<PlayerAttack>().isAttack = false;
         GetComponent<PlayerExecute>().isExecute = false;
+        isVertigo = false;
         
         //判断死亡
         if (hp <= 0)
@@ -55,6 +57,17 @@ public class PlayerGetHit : MonoBehaviour
         sr.material.SetFloat("_FlashAmount", 1);
         yield return new WaitForSeconds(0.1f);
         sr.material.SetFloat("_FlashAmount", 0);
+    }
+
+    public void Vertigo()
+    {
+        isVertigo = true;
+        anim.SetTrigger("vertigo");
+    }
+
+    public void VertigoEnd()
+    {
+        isVertigo = false;
     }
 
     public void Dead()

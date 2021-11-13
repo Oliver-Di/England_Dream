@@ -10,11 +10,14 @@ public class GetHit : MonoBehaviour
 
     public float maxHp;
     public float hp;
+    public bool isVertigo;
+    [Header("VFX")]
     public GameObject blood8Prefab;
     public GameObject blood4Prefab;
     public GameObject blood7Prefab;
     public GameObject blood9Prefab;
-    public bool isVertigo;
+    [Header("Bodies")]
+    public GameObject[] bodiesPrefab;
 
     private void Start()
     {
@@ -115,9 +118,24 @@ public class GetHit : MonoBehaviour
         if (hp <= 0)
         {
             BloodVFX2();
-            //生成残肢
+            //生成尸块
+            CreateBodies();
 
             gameObject.SetActive(false);
+        }
+    }
+
+    private void CreateBodies()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            //生成尸块
+            GameObject body = ObjectPool.Instance.GetObject(bodiesPrefab[i]);
+            body.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+            //随机抛飞
+            float rand1 = Random.Range(-1.7f, 1.7f);
+            float rand2 = Random.Range(3, 5);
+            body.GetComponent<Rigidbody2D>().velocity = new Vector2(rand1*1.5f , rand2);
         }
     }
 }

@@ -27,8 +27,12 @@ public class PlayerJump : MonoBehaviour
 
     void Update()
     {
-        if (GetComponent<PlayerGetHit>().isDead == false)
+        if (GetComponent<PlayerGetHit>().isDead == false &&
+            GetComponent<PlayerGetHit>().isVertigo == false &&
+            GetComponent<PlayerAttack>().isAttack == false)  
+        {
             NormalJump();
+        }
         isOnGround = OnGround();
     }
 
