@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BloodVFX : MonoBehaviour
+public class VFXDestroier : MonoBehaviour
 {
     private void DestroyThis()
     {

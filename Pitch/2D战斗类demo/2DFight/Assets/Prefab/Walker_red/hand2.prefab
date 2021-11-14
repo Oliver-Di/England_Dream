@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4638054288330787610}
   - component: {fileID: 96757660241301770}
   - component: {fileID: 7090335962431659632}
+  - component: {fileID: -6905812586043382628}
   m_Layer: 25
   m_Name: hand2
   m_TagString: Untagged
@@ -138,3 +139,15 @@ PolygonCollider2D:
       - {x: 0.17499995, y: -0.04791808}
       - {x: 0.075958535, y: 0.05415359}
       - {x: 0.025958538, y: 0.0998404}
+--- !u!114 &-6905812586043382628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2250713709340269760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ed6964e718b694392dce7317e49250, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -136,7 +136,8 @@ public class GetHit : MonoBehaviour
     {
         if (GetComponent<FSM>().parameter.type == Parameter.Type.normal ||
             GetComponent<FSM>().parameter.type == Parameter.Type.red ||
-            GetComponent<FSM>().parameter.type == Parameter.Type.green) 
+            GetComponent<FSM>().parameter.type == Parameter.Type.green &&
+            GetComponent<FSM>().parameter.isChanged == false)  
             CreateBodies(bodiesPrefab);
         else if (GetComponent<FSM>().parameter.type == Parameter.Type.red &&
             GetComponent<FSM>().parameter.isChanged == true) 

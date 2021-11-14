@@ -42,9 +42,9 @@ public class ChangeState : IState
         }
         else if (parameter.type == Parameter.Type.green)
         {
-            parameter.attack = 2;
-            parameter.moveSpeed = 1;
-            parameter.chaseSpeed = 1;
+            parameter.attackDistance = 3;
+            parameter.moveSpeed = 0.5f;
+            parameter.chaseSpeed = 0.5f;
         }
     }
 }

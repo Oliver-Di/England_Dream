@@ -71,6 +71,20 @@ public class PlayerGetHit : MonoBehaviour
         isVertigo = false;
     }
 
+    public void DebuffBloodLoss(float damage)
+    {
+        StartCoroutine(ContinuousBloodLoss(damage));
+    }
+
+    IEnumerator ContinuousBloodLoss(float damage)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            hp -= damage;
+            yield return new WaitForSeconds(1);
+        }
+    }
+
     public void Dead()
     {
         anim.SetTrigger("dead");

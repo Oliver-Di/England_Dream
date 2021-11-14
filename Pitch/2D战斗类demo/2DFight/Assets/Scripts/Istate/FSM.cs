@@ -34,7 +34,7 @@ public class Parameter
     public Transform target;
     public LayerMask targetLayer;
     public Transform attackPoint;
-    public float attackArea;
+    public float attackDistance;
     public Transform viewPoint;
     public float viewDistance;
     public bool lostTarget;
@@ -126,7 +126,7 @@ public class FSM : MonoBehaviour
         }
 
     }
-
+    //发现目标
     private void FindTarget()
     {
         float direction = transform.localScale.x;
@@ -142,7 +142,7 @@ public class FSM : MonoBehaviour
         }
         else
         {
-            Debug.DrawLine(parameter.viewPoint.position, parameter.viewPoint.position + Dir, Color.green);
+            Debug.DrawLine(parameter.viewPoint.position, parameter.viewPoint.position + Dir, Color.blue);
         }
         //丢失计时
         if (viewRay.collider == null && 
@@ -157,13 +157,6 @@ public class FSM : MonoBehaviour
             parameter.target = null;
             timer = 3;
         }
-    }
-
-    //绘制范围
-    private void OnDrawGizmos()
-    {
-        //攻击范围
-        Gizmos.DrawWireSphere(parameter.attackPoint.position, parameter.attackArea);
     }
 
     public void Change()

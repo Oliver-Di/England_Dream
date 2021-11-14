@@ -466,7 +466,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 65536
     attackPoint: {fileID: 8049395978534986459}
-    attackArea: 0.4
+    attackDistance: 0.4
     viewPoint: {fileID: 8049395978394422155}
     viewDistance: 3
     lostTarget: 0
