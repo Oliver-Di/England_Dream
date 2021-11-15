@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Head : MonoBehaviour
 {
+    public int headInt;
+
     void Start()
     {
         
@@ -12,5 +14,10 @@ public class Head : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void DestroyThis()
+    {
+        ObjectPool.Instance.PushObject(gameObject);
     }
 }

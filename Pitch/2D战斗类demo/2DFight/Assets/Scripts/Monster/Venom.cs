@@ -28,17 +28,17 @@ public class Venom : MonoBehaviour
             GameObject explode = ObjectPool.Instance.GetObject(explodePrefab);
             explode.transform.position = transform.position;
             collision.GetComponent<PlayerGetHit>().DebuffBloodLoss(damage);
-            Destroy();
+            DestroyThis();
         }
         else if (collision.CompareTag("Ground"))
         {
             GameObject explode = ObjectPool.Instance.GetObject(explodePrefab);
             explode.transform.position = transform.position;
-            Destroy();
+            DestroyThis();
         }
     }
 
-    private void Destroy()
+    private void DestroyThis()
     {
         ObjectPool.Instance.PushObject(gameObject);
     }

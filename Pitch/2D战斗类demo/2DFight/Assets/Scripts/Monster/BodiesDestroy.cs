@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class BodiesDestroy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        Invoke("Destory", 10);
+        Invoke("DestroyThis", 10);
     }
 
-    private void Destroy()
+    private void DestroyThis()
     {
         ObjectPool.Instance.PushObject(gameObject);
     }
