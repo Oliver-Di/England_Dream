@@ -31,6 +31,7 @@ public class PlayerGetHit : MonoBehaviour
     public void GetHitBack(float damage, Vector3 dir, float force)
     {
         hp -= damage;
+        PlayerHpBar.instance.RefreshHp();
         //闪白
         StartCoroutine(HurtShader());
         //后退
@@ -81,6 +82,7 @@ public class PlayerGetHit : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             hp -= damage;
+            PlayerHpBar.instance.RefreshHp();
             yield return new WaitForSeconds(1);
         }
     }
