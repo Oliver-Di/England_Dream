@@ -5,7 +5,6 @@ using UnityEngine;
 public class Venom : MonoBehaviour
 {
     public GameObject explodePrefab;
-    public float damage;
 
     private Rigidbody2D rb;
     private float angle;
@@ -23,14 +22,8 @@ public class Venom : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-        {
-            GameObject explode = ObjectPool.Instance.GetObject(explodePrefab);
-            explode.transform.position = transform.position;
-            collision.GetComponent<PlayerGetHit>().DebuffBloodLoss(damage);
-            DestroyThis();
-        }
-        else if (collision.CompareTag("Ground"))
+        if (collision.CompareTag("Player") ||
+            collision.CompareTag("Ground")) 
         {
             GameObject explode = ObjectPool.Instance.GetObject(explodePrefab);
             explode.transform.position = transform.position;

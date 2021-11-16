@@ -4822,9 +4822,11 @@ GameObject:
   - component: {fileID: 5937583642155397370}
   - component: {fileID: 5403753260076819064}
   - component: {fileID: 6231491851907600007}
+  - component: {fileID: 1412024552751855756}
   - component: {fileID: 7498169643190081995}
+  - component: {fileID: 485889127744310749}
   m_Layer: 0
-  m_Name: explode
+  m_Name: VenomExplode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4914,6 +4916,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &1412024552751855756
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7705895199462415486}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.016868949, y: 0.3685255}
+  serializedVersion: 2
+  m_Radius: 0.4245572
 --- !u!114 &7498169643190081995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4926,3 +4944,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5370a021cecc37c4bb57746788c021cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &485889127744310749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7705895199462415486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10188a8b01347bc428ffe9138ab94f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0.2
+  debuffDam: 0.3

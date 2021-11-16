@@ -7,13 +7,14 @@ public class PlayerGetHit : MonoBehaviour
     private SpriteRenderer sr;
     private Rigidbody2D rb;
     private Animator anim;
+    private float timer;
+    private bool hpIncreasing;
 
     public float maxHp;
     public float hp;
     public bool isDead;
     public bool isVertigo;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,16 +22,20 @@ public class PlayerGetHit : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        BloodReturn();
+
+        if (timer > 0)
+            timer -= Time.deltaTime;
     }
 
     //受击掉血且击退
     public void GetHitBack(float damage, Vector3 dir, float force)
     {
         hp -= damage;
+        //修正回血等待时间
+        timer = 5;
         PlayerHpBar.instance.RefreshHp();
         //闪白
         StartCoroutine(HurtShader());
@@ -43,13 +48,9 @@ public class PlayerGetHit : MonoBehaviour
         
         //判断死亡
         if (hp <= 0)
-        {
             Dead();
-        }
         else
-        {
             anim.SetTrigger("hurt");
-        }
     }
 
     //受击闪白
@@ -60,11 +61,32 @@ public class PlayerGetHit : MonoBehaviour
         sr.material.SetFloat("_FlashAmount", 0);
     }
 
+    private void BloodReturn()
+    {
+        if (timer <= 0 &&
+            hp < maxHp &&
+            !hpIncreasing) 
+        {
+            StartCoroutine(ContinuousBloodReturn());
+            hpIncreasing = true;
+            BuffIcon.instance.StartBuff(4, 0.5f);
+        }
+    }
+
+    IEnumerator ContinuousBloodReturn()
+    {
+        hp += 0.01f;
+        PlayerHpBar.instance.RefreshHp();
+        yield return new WaitForSeconds(0.5f);
+        hpIncreasing = false;
+    }
+
     public void Vertigo()
     {
         isVertigo = true;
         rb.velocity = Vector2.zero;
         anim.SetTrigger("vertigo");
+        BuffIcon.instance.StartBuff(0, 1);
     }
 
     public void VertigoEnd()
@@ -72,9 +94,10 @@ public class PlayerGetHit : MonoBehaviour
         isVertigo = false;
     }
 
-    public void DebuffBloodLoss(float damage)
+    public void DebuffBloodLoss(float damage,int num)
     {
         StartCoroutine(ContinuousBloodLoss(damage));
+        BuffIcon.instance.StartBuff(num, 5);
     }
 
     IEnumerator ContinuousBloodLoss(float damage)
@@ -82,6 +105,8 @@ public class PlayerGetHit : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             hp -= damage;
+            //修正回血等待时间
+            timer = 5;
             PlayerHpBar.instance.RefreshHp();
             yield return new WaitForSeconds(1);
         }
