@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7178218038667834465}
   m_Layer: 0
   m_Name: FireColumn
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

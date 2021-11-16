@@ -9,12 +9,17 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy")) 
         {
             collision.GetComponent<GetHit>().GetVertigo(damage);
         }
-        if (collision.CompareTag("Ground")||
-            collision.CompareTag("Enemy"))
+        else if (collision.CompareTag("BOSS"))
+        {
+            collision.GetComponent<EvilWizardGetHit>().GetVertigo(damage);
+        }
+        if (collision.CompareTag("Ground") ||
+            collision.CompareTag("Enemy") ||
+            collision.CompareTag("BOSS")) 
         {
             GameObject blood = ObjectPool.Instance.GetObject(blood0);
             blood.transform.position = transform.position;

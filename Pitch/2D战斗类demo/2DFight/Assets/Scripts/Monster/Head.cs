@@ -6,16 +6,6 @@ public class Head : MonoBehaviour
 {
     public int headInt;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-
-    }
-
     public void DestroyThis()
     {
         ObjectPool.Instance.PushObject(gameObject);

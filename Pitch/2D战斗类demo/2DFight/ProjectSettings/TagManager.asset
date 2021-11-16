@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Ground
   - Head
+  - BOSS
   layers:
   - Default
   - TransparentFX
@@ -26,13 +27,13 @@ TagManager:
   - HeavyAttack
   - Player
   - Enemy
+  - Item
   - 
   - 
   - 
   - 
   - 
   - 
-  - All
   - Dead
   - Ground
   - 
@@ -44,9 +45,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Deepground
+    uniqueID: 2283510357
+    locked: 0
+  - name: Midground
+    uniqueID: 232714133
+    locked: 0
+  - name: Background
+    uniqueID: 3901715107
+    locked: 0
+  - name: Ground
+    uniqueID: 3072511225
+    locked: 0
   - name: Enemy
     uniqueID: 3019399919
     locked: 0
+  - name: Item
+    uniqueID: 3753144873
+    locked: 0
   - name: Player
     uniqueID: 2512825759
+    locked: 0
+  - name: Front
+    uniqueID: 2333840733
     locked: 0

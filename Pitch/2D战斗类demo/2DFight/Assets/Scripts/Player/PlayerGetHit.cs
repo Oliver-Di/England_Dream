@@ -36,7 +36,7 @@ public class PlayerGetHit : MonoBehaviour
         hp -= damage;
         //修正回血等待时间
         timer = 5;
-        PlayerHpBar.instance.RefreshHp();
+        GameManager.instance.RefreshHp();
         //闪白
         StartCoroutine(HurtShader());
         //后退
@@ -76,17 +76,20 @@ public class PlayerGetHit : MonoBehaviour
     IEnumerator ContinuousBloodReturn()
     {
         hp += 0.01f;
-        PlayerHpBar.instance.RefreshHp();
+        GameManager.instance.RefreshHp();
         yield return new WaitForSeconds(0.5f);
         hpIncreasing = false;
     }
 
     public void Vertigo()
     {
-        isVertigo = true;
-        rb.velocity = Vector2.zero;
-        anim.SetTrigger("vertigo");
-        BuffIcon.instance.StartBuff(0, 1);
+        if (hp > 0)
+        {
+            isVertigo = true;
+            rb.velocity = Vector2.zero;
+            anim.SetTrigger("vertigo");
+            BuffIcon.instance.StartBuff(0, 1);
+        }
     }
 
     public void VertigoEnd()
@@ -107,7 +110,7 @@ public class PlayerGetHit : MonoBehaviour
             hp -= damage;
             //修正回血等待时间
             timer = 5;
-            PlayerHpBar.instance.RefreshHp();
+            GameManager.instance.RefreshHp();
             yield return new WaitForSeconds(1);
         }
     }

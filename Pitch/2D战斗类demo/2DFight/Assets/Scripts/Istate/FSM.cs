@@ -124,7 +124,6 @@ public class FSM : MonoBehaviour
             //传递伤害
             collision.GetComponent<PlayerGetHit>().GetHitBack(parameter.attack, dir, 150);
         }
-
     }
     //发现目标
     private void FindTarget()

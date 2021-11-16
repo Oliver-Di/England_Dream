@@ -44,7 +44,23 @@ public class PlayerAttack : MonoBehaviour
             else
             {
                 //传递伤害
-                collision.GetComponent<GetHit>().GetHitBack(attack, dir, 50);
+                collision.GetComponent<GetHit>().GetHitBack(attack, dir, 100);
+            }
+        }
+        else if (collision.CompareTag("BOSS") && isAttack)
+        {
+            //计算方向
+            Vector3 dir = transform.position - collision.transform.position;
+            if (collision.GetComponent<EvilWizard>().target == null &&
+                collision.GetComponent<EvilWizardGetHit>().isVertigo == false)
+            {
+                //击昏
+                collision.GetComponent<EvilWizardGetHit>().GetVertigo(attack);
+            }
+            else
+            {
+                //传递伤害
+                collision.GetComponent<EvilWizardGetHit>().GetHitBack(attack, dir, 50);
             }
         }
     }

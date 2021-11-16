@@ -16,6 +16,7 @@ public class GetHit : MonoBehaviour
     public GameObject blood4Prefab;
     public GameObject blood7Prefab;
     public GameObject blood9Prefab;
+    public GameObject blood3Prefab;
     [Header("Bodies")]
     public GameObject[] bodiesPrefab;
     public GameObject[] redBodiesPrefab;
@@ -103,6 +104,13 @@ public class GetHit : MonoBehaviour
         blood9.transform.position = new Vector2(transform.position.x, transform.position.y + 0.5f);
     }
 
+    public void BloodVFX3()
+    {
+        //喷血特效8
+        GameObject blood3 = ObjectPool.Instance.GetObject(blood3Prefab);
+        blood3.transform.position = new Vector2(transform.position.x, transform.position.y + 0.5f);
+    }
+
     //受击闪白
     IEnumerator HurtShader()
     {
@@ -114,9 +122,7 @@ public class GetHit : MonoBehaviour
     void Dead()
     {
         GetComponent<FSM>().TransitionState(StateType.Dead);
-
-        //enabled = false;
-        //transform.gameObject.layer = LayerMask.NameToLayer("Dead");
+        transform.gameObject.layer = LayerMask.NameToLayer("Dead");
     }
 
     public void Explode()
@@ -129,6 +135,10 @@ public class GetHit : MonoBehaviour
             ChooseBodiesType();
 
             gameObject.SetActive(false);
+        }
+        else
+        {
+            BloodVFX3();
         }
     }
 
