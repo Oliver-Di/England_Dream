@@ -63,6 +63,11 @@ public class PlayerAttack : MonoBehaviour
                 collision.GetComponent<EvilWizardGetHit>().GetHitBack(attack, dir, 50);
             }
         }
+        else if (collision.CompareTag("Tent") && isAttack)
+        {
+            //传递伤害
+            collision.GetComponent<Tent>().GetHit(attack);
+        }
     }
 
     //攻击

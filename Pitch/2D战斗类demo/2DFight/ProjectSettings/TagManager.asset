@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Head
   - BOSS
+  - Tent
   layers:
   - Default
   - TransparentFX

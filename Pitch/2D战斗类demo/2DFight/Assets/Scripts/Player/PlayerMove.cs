@@ -7,7 +7,6 @@ public class PlayerMove : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
-    private float velocityX;
 
     public float speed;
 
@@ -31,7 +30,7 @@ public class PlayerMove : MonoBehaviour
     //2D移动
     void movement()
     {
-        var dt = Time.deltaTime;
+        var dt = MyTime.deltaTime;
         //移动
         if (Input.GetAxisRaw("Horizontal") > 0)
         {

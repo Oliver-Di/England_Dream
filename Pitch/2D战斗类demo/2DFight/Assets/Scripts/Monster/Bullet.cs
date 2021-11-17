@@ -17,9 +17,15 @@ public class Bullet : MonoBehaviour
         {
             collision.GetComponent<EvilWizardGetHit>().GetVertigo(damage);
         }
+        else if (collision.CompareTag("Tent"))
+        {
+            collision.GetComponent<Tent>().GetHit(damage);
+        }
+
         if (collision.CompareTag("Ground") ||
             collision.CompareTag("Enemy") ||
-            collision.CompareTag("BOSS")) 
+            collision.CompareTag("BOSS") ||
+            collision.CompareTag("Tent")) 
         {
             GameObject blood = ObjectPool.Instance.GetObject(blood0);
             blood.transform.position = transform.position;

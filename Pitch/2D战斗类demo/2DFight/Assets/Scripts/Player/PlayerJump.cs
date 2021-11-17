@@ -36,50 +36,10 @@ public class PlayerJump : MonoBehaviour
         isOnGround = OnGround();
     }
 
-    //跳跃
-    void Jump()
-    {
-        if (Input.GetAxisRaw("Jump") == 1 && !isJumping)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpF);
-            isJumping = true;
-        }
-        if (isOnGround && Input.GetAxisRaw("Jump") == 0)
-        {
-            isJumping = false;
-            //设置动画
-            anim.SetBool("drop", false);
-            anim.SetBool("rise", false);
-        }
-        //玩家下坠
-        if (rb.velocity.y < 0)
-            rb.velocity += Vector2.up * Physics2D.gravity * (fallMultiplier - 1) * Time.fixedDeltaTime;
-
-        //玩家上升且没按space
-        else if (rb.velocity.y > 0 && Input.GetAxisRaw("Jump") != 1)
-            rb.velocity += Vector2.up * Physics2D.gravity * (jumpMultiplier - 1) * Time.fixedDeltaTime;
-
-        //设置动画
-        if (!isOnGround)
-        {
-            float latestY = transform.position.y;
-            if (rb.velocity.y > 0)
-            {
-                //设置动画
-                anim.SetBool("drop", false);
-                anim.SetBool("rise", true);
-            }
-            else if (rb.velocity.y < 0)
-            {
-                //设置动画
-                anim.SetBool("drop", true);
-                anim.SetBool("rise", false);
-            }
-        }
-    }
-
     private void NormalJump()
     {
+        float dt = MyTime.deltaTime;
+
         if (Input.GetAxisRaw("Jump") == 1 && !isJumping)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpF);
@@ -95,12 +55,12 @@ public class PlayerJump : MonoBehaviour
         //玩家上升
         else if (rb.velocity.y > 0)
         {
-            rb.velocity += Vector2.up * Physics2D.gravity * (jumpMultiplier - 1) * Time.fixedDeltaTime;
+            rb.velocity += Vector2.up * Physics2D.gravity * (jumpMultiplier - 1) * dt;
         }
         //玩家下坠
         if (rb.velocity.y < 0)
         {
-            rb.velocity += Vector2.up * Physics2D.gravity * (fallMultiplier - 1) * Time.fixedDeltaTime;
+            rb.velocity += Vector2.up * Physics2D.gravity * (fallMultiplier - 1) * dt;
             isJumping = true;
         }
         //设置动画
