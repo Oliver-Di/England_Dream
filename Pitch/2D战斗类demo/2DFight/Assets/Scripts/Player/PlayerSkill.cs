@@ -68,8 +68,14 @@ public class PlayerSkill : MonoBehaviour
     public void KillRewardMp(float _mp)
     {
         if (mp < maxMp)
+        {
             mp += _mp;
+            GameManager.instance.RefreshMp();
+        }
         if (mp > maxMp)
+        {
             mp = maxMp;
+            GameManager.instance.RefreshMp();
+        }
     }
 }

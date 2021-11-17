@@ -118,9 +118,15 @@ public class PlayerGetHit : MonoBehaviour
     public void KillRewardHp(float _hp)
     {
         if (hp < maxHp)
+        {
             hp += _hp;
+            GameManager.instance.RefreshHp();
+        }
         if (hp > maxHp)
+        {
             hp = maxHp;
+            GameManager.instance.RefreshHp();
+        }
     }
 
     public void Dead()

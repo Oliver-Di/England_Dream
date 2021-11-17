@@ -15,12 +15,14 @@ public class GameManager : MonoBehaviour
     public Image mpBar;
     public GameObject bloodPointPrefab;
     public GameObject magicPointPrefab;
+    public GameObject bloodOverlay;
 
     private float hp;
     private float maxHp;
     private float mp;
     private float maxMp;
     private Animator anim;
+    private bool blood;
 
     private void Awake()
     {
@@ -65,6 +67,18 @@ public class GameManager : MonoBehaviour
         maxHp = player.GetComponent<PlayerGetHit>().maxHp;
         //血条随血量变动
         hpBar.fillAmount = hp / maxHp;
+        //红屏
+        if (hp <= 0.25 * maxHp)
+        {
+            bloodOverlay.GetComponent<Animator>().SetTrigger("bloodin");
+            blood = true;
+        }
+        else if (blood && hp > 0.25 * maxHp)
+        {
+            bloodOverlay.GetComponent<Animator>().SetTrigger("bloodout");
+            blood = false;
+        }
+
     }
 
     public void RefreshMp()
