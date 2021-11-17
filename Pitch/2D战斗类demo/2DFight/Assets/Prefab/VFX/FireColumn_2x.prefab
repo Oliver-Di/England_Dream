@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 7970002250199068205}
   - component: {fileID: 7540211107555056458}
   - component: {fileID: 7178218038667834465}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: FireColumn_2x
-  m_TagString: Ground
+  m_TagString: VFX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -8,6 +8,7 @@ public class PlayerPickup : MonoBehaviour
     public GameObject[] allHeads;
     public GameObject pickupUI;
     public GameObject itemPoint;
+    public GameObject headIcon;
     public int headInt;
 
     private GameObject head;
@@ -80,9 +81,15 @@ public class PlayerPickup : MonoBehaviour
         {
             Transform item = itemPoint.transform.GetChild(i);
             if (item.GetComponent<Head>().headInt == headInt)
+            {
                 item.gameObject.SetActive(true);
+                headIcon.transform.GetChild(i).gameObject.SetActive(true);
+            }
             else
+            {
                 item.gameObject.SetActive(false);
+                headIcon.transform.GetChild(i).gameObject.SetActive(false);
+            }
         }
     }
 }

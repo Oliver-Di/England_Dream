@@ -25,7 +25,8 @@ public class Bullet : MonoBehaviour
         if (collision.CompareTag("Ground") ||
             collision.CompareTag("Enemy") ||
             collision.CompareTag("BOSS") ||
-            collision.CompareTag("Tent")) 
+            collision.CompareTag("Tent") ||
+            collision.CompareTag("VFX"))  
         {
             GameObject blood = ObjectPool.Instance.GetObject(blood0);
             blood.transform.position = transform.position;

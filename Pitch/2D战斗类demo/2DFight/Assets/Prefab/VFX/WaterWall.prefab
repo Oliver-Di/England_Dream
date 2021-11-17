@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5617070638025903414}
   m_Layer: 0
   m_Name: WaterWall
-  m_TagString: Ground
+  m_TagString: VFX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

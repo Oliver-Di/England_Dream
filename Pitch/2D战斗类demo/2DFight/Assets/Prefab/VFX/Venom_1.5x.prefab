@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 3391504704154818007}
   - component: {fileID: 4286809498942733921}
   - component: {fileID: 7047152199616497540}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Venom_1.5x
-  m_TagString: Ground
+  m_TagString: VFX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -9,6 +9,7 @@ TagManager:
   - Head
   - BOSS
   - Tent
+  - VFX
   layers:
   - Default
   - TransparentFX

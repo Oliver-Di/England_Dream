@@ -23,7 +23,7 @@ public class Venom : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") ||
-            collision.CompareTag("Ground")) 
+            collision.CompareTag("Ground"))   
         {
             GameObject explode = ObjectPool.Instance.GetObject(explodePrefab);
             explode.transform.position = transform.position;

@@ -12,6 +12,7 @@ public class EvilWizard : MonoBehaviour
     public Transform viewPoint;
     public float viewDistance;
     public bool lostTarget;
+    public bool isAttack;
     [Header("VFX")]
     public GameObject fireCreaterPrefab;
     public GameObject waterPrefab;
@@ -21,10 +22,12 @@ public class EvilWizard : MonoBehaviour
     public Transform venomPos;
 
     private float timer;
+    private Animator anim;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -51,12 +54,16 @@ public class EvilWizard : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //造成伤害
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && isAttack) 
         {
             //计算方向
             Vector3 dir = transform.position - target.position;
             //传递伤害
             collision.GetComponent<PlayerGetHit>().GetHitBack(attack, dir, 150);
+        }
+        if (collision.CompareTag("Head") && !isAttack)
+        {
+            anim.SetTrigger("water");
         }
     }
 
