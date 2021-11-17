@@ -59,6 +59,8 @@ public class GetHit : MonoBehaviour
     {
         //掉血
         hp -= damage;
+        //闪白
+        StartCoroutine(HurtShader());
         //没在变身可晕
         if (GetComponent<FSM>().parameter.isChanging == false)
         {
