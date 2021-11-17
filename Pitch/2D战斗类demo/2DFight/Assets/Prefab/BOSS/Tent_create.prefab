@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3515296399288696860}
   - component: {fileID: 3515296399288696861}
   m_Layer: 17
-  m_Name: Tent
+  m_Name: Tent_create
   m_TagString: Tent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,8 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c242a1eeeab4d904589f898e9f0be762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 40
-  hp: 20
+  time: 30
+  hp: 10
 --- !u!114 &3515296399288696860
 MonoBehaviour:
   m_ObjectHideFlags: 0

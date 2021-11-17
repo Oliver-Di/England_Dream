@@ -20,6 +20,7 @@ public class EvilWizard : MonoBehaviour
     public GameObject lightningPrefab;
     public GameObject venomPrefab;
     public Transform venomPos;
+    public GameObject tentPrefab;
 
     private float timer;
     private Animator anim;
@@ -153,5 +154,11 @@ public class EvilWizard : MonoBehaviour
             venom.GetComponent<Rigidbody2D>().velocity = new Vector2(randX,6);
             yield return new WaitForSeconds(0.3f);
         }
+    }
+
+    public void CreateTent()
+    {
+        GameObject tent = ObjectPool.Instance.GetObject(tentPrefab);
+        tent.transform.position = transform.position;
     }
 }

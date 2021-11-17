@@ -7,7 +7,8 @@ public class EvilWizardBehaviour : StateMachineBehaviour
     private Transform player;
     private Transform wizard;
     private int rand;
-    private float timer;
+    private float waitTimer;
+    private float tentTimer;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -23,7 +24,13 @@ public class EvilWizardBehaviour : StateMachineBehaviour
         {
             Turn();
 
-            if (timer <= 0)
+            if (tentTimer <= 0)
+            {
+                animator.SetTrigger("tent");
+                tentTimer = 120;
+            }
+
+            if (waitTimer <= 0)
             {
                 if (Mathf.Abs(player.transform.position.x - wizard.position.x) <= 3)
                 {
@@ -70,13 +77,16 @@ public class EvilWizardBehaviour : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        timer = 1;
+        waitTimer = 1;
     }
 
     void WaitTime()
     {
-        if (timer > 0)
-            timer -= Time.deltaTime;
+        if (waitTimer > 0)
+            waitTimer -= Time.deltaTime;
+
+        if (tentTimer > 0)
+            tentTimer -= Time.deltaTime;
     }
 
     //转向

@@ -3684,7 +3684,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 375065875}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.01, y: -1.97, z: -10}
+  m_LocalPosition: {x: 108.1, y: 12.8, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1706159334}
@@ -4760,7 +4760,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.01, y: -1.97, z: -10}
+  m_LocalPosition: {x: 108.1, y: 12.8, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6823,7 +6823,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791764901}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.01, y: -3.97, z: 0}
+  m_LocalPosition: {x: 108.1, y: 10.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3658183770198485144}
@@ -15145,6 +15145,8 @@ MonoBehaviour:
   venomPrefab: {fileID: 8598163832821487794, guid: dda83c1c158cae847a5a75344852df20,
     type: 3}
   venomPos: {fileID: 1150532932}
+  tentPrefab: {fileID: 3515296399288697063, guid: 9b3c15ee2317b624f90e09221143c196,
+    type: 3}
 --- !u!114 &2073323184
 MonoBehaviour:
   m_ObjectHideFlags: 0
