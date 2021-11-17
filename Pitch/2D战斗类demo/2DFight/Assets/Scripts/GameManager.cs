@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
             GameObject bead = ObjectPool.Instance.GetObject(bloodPointPrefab);
             bead.transform.position = pos;
             float rand1 = Random.Range(-1.5f, 1.5f);
-            float rand2 = Random.Range(5, 7);
+            float rand2 = Random.Range(3, 6);
             bead.GetComponent<Rigidbody2D>().velocity = new Vector2(rand1, rand2);
             Debug.Log(i);
         }
@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
             GameObject bead = ObjectPool.Instance.GetObject(magicPointPrefab);
             bead.transform.position = pos;
             float rand1 = Random.Range(-1.5f, 1.5f);
-            float rand2 = Random.Range(5, 7);
+            float rand2 = Random.Range(3, 6);
             bead.GetComponent<Rigidbody2D>().velocity = new Vector2(rand1, rand2);
         }
     }

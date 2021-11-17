@@ -14,7 +14,7 @@ public class VenomCreater : MonoBehaviour
         {
             GameObject venom = ObjectPool.Instance.GetObject(venomPrefab);
             venom.transform.position = venomPos.position;
-            venom.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x * (i), 2.5f);
+            venom.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x * (i + 1), 2.5f);
         }
     }
 }

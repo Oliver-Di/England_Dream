@@ -15,9 +15,10 @@ public class PlayerJump : MonoBehaviour
     public float jumpMultiplier;
 
     [Header("地面检测")]
-    public Vector2 pointOffset;
-    public Vector2 size;
     public LayerMask groundLayerMask;
+    public Transform leftLeg;
+    public Transform rightLeg;
+    public float distance;
 
     void Start()
     {
@@ -84,16 +85,20 @@ public class PlayerJump : MonoBehaviour
     //地面检测碰撞器
     bool OnGround()
     {
-        Collider2D Coll = Physics2D.OverlapBox((Vector2)transform.position + pointOffset,
-            size, 0, groundLayerMask);
+        RaycastHit2D leftRay = Physics2D.Raycast(leftLeg.position, Vector2.down, distance, groundLayerMask);
+        RaycastHit2D rightRay = Physics2D.Raycast(rightLeg.position, Vector2.down, distance, groundLayerMask);
+        if (leftRay.collider != null)
+            Debug.DrawLine(leftLeg.position, leftRay.point, Color.red);
+        else
+            Debug.DrawLine(leftLeg.position, leftLeg.position + Vector3.down*distance, Color.green);
+        if (rightRay.collider != null)
+            Debug.DrawLine(rightLeg.position, rightRay.point, Color.red);
+        else
+            Debug.DrawLine(rightLeg.position, rightLeg.position + Vector3.down*distance, Color.green);
 
-        return Coll != null;
-    }
-
-    //显示地面碰撞器
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube((Vector2)transform.position + pointOffset, size);
+        if (leftRay.collider != null || rightRay.collider != null)
+            return true;
+        else
+            return false;
     }
 }

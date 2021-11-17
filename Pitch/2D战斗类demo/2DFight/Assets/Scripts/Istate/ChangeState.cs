@@ -36,13 +36,13 @@ public class ChangeState : IState
     {
         if (parameter.type == Parameter.Type.red)
         {
-            parameter.attack = 3;
+            parameter.attack = 2;
             parameter.moveSpeed = 3;
-            parameter.chaseSpeed = 4;
+            parameter.chaseSpeed = 3.5f;
         }
         else if (parameter.type == Parameter.Type.green)
         {
-            parameter.attackDistance = 3;
+            parameter.attackDistance = 4;
             parameter.moveSpeed = 0.5f;
             parameter.chaseSpeed = 0.5f;
         }
