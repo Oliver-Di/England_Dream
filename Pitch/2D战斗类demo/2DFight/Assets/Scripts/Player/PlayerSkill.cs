@@ -20,7 +20,7 @@ public class PlayerSkill : MonoBehaviour
     void Update()
     {
         PressSkillButton();
-        SkillCD();
+        SkillData();
     }
 
     private void PressSkillButton()
@@ -41,11 +41,35 @@ public class PlayerSkill : MonoBehaviour
         }
     }
 
-    private void SkillCD()
+    private void SkillData()
     {
+        //技能CD
         if (!skillOn && cd > 0)
             cd -= Time.deltaTime;
-
+        //技能耗蓝
+        if (skillOn)
+        {
+            mp -= 0.01f;
+            GameManager.instance.RefreshMp();
+        }
+        else
+        {
+            //自动回蓝
+            if (mp < maxMp)
+            {
+                mp += 0.0005f;
+                GameManager.instance.RefreshMp();
+            }
+        }
+        //技能CD显示
         skillIcon.fillAmount = 1 - cd / 3;
+    }
+
+    public void KillRewardMp(float _mp)
+    {
+        if (mp < maxMp)
+            mp += _mp;
+        if (mp > maxMp)
+            mp = maxMp;
     }
 }

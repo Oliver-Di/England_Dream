@@ -115,6 +115,14 @@ public class PlayerGetHit : MonoBehaviour
         }
     }
 
+    public void KillRewardHp(float _hp)
+    {
+        if (hp < maxHp)
+            hp += _hp;
+        if (hp > maxHp)
+            hp = maxHp;
+    }
+
     public void Dead()
     {
         anim.SetTrigger("dead");

@@ -22,6 +22,7 @@ public class FireTrap : MonoBehaviour
         {
             isTriggering = true;
             Invoke("FireColumn", timer);
+            anim.SetTrigger("trigger");
         }
     }
 

@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public Image hpBar;
     public Image mpBar;
+    public GameObject bloodPointPrefab;
+    public GameObject magicPointPrefab;
 
     private float hp;
     private float maxHp;
@@ -67,9 +69,9 @@ public class GameManager : MonoBehaviour
 
     public void RefreshMp()
     {
-        hp = player.GetComponent<PlayerSkill>().mp;
-        maxHp = player.GetComponent<PlayerSkill>().maxMp;
-        //血条随血量变动
+        mp = player.GetComponent<PlayerSkill>().mp;
+        maxMp = player.GetComponent<PlayerSkill>().maxMp;
+        //蓝条随蓝量变动
         mpBar.fillAmount = mp / maxMp;
     }
 
@@ -99,10 +101,35 @@ public class GameManager : MonoBehaviour
         Debug.Log("RecoveryTime");
     }
 
-    public void SetAnimatorSpeed(Animator anim, float speed)
+    private void SetAnimatorSpeed(Animator anim, float speed)
     {
         if (null == anim) return;
         anim.speed = speed;
+    }
+
+    public void CreateBloodPoint(Vector3 pos, int num)
+    {
+        for (int i = 0; i < num; i++)
+        {
+            GameObject bead = ObjectPool.Instance.GetObject(bloodPointPrefab);
+            bead.transform.position = pos;
+            float rand1 = Random.Range(-1.5f, 1.5f);
+            float rand2 = Random.Range(5, 7);
+            bead.GetComponent<Rigidbody2D>().velocity = new Vector2(rand1, rand2);
+            Debug.Log(i);
+        }
+    }
+
+    public void CreateMagicPoint(Vector3 pos, int num)
+    {
+        for (int i = 0; i < num; i++)
+        {
+            GameObject bead = ObjectPool.Instance.GetObject(magicPointPrefab);
+            bead.transform.position = pos;
+            float rand1 = Random.Range(-1.5f, 1.5f);
+            float rand2 = Random.Range(5, 7);
+            bead.GetComponent<Rigidbody2D>().velocity = new Vector2(rand1, rand2);
+        }
     }
 }
 

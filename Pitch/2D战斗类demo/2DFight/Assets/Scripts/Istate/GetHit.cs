@@ -165,9 +165,15 @@ public class GetHit : MonoBehaviour
             GameObject body = ObjectPool.Instance.GetObject(prefab[i]);
             body.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
             //随机抛飞
-            float rand1 = Random.Range(-1.7f, 1.7f);
+            float rand1 = Random.Range(-2.5f, 2.5f);
             float rand2 = Random.Range(3, 5);
-            body.GetComponent<Rigidbody2D>().velocity = new Vector2(rand1 * 1.5f, rand2);
+            body.GetComponent<Rigidbody2D>().velocity = new Vector2(rand1 , rand2);
         }
+        //生成血蓝珠
+        int rand3 = Random.Range(0, 5);
+        Vector2 pos1 = new Vector2(transform.position.x + 0.5f,transform.position.y);
+        GameManager.instance.CreateBloodPoint(pos1, rand3);
+        int rand4 = Random.Range(0, 3);
+        GameManager.instance.CreateMagicPoint(pos1, rand4);
     }
 }
