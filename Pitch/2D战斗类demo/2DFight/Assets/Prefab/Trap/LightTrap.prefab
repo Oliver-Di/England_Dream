@@ -161,7 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2421351274604757629}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: LightTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}

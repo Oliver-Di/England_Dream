@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1254565802269165167}
   - component: {fileID: 1254565802269165174}
   - component: {fileID: 1254565802269165161}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1254565802562887350}
   - component: {fileID: 1254565802562887337}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: BladeTrap
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
