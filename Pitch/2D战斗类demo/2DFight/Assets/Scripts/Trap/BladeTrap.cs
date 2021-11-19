@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class BladeTrap : MonoBehaviour
 {
+    private float num;
+
+    private void Update()
+    {
+        BladeSway();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -14,5 +21,11 @@ public class BladeTrap : MonoBehaviour
             //眩晕主角
             collision.transform.GetComponent<PlayerGetHit>().Vertigo();
         }
+    }
+
+    private void BladeSway()
+    {
+        num = Mathf.Sin(Time.time);
+        Debug.Log(num);
     }
 }
