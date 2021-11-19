@@ -159,6 +159,14 @@ public class BoardService : MonoBehaviour
         target.SetCurrentTarget(true);
         DisplayGoals(target);
         _current = target;
+
+        //计算是否有可消除目标
+        var count = ShowAndGetErasableChesses();
+        if (count != 0)
+        {
+            _current.SetCanErase(true);
+        }
+
         SoundService.instance.Play("select");
     }
 

@@ -28,16 +28,23 @@ public class ChangeState : IState
         if (info.normalizedTime >= 0.95f)
         {
             manager.TransitionState(StateType.Chase);
-            Debug.Log(info.normalizedTime);
             parameter.isChanging = false;
         }
     }
 
     public void OnExit()
     {
-        //parameter.hp = parameter.maxHp = 300;
-        parameter.attack = 30;
-        parameter.moveSpeed = 4;
-        parameter.chaseSpeed = 5;
+        if (parameter.type == Parameter.Type.red)
+        {
+            parameter.attack = 2;
+            parameter.moveSpeed = 3;
+            parameter.chaseSpeed = 3.5f;
+        }
+        else if (parameter.type == Parameter.Type.green)
+        {
+            parameter.attackDistance = 4;
+            parameter.moveSpeed = 0.5f;
+            parameter.chaseSpeed = 0.5f;
+        }
     }
 }

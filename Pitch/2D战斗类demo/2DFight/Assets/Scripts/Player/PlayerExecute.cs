@@ -8,6 +8,7 @@ public class PlayerExecute : MonoBehaviour
     public Transform executePoint;
     public LayerMask targetLayer;
     public GameObject executeIcon;
+    public bool isExecute;
 
     private Animator anim;
     private GameObject target;
@@ -33,16 +34,35 @@ public class PlayerExecute : MonoBehaviour
             Debug.DrawLine(executePoint.position, executeRay.point, Color.red);
             target = executeRay.collider.gameObject;
 
-            if(executeRay.collider.GetComponent<GetHit>().isVertigo == true)
+            if (executeRay.collider.tag == "Enemy")
             {
-                //提示处决
-                executeIcon.SetActive(true);
-
-                if (Input.GetMouseButton(1))
+                if (executeRay.collider.GetComponent<GetHit>().isVertigo == true)
                 {
-                    anim.SetTrigger("execute");
+                    //提示处决
+                    executeIcon.SetActive(true);
+
+                    if (Input.GetMouseButton(1) && isExecute == false)
+                    {
+                        isExecute = true;
+                        anim.SetTrigger("execute");
+                    }
                 }
             }
+            else if (executeRay.collider.tag == "BOSS")
+            {
+                if (executeRay.collider.GetComponent<EvilWizardGetHit>().isVertigo == true)
+                {
+                    //提示处决
+                    executeIcon.SetActive(true);
+
+                    if (Input.GetMouseButton(1) && isExecute == false)
+                    {
+                        isExecute = true;
+                        anim.SetTrigger("execute");
+                    }
+                }
+            }
+
         }
         else
         {
@@ -54,11 +74,18 @@ public class PlayerExecute : MonoBehaviour
 
     public void Execute()
     {
-        target.GetComponent<GetHit>().GetExecute(attack * 10);
+        if(target.tag=="Enemy")
+            target.GetComponent<GetHit>().GetExecute(attack * 10);
+        else if(target.tag == "BOSS")
+            target.GetComponent<EvilWizardGetHit>().GetExecute(attack * 10);
     }
 
     public void TryExplode()
     {
-        target.GetComponent<GetHit>().Explode();
+        if (target.tag == "Enemy")
+            target.GetComponent<GetHit>().Explode();
+        else if (target.tag == "BOSS")
+            target.GetComponent<EvilWizardGetHit>().Explode();
+        isExecute = false;
     }
 }

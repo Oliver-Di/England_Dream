@@ -17,7 +17,14 @@ public class VertigoState : IState
     {
         timer = 5f;
         parameter.target = parameter.player;
-        parameter.anim.Play("vertigo");
+        if (parameter.isChanged == false)
+        {
+            parameter.anim.Play("vertigo");
+        }
+        else
+        {
+            parameter.anim.Play("vertigo2");
+        }
     }
 
     public void OnExit()

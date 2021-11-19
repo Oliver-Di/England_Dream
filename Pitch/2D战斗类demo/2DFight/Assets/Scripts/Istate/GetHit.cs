@@ -10,11 +10,17 @@ public class GetHit : MonoBehaviour
 
     public float maxHp;
     public float hp;
+    public bool isVertigo;
+    [Header("VFX")]
     public GameObject blood8Prefab;
     public GameObject blood4Prefab;
     public GameObject blood7Prefab;
     public GameObject blood9Prefab;
-    public bool isVertigo;
+    public GameObject blood3Prefab;
+    [Header("Bodies")]
+    public GameObject[] bodiesPrefab;
+    public GameObject[] redBodiesPrefab;
+    public GameObject[] greenBodiesPrefab;
 
     private void Start()
     {
@@ -39,22 +45,29 @@ public class GetHit : MonoBehaviour
             Dead();
 
         //判断变身
-        //if (parameter.hp <= 0.5f * parameter.maxHp && parameter.isChanged == false)
-        //{
-        //    ChangeToRed();
-        //    parameter.isChanged = true;
-        //}
+        if (hp <= 0.5f * maxHp &&
+            GetComponent<FSM>().parameter.isChanged == false &&
+            GetComponent<FSM>().parameter.type != Parameter.Type.normal) 
+        {
+
+            GetComponent<FSM>().Change();
+            GetComponent<FSM>().parameter.isChanged = true;
+        }
     }
 
     public void GetVertigo(float damage)
     {
         //掉血
         hp -= damage;
-        //眩晕状态
-        GetComponent<FSM>().TransitionState(StateType.Vertigo);
-        isVertigo = true;
-        //眩晕动画
-
+        //闪白
+        StartCoroutine(HurtShader());
+        //没在变身可晕
+        if (GetComponent<FSM>().parameter.isChanging == false)
+        {
+            //眩晕状态
+            GetComponent<FSM>().TransitionState(StateType.Vertigo);
+            isVertigo = true;
+        }
         //判断死亡
         if (hp <= 0)
             Dead();
@@ -65,6 +78,7 @@ public class GetHit : MonoBehaviour
     public void GetExecute(float damage)
     {
         hp -= damage;
+        BloodVFX1();
 
         //发现敌人
         GetComponent<FSM>().parameter.target = GetComponent<FSM>().parameter.player;
@@ -92,6 +106,13 @@ public class GetHit : MonoBehaviour
         blood9.transform.position = new Vector2(transform.position.x, transform.position.y + 0.5f);
     }
 
+    public void BloodVFX3()
+    {
+        //喷血特效8
+        GameObject blood3 = ObjectPool.Instance.GetObject(blood3Prefab);
+        blood3.transform.position = new Vector2(transform.position.x, transform.position.y + 0.5f);
+    }
+
     //受击闪白
     IEnumerator HurtShader()
     {
@@ -103,9 +124,7 @@ public class GetHit : MonoBehaviour
     void Dead()
     {
         GetComponent<FSM>().TransitionState(StateType.Dead);
-
-        //enabled = false;
-        //transform.gameObject.layer = LayerMask.NameToLayer("Dead");
+        transform.gameObject.layer = LayerMask.NameToLayer("Dead");
     }
 
     public void Explode()
@@ -114,9 +133,50 @@ public class GetHit : MonoBehaviour
         if (hp <= 0)
         {
             BloodVFX2();
-            //生成残肢
+            //生成尸块
+            ChooseBodiesType();
 
             gameObject.SetActive(false);
         }
+        else
+        {
+            BloodVFX3();
+        }
+    }
+
+    private void ChooseBodiesType()
+    {
+        if (GetComponent<FSM>().parameter.type == Parameter.Type.normal ||
+            GetComponent<FSM>().parameter.type == Parameter.Type.red &&
+            GetComponent<FSM>().parameter.isChanged == false ||
+            GetComponent<FSM>().parameter.type == Parameter.Type.green &&
+            GetComponent<FSM>().parameter.isChanged == false) 
+            CreateBodies(bodiesPrefab);
+        else if (GetComponent<FSM>().parameter.type == Parameter.Type.red &&
+            GetComponent<FSM>().parameter.isChanged == true) 
+            CreateBodies(redBodiesPrefab);
+        else if (GetComponent<FSM>().parameter.type == Parameter.Type.green &&
+            GetComponent<FSM>().parameter.isChanged == true)
+            CreateBodies(greenBodiesPrefab);
+    }
+
+    private void CreateBodies(GameObject[] prefab)
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            //生成尸块
+            GameObject body = ObjectPool.Instance.GetObject(prefab[i]);
+            body.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+            //随机抛飞
+            float rand1 = Random.Range(-2.5f, 2.5f);
+            float rand2 = Random.Range(3, 5);
+            body.GetComponent<Rigidbody2D>().velocity = new Vector2(rand1 , rand2);
+        }
+        //生成血蓝珠
+        int rand3 = Random.Range(0, 5);
+        Vector2 pos1 = new Vector2(transform.position.x ,transform.position.y+1.3f);
+        GameManager.instance.CreateBloodPoint(pos1, rand3);
+        int rand4 = Random.Range(0, 3);
+        GameManager.instance.CreateMagicPoint(pos1, rand4);
     }
 }

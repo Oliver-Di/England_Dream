@@ -22,14 +22,21 @@ public class Parameter
     public float chaseSpeed;
     public float idleTime;
 
+    public Type type;
+    public enum Type
+    {
+        normal,
+        red,
+        green,
+    }
+
     [Header("Attack Data")]
     public Transform target;
     public LayerMask targetLayer;
     public Transform attackPoint;
-    public float attackArea;
-    //public Transform viewPoint;
-    //public Vector3 viewArea;
-    //public float distance;
+    public float attackDistance;
+    public Transform viewPoint;
+    public float viewDistance;
     public bool lostTarget;
 
     [Header("DeBug")]
@@ -74,10 +81,9 @@ public class FSM : MonoBehaviour
         Physics2D.queriesStartInColliders = false;
     }
 
-
     void Update()
     {
-        LostTarget();
+        FindTarget();
         currentState.OnUpdate();
     }
 
@@ -89,7 +95,7 @@ public class FSM : MonoBehaviour
         currentState = states[type];
         currentState.OnEnter();
 
-        Debug.Log(type);
+        //Debug.Log(type);
     }
 
     //角色朝向
@@ -118,91 +124,42 @@ public class FSM : MonoBehaviour
             //传递伤害
             collision.GetComponent<PlayerGetHit>().GetHitBack(parameter.attack, dir, 150);
         }
+    }
+    //发现目标
+    private void FindTarget()
+    {
+        float direction = transform.localScale.x;
+        Vector3 Dir = new Vector3(direction * parameter.viewDistance, 0, 0);
+        RaycastHit2D viewRay = Physics2D.Raycast(parameter.viewPoint.position, Dir, parameter.viewDistance, parameter.targetLayer);
 
-        //发现敌人
-        if (collision.CompareTag("Player"))
+        if (viewRay.collider != null)
         {
+            Debug.DrawLine(parameter.viewPoint.position, viewRay.point, Color.red);
+
             parameter.target = parameter.player;
             timer = 3;
         }
-    }
-
-    //敌人离开视野
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
+        else
         {
-            parameter.lostTarget = true;
+            Debug.DrawLine(parameter.viewPoint.position, parameter.viewPoint.position + Dir, Color.blue);
         }
-    }
-
-    //丢失计时
-    void LostTarget()
-    {
-        //if (Physics2D.OverlapBox(parameter.viewPoint.position, parameter.viewArea, 0, parameter.targetLayer))
-        //{
-        //    parameter.target = parameter.player;
-        //    timer = 3;
-        //    Debug.Log("init");
-        //}
-        //RaycastHit2D view = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, parameter.distance);
-        //Debug.Log(transform.localScale.x);
-        //if (view.collider != null)
-        //{
-        //    Debug.Log(view.collider.gameObject.name);
-        //    Debug.DrawLine(transform.position, view.point, Color.red);
-        //}
-        //else
-        //{
-        //    Debug.DrawLine(transform.position, Vector2.right * transform.localScale.x * parameter.distance, Color.green);
-        //}
-
-        //if(parameter.target!=null&&
-        //    !Physics2D.OverlapBox(parameter.viewPoint.position, parameter.viewArea, 0, parameter.targetLayer))
-        //{
-        //    timer -= Time.deltaTime;
-        //}
+        //丢失计时
+        if (viewRay.collider == null && 
+            timer > 0 && 
+            GetComponent<GetHit>().isVertigo == false) 
+        {
+            timer -= Time.deltaTime;
+        }
 
         if (timer <= 0)
         {
             parameter.target = null;
             timer = 3;
         }
-
-        if (parameter.lostTarget &&
-            timer > 0 &&
-            GetComponent<GetHit>().isVertigo == false) 
-        {
-            timer -= Time.deltaTime;
-        }
     }
 
-    //绘制范围
-    private void OnDrawGizmos()
+    public void Change()
     {
-        //攻击范围
-        Gizmos.DrawWireSphere(parameter.attackPoint.position, parameter.attackArea);
-        ////视野范围
-        //Gizmos.DrawWireCube(parameter.viewPoint.position,parameter.viewArea);
-    }
-
-
-    ////受击停顿
-    //IEnumerator Stop()
-    //{
-    //    if (parameter.isChanging == false)
-    //    {
-    //        TransitionState(StateType.Null);
-    //        yield return new WaitForSeconds(0.1f);
-    //        parameter.target = parameter.player;
-    //        TransitionState(StateType.Chase);
-    //    }
-    //}
-
-    //变身
-    IEnumerator ChangeToRed()
-    {
-        yield return new WaitForSeconds(0.1f);
         TransitionState(StateType.Change);
     }
 }

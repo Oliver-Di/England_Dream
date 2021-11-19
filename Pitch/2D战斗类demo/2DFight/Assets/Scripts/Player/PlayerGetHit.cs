@@ -7,12 +7,14 @@ public class PlayerGetHit : MonoBehaviour
     private SpriteRenderer sr;
     private Rigidbody2D rb;
     private Animator anim;
+    private float timer;
+    private bool hpIncreasing;
 
     public float maxHp;
     public float hp;
     public bool isDead;
+    public bool isVertigo;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -20,31 +22,35 @@ public class PlayerGetHit : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        BloodReturn();
+
+        if (timer > 0)
+            timer -= Time.deltaTime;
     }
 
     //受击掉血且击退
     public void GetHitBack(float damage, Vector3 dir, float force)
     {
         hp -= damage;
-
+        //修正回血等待时间
+        timer = 5;
+        GameManager.instance.RefreshHp();
         //闪白
         StartCoroutine(HurtShader());
         //后退
         rb.AddForce(-dir * force);
+        //修正状态
+        GetComponent<PlayerAttack>().isAttack = false;
+        GetComponent<PlayerExecute>().isExecute = false;
+        isVertigo = false;
+        
         //判断死亡
         if (hp <= 0)
-        {
             Dead();
-        }
         else
-        {
             anim.SetTrigger("hurt");
-        }
-
     }
 
     //受击闪白
@@ -55,9 +61,78 @@ public class PlayerGetHit : MonoBehaviour
         sr.material.SetFloat("_FlashAmount", 0);
     }
 
+    private void BloodReturn()
+    {
+        if (timer <= 0 &&
+            hp < maxHp &&
+            !hpIncreasing) 
+        {
+            StartCoroutine(ContinuousBloodReturn());
+            hpIncreasing = true;
+            BuffIcon.instance.StartBuff(4, 0.5f);
+        }
+    }
+
+    IEnumerator ContinuousBloodReturn()
+    {
+        hp += 0.01f;
+        GameManager.instance.RefreshHp();
+        yield return new WaitForSeconds(0.5f);
+        hpIncreasing = false;
+    }
+
+    public void Vertigo()
+    {
+        if (hp > 0)
+        {
+            isVertigo = true;
+            rb.velocity = Vector2.zero;
+            anim.SetTrigger("vertigo");
+            BuffIcon.instance.StartBuff(0, 1);
+        }
+    }
+
+    public void VertigoEnd()
+    {
+        isVertigo = false;
+    }
+
+    public void DebuffBloodLoss(float damage,int num)
+    {
+        StartCoroutine(ContinuousBloodLoss(damage));
+        BuffIcon.instance.StartBuff(num, 5);
+    }
+
+    IEnumerator ContinuousBloodLoss(float damage)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            hp -= damage;
+            //修正回血等待时间
+            timer = 5;
+            GameManager.instance.RefreshHp();
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    public void KillRewardHp(float _hp)
+    {
+        if (hp < maxHp)
+        {
+            hp += _hp;
+            GameManager.instance.RefreshHp();
+        }
+        if (hp > maxHp)
+        {
+            hp = maxHp;
+            GameManager.instance.RefreshHp();
+        }
+    }
+
     public void Dead()
     {
         anim.SetTrigger("dead");
         isDead = true;
+        transform.gameObject.layer = LayerMask.NameToLayer("Dead");
     }
 }

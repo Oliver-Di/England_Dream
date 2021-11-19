@@ -6,6 +6,7 @@ public class ChaseState : IState
 {
     private FSM manager;
     private Parameter parameter;
+    private float timer;
 
     public ChaseState(FSM manager)
     {
@@ -27,7 +28,7 @@ public class ChaseState : IState
     public void OnUpdate()
     {
         //朝向目标
-        if(parameter.target!= null)
+        if (parameter.target != null) 
         {
             manager.FlipTo(parameter.target.position);
         }
@@ -48,14 +49,39 @@ public class ChaseState : IState
         }
 
         //检测到目标则切换为攻击状态
-        if (Physics2D.OverlapCircle(parameter.attackPoint.position, parameter.attackArea, parameter.targetLayer))
+        float direction = manager.transform.localScale.x;
+        Vector3 Dir = new Vector3(direction * parameter.attackDistance, 0, 0);
+        RaycastHit2D attackRay = Physics2D.Raycast(parameter.attackPoint.position, Dir, parameter.attackDistance, parameter.targetLayer);
+
+        if (attackRay.collider != null)
         {
-            manager.TransitionState(StateType.Attack);
+            Debug.DrawLine(parameter.attackPoint.position, attackRay.point, Color.red);
+
+            if (parameter.type == Parameter.Type.green &&
+                parameter.isChanged == true) 
+            {
+                if (timer <= 0)
+                {
+                    timer = 3;
+                    manager.TransitionState(StateType.Attack);
+                }
+            }
+            else
+            {
+                manager.TransitionState(StateType.Attack);
+            }
         }
+        else
+        {
+            Debug.DrawLine(parameter.attackPoint.position, parameter.attackPoint.position + Dir, Color.green);
+        }
+
+        if (timer > 0)
+            timer -= Time.deltaTime;
     }
 
     public void OnExit()
     {
-
+        
     }
 }

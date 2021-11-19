@@ -12,25 +12,26 @@ public class PlayerAttack : MonoBehaviour
     private int combo;
     private float timer;
 
-    // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (GetComponent<PlayerGetHit>().isDead == false)
+        if (GetComponent<PlayerGetHit>().isDead == false &&
+            GetComponent<PlayerGetHit>().isVertigo == false) 
+        {
             Attack();
+        }
     }
 
     //传递攻击
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //造成伤害
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy") && isAttack) 
         {
             //计算方向
             Vector3 dir = transform.position - collision.transform.position;
@@ -43,8 +44,29 @@ public class PlayerAttack : MonoBehaviour
             else
             {
                 //传递伤害
-                collision.GetComponent<GetHit>().GetHitBack(attack, dir, 150);
+                collision.GetComponent<GetHit>().GetHitBack(attack, dir, 100);
             }
+        }
+        else if (collision.CompareTag("BOSS") && isAttack)
+        {
+            //计算方向
+            Vector3 dir = transform.position - collision.transform.position;
+            if (collision.GetComponent<EvilWizard>().target == null &&
+                collision.GetComponent<EvilWizardGetHit>().isVertigo == false)
+            {
+                //击昏
+                collision.GetComponent<EvilWizardGetHit>().GetVertigo(attack);
+            }
+            else
+            {
+                //传递伤害
+                collision.GetComponent<EvilWizardGetHit>().GetHitBack(attack, dir, 50);
+            }
+        }
+        else if (collision.CompareTag("Tent") && isAttack)
+        {
+            //传递伤害
+            collision.GetComponent<Tent>().GetHit(attack);
         }
     }
 
