@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BladeTrap : MonoBehaviour
 {
-    private float num;
+    private float rotateZ;
 
     private void Update()
     {
@@ -25,7 +25,7 @@ public class BladeTrap : MonoBehaviour
 
     private void BladeSway()
     {
-        num = Mathf.Sin(Time.time);
-        Debug.Log(num);
+        rotateZ = Mathf.Sin(Time.time);
+        transform.rotation = Quaternion.Euler(0, 0, rotateZ * 60);
     }
 }
