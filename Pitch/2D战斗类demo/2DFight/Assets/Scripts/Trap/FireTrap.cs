@@ -18,7 +18,8 @@ public class FireTrap : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") &&
-            isTriggering == false) 
+            isTriggering == false &&
+            Vector2.Distance(collision.transform.position, transform.position) < 0.3f)  
         {
             isTriggering = true;
             Invoke("FireColumn", timer);

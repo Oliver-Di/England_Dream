@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class BladeTrap : MonoBehaviour
 {
-    private float rotateZ;
+    public float speed;
+    public float offset;
 
     private void Update()
     {
-        BladeSway();
+        transform.rotation = Quaternion.Euler(0, 0, Mathf.Sin(Time.time * speed + offset) * 60);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,11 +22,5 @@ public class BladeTrap : MonoBehaviour
             //眩晕主角
             collision.transform.GetComponent<PlayerGetHit>().Vertigo();
         }
-    }
-
-    private void BladeSway()
-    {
-        rotateZ = Mathf.Sin(Time.time);
-        transform.rotation = Quaternion.Euler(0, 0, rotateZ * 60);
     }
 }
