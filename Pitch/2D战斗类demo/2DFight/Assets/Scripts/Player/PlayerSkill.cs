@@ -25,15 +25,16 @@ public class PlayerSkill : MonoBehaviour
 
     private void PressSkillButton()
     {
-        if(Input.GetKeyDown(KeyCode.Q)&&
-            mp>0&&
-            cd<=0&&
+        if (Input.GetKeyDown(KeyCode.Q) &&
+            mp > 0 &&
+            cd <= 0 &&
             !skillOn)
         {
             GameManager.instance.SlowDownTime();
             skillOn = true;
         }
-        else if(Input.GetKeyDown(KeyCode.Q) && skillOn)
+        else if (Input.GetKeyDown(KeyCode.Q) && skillOn ||
+            mp <= 0 && skillOn) 
         {
             GameManager.instance.RecoveryTime();
             skillOn = false;

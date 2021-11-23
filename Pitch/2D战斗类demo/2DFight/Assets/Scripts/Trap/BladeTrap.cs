@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class BladeTrap : MonoBehaviour
 {
+    public float speed;
+    public float offset;
+
+    private void Update()
+    {
+        transform.rotation = Quaternion.Euler(0, 0, Mathf.Sin(Time.time * speed + offset) * 60);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

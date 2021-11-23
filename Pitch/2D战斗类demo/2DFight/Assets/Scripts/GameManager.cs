@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class GameManager : MonoBehaviour
 {
@@ -99,8 +100,23 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlayerJump>().jumpMultiplier = 3;
         player.GetComponent<Rigidbody2D>().gravityScale = 4;
         SetAnimatorSpeed(anim, 2);
-        Debug.Log("SlowDownTime");
+
+        Camera.main.GetComponent<PostProcessVolume>().enabled = true;
+        Debug.Log("SlowDownTime_0.5x");
     }
+
+    //public void SlowDownTime()
+    //{
+    //    Time.timeScale = 0.2f;
+    //    MyTime.timescale = 5;
+    //    player.GetComponent<PlayerMove>().speed = 25;
+    //    player.GetComponent<PlayerJump>().jumpF = 38;
+    //    player.GetComponent<PlayerJump>().fallMultiplier = 9.5f;
+    //    player.GetComponent<PlayerJump>().jumpMultiplier = 7.5f;
+    //    player.GetComponent<Rigidbody2D>().gravityScale = 10;
+    //    SetAnimatorSpeed(anim, 2);
+    //    Debug.Log("SlowDownTime_0.2x");
+    //}
 
     public void RecoveryTime()
     {
@@ -112,7 +128,9 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlayerJump>().jumpMultiplier = 1.5f;
         player.GetComponent<Rigidbody2D>().gravityScale = 2;
         SetAnimatorSpeed(anim, 1);
-        Debug.Log("RecoveryTime");
+
+        Camera.main.GetComponent<PostProcessVolume>().enabled = false;
+        Debug.Log("RecoveryTime_1");
     }
 
     private void SetAnimatorSpeed(Animator anim, float speed)
