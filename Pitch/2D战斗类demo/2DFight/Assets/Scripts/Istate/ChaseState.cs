@@ -33,21 +33,6 @@ public class ChaseState : IState
             manager.FlipTo(parameter.target.position);
         }
 
-        //向目标靠近
-        if (parameter.target)
-        {
-            manager.transform.position = Vector2.MoveTowards(manager.transform.position,
-                parameter.target.position, parameter.chaseSpeed * Time.deltaTime);
-        }
-
-        //丢失目标恢复静止
-        if (parameter.target == null ||
-            manager.transform.position.x < parameter.chasePoints[0].position.x ||
-            manager.transform.position.x > parameter.chasePoints[1].position.x) 
-        {
-            manager.TransitionState(StateType.Idle);
-        }
-
         //检测到目标则切换为攻击状态
         float direction = manager.transform.localScale.x;
         Vector3 Dir = new Vector3(direction * parameter.attackDistance, 0, 0);
@@ -74,6 +59,21 @@ public class ChaseState : IState
         else
         {
             Debug.DrawLine(parameter.attackPoint.position, parameter.attackPoint.position + Dir, Color.green);
+        }
+
+        //不在攻击范围内则向目标靠近
+        if (parameter.target && attackRay.collider == null) 
+        {
+            manager.transform.position = Vector2.MoveTowards(manager.transform.position,
+                parameter.target.position, parameter.chaseSpeed * Time.deltaTime);
+        }
+
+        //丢失目标恢复静止
+        if (parameter.target == null ||
+            manager.transform.position.x < parameter.chasePoints[0].position.x ||
+            manager.transform.position.x > parameter.chasePoints[1].position.x)
+        {
+            manager.TransitionState(StateType.Idle);
         }
 
         if (timer > 0)
