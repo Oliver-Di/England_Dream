@@ -6,6 +6,7 @@ public class PlayerJump : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
+    private int jumpCount;
 
     [Header("跳跃属性")]
     public bool isJumping;
@@ -13,6 +14,7 @@ public class PlayerJump : MonoBehaviour
     public float jumpF;
     public float fallMultiplier;
     public float jumpMultiplier;
+    public int jumpNum;
 
     [Header("地面检测")]
     public LayerMask groundLayerMask;
@@ -41,14 +43,16 @@ public class PlayerJump : MonoBehaviour
     {
         float dt = MyTime.deltaTime;
 
-        if (Input.GetAxisRaw("Jump") == 1 && !isJumping)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < jumpNum) 
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpF);
             isJumping = true;
+            jumpCount++;
         }
         if (isOnGround && Input.GetAxisRaw("Jump") == 0)
         {
             isJumping = false;
+            jumpCount = 0;
             //设置动画
             anim.SetBool("drop", false);
             anim.SetBool("rise", false);

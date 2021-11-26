@@ -2028,7 +2028,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 165
+  m_SurfaceArc: 179
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -2296,6 +2296,7 @@ MonoBehaviour:
   jumpF: 10
   fallMultiplier: 1.9
   jumpMultiplier: 1.5
+  jumpNum: 2
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 67108864
