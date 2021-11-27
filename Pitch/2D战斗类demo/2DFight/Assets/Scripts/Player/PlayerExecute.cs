@@ -36,7 +36,7 @@ public class PlayerExecute : MonoBehaviour
 
             if (executeRay.collider.tag == "Enemy")
             {
-                if (executeRay.collider.GetComponent<GetHit>().isVertigo == true)
+                if (executeRay.collider.GetComponent<EnemyGetHit>().isVertigo == true)
                 {
                     //提示处决
                     executeIcon.SetActive(true);
@@ -75,7 +75,7 @@ public class PlayerExecute : MonoBehaviour
     public void Execute()
     {
         if(target.tag=="Enemy")
-            target.GetComponent<GetHit>().GetExecute(attack * 10);
+            target.GetComponent<EnemyGetHit>().GetExecute(attack * 10);
         else if(target.tag == "BOSS")
             target.GetComponent<EvilWizardGetHit>().GetExecute(attack * 10);
     }
@@ -83,7 +83,7 @@ public class PlayerExecute : MonoBehaviour
     public void TryExplode()
     {
         if (target.tag == "Enemy")
-            target.GetComponent<GetHit>().Explode();
+            target.GetComponent<EnemyGetHit>().Explode();
         else if (target.tag == "BOSS")
             target.GetComponent<EvilWizardGetHit>().Explode();
         isExecute = false;

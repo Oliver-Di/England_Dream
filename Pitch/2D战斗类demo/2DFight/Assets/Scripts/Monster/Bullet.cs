@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy")) 
         {
-            collision.GetComponent<GetHit>().GetVertigo(damage);
+            collision.GetComponent<EnemyGetHit>().GetVertigo(damage);
         }
         else if (collision.CompareTag("BOSS"))
         {
@@ -21,12 +21,17 @@ public class Bullet : MonoBehaviour
         {
             collision.GetComponent<Tent>().GetHit(damage);
         }
+        else if (collision.CompareTag("Corpses"))
+        {
+            collision.GetComponent<Corpses>().GetHit(damage);
+        }
 
         if (collision.CompareTag("Ground") ||
             collision.CompareTag("Enemy") ||
             collision.CompareTag("BOSS") ||
+            collision.CompareTag("VFX") ||
             collision.CompareTag("Tent") ||
-            collision.CompareTag("VFX"))  
+            collision.CompareTag("Corpses"))   
         {
             GameObject blood = ObjectPool.Instance.GetObject(blood0);
             blood.transform.position = transform.position;

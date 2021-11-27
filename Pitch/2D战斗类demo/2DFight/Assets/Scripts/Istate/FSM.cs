@@ -95,7 +95,7 @@ public class FSM : MonoBehaviour
         currentState = states[type];
         currentState.OnEnter();
 
-        //Debug.Log(type);
+        Debug.Log(type);
     }
 
     //角色朝向
@@ -146,7 +146,7 @@ public class FSM : MonoBehaviour
         //丢失计时
         if (viewRay.collider == null && 
             timer > 0 && 
-            GetComponent<GetHit>().isVertigo == false) 
+            GetComponent<EnemyGetHit>().isVertigo == false) 
         {
             timer -= Time.deltaTime;
         }

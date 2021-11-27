@@ -25,8 +25,8 @@ public class HpBar : MonoBehaviour
     {
         HideBar();
 
-        hp = obj.GetComponent<GetHit>().hp;
-        maxHp = obj.GetComponent<GetHit>().maxHp;
+        hp = obj.GetComponent<EnemyGetHit>().hp;
+        maxHp = obj.GetComponent<EnemyGetHit>().maxHp;
         //血条随血量变动
         hp_fill.fillAmount = hp / maxHp;
         //不随主体翻转

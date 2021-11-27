@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GetHit : MonoBehaviour
+public class EnemyGetHit : MonoBehaviour
 {
     private Animator anim;
     private Rigidbody2D rb;
@@ -136,7 +136,7 @@ public class GetHit : MonoBehaviour
             //生成尸块
             ChooseBodiesType();
 
-            gameObject.SetActive(false);
+            ObjectPool.Instance.PushObject(transform.parent.gameObject);
         }
         else
         {

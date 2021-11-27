@@ -42,7 +42,7 @@ public class Tent : MonoBehaviour
         TryToCreate();
     }
 
-    //受击掉血且击退
+    //受击掉血
     public void GetHit(float damage)
     {
         //造成伤害

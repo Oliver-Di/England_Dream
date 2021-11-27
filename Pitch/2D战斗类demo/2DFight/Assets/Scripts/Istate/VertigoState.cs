@@ -29,7 +29,7 @@ public class VertigoState : IState
 
     public void OnExit()
     {
-        manager.GetComponent<GetHit>().isVertigo = false;
+        manager.GetComponent<EnemyGetHit>().isVertigo = false;
     }
 
     public void OnUpdate()

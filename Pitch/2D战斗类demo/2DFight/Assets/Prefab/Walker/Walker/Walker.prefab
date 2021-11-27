@@ -491,7 +491,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8049395978175154065}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0733c93ecadcd2e4e973f7862917428f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5139408530b8eed49a5b136eaf662c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 10
@@ -505,14 +505,15 @@ MonoBehaviour:
     type: 3}
   blood9Prefab: {fileID: 3444792828036235598, guid: 4607327868c18d341bcdfd57ac3a01d3,
     type: 3}
-  blood3Prefab: {fileID: 0}
+  blood3Prefab: {fileID: 4114681241675258959, guid: 321d5a14fb28b7941bdfd10642ca6b74,
+    type: 3}
   bodiesPrefab:
+  - {fileID: 8059530659975863765, guid: 72b8ee341ca8e4f439f1f5b0f5a800f7, type: 3}
+  - {fileID: 5318312660645748160, guid: 252dc33d5521e4e469cac9c248da229e, type: 3}
+  - {fileID: 7247899419625098491, guid: 2c49dd033ec51c84eb54410c6339ecee, type: 3}
   - {fileID: 4904519176176047618, guid: 27756fca900be2e439d12f5f5b709374, type: 3}
   - {fileID: 7247899419625098491, guid: 2c49dd033ec51c84eb54410c6339ecee, type: 3}
-  - {fileID: 7247899419625098491, guid: 2c49dd033ec51c84eb54410c6339ecee, type: 3}
   - {fileID: 5318312660645748160, guid: 252dc33d5521e4e469cac9c248da229e, type: 3}
-  - {fileID: 5318312660645748160, guid: 252dc33d5521e4e469cac9c248da229e, type: 3}
-  - {fileID: 8059530659975863765, guid: 72b8ee341ca8e4f439f1f5b0f5a800f7, type: 3}
   redBodiesPrefab: []
   greenBodiesPrefab: []
 --- !u!114 &1362927885

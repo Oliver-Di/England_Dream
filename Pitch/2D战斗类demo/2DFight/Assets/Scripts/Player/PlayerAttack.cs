@@ -36,15 +36,15 @@ public class PlayerAttack : MonoBehaviour
             //计算方向
             Vector3 dir = transform.position - collision.transform.position;
             if (collision.GetComponent<FSM>().parameter.target == null &&
-                collision.GetComponent<GetHit>().isVertigo == false) 
+                collision.GetComponent<EnemyGetHit>().isVertigo == false) 
             {
                 //击昏
-                collision.GetComponent<GetHit>().GetVertigo(attack);
+                collision.GetComponent<EnemyGetHit>().GetVertigo(attack);
             }
             else
             {
                 //传递伤害
-                collision.GetComponent<GetHit>().GetHitBack(attack, dir, 100);
+                collision.GetComponent<EnemyGetHit>().GetHitBack(attack, dir, 100);
             }
         }
         else if (collision.CompareTag("BOSS") && isAttack)
@@ -67,6 +67,11 @@ public class PlayerAttack : MonoBehaviour
         {
             //传递伤害
             collision.GetComponent<Tent>().GetHit(attack);
+        }
+        else if (collision.CompareTag("Corpses") && isAttack)
+        {
+            //传递伤害
+            collision.GetComponent<Corpses>().GetHit(attack);
         }
     }
 
