@@ -4845,7 +4845,7 @@ PrefabInstance:
     - target: {fileID: 8049395979163269575, guid: 0898dcfd76852c840ba67ee147235e6e,
         type: 3}
       propertyPath: m_Name
-      value: Walker
+      value: walker
       objectReference: {fileID: 0}
     - target: {fileID: 8049395979390063547, guid: 0898dcfd76852c840ba67ee147235e6e,
         type: 3}

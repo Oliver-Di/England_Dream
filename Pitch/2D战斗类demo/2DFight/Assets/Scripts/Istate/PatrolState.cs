@@ -36,16 +36,6 @@ public class PatrolState : IState
         manager.transform.position = Vector2.MoveTowards(manager.transform.position,
             parameter.patrolPoints[patrolPosition].position, parameter.moveSpeed * Time.deltaTime);
 
-        //if (manager.transform.position.x > parameter.patrolPoints[patrolPosition].transform.position.x)
-        //{
-        //    sign = -1;
-        //}
-        //if(manager.transform.position.x < parameter.patrolPoints[patrolPosition].transform.position.x)
-        //{
-        //    sign = 1;
-        //}
-        //parameter.rb.velocity = new Vector2(sign * parameter.moveSpeed, parameter.rb.velocity.y);
-
         //接近目标切换为追击状态
         if (parameter.target != null )
         {

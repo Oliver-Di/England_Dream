@@ -10,7 +10,6 @@ public class Tent : MonoBehaviour
     private SpriteRenderer sr;
     private Animator anim;
     private bool isDead;
-    private Transform player;
 
     private void Start()
     {
@@ -21,12 +20,6 @@ public class Tent : MonoBehaviour
     private void OnEnable()
     {
         TryToCreate();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
-
-    private void Update()
-    {
-        
     }
 
     private void TryToCreate()
@@ -36,8 +29,7 @@ public class Tent : MonoBehaviour
 
     IEnumerator CreateMonster()
     {
-        if (Vector2.Distance(player.position, transform.position) <= 9)
-            GameManager.instance.CreateWalker(transform.position);
+        GameManager.instance.CreateWalker(transform.position);
         yield return new WaitForSeconds(time);
         TryToCreate();
     }

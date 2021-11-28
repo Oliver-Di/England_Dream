@@ -95,7 +95,7 @@ public class FSM : MonoBehaviour
         currentState = states[type];
         currentState.OnEnter();
 
-        Debug.Log(type);
+        //Debug.Log(type);
     }
 
     //角色朝向

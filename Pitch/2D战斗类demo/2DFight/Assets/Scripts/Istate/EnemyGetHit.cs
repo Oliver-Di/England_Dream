@@ -136,7 +136,7 @@ public class EnemyGetHit : MonoBehaviour
             //生成尸块
             ChooseBodiesType();
 
-            ObjectPool.Instance.PushObject(transform.parent.gameObject);
+            Destroy(transform.parent.gameObject);
         }
         else
         {
