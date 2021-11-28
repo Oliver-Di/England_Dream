@@ -6,7 +6,7 @@ public class ParticleDestroier : MonoBehaviour
 {
     void Start()
     {
-        Invoke("DestroyThis", 1);
+        Invoke("DestroyThis", 5);
     }
 
     private void DestroyThis()

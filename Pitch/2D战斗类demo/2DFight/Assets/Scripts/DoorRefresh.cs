@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DoorRefresh : MonoBehaviour
 {
-    private GameObject monster;
     public GameObject door;
+
+    private GameObject monster;
 
     void Start()
     {
@@ -14,9 +15,9 @@ public class DoorRefresh : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && door.GetComponent<Door>().noMonster == false) 
         {
-
+            CheckMonster();
         }
     }
 
@@ -25,6 +26,7 @@ public class DoorRefresh : MonoBehaviour
         if (monster.transform.childCount == 0)
         {
             door.GetComponent<Door>().noMonster = true;
+            door.GetComponent<Animator>().SetTrigger("open");
         }
     }
 }

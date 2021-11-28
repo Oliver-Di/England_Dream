@@ -30,7 +30,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7271944925603484331}
   m_Father: {fileID: 8756589736302194361}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -235,3 +236,83 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 5984815148737438414}
+--- !u!1001 &8300846982021211844
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5984815148737438410}
+    m_Modifications:
+    - target: {fileID: 1718592990210143343, guid: 3df7dba4638566144b6edffeca1617e0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1718592990210143343, guid: 3df7dba4638566144b6edffeca1617e0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1718592990210143343, guid: 3df7dba4638566144b6edffeca1617e0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1718592990210143343, guid: 3df7dba4638566144b6edffeca1617e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1718592990210143343, guid: 3df7dba4638566144b6edffeca1617e0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1718592990210143343, guid: 3df7dba4638566144b6edffeca1617e0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1718592990210143343, guid: 3df7dba4638566144b6edffeca1617e0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1718592990210143343, guid: 3df7dba4638566144b6edffeca1617e0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1718592990210143343, guid: 3df7dba4638566144b6edffeca1617e0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1718592990210143343, guid: 3df7dba4638566144b6edffeca1617e0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1718592990210143343, guid: 3df7dba4638566144b6edffeca1617e0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310959195228476993, guid: 3df7dba4638566144b6edffeca1617e0,
+        type: 3}
+      propertyPath: m_Name
+      value: OpenDoorSmoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310959195228476993, guid: 3df7dba4638566144b6edffeca1617e0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3df7dba4638566144b6edffeca1617e0, type: 3}
+--- !u!4 &7271944925603484331 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1718592990210143343, guid: 3df7dba4638566144b6edffeca1617e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 8300846982021211844}
+  m_PrefabAsset: {fileID: 0}

@@ -162,4 +162,9 @@ public class FSM : MonoBehaviour
     {
         TransitionState(StateType.Change);
     }
+
+    public void DestoryThis()
+    {
+        Destroy(transform.parent.gameObject);
+    }
 }

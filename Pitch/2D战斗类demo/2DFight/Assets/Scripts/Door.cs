@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
-    private bool canEnter;
     public bool noMonster;
+
+    private bool canEnter;
 
     void Update()
     {
