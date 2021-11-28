@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 public class Door : MonoBehaviour
 {
     private bool canEnter;
+    public bool noMonster;
 
     void Update()
     {
-        if (canEnter)
+        if (canEnter && noMonster) 
         {
             if (Input.GetKeyDown(KeyCode.W))
             {

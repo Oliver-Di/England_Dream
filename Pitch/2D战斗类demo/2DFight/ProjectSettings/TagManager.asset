@@ -12,6 +12,7 @@ TagManager:
   - CanBroken
   - Tent
   - Corpses
+  - Monster
   layers:
   - Default
   - TransparentFX
