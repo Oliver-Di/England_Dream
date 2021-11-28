@@ -7,6 +7,7 @@ public class PlayerJump : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private int jumpCount;
+    private bool S;
 
     [Header("跳跃属性")]
     public bool isJumping;
@@ -36,14 +37,17 @@ public class PlayerJump : MonoBehaviour
         {
             NormalJump();
         }
+
         isOnGround = OnGround();
+        PressKeyD();
+        JumpOffPlatform();
     }
 
     private void NormalJump()
     {
         float dt = MyTime.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < jumpNum) 
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < jumpNum && !S)  
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpF);
             isJumping = true;
@@ -104,5 +108,40 @@ public class PlayerJump : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    private void PressKeyD()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+            S = true;
+        if (Input.GetKeyUp(KeyCode.S))
+            S = false;
+    }
+
+    private void JumpOffPlatform()
+    {
+        RaycastHit2D DownRay = Physics2D.Raycast(leftLeg.position, Vector2.down, distance, groundLayerMask);
+        if (DownRay.collider != null)
+        {
+            if (DownRay.collider.TryGetComponent<PlatformEffector2D>(out PlatformEffector2D platform2D))
+            {
+                GoDown();
+            }
+        }
+    }
+
+    private void GoDown()
+    {
+        if (Input.GetKey(KeyCode.S) && Input.GetKeyDown(KeyCode.Space)) 
+        {
+            StartCoroutine(ColliderShutDown());
+        }
+    }
+
+    IEnumerator ColliderShutDown()
+    {
+        transform.GetComponent<CapsuleCollider2D>().enabled = false;
+        yield return new WaitForSeconds(0.5f);
+        transform.GetComponent<CapsuleCollider2D>().enabled = true;
     }
 }
