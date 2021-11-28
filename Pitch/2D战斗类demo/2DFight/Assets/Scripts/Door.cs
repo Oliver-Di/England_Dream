@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Door : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W))
             {
                 //进入下一个场景
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
     }

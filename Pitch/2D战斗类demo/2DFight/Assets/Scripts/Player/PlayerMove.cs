@@ -9,6 +9,19 @@ public class PlayerMove : MonoBehaviour
     private Animator anim;
 
     public float speed;
+    public static PlayerMove instance;
+
+    private void Awake()
+    {
+        //单例
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(this);
+    }
 
     void Start()
     {
