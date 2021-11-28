@@ -14,6 +14,7 @@ public class PlayerGetHit : MonoBehaviour
     public float hp;
     public bool isDead;
     public bool isVertigo;
+    public GameObject bloodOverlay;
 
     void Start()
     {
@@ -36,6 +37,8 @@ public class PlayerGetHit : MonoBehaviour
         hp -= damage;
         //修正回血等待时间
         timer = 5;
+        if (hp > 0.25 * maxHp)
+            bloodOverlay.GetComponent<Animator>().SetTrigger("blood");
         GameManager.instance.RefreshHp();
         //闪白
         StartCoroutine(HurtShader());

@@ -3001,6 +3001,7 @@ MonoBehaviour:
   hp: 3
   isDead: 0
   isVertigo: 0
+  bloodOverlay: {fileID: 2130035226}
 --- !u!114 &791764912
 MonoBehaviour:
   m_ObjectHideFlags: 0

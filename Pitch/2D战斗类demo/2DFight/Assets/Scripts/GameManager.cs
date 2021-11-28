@@ -79,7 +79,6 @@ public class GameManager : MonoBehaviour
             bloodOverlay.GetComponent<Animator>().SetTrigger("bloodout");
             blood = false;
         }
-
     }
 
     public void RefreshMp()
