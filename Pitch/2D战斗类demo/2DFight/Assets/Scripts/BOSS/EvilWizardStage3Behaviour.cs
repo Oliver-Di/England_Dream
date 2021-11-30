@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EvilWizardBehaviour : StateMachineBehaviour
+public class EvilWizardStage3Behaviour : StateMachineBehaviour
 {
     private Transform player;
     private Transform wizard;
@@ -14,6 +14,8 @@ public class EvilWizardBehaviour : StateMachineBehaviour
     {
         player = animator.GetComponent<EvilWizard>().player;
         wizard = animator.transform;
+        //取消攻击状态
+        animator.GetComponent<EvilWizard>().isAttack = false;
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

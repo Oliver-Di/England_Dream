@@ -31,9 +31,15 @@ public class EvilWizard : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+    private void OnEnable()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        target = player;
+    }
+
     void Update()
     {
-        FindTarget();
+
     }
 
     //角色朝向

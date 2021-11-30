@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EvilWizardMoveBehaviour : StateMachineBehaviour
+public class EvilWizardStage3MoveBehaviour : StateMachineBehaviour
 {
     private Transform player;
     private Transform wizard;

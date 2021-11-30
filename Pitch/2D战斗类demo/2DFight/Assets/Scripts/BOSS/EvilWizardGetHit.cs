@@ -83,11 +83,8 @@ public class EvilWizardGetHit : MonoBehaviour
         //判断死亡
         if (hp <= 0)
         {
-            BloodVFX2();
-            //生成尸块
-            CreateBodies();
-
-            gameObject.SetActive(false);
+            BloodVFX3();
+            Dead();
         }
         else
         {
