@@ -1732,6 +1732,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 437968676}
+  - component: {fileID: 437968677}
   m_Layer: 26
   m_Name: Map
   m_TagString: Untagged
@@ -1758,6 +1759,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &437968677
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437968675}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 01b03217c25b4884a85090ba156c92c7, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &441764151
 GameObject:
   m_ObjectHideFlags: 0
@@ -2780,6 +2877,7 @@ GameObject:
   - component: {fileID: 791764912}
   - component: {fileID: 791764913}
   - component: {fileID: 791764914}
+  - component: {fileID: 791764915}
   m_Layer: 16
   m_Name: Player
   m_TagString: Player
@@ -3057,6 +3155,18 @@ MonoBehaviour:
   mp: 10
   maxMp: 10
   skillIcon: {fileID: 1009009224}
+--- !u!114 &791764915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791764901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec4b1cf7288342d4aaa6eae9605b2203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &834854510
 GameObject:
   m_ObjectHideFlags: 0
@@ -4457,7 +4567,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287857db5ce1e494ca270014ad00a7e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundList: []
+  soundList:
+  - tag: Hurt
+    siList:
+    - name: fist1
+      ac: {fileID: 8300000, guid: 22901bfe45e87604b9e68cd07f6b7942, type: 3}
+    - name: fist2
+      ac: {fileID: 8300000, guid: 230e8de7cbd1e8a459854ffa7b10ec3e, type: 3}
+    - name: Red_fist
+      ac: {fileID: 8300000, guid: 65b1b7c0c78526146a6927b95bf841d5, type: 3}
+    - name: Walker_attack
+      ac: {fileID: 8300000, guid: 70b2c5f2a45471445bfa4c13a530608f, type: 3}
+  - tag: BGM
+    siList:
+    - name: Night
+      ac: {fileID: 8300000, guid: 01b03217c25b4884a85090ba156c92c7, type: 3}
+    - name: BOSS
+      ac: {fileID: 8300000, guid: eb5651a11349011429b49a4fa25004ee, type: 3}
+  - tag: Zombie
+    siList:
+    - name: Zombie_die
+      ac: {fileID: 8300000, guid: d8cd8651da0b65f42a0420c848a51354, type: 3}
+    - name: Zombie_idle
+      ac: {fileID: 8300000, guid: bab5a1e2411baf8489c00288e549474a, type: 3}
+    - name: Zombie_change
+      ac: {fileID: 8300000, guid: 2352118a5486daf42bea0a008a5c798b, type: 3}
+    - name: Zombie_attack
+      ac: {fileID: 8300000, guid: 95c7179624120b247b0fcff664e21b35, type: 3}
+  - tag: Player
+    siList:
+    - name: Player_attack1
+      ac: {fileID: 8300000, guid: 345b8696365605e4c9cfa457a890e14e, type: 3}
+    - name: Player_attack2
+      ac: {fileID: 8300000, guid: 96741db92a71a314c8e0c90b0dc6cd93, type: 3}
+    - name: Player_throw
+      ac: {fileID: 8300000, guid: 3794ca0a1b347cb4ca7de8b6a2acff43, type: 3}
+    - name: Player_jumpup
+      ac: {fileID: 8300000, guid: eb0e72473113e994d87a896205b11ae1, type: 3}
+    - name: Player_jumpdown
+      ac: {fileID: 8300000, guid: 1365aec252ddad2439e72724508d1ad4, type: 3}
+  - tag: BOSS Skill
+    siList:
+    - name: light1
+      ac: {fileID: 8300000, guid: 25de8699d74b89445a3646b9603fd351, type: 3}
+    - name: light2
+      ac: {fileID: 8300000, guid: 424bae6cc9b4af449b9544125a44cf43, type: 3}
+    - name: fire
+      ac: {fileID: 8300000, guid: 8b7cf76f9e07ebc44ad6e23999991178, type: 3}
+    - name: BOSS_attack1
+      ac: {fileID: 8300000, guid: f63bdbc57f705c9418a0bf7d56a5af84, type: 3}
+    - name: BOSS_attack2
+      ac: {fileID: 8300000, guid: b6c80ec786433eb40b20a1057bc046c8, type: 3}
+    - name: water
+      ac: {fileID: 8300000, guid: 72fb0ff89816d154888c09d8ff0f529d, type: 3}
+    - name: venom
+      ac: {fileID: 8300000, guid: 068a19438d700754b8f4b5bb6101b809, type: 3}
+    - name: venom_explode
+      ac: {fileID: 8300000, guid: b09192b7d3a7a344d9ef1a6bc8ca719b, type: 3}
 --- !u!1 &1288127692
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,6 +19,8 @@ public class ChangeState : IState
     {
         parameter.anim.Play("change");
         parameter.isChanging = true;
+
+        SoundService.instance.Play("Zombie_change");
     }
 
     public void OnUpdate()

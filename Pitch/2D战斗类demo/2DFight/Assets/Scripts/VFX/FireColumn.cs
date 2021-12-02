@@ -7,6 +7,11 @@ public class FireColumn : MonoBehaviour
     public float damage;
     public float debuffDam;
 
+    void OnEnable()
+    {
+        SoundService.instance.Play("fire");
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

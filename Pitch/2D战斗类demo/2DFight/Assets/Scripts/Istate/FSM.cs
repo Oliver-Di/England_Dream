@@ -87,6 +87,11 @@ public class FSM : MonoBehaviour
         currentState.OnUpdate();
     }
 
+    void OnEnable()
+    {
+        SoundService.instance.Play("Zombie_idle");
+    }
+
     //切换状态
     public void TransitionState(StateType type)
     {
@@ -166,5 +171,10 @@ public class FSM : MonoBehaviour
     public void DestoryThis()
     {
         Destroy(transform.parent.gameObject);
+    }
+
+    public void AudieAttack()
+    {
+        SoundService.instance.Play("Zombie_attack");
     }
 }

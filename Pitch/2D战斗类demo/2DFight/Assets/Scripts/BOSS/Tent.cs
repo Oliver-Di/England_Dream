@@ -29,6 +29,7 @@ public class Tent : MonoBehaviour
 
     IEnumerator CreateMonster()
     {
+        Vector2 pos = new Vector2(transform.position.x, transform.position.y + 1);
         GameManager.instance.CreateWalker(transform.position);
         yield return new WaitForSeconds(time);
         TryToCreate();

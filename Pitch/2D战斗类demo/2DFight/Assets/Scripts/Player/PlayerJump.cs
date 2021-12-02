@@ -52,6 +52,8 @@ public class PlayerJump : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpF);
             isJumping = true;
             jumpCount++;
+
+            SoundService.instance.Play("Player_jumpup");
         }
         if (isOnGround && Input.GetAxisRaw("Jump") == 0)
         {

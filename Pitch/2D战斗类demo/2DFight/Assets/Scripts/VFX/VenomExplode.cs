@@ -7,6 +7,11 @@ public class VenomExplode : MonoBehaviour
     public float damage;
     public float debuffDam;
 
+    void OnEnable()
+    {
+        SoundService.instance.Play("venom_explode");
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

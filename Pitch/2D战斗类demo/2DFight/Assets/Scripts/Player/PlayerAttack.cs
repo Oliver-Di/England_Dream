@@ -46,6 +46,8 @@ public class PlayerAttack : MonoBehaviour
                 //传递伤害
                 collision.GetComponent<EnemyGetHit>().GetHitBack(attack, dir, 100);
             }
+
+            AudioHurt();
         }
         else if (collision.CompareTag("BOSS") && isAttack)
         {
@@ -62,16 +64,22 @@ public class PlayerAttack : MonoBehaviour
                 //传递伤害
                 collision.GetComponent<EvilWizardGetHit>().GetHitBack(attack, dir, 50);
             }
+
+            AudioHurt();
         }
         else if (collision.CompareTag("Tent") && isAttack)
         {
             //传递伤害
             collision.GetComponent<Tent>().GetHit(attack);
+
+            AudioHurt();
         }
         else if (collision.CompareTag("Corpses") && isAttack)
         {
             //传递伤害
             collision.GetComponent<Corpses>().GetHit(attack);
+
+            AudioHurt();
         }
     }
 
@@ -108,5 +116,14 @@ public class PlayerAttack : MonoBehaviour
     public void AttackEnd()
     {
         isAttack = false;
+    }
+
+    private void AudioHurt()
+    {
+        int rand = Random.Range(0, 2);
+        if (rand == 0)
+            SoundService.instance.Play("fist1");
+        else
+            SoundService.instance.Play("fist2");
     }
 }

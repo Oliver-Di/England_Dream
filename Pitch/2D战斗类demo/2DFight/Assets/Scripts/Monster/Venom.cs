@@ -14,6 +14,11 @@ public class Venom : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    void OnEnable()
+    {
+        SoundService.instance.Play("venom");
+    }
+
     void Update()
     {
         angle = Vector2.SignedAngle(new Vector2(1, 0), rb.velocity);

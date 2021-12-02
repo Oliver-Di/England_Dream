@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -541822423
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1cc241030ec3b2f44b74a9ad1a93d8d6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.6}
@@ -185,7 +185,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7070801821070637257}
   - component: {fileID: 7070801821070637256}
-  - component: {fileID: 2641823729026360856}
+  - component: {fileID: 2694415642042136966}
+  - component: {fileID: 4600356185618084607}
   - component: {fileID: 5953188451019907967}
   m_Layer: 0
   m_Name: LightTrap
@@ -247,10 +248,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1222456071
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 717be2486b53f34458da0929ad3d3115, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b4cb94de0d8c914ca2377e93f7cadf2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -261,8 +262,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &2641823729026360856
-CircleCollider2D:
+--- !u!95 &2694415642042136966
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7070801821070637263}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c9aa3bccda4c0e44781f1d3d8a63661b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!60 &4600356185618084607
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -275,8 +295,23 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.16
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.877}
+    oldSize: {x: 0.53125, y: 2.6875}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.0013003349, y: 0.34156752}
+      - {x: -0.265625, y: 0.074234486}
+      - {x: -0.265625, y: -0.14035892}
+      - {x: 0.0020132065, y: -2.3744173}
+      - {x: 0.2679386, y: -0.14584899}
+      - {x: 0.26837635, y: 0.077242374}
 --- !u!114 &5953188451019907967
 MonoBehaviour:
   m_ObjectHideFlags: 0

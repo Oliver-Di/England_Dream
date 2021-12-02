@@ -14,4 +14,14 @@ public class Lightning : MonoBehaviour
             collision.GetComponent<PlayerGetHit>().Vertigo();
         }
     }
+
+    public void AudioLight1()
+    {
+        SoundService.instance.Play("light1");
+    }
+
+    public void AudioLight2()
+    {
+        SoundService.instance.Play("light2");
+    }
 }
