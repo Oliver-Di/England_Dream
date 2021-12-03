@@ -33,7 +33,7 @@ public class PlayerJump : MonoBehaviour
     {
         if (GetComponent<PlayerGetHit>().isDead == false &&
             GetComponent<PlayerGetHit>().isVertigo == false &&
-            GetComponent<PlayerAttack>().isAttack == false)  
+            GetComponent<PlayerAttack>().isAttack == false)
         {
             NormalJump();
         }
@@ -41,13 +41,19 @@ public class PlayerJump : MonoBehaviour
         isOnGround = OnGround();
         PressKeyD();
         JumpOffPlatform();
+
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Test();
+        }
     }
 
     private void NormalJump()
     {
         float dt = MyTime.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < jumpNum && !S)  
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < jumpNum && !S)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpF);
             isJumping = true;
@@ -100,11 +106,11 @@ public class PlayerJump : MonoBehaviour
         if (leftRay.collider != null)
             Debug.DrawLine(leftLeg.position, leftRay.point, Color.red);
         else
-            Debug.DrawLine(leftLeg.position, leftLeg.position + Vector3.down*distance, Color.green);
+            Debug.DrawLine(leftLeg.position, leftLeg.position + Vector3.down * distance, Color.green);
         if (rightRay.collider != null)
             Debug.DrawLine(rightLeg.position, rightRay.point, Color.red);
         else
-            Debug.DrawLine(rightLeg.position, rightLeg.position + Vector3.down*distance, Color.green);
+            Debug.DrawLine(rightLeg.position, rightLeg.position + Vector3.down * distance, Color.green);
 
         if (leftRay.collider != null || rightRay.collider != null)
             return true;
@@ -134,7 +140,7 @@ public class PlayerJump : MonoBehaviour
 
     private void GoDown()
     {
-        if (Input.GetKey(KeyCode.S) && Input.GetKeyDown(KeyCode.Space)) 
+        if (Input.GetKey(KeyCode.S) && Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(ColliderShutDown());
         }
@@ -145,5 +151,33 @@ public class PlayerJump : MonoBehaviour
         transform.GetComponent<CapsuleCollider2D>().enabled = false;
         yield return new WaitForSeconds(0.5f);
         transform.GetComponent<CapsuleCollider2D>().enabled = true;
+    }
+
+    void Test()
+    {
+        SoundService.instance.Play("Player_jumpup");
+        var data = new ConfirmboxBehaviour.ConfirmBoxData();
+        data.btnClose = false;
+        data.btnBgClose = true;
+        data.btnLeft = true;
+        data.btnRight = true;
+        data.title = "title";
+        data.content = "content";
+        data.btnLeftTxt = "Left";
+        data.btnLeftAction = () =>
+        {
+            SoundService.instance.Play("Player_jumpup");
+        };
+        data.btnRightTxt = "jump";
+        data.btnRightAction = () =>
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpF);
+            isJumping = true;
+            jumpCount++;
+
+            SoundService.instance.Play("Player_jumpup");
+        };
+        ConfirmboxBehaviour.instance.Setup(data);
+        ConfirmboxBehaviour.instance.Show();
     }
 }

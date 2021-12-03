@@ -65,6 +65,12 @@ public class SoundService : MonoBehaviour
         {
             return;
         }
+        if (!_siDic.ContainsKey(soundName))
+        {
+            Debug.LogWarning("sound key non exist " + soundName);
+            return;
+        }
+
 
         _soundSource.PlayOneShot(_siDic[soundName], volume);
         _lastSound = soundName;
