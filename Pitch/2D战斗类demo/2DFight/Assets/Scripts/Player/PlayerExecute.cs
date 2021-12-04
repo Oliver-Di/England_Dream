@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerExecute : MonoBehaviour
 {
-    public float attack;
+    public float damage;
+    public float distance;
     public Transform executePoint;
     public LayerMask targetLayer;
     public GameObject executeIcon;
@@ -26,7 +27,7 @@ public class PlayerExecute : MonoBehaviour
     void CanExecute()
     {
         float direction = transform.localScale.x;
-        Vector3 Dir = new Vector3(direction * 0.5f, 0, 0);
+        Vector3 Dir = new Vector3(direction * distance, 0, 0);
         RaycastHit2D executeRay = Physics2D.Raycast(executePoint.position, Dir, 0.5f, targetLayer);
 
         if (executeRay.collider != null)
@@ -75,9 +76,9 @@ public class PlayerExecute : MonoBehaviour
     public void Execute()
     {
         if(target.tag=="Enemy")
-            target.GetComponent<EnemyGetHit>().GetExecute(attack * 10);
+            target.GetComponent<EnemyGetHit>().GetExecute(damage);
         else if(target.tag == "BOSS")
-            target.GetComponent<EvilWizardGetHit>().GetExecute(attack * 10);
+            target.GetComponent<EvilWizardGetHit>().GetExecute(damage);
     }
 
     public void TryExplode()
