@@ -516,6 +516,12 @@ MonoBehaviour:
   - {fileID: 5318312660645748160, guid: 252dc33d5521e4e469cac9c248da229e, type: 3}
   redBodiesPrefab: []
   greenBodiesPrefab: []
+  walkerBodyPrefab: {fileID: 6746121572730205470, guid: 2b56d71566765c5429d49b2aa9b7ddfd,
+    type: 3}
+  redBodyPrefab: {fileID: 316564634078898093, guid: 14b3f203623674a4cbd7c34f5e16d39c,
+    type: 3}
+  greenBodyPrefab: {fileID: 6996935231946828154, guid: 237f1a08ae9b22b45856d6e51a6202f5,
+    type: 3}
 --- !u!114 &1362927885
 MonoBehaviour:
   m_ObjectHideFlags: 0

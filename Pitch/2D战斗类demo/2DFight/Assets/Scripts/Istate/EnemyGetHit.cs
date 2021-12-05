@@ -21,6 +21,9 @@ public class EnemyGetHit : MonoBehaviour
     public GameObject[] bodiesPrefab;
     public GameObject[] redBodiesPrefab;
     public GameObject[] greenBodiesPrefab;
+    public GameObject walkerBodyPrefab;
+    public GameObject redBodyPrefab;
+    public GameObject greenBodyPrefab;
 
     private void Start()
     {
@@ -136,7 +139,7 @@ public class EnemyGetHit : MonoBehaviour
             //生成尸块
             ChooseBodiesType();
 
-            Destroy(transform.parent.gameObject);
+            ObjectPool.Instance.PushObject(transform.parent.gameObject);
         }
         else
         {
@@ -176,5 +179,26 @@ public class EnemyGetHit : MonoBehaviour
         int rand3 = Random.Range(0, 5);
         Vector2 pos1 = new Vector2(transform.position.x ,transform.position.y+1.3f);
         GameManager.instance.CreateBloodPoint(pos1, rand3);
+    }
+
+    public void DeadBody()
+    {
+        ObjectPool.Instance.PushObject(transform.parent.gameObject);
+
+        if (GetComponent<FSM>().parameter.type == Parameter.Type.normal)
+        {
+            GameObject body = ObjectPool.Instance.GetObject(walkerBodyPrefab);
+            body.transform.position = transform.position;
+        }
+        else if (GetComponent<FSM>().parameter.type == Parameter.Type.red)
+        {
+            GameObject body = ObjectPool.Instance.GetObject(redBodyPrefab);
+            body.transform.position = transform.position;
+        }
+        else if (GetComponent<FSM>().parameter.type == Parameter.Type.green)
+        {
+            GameObject body = ObjectPool.Instance.GetObject(greenBodyPrefab);
+            body.transform.position = transform.position;
+        }
     }
 }

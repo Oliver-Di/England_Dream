@@ -23,10 +23,18 @@ public class DoorRefresh : MonoBehaviour
 
     private void CheckMonster()
     {
-        if (monster.transform.childCount == 0)
+        for (int i = 0; i < monster.transform.childCount; i++)
         {
-            door.GetComponent<Door>().noMonster = true;
-            door.GetComponent<Animator>().SetTrigger("open");
+            if (monster.transform.GetChild(i).gameObject.activeSelf == true)
+                return;
+            else
+            {
+                if (i == monster.transform.childCount - 1) 
+                {
+                    door.GetComponent<Door>().noMonster = true;
+                    door.GetComponent<Animator>().SetTrigger("open");
+                }
+            }
         }
     }
 }
