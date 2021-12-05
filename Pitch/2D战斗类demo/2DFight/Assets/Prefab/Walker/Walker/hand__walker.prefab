@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4475200771585059848}
   - component: {fileID: 7695912660080027118}
   - component: {fileID: 4658580609940778897}
-  - component: {fileID: 7803939054959723658}
   m_Layer: 25
   m_Name: hand__walker
   m_TagString: Untagged
@@ -121,15 +120,3 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.05, y: 0.4}
   m_Direction: 0
---- !u!114 &7803939054959723658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7247899419625098491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69ed6964e718b694392dce7317e49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

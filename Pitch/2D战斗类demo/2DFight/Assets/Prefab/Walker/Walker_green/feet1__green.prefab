@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6414163914078466443}
   - component: {fileID: 7629833662393797788}
   - component: {fileID: 5911868680079770654}
-  - component: {fileID: 6364375511278287779}
   m_Layer: 25
   m_Name: feet1__green
   m_TagString: Untagged
@@ -140,15 +139,3 @@ PolygonCollider2D:
       - {x: 0.42500007, y: 0.058031082}
       - {x: 0.3229342, y: 0.16172536}
       - {x: 0.12715654, y: 0.3011237}
---- !u!114 &6364375511278287779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2917205277836630824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69ed6964e718b694392dce7317e49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

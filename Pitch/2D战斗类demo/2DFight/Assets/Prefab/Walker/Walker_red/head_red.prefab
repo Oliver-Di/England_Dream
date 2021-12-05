@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3681516232897477868}
   - component: {fileID: 6390568948399618047}
   - component: {fileID: 885300504561103384}
-  - component: {fileID: 684885297240244651}
   - component: {fileID: -7550198099979182555}
   m_Layer: 18
   m_Name: head_red
@@ -122,18 +121,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.02556026}
   m_Size: {x: 0.25481248, y: 0.31832576}
   m_Direction: 0
---- !u!114 &684885297240244651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3275423910773795149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69ed6964e718b694392dce7317e49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-7550198099979182555
 MonoBehaviour:
   m_ObjectHideFlags: 0

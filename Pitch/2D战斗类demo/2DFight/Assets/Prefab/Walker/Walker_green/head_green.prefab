@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4581944771694348384}
   - component: {fileID: 3830620031691182279}
   - component: {fileID: 2295218776663295234}
-  - component: {fileID: 1127557845118248608}
   - component: {fileID: -9180770067034467281}
   m_Layer: 18
   m_Name: head_green
@@ -122,18 +121,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.25, y: 0.35}
   m_Direction: 0
---- !u!114 &1127557845118248608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5256919848695076337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69ed6964e718b694392dce7317e49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-9180770067034467281
 MonoBehaviour:
   m_ObjectHideFlags: 0
