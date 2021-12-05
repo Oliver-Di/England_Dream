@@ -29,11 +29,11 @@ public class ObjectPool
 
             if (pool == null)
                 pool = new GameObject("ObjectPool");
-            GameObject child = GameObject.Find(prefab.name);
+            GameObject child = GameObject.Find(prefab.name + "Pool");
 
             if (!child)
             {
-                child = new GameObject(prefab.name);
+                child = new GameObject(prefab.name + "Pool");
                 child.transform.SetParent(pool.transform);
             }
             _object.transform.SetParent(child.transform);

@@ -37,8 +37,6 @@ public class PlayerGetHit : MonoBehaviour
         hp -= damage;
         //修正回血等待时间
         timer = 5;
-        if (hp > 0.25 * maxHp)
-            bloodOverlay.GetComponent<Animator>().SetTrigger("blood");
         GameManager.instance.RefreshHp();
         //闪白
         StartCoroutine(HurtShader());
@@ -79,6 +77,8 @@ public class PlayerGetHit : MonoBehaviour
     IEnumerator ContinuousBloodReturn()
     {
         hp += 0.01f;
+        //if (hp > 0.25 * maxHp)
+        //    bloodOverlay.GetComponent<Animator>().SetBool("blooding", false);
         GameManager.instance.RefreshHp();
         yield return new WaitForSeconds(0.5f);
         hpIncreasing = false;

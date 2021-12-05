@@ -71,12 +71,12 @@ public class GameManager : MonoBehaviour
         //红屏
         if (hp <= 0.25 * maxHp)
         {
-            bloodOverlay.GetComponent<Animator>().SetTrigger("bloodin");
+            bloodOverlay.GetComponent<Animator>().SetBool("blooding", true);
             blood = true;
         }
         else if (blood && hp > 0.25 * maxHp)
         {
-            bloodOverlay.GetComponent<Animator>().SetTrigger("bloodout");
+            bloodOverlay.GetComponent<Animator>().SetBool("blooding", false);
             blood = false;
         }
     }

@@ -149,7 +149,7 @@ public class PlayerJump : MonoBehaviour
     IEnumerator ColliderShutDown()
     {
         transform.GetComponent<CapsuleCollider2D>().enabled = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         transform.GetComponent<CapsuleCollider2D>().enabled = true;
     }
 
