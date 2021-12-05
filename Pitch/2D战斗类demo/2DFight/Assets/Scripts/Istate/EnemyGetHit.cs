@@ -176,7 +176,5 @@ public class EnemyGetHit : MonoBehaviour
         int rand3 = Random.Range(0, 5);
         Vector2 pos1 = new Vector2(transform.position.x ,transform.position.y+1.3f);
         GameManager.instance.CreateBloodPoint(pos1, rand3);
-        int rand4 = Random.Range(0, 3);
-        GameManager.instance.CreateMagicPoint(pos1, rand4);
     }
 }

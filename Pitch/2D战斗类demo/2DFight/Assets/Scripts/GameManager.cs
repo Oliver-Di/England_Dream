@@ -81,14 +81,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void RefreshMp()
-    {
-        mp = player.GetComponent<PlayerSkill>().mp;
-        maxMp = player.GetComponent<PlayerSkill>().maxMp;
-        //蓝条随蓝量变动
-        mpBar.fillAmount = mp / maxMp;
-    }
-
     public void SlowDownTime()
     {
         Time.timeScale = 0.5f;
@@ -148,18 +140,6 @@ public class GameManager : MonoBehaviour
             float rand2 = Random.Range(3, 6);
             bead.GetComponent<Rigidbody2D>().velocity = new Vector2(rand1, rand2);
             Debug.Log(i);
-        }
-    }
-
-    public void CreateMagicPoint(Vector3 pos, int num)
-    {
-        for (int i = 0; i < num; i++)
-        {
-            GameObject bead = ObjectPool.Instance.GetObject(magicPointPrefab);
-            bead.transform.position = pos;
-            float rand1 = Random.Range(-1.5f, 1.5f);
-            float rand2 = Random.Range(3, 6);
-            bead.GetComponent<Rigidbody2D>().velocity = new Vector2(rand1, rand2);
         }
     }
 }
