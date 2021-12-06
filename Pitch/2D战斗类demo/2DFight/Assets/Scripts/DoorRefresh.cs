@@ -17,7 +17,13 @@ public class DoorRefresh : MonoBehaviour
     {
         if (collision.CompareTag("Player") && door.GetComponent<Door>().noMonster == false) 
         {
-            CheckMonster();
+            if (monster.transform.childCount == 0)
+            {
+                door.GetComponent<Door>().noMonster = true;
+                door.GetComponent<Animator>().SetTrigger("open");
+            }
+            else
+                CheckMonster();
         }
     }
 

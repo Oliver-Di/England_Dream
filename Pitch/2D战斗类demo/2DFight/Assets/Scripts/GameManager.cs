@@ -139,7 +139,6 @@ public class GameManager : MonoBehaviour
             float rand1 = Random.Range(-1.5f, 1.5f);
             float rand2 = Random.Range(3, 6);
             bead.GetComponent<Rigidbody2D>().velocity = new Vector2(rand1, rand2);
-            Debug.Log(i);
         }
     }
 }

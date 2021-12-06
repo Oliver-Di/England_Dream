@@ -79,17 +79,14 @@ public class FSM : MonoBehaviour
 
         timer = 3;
         Physics2D.queriesStartInColliders = false;
+
+        SoundService.instance.Play("Zombie_idle");
     }
 
     void Update()
     {
         FindTarget();
         currentState.OnUpdate();
-    }
-
-    void OnEnable()
-    {
-        SoundService.instance.Play("Zombie_idle");
     }
 
     //切换状态
@@ -100,7 +97,7 @@ public class FSM : MonoBehaviour
         currentState = states[type];
         currentState.OnEnter();
 
-        //Debug.Log(type);
+        Debug.Log(type);
     }
 
     //角色朝向

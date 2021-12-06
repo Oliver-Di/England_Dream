@@ -28,7 +28,10 @@ public class ObjectPool
             PushObject(_object);
 
             if (pool == null)
+            {
                 pool = new GameObject("ObjectPool");
+                pool.AddComponent<ObjectPoolSingleton>();
+            }
             GameObject child = GameObject.Find(prefab.name + "Pool");
 
             if (!child)

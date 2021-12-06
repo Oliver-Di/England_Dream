@@ -52,14 +52,12 @@ public class PlayerPickup : MonoBehaviour
         {
             if (headSlot[0] == null)
             {
-                Debug.Log("pickup");
                 headSlot[0] = allHeads[headInt];
                 RefreshHead();
                 head.GetComponent<Head>().DestroyThis();
             }
             else
             {
-                Debug.Log("change");
                 DropHead();
                 headSlot[0] = allHeads[headInt];
                 RefreshHead();

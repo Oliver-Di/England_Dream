@@ -77,8 +77,6 @@ public class PlayerGetHit : MonoBehaviour
     IEnumerator ContinuousBloodReturn()
     {
         hp += 0.01f;
-        //if (hp > 0.25 * maxHp)
-        //    bloodOverlay.GetComponent<Animator>().SetBool("blooding", false);
         GameManager.instance.RefreshHp();
         yield return new WaitForSeconds(0.5f);
         hpIncreasing = false;
