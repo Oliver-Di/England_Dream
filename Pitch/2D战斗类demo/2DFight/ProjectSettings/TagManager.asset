@@ -13,6 +13,7 @@ TagManager:
   - Tent
   - Corpses
   - Monster
+  - Healing
   layers:
   - Default
   - TransparentFX

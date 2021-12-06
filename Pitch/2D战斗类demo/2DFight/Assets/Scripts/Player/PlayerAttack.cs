@@ -81,6 +81,13 @@ public class PlayerAttack : MonoBehaviour
 
             AudioHurt();
         }
+        else if (collision.CompareTag("Healing") && isAttack)
+        {
+            //传递伤害
+            collision.GetComponent<Healing>().GetHit(attack);
+
+            AudioHurt();
+        }
     }
 
     //攻击

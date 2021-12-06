@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerGetHit : MonoBehaviour
@@ -7,7 +6,6 @@ public class PlayerGetHit : MonoBehaviour
     private SpriteRenderer sr;
     private Rigidbody2D rb;
     private Animator anim;
-    private float timer;
     private bool hpIncreasing;
     private float debuffDamage;
 
@@ -26,18 +24,13 @@ public class PlayerGetHit : MonoBehaviour
 
     private void Update()
     {
-        BloodReturn();
 
-        if (timer > 0)
-            timer -= Time.deltaTime;
     }
 
     //受击掉血且击退
     public void GetHitBack(float damage, Vector3 dir, float force)
     {
         hp -= damage;
-        //修正回血等待时间
-        timer = 5;
         GameManager.instance.RefreshHp();
         //闪白
         StartCoroutine(HurtShader());
@@ -63,24 +56,24 @@ public class PlayerGetHit : MonoBehaviour
         sr.material.SetFloat("_FlashAmount", 0);
     }
 
-    private void BloodReturn()
+    public void HealingBegin()
     {
-        if (timer <= 0 &&
-            hp < maxHp &&
-            !hpIncreasing) 
-        {
-            StartCoroutine(ContinuousBloodReturn());
-            hpIncreasing = true;
-            BuffIcon.instance.StartBuff(4, 0.5f);
-        }
+        StopCoroutine("ContinuousBloodReturn");
+        StartCoroutine("ContinuousBloodReturn");
+        BuffIcon.instance.StartBuff(4, 5);
     }
 
     IEnumerator ContinuousBloodReturn()
     {
-        hp += 0.01f;
-        GameManager.instance.RefreshHp();
-        yield return new WaitForSeconds(0.5f);
-        hpIncreasing = false;
+        for (int i = 0; i < 10; i++)
+        {
+            if (hp < maxHp)
+                hp += 0.2f;
+            if (hp > maxHp)
+                hp = maxHp;
+            GameManager.instance.RefreshHp();
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     public void Vertigo()
@@ -112,8 +105,6 @@ public class PlayerGetHit : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             hp -= debuffDamage;
-            //修正回血等待时间
-            timer = 5;
             GameManager.instance.RefreshHp();
             yield return new WaitForSeconds(1);
         }
