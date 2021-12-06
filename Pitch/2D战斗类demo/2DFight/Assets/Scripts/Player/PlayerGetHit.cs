@@ -9,6 +9,7 @@ public class PlayerGetHit : MonoBehaviour
     private Animator anim;
     private float timer;
     private bool hpIncreasing;
+    private float debuffDamage;
 
     public float maxHp;
     public float hp;
@@ -100,15 +101,17 @@ public class PlayerGetHit : MonoBehaviour
 
     public void DebuffBloodLoss(float damage,int num)
     {
-        StartCoroutine(ContinuousBloodLoss(damage));
+        StopCoroutine("ContinuousBloodLoss");
+        debuffDamage = damage;
+        StartCoroutine("ContinuousBloodLoss");
         BuffIcon.instance.StartBuff(num, 5);
     }
 
-    IEnumerator ContinuousBloodLoss(float damage)
+    IEnumerator ContinuousBloodLoss()
     {
         for (int i = 0; i < 5; i++)
         {
-            hp -= damage;
+            hp -= debuffDamage;
             //修正回血等待时间
             timer = 5;
             GameManager.instance.RefreshHp();

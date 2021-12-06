@@ -8,6 +8,7 @@ public class BuffIcon : MonoBehaviour
     public GameObject[] icons;
 
     private GameObject icon;
+    private float time;
 
     private void Awake()
     {
@@ -40,10 +41,14 @@ public class BuffIcon : MonoBehaviour
                 icon = icons[4];
                 break;
         }
-        StartCoroutine(BuffIconReveal(icon, time));
+
+        this.time = time;
+        if (icon.activeSelf == true)
+            StopCoroutine("BuffIconReveal");
+        StartCoroutine("BuffIconReveal");
     }
 
-    IEnumerator BuffIconReveal(GameObject icon,float time)
+    IEnumerator BuffIconReveal()
     {
         icon.SetActive(true);
         yield return new WaitForSeconds(time);
