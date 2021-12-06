@@ -45,8 +45,9 @@ public class ChangeState : IState
         else if (parameter.type == Parameter.Type.green)
         {
             parameter.attackDistance = 4;
+            parameter.viewDistance = 4.5f;
             parameter.moveSpeed = 0.5f;
-            parameter.chaseSpeed = 0.5f;
+            parameter.chaseSpeed = 0.8f;
         }
     }
 }

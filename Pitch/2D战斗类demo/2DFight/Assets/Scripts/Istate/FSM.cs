@@ -78,7 +78,7 @@ public class FSM : MonoBehaviour
         TransitionState(StateType.Idle);
 
         timer = 3;
-        Physics2D.queriesStartInColliders = false;
+        //Physics2D.queriesStartInColliders = false;
 
         SoundService.instance.Play("Zombie_idle");
     }
@@ -125,6 +125,9 @@ public class FSM : MonoBehaviour
             Vector3 dir = transform.position - parameter.target.position;
             //传递伤害
             collision.GetComponent<PlayerGetHit>().GetHitBack(parameter.attack, dir, 150);
+            //判断角色是否死亡
+            if (collision.GetComponent<PlayerGetHit>().hp <= 0)
+                parameter.target = null;
         }
     }
     //发现目标

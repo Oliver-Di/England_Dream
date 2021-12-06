@@ -466,7 +466,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 65536
     attackPoint: {fileID: 8049395978534986459}
-    attackDistance: 0.4
+    attackDistance: 0.8
     viewPoint: {fileID: 8049395978394422155}
     viewDistance: 3
     lostTarget: 0
@@ -645,7 +645,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8049395978394422154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.18, y: 0.44, z: 0}
+  m_LocalPosition: {x: -0.07, y: 0.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8049395978175154066}
@@ -702,7 +702,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8049395978534986458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.447, y: 0.484, z: 0}
+  m_LocalPosition: {x: -0.07, y: 0.484, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8049395978175154066}
@@ -721,9 +721,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.44790494, y: 0.008094609}
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.42428523
 --- !u!1 &8049395979132242491
 GameObject:
   m_ObjectHideFlags: 0
