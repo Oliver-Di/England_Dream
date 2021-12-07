@@ -41,12 +41,6 @@ public class PlayerJump : MonoBehaviour
         isOnGround = OnGround();
         PressKeyD();
         JumpOffPlatform();
-
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Test();
-        }
     }
 
     private void NormalJump()
@@ -151,33 +145,5 @@ public class PlayerJump : MonoBehaviour
         transform.GetComponent<CapsuleCollider2D>().enabled = false;
         yield return new WaitForSeconds(0.3f);
         transform.GetComponent<CapsuleCollider2D>().enabled = true;
-    }
-
-    void Test()
-    {
-        SoundService.instance.Play("Player_jumpup");
-        var data = new ConfirmboxBehaviour.ConfirmBoxData();
-        data.btnClose = false;
-        data.btnBgClose = true;
-        data.btnLeft = true;
-        data.btnRight = true;
-        data.title = "title";
-        data.content = "content";
-        data.btnLeftTxt = "Left";
-        data.btnLeftAction = () =>
-        {
-            SoundService.instance.Play("Player_jumpup");
-        };
-        data.btnRightTxt = "jump";
-        data.btnRightAction = () =>
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpF);
-            isJumping = true;
-            jumpCount++;
-
-            SoundService.instance.Play("Player_jumpup");
-        };
-        ConfirmboxBehaviour.instance.Setup(data);
-        ConfirmboxBehaviour.instance.Show();
     }
 }

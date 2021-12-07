@@ -72,6 +72,8 @@ public class ConfirmboxBehaviour : PopupBehaviour
             Hide();
             Sound();
         }
+
+        Time.timeScale = 1;
     }
     public override void OnClickBtnClose()
     {
