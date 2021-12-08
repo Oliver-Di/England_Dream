@@ -88,6 +88,13 @@ public class PlayerAttack : MonoBehaviour
 
             AudioHurt();
         }
+        else if (collision.CompareTag("Fireworm") && isAttack)
+        {
+            //传递伤害
+            collision.GetComponent<Fireworm>().GetHit(attack);
+
+            AudioHurt();
+        }
     }
 
     //攻击
