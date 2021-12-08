@@ -17,6 +17,7 @@ public class AxeTrap : MonoBehaviour
     private bool down;
     private float timer;
     private float posY;
+    private bool hurt;
 
     void Start()
     {
@@ -69,8 +70,23 @@ public class AxeTrap : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerGetHit>().GetHitBack(damage, Vector3.zero, 0);
-            collision.GetComponent<PlayerGetHit>().Vertigo();
+            //角色在斧子里，取消碰撞
+            GetComponent<EdgeCollider2D>().enabled = false;
+            if (!hurt)
+            {
+                collision.GetComponent<PlayerGetHit>().GetHitBack(damage, Vector3.zero, 0);
+                hurt = true;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            //角色离开斧子，添加碰撞
+            GetComponent<EdgeCollider2D>().enabled = true;
+            hurt = false;
         }
     }
 }
