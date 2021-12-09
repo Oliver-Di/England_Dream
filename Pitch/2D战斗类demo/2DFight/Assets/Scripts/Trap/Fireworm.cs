@@ -6,6 +6,7 @@ public class Fireworm : MonoBehaviour
 {
     public float hp;
     public float maxHp;
+    public float firstTime;
     public float waitTime;
     public GameObject fireColumnPrefab;
     public GameObject firewormBodyPrefab;
@@ -18,6 +19,7 @@ public class Fireworm : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        timer = firstTime;
     }
 
     void Update()
@@ -58,6 +60,7 @@ public class Fireworm : MonoBehaviour
     {
         GameObject fire = ObjectPool.Instance.GetObject(fireColumnPrefab);
         fire.transform.position = transform.position;
+        fire.transform.rotation = transform.rotation;
     }
 
     private void Dead()

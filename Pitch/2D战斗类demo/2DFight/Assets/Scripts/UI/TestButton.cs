@@ -29,4 +29,8 @@ public class TestButton : MonoBehaviour
     {
         SceneManager.LoadScene(5);
     }
+    public void LoadScene06()
+    {
+        SceneManager.LoadScene(6);
+    }
 }
