@@ -29,7 +29,7 @@ public class PlayerSkill : MonoBehaviour
     private void PressSkillButton()
     {
         if (Input.GetKeyDown(KeyCode.Q) &&
-            !skillOn)
+            !skillOn && cd <= 0) 
         {
             GameManager.instance.SlowDownTime();
             skillOn = true;

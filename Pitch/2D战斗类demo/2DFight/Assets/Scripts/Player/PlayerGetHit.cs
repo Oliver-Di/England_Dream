@@ -129,5 +129,7 @@ public class PlayerGetHit : MonoBehaviour
         anim.SetTrigger("dead");
         isDead = true;
         transform.gameObject.layer = LayerMask.NameToLayer("Dead");
+        rb.velocity = Vector2.zero;
+        GameManager.instance.gameMode = GameManager.GameMode.Dead;
     }
 }

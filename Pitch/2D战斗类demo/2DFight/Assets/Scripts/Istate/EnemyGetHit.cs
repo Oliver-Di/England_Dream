@@ -189,16 +189,19 @@ public class EnemyGetHit : MonoBehaviour
         {
             GameObject body = ObjectPool.Instance.GetObject(walkerBodyPrefab);
             body.transform.position = transform.position;
+            body.transform.localScale = transform.localScale;
         }
         else if (GetComponent<FSM>().parameter.type == Parameter.Type.red)
         {
             GameObject body = ObjectPool.Instance.GetObject(redBodyPrefab);
             body.transform.position = transform.position;
+            body.transform.localScale = transform.localScale;
         }
         else if (GetComponent<FSM>().parameter.type == Parameter.Type.green)
         {
             GameObject body = ObjectPool.Instance.GetObject(greenBodyPrefab);
             body.transform.position = transform.position;
+            body.transform.localScale = transform.localScale;
         }
     }
 }

@@ -6021,6 +6021,10 @@ MonoBehaviour:
       ac: {fileID: 8300000, guid: 068a19438d700754b8f4b5bb6101b809, type: 3}
     - name: venom_explode
       ac: {fileID: 8300000, guid: b09192b7d3a7a344d9ef1a6bc8ca719b, type: 3}
+  - tag: Items
+    siList:
+    - name: BeadPick
+      ac: {fileID: 8300000, guid: 67f3ba9ada3adf2469b90d2e9dd0f360, type: 3}
 --- !u!1 &1288127692
 GameObject:
   m_ObjectHideFlags: 0

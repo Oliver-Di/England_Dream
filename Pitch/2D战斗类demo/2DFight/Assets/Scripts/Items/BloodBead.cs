@@ -33,6 +33,7 @@ public class BloodBead : MonoBehaviour
 
     private void DestroyThis()
     {
+        SoundService.instance.Play("BeadPick");
         ObjectPool.Instance.PushObject(gameObject);
     }
 }

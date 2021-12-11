@@ -17,8 +17,8 @@ public class AirWall : MonoBehaviour
             popupDone = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
-            Popup();
+        if(walker.activeSelf==false)
+            GetComponent<BoxCollider2D>().enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -6,6 +6,7 @@ public class EvilWizardSignal : MonoBehaviour
 {
     public Animator blackLine;
     public Animator boss;
+    public GameObject bossHpBar;
 
     public void Turn()
     {
@@ -18,5 +19,6 @@ public class EvilWizardSignal : MonoBehaviour
         GetComponent<EvilWizard>().enabled = true;
         GameManager.instance.gameMode = GameManager.GameMode.Normal;
         boss.SetBool("stage1", true);
+        bossHpBar.SetActive(true);
     }
 }

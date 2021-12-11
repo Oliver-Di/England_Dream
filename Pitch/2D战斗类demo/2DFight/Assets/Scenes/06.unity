@@ -42778,6 +42778,10 @@ PrefabInstance:
       propertyPath: blackLine
       value: 
       objectReference: {fileID: 28511455}
+    - target: {fileID: 1260565199, guid: 002034dc7ff5f5c44a099d93c907c72e, type: 3}
+      propertyPath: bossHpBar
+      value: 
+      objectReference: {fileID: 2061624337}
     - target: {fileID: 8735444716409567611, guid: 002034dc7ff5f5c44a099d93c907c72e,
         type: 3}
       propertyPath: m_Name
