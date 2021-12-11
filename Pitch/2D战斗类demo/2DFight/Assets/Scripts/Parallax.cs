@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Parallax : MonoBehaviour
 {
-    public Transform cam;
     public float XmoveRate;
     public float YmoveRate;
     public bool lockY;
+    private Transform cam;
     private float xStartPoint;
     private float yStartPoint;
 
@@ -15,6 +15,7 @@ public class Parallax : MonoBehaviour
     {
         xStartPoint = transform.position.x;
         yStartPoint = transform.position.y;
+        cam = Camera.main.transform;
     }
 
     void Update()

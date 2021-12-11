@@ -20,10 +20,13 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (GetComponent<PlayerGetHit>().isDead == false &&
-            GetComponent<PlayerGetHit>().isVertigo == false) 
+        if (GameManager.instance.gameMode == GameManager.GameMode.Normal)
         {
-            Attack();
+            if (GetComponent<PlayerGetHit>().isDead == false &&
+                GetComponent<PlayerGetHit>().isVertigo == false)
+            {
+                Attack();
+            }
         }
     }
 

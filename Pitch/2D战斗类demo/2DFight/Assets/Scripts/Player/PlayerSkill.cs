@@ -19,8 +19,11 @@ public class PlayerSkill : MonoBehaviour
 
     void Update()
     {
-        PressSkillButton();
-        SkillData();
+        if (GameManager.instance.gameMode == GameManager.GameMode.Normal)
+        {
+            PressSkillButton();
+            SkillData();
+        }
     }
 
     private void PressSkillButton()

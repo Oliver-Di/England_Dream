@@ -42,6 +42,14 @@ public class GameManager : MonoBehaviour
         anim = player.GetComponent<Animator>();
     }
 
+    public GameMode gameMode;
+    public enum GameMode
+    {
+        Normal,
+        Dead,
+        TimeLine,
+    }
+
     public void CreateWalker(Vector3 pos)
     {
         int rand = Random.Range(0, 3);

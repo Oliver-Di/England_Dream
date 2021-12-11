@@ -32,11 +32,14 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        if (GetComponent<PlayerAttack>().isAttack == false &&
-            GetComponent<PlayerGetHit>().isDead == false &&
-            GetComponent<PlayerGetHit>().isVertigo == false )  
+        if (GameManager.instance.gameMode == GameManager.GameMode.Normal)
         {
-            movement();
+            if (GetComponent<PlayerAttack>().isAttack == false &&
+                GetComponent<PlayerGetHit>().isDead == false &&
+                GetComponent<PlayerGetHit>().isVertigo == false)
+            {
+                movement();
+            }
         }
     }
 

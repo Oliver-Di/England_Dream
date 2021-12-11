@@ -20,8 +20,11 @@ public class PlayerThrow : MonoBehaviour
 
     void Update()
     {
-        ThrowHead();
-        SkillData();
+        if (GameManager.instance.gameMode == GameManager.GameMode.Normal)
+        {
+            ThrowHead();
+            SkillData();
+        }
     }
 
     private void ThrowHead()
