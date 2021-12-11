@@ -9,6 +9,7 @@ public class PlayerJump : MonoBehaviour
     private int jumpCount;
     private bool S;
 
+    public GameObject jumpVFXPrefab;
     [Header("跳跃属性")]
     public bool isJumping;
     public bool isOnGround;
@@ -56,6 +57,8 @@ public class PlayerJump : MonoBehaviour
             isJumping = true;
             jumpCount++;
 
+            GameObject vfx = ObjectPool.Instance.GetObject(jumpVFXPrefab);
+            vfx.transform.position = transform.position;
             SoundService.instance.Play("Player_jumpup");
         }
         if (isOnGround && Input.GetAxisRaw("Jump") == 0)

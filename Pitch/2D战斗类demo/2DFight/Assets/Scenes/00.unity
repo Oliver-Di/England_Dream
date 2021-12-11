@@ -3859,6 +3859,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a55bdb121fe2f474fb5a8e9e43c03c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpVFXPrefab: {fileID: 2606900129890990758, guid: a690efefad8097749b845dae3e433a4a,
+    type: 3}
   isJumping: 0
   isOnGround: 1
   jumpF: 10
@@ -5935,6 +5937,7 @@ MonoBehaviour:
   magicPointPrefab: {fileID: 8284920762197281186, guid: 42617eaa7183bcd45972e47e0d95c524,
     type: 3}
   bloodOverlay: {fileID: 2130035226}
+  gameMode: 0
 --- !u!4 &1246195941
 Transform:
   m_ObjectHideFlags: 0
