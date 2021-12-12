@@ -27,7 +27,7 @@ public class SoundService : MonoBehaviour
 
     private int _lastSoundFrame;
 
-    void Awake()
+    void Start()
     {
         instance = this;
         _soundSource = gameObject.AddComponent<AudioSource>();
@@ -42,11 +42,6 @@ public class SoundService : MonoBehaviour
                 //Debug.Log("dic " + info.name + " " + info.ac);
             }
         }
-    }
-
-    private void Start()
-    {
-        instance = this;
     }
 
     private bool IsEnabled()
