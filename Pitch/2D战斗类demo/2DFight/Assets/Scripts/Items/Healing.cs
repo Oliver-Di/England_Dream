@@ -67,6 +67,8 @@ public class Healing : MonoBehaviour
 
     private void DestroyThis()
     {
+        SoundService.instance.Play("HealingExplode");
+
         GameObject chip = ObjectPool.Instance.GetObject(chipPrefab);
         chip.transform.position = transform.position;
         Destroy(gameObject);

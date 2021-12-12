@@ -125,6 +125,13 @@ public class FSM : MonoBehaviour
             Vector3 dir = transform.position - parameter.target.position;
             //传递伤害
             collision.GetComponent<PlayerGetHit>().GetHitBack(parameter.attack, dir, 150);
+
+            //音效
+            if (parameter.isChanged == false)
+                SoundService.instance.Play("Walker_attack");
+            else if(parameter.isChanged==true&&parameter.type==Parameter.Type.red)
+                SoundService.instance.Play("Red_fist");
+
             //判断角色是否死亡
             if (collision.GetComponent<PlayerGetHit>().hp <= 0)
                 parameter.target = null;

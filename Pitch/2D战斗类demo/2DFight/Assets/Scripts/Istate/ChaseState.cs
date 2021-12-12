@@ -48,11 +48,13 @@ public class ChaseState : IState
                 if (timer <= 0)
                 {
                     timer = 3;
+                    SoundService.instance.Play("Zombie_attack");
                     manager.TransitionState(StateType.Attack);
                 }
             }
             else
             {
+                SoundService.instance.Play("Zombie_attack");
                 manager.TransitionState(StateType.Attack);
             }
         }

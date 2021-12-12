@@ -45,7 +45,10 @@ public class PlayerGetHit : MonoBehaviour
         if (hp <= 0)
             Dead();
         else
+        {
             anim.SetTrigger("hurt");
+            SoundService.instance.Play("Player_hurt");
+        }
     }
 
     //受击闪白
@@ -129,8 +132,9 @@ public class PlayerGetHit : MonoBehaviour
         anim.SetTrigger("dead");
         transform.gameObject.layer = LayerMask.NameToLayer("Dead");
         rb.velocity = Vector2.zero;
-        GameManager.instance.gameMode = GameManager.GameMode.Dead;
 
+        GameManager.instance.gameMode = GameManager.GameMode.Dead;
+        SoundService.instance.Play("Player_dead");
         RestartMenu.SetActive(true);
     }
 }

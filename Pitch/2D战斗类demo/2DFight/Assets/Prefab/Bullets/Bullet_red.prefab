@@ -147,5 +147,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eccd9bde3569d6344ab931ac799b5222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 1
   blood0: {fileID: 1801979837763089151, guid: 211d29b70f55b624ba2769d28c9c2ead, type: 3}

@@ -45,6 +45,8 @@ public class DevilChest : MonoBehaviour
         {
             anim.SetTrigger("open");
             GetComponent<BoxCollider2D>().enabled = false;
+
+            SoundService.instance.Play("ChestOpen");
         }
     }
 

@@ -27,6 +27,9 @@ public class RestartMenu : MonoBehaviour
 
     public void MainMenu()
     {
+        player.GetComponent<PlayerGetHit>().hp = player.GetComponent<PlayerGetHit>().maxHp;
+        GameManager.instance.RefreshHp();
         SceneManager.LoadScene(0);
+        gameObject.SetActive(false);
     }
 }

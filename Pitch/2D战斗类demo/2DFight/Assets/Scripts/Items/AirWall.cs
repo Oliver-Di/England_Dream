@@ -13,8 +13,8 @@ public class AirWall : MonoBehaviour
         if (walker.activeSelf == false && !popupDone) 
         {
             GetComponent<BoxCollider2D>().enabled = false;
-            Popup();
             popupDone = true;
+            Popup();
         }
     }
 

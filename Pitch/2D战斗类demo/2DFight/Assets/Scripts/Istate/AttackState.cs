@@ -16,6 +16,11 @@ public class AttackState : IState
     }
     public void OnEnter()
     {
+        if(parameter.isChanged==false)
+            SoundService.instance.Play("Zombie_scratch");
+        else if(parameter.isChanged==true&&parameter.type==Parameter.Type.red)
+            SoundService.instance.Play("Red_attack");
+
         if (parameter.isChanged == false)
         {
             parameter.anim.Play("attack");

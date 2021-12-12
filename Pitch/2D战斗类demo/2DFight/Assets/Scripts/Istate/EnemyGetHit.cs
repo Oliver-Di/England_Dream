@@ -74,8 +74,6 @@ public class EnemyGetHit : MonoBehaviour
         //判断死亡
         if (hp <= 0)
             Dead();
-
-        Debug.Log("vertigo");
     }
 
     public void GetExecute(float damage)
@@ -85,8 +83,6 @@ public class EnemyGetHit : MonoBehaviour
 
         //发现敌人
         GetComponent<FSM>().parameter.target = GetComponent<FSM>().parameter.player;
-
-        Debug.Log("execute!!!");
     }
 
     public void BloodVFX1()
@@ -138,7 +134,7 @@ public class EnemyGetHit : MonoBehaviour
             BloodVFX2();
             //生成尸块
             ChooseBodiesType();
-
+            SoundService.instance.Play("Body_exeplode");
             ObjectPool.Instance.PushObject(transform.parent.gameObject);
         }
         else

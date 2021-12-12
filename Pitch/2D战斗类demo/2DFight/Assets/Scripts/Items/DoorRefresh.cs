@@ -21,6 +21,8 @@ public class DoorRefresh : MonoBehaviour
             {
                 door.GetComponent<Door>().noMonster = true;
                 door.GetComponent<Animator>().SetTrigger("open");
+
+                SoundService.instance.Play("DoorOpen");
             }
             else
                 CheckMonster();
@@ -39,6 +41,8 @@ public class DoorRefresh : MonoBehaviour
                 {
                     door.GetComponent<Door>().noMonster = true;
                     door.GetComponent<Animator>().SetTrigger("open");
+
+                    SoundService.instance.Play("DoorOpen");
                 }
             }
         }

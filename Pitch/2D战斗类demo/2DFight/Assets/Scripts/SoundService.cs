@@ -42,6 +42,8 @@ public class SoundService : MonoBehaviour
                 //Debug.Log("dic " + info.name + " " + info.ac);
             }
         }
+
+        DontDestroyOnLoad(this);
     }
 
     private bool IsEnabled()

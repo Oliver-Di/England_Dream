@@ -18,4 +18,9 @@ public class PlayerAudio : MonoBehaviour
     {
         SoundService.instance.Play("Player_throw");
     }
+
+    public void AudioExecute()
+    {
+        SoundService.instance.Play("Player_execute");
+    }
 }

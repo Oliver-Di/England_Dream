@@ -543,6 +543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blackLine: {fileID: 0}
   boss: {fileID: 8735444716409567614}
+  bossHpBar: {fileID: 0}
 --- !u!1001 &8735444715120643511
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -33,6 +33,8 @@ public class PlayerSkill : MonoBehaviour
         {
             GameManager.instance.SlowDownTime();
             skillOn = true;
+
+            SoundService.instance.Play("Player_skillon");
         }
         else if (Input.GetKeyDown(KeyCode.Q) && skillOn ||
             timer <= 0 && skillOn) 
@@ -41,6 +43,8 @@ public class PlayerSkill : MonoBehaviour
             skillOn = false;
             cd = 3;
             timer = skillDuration;
+
+            SoundService.instance.Play("Player_skilloff");
         }
     }
 
