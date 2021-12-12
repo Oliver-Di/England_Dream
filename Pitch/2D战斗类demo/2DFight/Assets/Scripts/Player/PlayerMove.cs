@@ -34,8 +34,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (GameManager.instance.gameMode == GameManager.GameMode.Normal)
         {
-            if (GetComponent<PlayerAttack>().isAttack == false &&
-                GetComponent<PlayerGetHit>().isDead == false &&
+            if (GetComponent<PlayerAttack>().isAttack == false  &&
                 GetComponent<PlayerGetHit>().isVertigo == false)
             {
                 movement();

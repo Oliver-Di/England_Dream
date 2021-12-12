@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TestButton : MonoBehaviour
 {
-    public void LoadScene00()
+    public void LoadMainMenu()
     {
         SceneManager.LoadScene(0);
     }
@@ -32,5 +32,9 @@ public class TestButton : MonoBehaviour
     public void LoadScene06()
     {
         SceneManager.LoadScene(6);
+    }
+    public void LoadScene07()
+    {
+        SceneManager.LoadScene(7);
     }
 }

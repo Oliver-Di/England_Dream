@@ -13,9 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject walker_redPrefab;
     public GameObject player;
     public Image hpBar;
-    public Image mpBar;
     public GameObject bloodPointPrefab;
-    public GameObject magicPointPrefab;
     public GameObject bloodOverlay;
 
     private float hp;

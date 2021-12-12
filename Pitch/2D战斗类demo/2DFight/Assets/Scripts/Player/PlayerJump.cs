@@ -34,8 +34,7 @@ public class PlayerJump : MonoBehaviour
     {
         if(GameManager.instance.gameMode == GameManager.GameMode.Normal)
         {
-            if (GetComponent<PlayerGetHit>().isDead == false &&
-                GetComponent<PlayerGetHit>().isVertigo == false &&
+            if (GetComponent<PlayerGetHit>().isVertigo == false &&
                 GetComponent<PlayerAttack>().isAttack == false)
             {
                 NormalJump();

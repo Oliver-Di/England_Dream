@@ -5119,7 +5119,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -541822423
   m_SortingLayer: 6
-  m_SortingOrder: 20
+  m_SortingOrder: 19
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0

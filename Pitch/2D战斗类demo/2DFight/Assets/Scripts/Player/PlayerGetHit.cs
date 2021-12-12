@@ -11,9 +11,9 @@ public class PlayerGetHit : MonoBehaviour
 
     public float maxHp;
     public float hp;
-    public bool isDead;
     public bool isVertigo;
     public GameObject bloodOverlay;
+    public GameObject RestartMenu;
 
     void Start()
     {
@@ -127,9 +127,10 @@ public class PlayerGetHit : MonoBehaviour
     public void Dead()
     {
         anim.SetTrigger("dead");
-        isDead = true;
         transform.gameObject.layer = LayerMask.NameToLayer("Dead");
         rb.velocity = Vector2.zero;
         GameManager.instance.gameMode = GameManager.GameMode.Dead;
+
+        RestartMenu.SetActive(true);
     }
 }

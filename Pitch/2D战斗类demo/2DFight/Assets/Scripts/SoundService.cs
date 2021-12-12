@@ -44,6 +44,11 @@ public class SoundService : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        instance = this;
+    }
+
     private bool IsEnabled()
     {
         return true;
