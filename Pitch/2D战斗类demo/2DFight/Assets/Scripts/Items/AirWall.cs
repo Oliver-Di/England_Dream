@@ -16,9 +16,6 @@ public class AirWall : MonoBehaviour
             Popup();
             popupDone = true;
         }
-
-        if(walker.activeSelf==false)
-            GetComponent<BoxCollider2D>().enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
