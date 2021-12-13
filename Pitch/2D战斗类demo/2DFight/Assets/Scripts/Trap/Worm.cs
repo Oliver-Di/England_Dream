@@ -9,7 +9,7 @@ public class Worm : MonoBehaviour
     public float firstTime;
     public float waitTime;
     public GameObject fireColumnPrefab;
-    public GameObject firewormBodyPrefab;
+    public GameObject wormBodyPrefab;
 
     private float timer;
     private Animator anim;
@@ -65,7 +65,7 @@ public class Worm : MonoBehaviour
 
     private void Dead()
     {
-        GameObject body = ObjectPool.Instance.GetObject(firewormBodyPrefab);
+        GameObject body = ObjectPool.Instance.GetObject(wormBodyPrefab);
         body.transform.position = transform.position;
         Destroy(gameObject);
     }

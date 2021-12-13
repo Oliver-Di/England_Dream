@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject walker_greenPrefab;
     public GameObject walker_redPrefab;
     public GameObject player;
+    public GameObject UI;
     public Image hpBar;
     public GameObject bloodPointPrefab;
     public GameObject bloodOverlay;
@@ -146,6 +147,18 @@ public class GameManager : MonoBehaviour
             float rand2 = Random.Range(3, 6);
             bead.GetComponent<Rigidbody2D>().velocity = new Vector2(rand1, rand2);
         }
+    }
+
+    public void HidePlayerAndUI()
+    {
+        player.SetActive(false);
+        UI.SetActive(false);
+    }
+
+    public void ShowPlayerAndUI()
+    {
+        player.SetActive(true);
+        UI.SetActive(true);
     }
 }
 

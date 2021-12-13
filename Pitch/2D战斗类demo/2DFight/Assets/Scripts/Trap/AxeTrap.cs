@@ -57,6 +57,8 @@ public class AxeTrap : MonoBehaviour
         {
             down = !down;
             timer = waitTime;
+
+            SoundService.instance.Play("Axe");
         }
         else if (posY >= originPos.y && !down)
         {

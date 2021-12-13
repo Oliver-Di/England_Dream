@@ -63,6 +63,8 @@ public class PlayerPickup : MonoBehaviour
                 RefreshHead();
                 head.GetComponent<Head>().DestroyThis();
             }
+
+            SoundService.instance.Play("Player_pickup");
         }
     }
 

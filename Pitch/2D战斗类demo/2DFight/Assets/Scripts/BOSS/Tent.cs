@@ -20,6 +20,7 @@ public class Tent : MonoBehaviour
     private void OnEnable()
     {
         TryToCreate();
+        SoundService.instance.Play("Tent");
     }
 
     private void TryToCreate()

@@ -19,6 +19,8 @@ public class EvilWizardRebornBehaviour : StateMachineBehaviour
             animator.SetBool("stage3", true);
             animator.GetComponent<EvilWizardGetHit>().maxHp = 30;
         }
+
+        SoundService.instance.Play("BOSS_kneel");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

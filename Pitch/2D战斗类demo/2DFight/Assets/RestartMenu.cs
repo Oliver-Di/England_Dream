@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class RestartMenu : MonoBehaviour
@@ -10,9 +11,31 @@ public class RestartMenu : MonoBehaviour
 
     public void RestartGame()
     {
+        RefreshPlayer();
+
+        ObjectPoolDisable();
+
+        SceneManager.LoadScene(1);
+        gameObject.SetActive(false);
+    }
+
+    public void MainMenu()
+    {
+        RefreshPlayer();
+
+        ObjectPoolDisable();
+        GameManager.instance.HidePlayerAndUI();
+
+        SceneManager.LoadScene(0);
+        gameObject.SetActive(false);
+    }
+
+    private void RefreshPlayer()
+    {
         //重置状态
         player.GetComponent<PlayerGetHit>().hp = player.GetComponent<PlayerGetHit>().maxHp;
         GameManager.instance.RefreshHp();
+        bloodOverlay.GetComponent<Image>().color = new Color(1, 1, 1, 0);
         player.GetComponent<Animator>().Play("Player_idle");
         player.GetComponent<Animator>().SetBool("running", false);
         player.GetComponent<Animator>().SetBool("rise", false);
@@ -21,15 +44,19 @@ public class RestartMenu : MonoBehaviour
         player.GetComponent<PlayerGetHit>().StopCoroutine("ContinuousBloodLoss");
         //恢复控制
         GameManager.instance.gameMode = GameManager.GameMode.Normal;
-        SceneManager.LoadScene(1);
-        gameObject.SetActive(false);
     }
 
-    public void MainMenu()
+    private void ObjectPoolDisable()
     {
-        player.GetComponent<PlayerGetHit>().hp = player.GetComponent<PlayerGetHit>().maxHp;
-        GameManager.instance.RefreshHp();
-        SceneManager.LoadScene(0);
-        gameObject.SetActive(false);
+        GameObject objectPool = GameObject.Find("ObjectPool");
+        //对象池物体取消激活
+        for (int i = 0; i < objectPool.transform.childCount; i++)
+        {
+            Transform child = objectPool.transform.GetChild(i);
+            for (int a = 0; a < child.childCount; a++)
+            {
+                child.GetChild(a).gameObject.SetActive(false);
+            }
+        }
     }
 }

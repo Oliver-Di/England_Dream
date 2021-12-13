@@ -324,6 +324,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86e5aedb96738541ac8aabafb0c4051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chips:
+  - {fileID: 8661354049979071899, guid: bdc984fb2b336994aa8f32598bff56f1, type: 3}
+  - {fileID: 4382666938889698006, guid: 01ae1583af7061f4b87c37640e54e8c7, type: 3}
+  - {fileID: 8587951566349335260, guid: 387453b9e212cb245b1b9abbbf71ce48, type: 3}
+  - {fileID: 3611227492014997408, guid: 11978faed6a61074ea06ef8b59e9c13e, type: 3}
+  - {fileID: 4897763013238952870, guid: 1951a861fefd66d42ada1971bfc39659, type: 3}
+  - {fileID: 2849690974763293994, guid: ffc5446e380a5234f92833580b89921a, type: 3}
 --- !u!1 &7070801822474089115
 GameObject:
   m_ObjectHideFlags: 0

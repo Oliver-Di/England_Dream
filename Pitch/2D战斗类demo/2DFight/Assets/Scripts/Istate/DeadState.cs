@@ -23,7 +23,7 @@ public class DeadState : IState
             parameter.anim.Play("dead2");
         }
 
-        SoundService.instance.Play("Zombie_die");
+        SoundService.instance.Play("Zombie_dead");
     }
 
     public void OnExit()

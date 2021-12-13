@@ -28,6 +28,8 @@ public class PopupBehaviour : MonoBehaviour
         //cg.DOFade(1, 0.5f);
         cg.alpha = 1;
         transform.SetAsLastSibling();
+
+        SoundService.instance.Play("Popup");
     }
 
     public virtual void Hide()
@@ -48,6 +50,6 @@ public class PopupBehaviour : MonoBehaviour
 
     protected virtual void Sound()
     {
-        SoundService.instance.Play("tap");
+        SoundService.instance.Play("Tap");
     }
 }

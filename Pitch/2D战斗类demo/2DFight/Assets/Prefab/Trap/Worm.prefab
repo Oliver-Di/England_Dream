@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 223089155864758}
   - component: {fileID: 223089155864759}
   m_Layer: 17
-  m_Name: Fireworm
+  m_Name: Worm
   m_TagString: Fireworm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,14 +128,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 223089155864752}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b67b0e3e0c5c212428ef35b5c6ab2773, type: 3}
+  m_Script: {fileID: 11500000, guid: 97eee0c06781b4843b60410e874196c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
   maxHp: 2
-  firstTime: 5
+  firstTime: 0
   waitTime: 5
   fireColumnPrefab: {fileID: 5317650443204368719, guid: 1dd2badcf8812aa46baba41f3380967b,
     type: 3}
-  firewormBodyPrefab: {fileID: 626953207571329615, guid: 159788ac6d132dd42830445584d0c124,
+  wormBodyPrefab: {fileID: 626953207571329615, guid: 159788ac6d132dd42830445584d0c124,
     type: 3}

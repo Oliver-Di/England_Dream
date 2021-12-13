@@ -7,6 +7,9 @@ public class MainMenu : MonoBehaviour
 {
     public void StartGame()
     {
+        GameObject GM = GameObject.Find("GameManager");
+        if (GM)
+            GameManager.instance.ShowPlayerAndUI();
         SceneManager.LoadScene(1);
     }
 

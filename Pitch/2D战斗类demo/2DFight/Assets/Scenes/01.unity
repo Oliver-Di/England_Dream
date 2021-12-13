@@ -896,7 +896,7 @@ Transform:
   m_Children:
   - {fileID: 2107547488}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &223424823
 GameObject:
@@ -4448,10 +4448,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1717454304}
     m_Modifications:
+    - target: {fileID: 3801118971137156996, guid: 82a45fc64a884ef449a7f6db952c3ced,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5241743794328989862, guid: 82a45fc64a884ef449a7f6db952c3ced,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5241743794328989862, guid: 82a45fc64a884ef449a7f6db952c3ced,
         type: 3}
@@ -6208,6 +6213,7 @@ MonoBehaviour:
   walker_redPrefab: {fileID: 532753516923286757, guid: d4db9f77f6db94040a49aa7577fb62fb,
     type: 3}
   player: {fileID: 791764901}
+  UI: {fileID: 1910446221}
   hpBar: {fileID: 1901855376}
   bloodPointPrefab: {fileID: 3021803787925498849, guid: 726a8da23a595ec4f9041089109b17bf,
     type: 3}
@@ -7068,10 +7074,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: thorns4
       objectReference: {fileID: 0}
+    - target: {fileID: 3437828106632208900, guid: b1e161f005f7b1f4fa608c27ffdd02bc,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7880068438160145130, guid: b1e161f005f7b1f4fa608c27ffdd02bc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7880068438160145130, guid: b1e161f005f7b1f4fa608c27ffdd02bc,
         type: 3}
@@ -7138,6 +7149,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1717454304}
     m_Modifications:
+    - target: {fileID: 3801118971137156996, guid: 82a45fc64a884ef449a7f6db952c3ced,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5241743794328989862, guid: 82a45fc64a884ef449a7f6db952c3ced,
         type: 3}
       propertyPath: m_RootOrder
@@ -7213,6 +7229,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1717454304}
     m_Modifications:
+    - target: {fileID: 3231846131693941295, guid: 59d0d95be1da26a4ab654a6a52b90257,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7856146599013889733, guid: 59d0d95be1da26a4ab654a6a52b90257,
         type: 3}
       propertyPath: m_Name
@@ -8212,8 +8233,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1430143741}
   - {fileID: 924135652}
+  - {fileID: 1430143741}
   - {fileID: 1760437422}
   - {fileID: 1983079095}
   - {fileID: 2062561458}
@@ -8360,6 +8381,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1717454304}
     m_Modifications:
+    - target: {fileID: 3801118971137156996, guid: 82a45fc64a884ef449a7f6db952c3ced,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5241743794328989862, guid: 82a45fc64a884ef449a7f6db952c3ced,
         type: 3}
       propertyPath: m_RootOrder
@@ -8494,6 +8520,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729474113423310715, guid: 5bf596426553fc642adc4d561e3bd042,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bf596426553fc642adc4d561e3bd042, type: 3}
@@ -9423,7 +9454,7 @@ GameObject:
   - component: {fileID: 1910446226}
   m_Layer: 5
   m_Name: UICanvas
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9867,18 +9898,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5241743794328989862, guid: 82a45fc64a884ef449a7f6db952c3ced,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5241743794328989862, guid: 82a45fc64a884ef449a7f6db952c3ced,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.37
       objectReference: {fileID: 0}
     - target: {fileID: 5241743794328989862, guid: 82a45fc64a884ef449a7f6db952c3ced,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.32
+      value: -0.11
       objectReference: {fileID: 0}
     - target: {fileID: 5241743794328989862, guid: 82a45fc64a884ef449a7f6db952c3ced,
         type: 3}
@@ -10377,6 +10403,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1717454304}
     m_Modifications:
+    - target: {fileID: 3801118971137156996, guid: 82a45fc64a884ef449a7f6db952c3ced,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5241743794328989862, guid: 82a45fc64a884ef449a7f6db952c3ced,
         type: 3}
       propertyPath: m_RootOrder
@@ -16121,7 +16152,7 @@ PrefabInstance:
     - target: {fileID: 8756589736302194361, guid: db72f6fea7b053e498cecce4a021a0b6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8756589736302194361, guid: db72f6fea7b053e498cecce4a021a0b6,
         type: 3}

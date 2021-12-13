@@ -117,6 +117,8 @@ public class EvilWizardGetHit : MonoBehaviour
         //喷血特效8
         GameObject blood3 = ObjectPool.Instance.GetObject(blood3Prefab);
         blood3.transform.position = new Vector2(transform.position.x, transform.position.y + 0.5f);
+
+        SoundService.instance.Play("Player_executeblood");
     }
 
     private void Dead()

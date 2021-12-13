@@ -13,4 +13,9 @@ public class EvilWizardAudio : MonoBehaviour
     {
         SoundService.instance.Play("BOSS_attack2");
     }
+
+    public void AudioDead()
+    {
+        SoundService.instance.Play("BOSS_dead");
+    }
 }
