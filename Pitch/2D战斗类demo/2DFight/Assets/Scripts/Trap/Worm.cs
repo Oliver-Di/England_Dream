@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireworm : MonoBehaviour
+public class Worm : MonoBehaviour
 {
     public float hp;
     public float maxHp;

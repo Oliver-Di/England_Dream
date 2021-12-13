@@ -7,7 +7,7 @@ public class BuffIcon : MonoBehaviour
     public static BuffIcon instance;
     public GameObject[] icons;
 
-    private GameObject icon;
+    private int number;
     private float time;
 
     private void Awake()
@@ -23,35 +23,71 @@ public class BuffIcon : MonoBehaviour
 
     public void StartBuff(int num,float time)
     {
+        number = num;
+        this.time = time;
+
         switch (num)
         {
             case 0:
-                icon = icons[0];
+                if (icons[num].activeSelf == true)
+                    StopCoroutine("BuffIcon0Reveal");
+                StartCoroutine("BuffIcon0Reveal");
                 break;
             case 1:
-                icon = icons[1];
+                if (icons[num].activeSelf == true)
+                    StopCoroutine("BuffIcon1Reveal");
+                StartCoroutine("BuffIcon1Reveal");
                 break;
             case 2:
-                icon = icons[2];
+                if (icons[num].activeSelf == true)
+                    StopCoroutine("BuffIcon2Reveal");
+                StartCoroutine("BuffIcon2Reveal");
                 break;
             case 3:
-                icon = icons[3];
+                if (icons[num].activeSelf == true)
+                    StopCoroutine("BuffIcon3Reveal");
+                StartCoroutine("BuffIcon3Reveal");
                 break;
             case 4:
-                icon = icons[4];
+                if (icons[num].activeSelf == true)
+                    StopCoroutine("BuffIcon4Reveal");
+                StartCoroutine("BuffIcon4Reveal");
                 break;
         }
-
-        this.time = time;
-        if (icon.activeSelf == true)
-            StopCoroutine("BuffIconReveal");
-        StartCoroutine("BuffIconReveal");
     }
 
-    IEnumerator BuffIconReveal()
+    IEnumerator BuffIcon0Reveal()
     {
-        icon.SetActive(true);
+        icons[0].SetActive(true);
         yield return new WaitForSeconds(time);
-        icon.SetActive(false);
+        icons[0].SetActive(false);
+    }
+
+    IEnumerator BuffIcon1Reveal()
+    {
+        icons[1].SetActive(true);
+        yield return new WaitForSeconds(time);
+        icons[1].SetActive(false);
+    }
+
+    IEnumerator BuffIcon2Reveal()
+    {
+        icons[2].SetActive(true);
+        yield return new WaitForSeconds(time);
+        icons[2].SetActive(false);
+    }
+
+    IEnumerator BuffIcon3Reveal()
+    {
+        icons[3].SetActive(true);
+        yield return new WaitForSeconds(time);
+        icons[3].SetActive(false);
+    }
+
+    IEnumerator BuffIcon4Reveal()
+    {
+        icons[4].SetActive(true);
+        yield return new WaitForSeconds(time);
+        icons[4].SetActive(false);
     }
 }

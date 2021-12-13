@@ -902,9 +902,9 @@ MonoBehaviour:
       ac: {fileID: 8300000, guid: 22901bfe45e87604b9e68cd07f6b7942, type: 3}
     - name: fist2
       ac: {fileID: 8300000, guid: 230e8de7cbd1e8a459854ffa7b10ec3e, type: 3}
-    - name: Red_fist
+    - name: Red_fisthurt
       ac: {fileID: 8300000, guid: 65b1b7c0c78526146a6927b95bf841d5, type: 3}
-    - name: Walker_attack
+    - name: Scratch_hurt
       ac: {fileID: 8300000, guid: 70b2c5f2a45471445bfa4c13a530608f, type: 3}
     - name: Head_attack
       ac: {fileID: 8300000, guid: eefd3e9550e5f9646973e6905baa037a, type: 3}
@@ -920,7 +920,7 @@ MonoBehaviour:
       ac: {fileID: 8300000, guid: b54a2f7d009c0614aaa5a15d947f62a5, type: 3}
   - tag: Zombie
     siList:
-    - name: Zombie_die
+    - name: Zombie_dead
       ac: {fileID: 8300000, guid: d8cd8651da0b65f42a0420c848a51354, type: 3}
     - name: Red_attack
       ac: {fileID: 8300000, guid: 96741db92a71a314c8e0c90b0dc6cd93, type: 3}
@@ -930,6 +930,8 @@ MonoBehaviour:
       ac: {fileID: 8300000, guid: 95c7179624120b247b0fcff664e21b35, type: 3}
     - name: Zombie_scratch
       ac: {fileID: 8300000, guid: 50bff5911a2f76e478e31996577d395c, type: 3}
+    - name: Zombie_idle
+      ac: {fileID: 8300000, guid: bab5a1e2411baf8489c00288e549474a, type: 3}
   - tag: Player
     siList:
     - name: Player_attack1
@@ -1120,7 +1122,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 50c096f02fcfdcd4eaf8a1d12f229b3b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0

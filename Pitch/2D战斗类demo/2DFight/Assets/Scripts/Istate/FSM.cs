@@ -79,8 +79,6 @@ public class FSM : MonoBehaviour
 
         timer = 3;
         //Physics2D.queriesStartInColliders = false;
-
-        SoundService.instance.Play("Zombie_idle");
     }
 
     void Update()
@@ -128,9 +126,9 @@ public class FSM : MonoBehaviour
 
             //音效
             if (parameter.isChanged == false)
-                SoundService.instance.Play("Walker_attack");
+                SoundService.instance.Play("Scratch_hurt");
             else if(parameter.isChanged==true&&parameter.type==Parameter.Type.red)
-                SoundService.instance.Play("Red_fist");
+                SoundService.instance.Play("Red_fisthurt");
 
             //判断角色是否死亡
             if (collision.GetComponent<PlayerGetHit>().hp <= 0)
@@ -180,8 +178,13 @@ public class FSM : MonoBehaviour
         Destroy(transform.parent.gameObject);
     }
 
-    public void AudieAttack()
+    public void AudioScratch()
     {
-        SoundService.instance.Play("Zombie_attack");
+        SoundService.instance.Play("Zombie_scratch");
+    }
+
+    public void AudioFist()
+    {
+        SoundService.instance.Play("Red_attack");
     }
 }

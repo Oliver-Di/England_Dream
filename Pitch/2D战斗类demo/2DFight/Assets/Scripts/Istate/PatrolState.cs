@@ -25,6 +25,8 @@ public class PatrolState : IState
         {
             parameter.anim.Play("walk2");
         }
+
+        SoundService.instance.Play("Zombie_idle");
     }
 
     public void OnUpdate()
