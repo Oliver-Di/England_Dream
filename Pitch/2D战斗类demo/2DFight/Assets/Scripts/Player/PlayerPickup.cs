@@ -12,6 +12,7 @@ public class PlayerPickup : MonoBehaviour
     public int headInt;
 
     private GameObject head;
+    private bool fistPick;
 
     void Start()
     {
@@ -63,6 +64,12 @@ public class PlayerPickup : MonoBehaviour
                 RefreshHead();
                 head.GetComponent<Head>().DestroyThis();
             }
+            //首次拾取教学
+            if (!fistPick)
+            {
+                Popup();
+                fistPick = true;
+            }
 
             SoundService.instance.Play("Player_pickup");
         }
@@ -91,5 +98,32 @@ public class PlayerPickup : MonoBehaviour
                 headIcon.transform.GetChild(i).gameObject.SetActive(false);
             }
         }
+    }
+
+    private void Popup()
+    {
+        SoundService.instance.Play("Popup");
+        Time.timeScale = 0;
+
+        var data = new ConfirmboxBehaviour.ConfirmBoxData();
+        data.btnClose = false;
+        data.btnBgClose = true;
+        data.btnLeft = false;
+        data.btnRight = false;
+        data.title = "Throw Skill [E]";
+        data.content = " You can throw the enemy's head by 'E' to dizzy an enemy or destroy LightTrap." +
+            "\n\nTap Anything To Continue";
+        data.btnLeftTxt = "Sure";
+        data.btnLeftAction = () =>
+        {
+            SoundService.instance.Play("Tap");
+        };
+        data.btnRightTxt = "Can it talk?";
+        data.btnRightAction = () =>
+        {
+            SoundService.instance.Play("Tap");
+        };
+        ConfirmboxBehaviour.instance.Setup(data);
+        ConfirmboxBehaviour.instance.Show();
     }
 }

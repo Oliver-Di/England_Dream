@@ -125,6 +125,9 @@ public class EvilWizardGetHit : MonoBehaviour
     {
         anim.SetTrigger("dead");
         transform.gameObject.layer = LayerMask.NameToLayer("Dead");
+
+        if(anim.GetBool("stage3"))
+            GameManager.instance.GameOver();
     }
 
     private void CreateBodies()

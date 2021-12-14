@@ -25,7 +25,7 @@ public class AirWall : MonoBehaviour
 
     private void Popup()
     {
-        SoundService.instance.Play("Player_jumpup");
+        SoundService.instance.Play("Popup");
         Time.timeScale = 0;
 
         var data = new ConfirmboxBehaviour.ConfirmBoxData();
@@ -33,18 +33,18 @@ public class AirWall : MonoBehaviour
         data.btnBgClose = true;
         data.btnLeft = false;
         data.btnRight = false;
-        data.title = "Throw Skill";
-        data.content = "When you use execution to kill an enemy, the enemy will be dismembered and you can pick up the enemy's head and use 'E' to throw it." +
+        data.title = "Execute";
+        data.content = "When you use execution to kill an enemy, the enemy will be dismembered. \nYou can pick up the Head and use it." +
             "\n\nTap Anything To Continue";
-        data.btnLeftTxt = "Sure";
+        data.btnLeftTxt = "Why not";
         data.btnLeftAction = () =>
         {
-            SoundService.instance.Play("Player_jumpup");
+            SoundService.instance.Play("Tap");
         };
-        data.btnRightTxt = "jump";
+        data.btnRightTxt = "Disgusting";
         data.btnRightAction = () =>
         {
-            SoundService.instance.Play("Player_jumpup");
+            SoundService.instance.Play("Tap");
         };
         ConfirmboxBehaviour.instance.Setup(data);
         ConfirmboxBehaviour.instance.Show();

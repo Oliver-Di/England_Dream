@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public Image hpBar;
     public GameObject bloodPointPrefab;
     public GameObject bloodOverlay;
+    public GameObject winMenu;
 
     private float hp;
     private float maxHp;
@@ -159,6 +160,11 @@ public class GameManager : MonoBehaviour
     {
         player.SetActive(true);
         UI.SetActive(true);
+    }
+
+    public void GameOver()
+    {
+        winMenu.SetActive(true);
     }
 }
 

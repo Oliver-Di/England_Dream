@@ -42,9 +42,15 @@ public class EvilWizardStage3Behaviour : StateMachineBehaviour
                     else if (rand == 1)
                         animator.SetTrigger("venom");
                     else if (rand == 2)
+                    {
                         animator.SetTrigger("attack1");
+                        animator.GetComponent<EvilWizard>().isAttack = true;
+                    }
                     else if (rand == 3)
+                    {
                         animator.SetTrigger("attack2");
+                        animator.GetComponent<EvilWizard>().isAttack = true;
+                    }
                     else
                     {
                         //远离
