@@ -53,6 +53,11 @@ public class MenuControler : MonoBehaviour
         GameSystem.instance.RestartGame();
     }
 
+    public void QuitButton()
+    {
+        Application.Quit();
+    }
+
     public void ChangeBoardButton()
     {
         BoardControler.instance.ChangeBoard();
