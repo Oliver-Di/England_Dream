@@ -13,7 +13,7 @@ public class Earth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Head"))
         {
             tips.SetActive(true);
         }
@@ -21,7 +21,7 @@ public class Earth : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Head"))
         {
             tips.SetActive(false);
         }
