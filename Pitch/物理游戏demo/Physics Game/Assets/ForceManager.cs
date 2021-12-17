@@ -1,8 +1,8 @@
-Ôªøusing System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class ForceManager : MonoBehaviour
 {
     public LayerMask player;
     public LayerMask table;
@@ -22,22 +22,31 @@ public class Player : MonoBehaviour
 
     private RaycastHit hitInfo;
     private Ray ray;
+    private GameObject selectObj;
 
-    void Start()
+    public static ForceManager instance;
+    private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        //µ•¿˝
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(this);
     }
 
 
     void Update()
     {
-        //ËÆ∞ÂΩïÈº†Ê†á‰ΩçÁΩÆ
+        //º«¬º Û±ÍŒª÷√
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (GameManager.instance.gameMode == GameManager.GameMode.Player)
             ForcePoint();
 
-        if (point.activeSelf == true && Vector3.Distance(point.transform.position, transform.position) < 2) 
+        if (point.activeSelf == true)
         {
             LeftButtonDown();
             LeftButtonUp();
@@ -46,12 +55,13 @@ public class Player : MonoBehaviour
 
     private void ForcePoint()
     {
-        //ÊòæÁ§∫Á∫¢ÁÇπ
+        //œ‘ æ∫Ïµ„
         if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, player)
             && !start)
         {
             point.SetActive(true);
             point.transform.position = hitInfo.point;
+            selectObj = hitInfo.transform.gameObject;
         }
         else if (!Physics.Raycast(ray, out hitInfo, Mathf.Infinity, player)
             && !start)
@@ -62,7 +72,7 @@ public class Player : MonoBehaviour
 
     private void LeftButtonDown()
     {
-        //Êåâ‰∏ãÂ∑¶ÈîÆ
+        //∞¥œ¬◊Ûº¸
         if (Input.GetMouseButton(0))
         {
             //hits = Physics.RaycastAll(ray, Mathf.Infinity, table);
@@ -70,51 +80,53 @@ public class Player : MonoBehaviour
 
             if (!start)
             {
-                //ËÆ∞ÂΩïÂèóÂäõÁÇπ
+                //º«¬º ‹¡¶µ„
                 originPos = hitInfo.point;
-                //Á∫¢ÁÇπ‰ΩçÁΩÆÂõ∫ÂÆö
+                //∫Ïµ„Œª÷√πÃ∂®
                 point.transform.position = hitInfo.point;
                 start = true;
-                //ÊòæÁ§∫ÁÆ≠Â§¥
+                //œ‘ æº˝Õ∑
                 arrows.gameObject.SetActive(true);
             }
 
-            //ÁÆ≠Â§¥ÈïøÂ∫¶
+            //º˝Õ∑≥§∂»
             var endPos = originPos - length * distance;
             arrows.SetPosition(0, originPos);
             arrows.SetPosition(1, endPos);
             arrowHead.position = endPos;
             arrowHead.rotation = Quaternion.LookRotation(endPos - originPos, Vector3.up);
             //arrowHead.eulerAngles = new Vector3(0, (endPos - originPos), 0);
-            //ÁÆ≠Â§¥ÂÆΩÂ∫¶
+            //º˝Õ∑øÌ∂»
             arrows.startWidth = startWidth;// * distance.magnitude;
             arrows.endWidth = endWidth;// * distance.magnitude;
 
-            //ËÆ°ÁÆóÊãâÂºÄÁöÑË∑ùÁ¶ª
+            //º∆À„¿≠ø™µƒæ‡¿Î
             distance = hitInfo2.point - originPos;
         }
     }
 
     private void LeftButtonUp()
     {
-        //Êä¨Ëµ∑Â∑¶ÈîÆ
+        //Ãß∆◊Ûº¸
         if (Input.GetMouseButtonUp(0))
         {
-            //ËÆ°ÁÆóÂäõ
+            //º∆À„¡¶
             F = force * -distance.normalized * distance.magnitude;
 
-            var size = transform.GetComponent<Renderer>().bounds.size;
+            var size = selectObj.GetComponent<Renderer>().bounds.size;
+            rb = selectObj.GetComponent<Rigidbody>();
             rb.AddForceAtPosition(new Vector3(F.x, 0, F.z), new Vector3(originPos.x, originPos.y - size.y * 0.5f, originPos.z));
 
             start = false;
             distance = Vector3.zero;
 
-            //ÁÆ≠Â§¥Ê∂àÂ§±
+            //º˝Õ∑œ˚ ß
             arrows.gameObject.SetActive(false);
 
-            //Ë°åÂä®ÁªìÊùü
+            //––∂ØΩ· ¯
             point.SetActive(false);
-            WaitMoveEnd.instance.WaitingMove(gameObject);
+            WaitMoveEnd.instance.WaitingMove(selectObj);
         }
     }
+
 }

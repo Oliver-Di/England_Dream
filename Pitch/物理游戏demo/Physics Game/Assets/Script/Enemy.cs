@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     private GameObject player;
     private Rigidbody rb;
-    private float _timer;
+    private bool canAttack;
 
     [Tooltip("AI config")]
     public float turnTime=2;
@@ -21,15 +21,14 @@ public class Enemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();
-        _timer = turnTime;
     }
 
     void Update()
     {
         if (GameManager.instance.gameMode == GameManager.GameMode.Enemy)
-            _timer -= Time.deltaTime;
+            canAttack = true;
 
-        if (_timer < 0)
+        if (canAttack)
             Attack();
     }
 
@@ -50,7 +49,8 @@ public class Enemy : MonoBehaviour
         //resultAngle是一个Quaternion，乘以Vector3.forward，得到这个Quaternion的forward对应的箭头的向量
         rb.AddForce(finalDirection * force);
 
-        GameManager.instance.gameMode = GameManager.GameMode.Player;
-        _timer = turnTime;
+        //行动结束
+        WaitMoveEnd.instance.WaitingMove(gameObject);
+        canAttack = false;
     }
 }

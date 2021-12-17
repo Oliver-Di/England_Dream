@@ -28,9 +28,11 @@ public class GameManager : MonoBehaviour
     public GameMode gameMode;
     public enum GameMode
     {
+        Menu,
         Ready,
         Player,
         Enemy,
+        Waiting,
     }
 
     private void Awake()
@@ -45,9 +47,12 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
 
         //开局等待
-        gameMode = GameMode.Ready;
+        gameMode = GameMode.Menu;
         Time.timeScale = 0;
+    }
 
+    private void Update()
+    {
 
     }
 
@@ -73,7 +78,7 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame()
     {
-
+        Application.Quit();
     }
 
     public void findObject()
