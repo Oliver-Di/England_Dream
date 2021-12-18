@@ -34,7 +34,6 @@ public class ForceManager : MonoBehaviour
             return;
         }
         instance = this;
-        DontDestroyOnLoad(this);
     }
 
 
@@ -56,8 +55,9 @@ public class ForceManager : MonoBehaviour
     private void ForcePoint()
     {
         //显示红点
-        if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, player)
-            && !start)
+        if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, player) &&
+            hitInfo.transform.GetComponent<Player>().isDead == false &&
+            !start) 
         {
             point.SetActive(true);
             point.transform.position = hitInfo.point;
@@ -125,7 +125,7 @@ public class ForceManager : MonoBehaviour
 
             //行动结束
             point.SetActive(false);
-            WaitMoveEnd.instance.WaitingMove(selectObj);
+            WaitingBehaviour.instance.WaitingMove(selectObj);
         }
     }
 

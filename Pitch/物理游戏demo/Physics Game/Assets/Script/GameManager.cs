@@ -44,7 +44,6 @@ public class GameManager : MonoBehaviour
             return;
         }
         instance = this;
-        DontDestroyOnLoad(this);
 
         //开局等待
         gameMode = GameMode.Menu;

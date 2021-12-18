@@ -6,6 +6,7 @@ public class Border : MonoBehaviour
 {
     public GameObject Victory;
     public GameObject Fail;
+    public GameObject enemyBehaviour;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +23,15 @@ public class Border : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.instance.FailGame();
+            other.GetComponent<Player>().isDead = true;
+            //enemyAIÖÐÒÆ³ý
+            enemyBehaviour.GetComponent<EnemyBehaviour>().players.Remove(other.gameObject);
         }
         else if (other.CompareTag("Enemy"))
         {
-            GameManager.instance.WinGame();
+            other.GetComponent<Enemy>().isDead = true;
+            //enemyAIÖÐÒÆ³ý
+            enemyBehaviour.GetComponent<EnemyBehaviour>().enemys.Remove(other.gameObject);
         }
     }
 }

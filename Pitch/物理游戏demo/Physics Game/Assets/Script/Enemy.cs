@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private GameObject player;
     private Rigidbody rb;
-    private bool canAttack;
 
+    public bool canAttack;
+    public GameObject target;
+    public bool isDead;
     [Tooltip("AI config")]
     public float turnTime=2;
     public float force;
@@ -19,22 +20,18 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        if (GameManager.instance.gameMode == GameManager.GameMode.Enemy)
-            canAttack = true;
-
         if (canAttack)
             Attack();
     }
 
     private void Attack()
     {
-        Vector3 direction = player.transform.position - transform.position;
+        Vector3 direction = target.transform.position - transform.position;
         direction.y = 0;
         direction = direction.normalized;
         //direction是敌人指向我的单位向量，去除了y轴干扰
@@ -50,7 +47,8 @@ public class Enemy : MonoBehaviour
         rb.AddForce(finalDirection * force);
 
         //行动结束
-        WaitMoveEnd.instance.WaitingMove(gameObject);
+        WaitingBehaviour.instance.WaitingMove(gameObject);
         canAttack = false;
+        target = null;
     }
 }

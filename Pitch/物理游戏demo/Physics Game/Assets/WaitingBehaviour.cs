@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaitMoveEnd : MonoBehaviour
+public class WaitingBehaviour : MonoBehaviour
 {
     public float waitTime;
+    public GameObject EnemyBehaviour;
 
     private bool moving;
     private string lastTag;
@@ -12,7 +13,7 @@ public class WaitMoveEnd : MonoBehaviour
     private float lastTime;
     private GameObject lastObj;
 
-    public static WaitMoveEnd instance;
+    public static WaitingBehaviour instance;
     private void Awake()
     {
         //单例
@@ -22,7 +23,6 @@ public class WaitMoveEnd : MonoBehaviour
             return;
         }
         instance = this;
-        DontDestroyOnLoad(this);
     }
 
     void Update()
@@ -54,9 +54,15 @@ public class WaitMoveEnd : MonoBehaviour
         {
             lastTime = Time.time;
             if (lastTag == "Player")
+            {
                 GameManager.instance.gameMode = GameManager.GameMode.Enemy;
+                EnemyBehaviour.GetComponent<EnemyBehaviour>().ChooseObjMove();
+            }
             else
                 GameManager.instance.gameMode = GameManager.GameMode.Player;
+
+            //刷新占领清空
+            WinAreaManager.instance.RefreshOccupySituation();
         }
     }
 }
