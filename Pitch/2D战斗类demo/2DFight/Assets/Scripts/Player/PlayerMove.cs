@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviour
     private Animator anim;
 
     public float speed;
+    public float startupTime;
     public static PlayerMove instance;
 
     private void Awake()
@@ -42,6 +43,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    Vector2 velocity;
     //2D移动
     void movement()
     {
@@ -49,12 +51,12 @@ public class PlayerMove : MonoBehaviour
         //移动
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            rb.velocity = new Vector2(speed , rb.velocity.y);
+            rb.velocity = new Vector2(Mathf.SmoothDamp(rb.velocity.x, speed, ref velocity.x, startupTime), rb.velocity.y);
             anim.SetBool("running", true);
         }
         else if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            rb.velocity = new Vector2(-speed , rb.velocity.y);
+            rb.velocity = new Vector2(Mathf.SmoothDamp(rb.velocity.x, -speed, ref velocity.x, startupTime), rb.velocity.y);
             anim.SetBool("running", true);
         }
         else

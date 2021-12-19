@@ -4562,6 +4562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  startupTime: 0.15
 --- !u!114 &791764907
 MonoBehaviour:
   m_ObjectHideFlags: 0
