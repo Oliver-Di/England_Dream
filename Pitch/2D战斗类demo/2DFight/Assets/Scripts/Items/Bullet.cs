@@ -33,7 +33,10 @@ public class Bullet : MonoBehaviour
             collision.CompareTag("Tent") ||
             collision.CompareTag("Corpses"))   
         {
-            SoundService.instance.Play("Head_attack");
+            if(GetComponent<Head>().headInt==3)
+                SoundService.instance.Play("explode");
+            else
+                SoundService.instance.Play("Head_attack");
 
             GameObject blood = ObjectPool.Instance.GetObject(blood0);
             blood.transform.position = transform.position;

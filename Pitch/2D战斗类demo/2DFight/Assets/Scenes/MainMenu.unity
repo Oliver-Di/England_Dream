@@ -793,6 +793,8 @@ MonoBehaviour:
       ac: {fileID: 8300000, guid: c03f856eca885304eb4ea483ef8cd780, type: 3}
     - name: Tent
       ac: {fileID: 8300000, guid: f8b3b56ec3c9055499b727265844ead1, type: 3}
+    - name: explode
+      ac: {fileID: 8300000, guid: 249ab0fee966aac4d882680902292ec2, type: 3}
   - tag: Zombie
     siList:
     - name: Zombie_dead
