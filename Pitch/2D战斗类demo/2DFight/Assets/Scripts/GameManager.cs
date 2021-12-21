@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject bloodPointPrefab;
     public GameObject bloodOverlay;
     public GameObject winMenu;
+    public GameObject pauseMenu;
 
     private float hp;
     private float maxHp;
@@ -24,6 +25,15 @@ public class GameManager : MonoBehaviour
     private float maxMp;
     private Animator anim;
     private bool blood;
+    private bool pause;
+
+    public GameMode gameMode;
+    public enum GameMode
+    {
+        Normal,
+        Dead,
+        TimeLine,
+    }
 
     private void Awake()
     {
@@ -42,12 +52,18 @@ public class GameManager : MonoBehaviour
         anim = player.GetComponent<Animator>();
     }
 
-    public GameMode gameMode;
-    public enum GameMode
+    void Update()
     {
-        Normal,
-        Dead,
-        TimeLine,
+        if (Input.GetKeyDown(KeyCode.Escape) && !pause) 
+        {
+            pauseMenu.SetActive(true);
+            pause = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && pause)
+        {
+            pauseMenu.SetActive(false);
+            pause = false;
+        }
     }
 
     public void CreateWalker(Vector3 pos)

@@ -34,9 +34,10 @@ public class ConfirmboxBehaviour : PopupBehaviour
         public string btnLeftTxt;
     }
 
-    private void Awake()
+    private void Start()
     {
         instance = this;
+        gameObject.SetActive(false);
     }
 
     public void Setup(ConfirmBoxData data)
