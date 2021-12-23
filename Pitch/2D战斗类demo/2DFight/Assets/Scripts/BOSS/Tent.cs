@@ -10,16 +10,31 @@ public class Tent : MonoBehaviour
     private SpriteRenderer sr;
     private Animator anim;
     private bool isDead;
+    private float timer;
 
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        timer = 1;
+    }
+
+    void Update()
+    {
+        if (timer > 0)
+            timer -= Time.deltaTime;
+
+        if (timer <= 0)
+        {
+            Vector2 pos = new Vector2(transform.position.x, transform.position.y + 1);
+            GameManager.instance.CreateWalker(transform.position);
+            timer = time;
+        }
     }
 
     private void OnEnable()
     {
-        TryToCreate();
+        //TryToCreate();
         SoundService.instance.Play("Tent");
     }
 

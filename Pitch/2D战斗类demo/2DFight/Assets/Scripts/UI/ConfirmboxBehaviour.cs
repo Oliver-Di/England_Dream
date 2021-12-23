@@ -37,7 +37,7 @@ public class ConfirmboxBehaviour : PopupBehaviour
     private void Start()
     {
         instance = this;
-        gameObject.SetActive(false);
+        Hide();
     }
 
     public void Setup(ConfirmBoxData data)

@@ -90,4 +90,12 @@ public class BuffIcon : MonoBehaviour
         yield return new WaitForSeconds(time);
         icons[4].SetActive(false);
     }
+
+    public void RefreshAllIcon()
+    {
+        for (int i = 0; i < icons.Length; i++)
+        {
+            icons[i].SetActive(false);
+        }
+    }
 }

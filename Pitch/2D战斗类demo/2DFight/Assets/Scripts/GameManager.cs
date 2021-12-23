@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject bloodOverlay;
     public GameObject winMenu;
     public GameObject pauseMenu;
+    public GameObject testMenu;
 
     private float hp;
     private float maxHp;
@@ -26,11 +28,13 @@ public class GameManager : MonoBehaviour
     private Animator anim;
     private bool blood;
     private bool pause;
+    private bool test;
 
     public GameMode gameMode;
     public enum GameMode
     {
         Normal,
+        Wait,
         Dead,
         TimeLine,
     }
@@ -54,16 +58,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !pause) 
-        {
-            pauseMenu.SetActive(true);
-            pause = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape) && pause)
-        {
-            pauseMenu.SetActive(false);
-            pause = false;
-        }
+        PauseMenu();
+        TestMenu();
     }
 
     public void CreateWalker(Vector3 pos)
@@ -181,6 +177,40 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         winMenu.SetActive(true);
+    }
+
+    private void PauseMenu()
+    {
+        if (SceneManager.GetActiveScene().buildIndex != 0) 
+        {
+            if (Input.GetKeyDown(KeyCode.Escape) && !pause &&
+                gameMode == GameMode.Normal) 
+            {
+                pauseMenu.SetActive(true);
+                gameMode = GameMode.Wait;
+                pause = true;
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape) && pause)
+            {
+                pauseMenu.SetActive(false);
+                gameMode = GameMode.Normal;
+                pause = false;
+            }
+        }
+    }
+
+    private void TestMenu()
+    {
+        if (Input.GetKeyDown(KeyCode.F12) && !test)
+        {
+            testMenu.SetActive(true);
+            test = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.F12) && test)
+        {
+            testMenu.SetActive(false);
+            test = false;
+        }
     }
 }
 

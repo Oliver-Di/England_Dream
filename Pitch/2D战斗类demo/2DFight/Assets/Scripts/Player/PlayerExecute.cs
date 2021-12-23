@@ -45,6 +45,7 @@ public class PlayerExecute : MonoBehaviour
                     if (Input.GetMouseButton(1) && isExecute == false)
                     {
                         isExecute = true;
+                        GameManager.instance.gameMode = GameManager.GameMode.Wait;
                         anim.SetTrigger("execute");
                     }
                 }
@@ -59,6 +60,7 @@ public class PlayerExecute : MonoBehaviour
                     if (Input.GetMouseButton(1) && isExecute == false)
                     {
                         isExecute = true;
+                        GameManager.instance.gameMode = GameManager.GameMode.Wait;
                         anim.SetTrigger("execute");
                     }
                 }
@@ -87,6 +89,8 @@ public class PlayerExecute : MonoBehaviour
             target.GetComponent<EnemyGetHit>().Explode();
         else if (target.tag == "BOSS")
             target.GetComponent<EvilWizardGetHit>().Explode();
+
+        GameManager.instance.gameMode = GameManager.GameMode.Normal;
         isExecute = false;
     }
 }

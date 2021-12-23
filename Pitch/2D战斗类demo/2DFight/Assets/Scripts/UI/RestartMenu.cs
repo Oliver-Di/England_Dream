@@ -15,7 +15,7 @@ public class RestartMenu : MonoBehaviour
 
         ObjectPoolDisable();
 
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         gameObject.SetActive(false);
     }
 
@@ -42,6 +42,7 @@ public class RestartMenu : MonoBehaviour
         player.GetComponent<Animator>().SetBool("drop", false);
         player.layer = LayerMask.NameToLayer("Player");
         player.GetComponent<PlayerGetHit>().StopCoroutine("ContinuousBloodLoss");
+        BuffIcon.instance.RefreshAllIcon();
         //恢复控制
         GameManager.instance.gameMode = GameManager.GameMode.Normal;
     }
@@ -50,12 +51,15 @@ public class RestartMenu : MonoBehaviour
     {
         GameObject objectPool = GameObject.Find("ObjectPool");
         //对象池物体取消激活
-        for (int i = 0; i < objectPool.transform.childCount; i++)
+        if (objectPool != null)
         {
-            Transform child = objectPool.transform.GetChild(i);
-            for (int a = 0; a < child.childCount; a++)
+            for (int i = 0; i < objectPool.transform.childCount; i++)
             {
-                child.GetChild(a).gameObject.SetActive(false);
+                Transform child = objectPool.transform.GetChild(i);
+                for (int a = 0; a < child.childCount; a++)
+                {
+                    child.GetChild(a).gameObject.SetActive(false);
+                }
             }
         }
     }
