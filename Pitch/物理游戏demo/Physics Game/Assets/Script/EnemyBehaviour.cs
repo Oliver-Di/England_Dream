@@ -5,33 +5,10 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     public Transform areaPos;
-    public List<GameObject> enemys;
-    public GameObject playerTeam;
-    public List<GameObject> players;
 
     private float distance;
     private GameObject selectedObj;
     private List<GameObject> outOfArea = new List<GameObject>();
-
-    void Start()
-    {
-        FindAllObj();
-    }
-
-    private void FindAllObj()
-    {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            if (transform.GetChild(i).tag == "Enemy")
-                enemys.Add(transform.GetChild(i).gameObject);
-        }
-
-        for (int i = 0; i < playerTeam.transform.childCount; i++)
-        {
-            if (playerTeam.transform.GetChild(i).tag == "Player")
-                players.Add(playerTeam.transform.GetChild(i).gameObject);
-        }
-    }
 
     public void ChooseObjMove()
     {
@@ -39,12 +16,12 @@ public class EnemyBehaviour : MonoBehaviour
         if (WinAreaManager.instance.players.Count != 0)
         {
             //如果区域内区域内enemy小于最大存在数-1
-            if (WinAreaManager.instance.enemys.Count < enemys.Count - 1) 
+            if (WinAreaManager.instance.enemys.Count < GameManager.instance.enemySurvive.Count - 1) 
             {
                 int rand = Random.Range(0, 2);
                 if (rand == 0)//50%概率攻击区域内目标
                 {
-                    FindNearestObjAttack(WinAreaManager.instance.players[0].transform, enemys);
+                    FindNearestObjAttack(WinAreaManager.instance.players[0].transform, GameManager.instance.enemySurvive);
                     Debug.Log("random attack player inside");
                 }
                 else//50%再一个enemy进入区域
@@ -56,7 +33,7 @@ public class EnemyBehaviour : MonoBehaviour
             else
             {
                 //攻击区域内目标
-                FindNearestObjAttack(WinAreaManager.instance.players[0].transform, enemys);
+                FindNearestObjAttack(WinAreaManager.instance.players[0].transform, GameManager.instance.enemySurvive);
                 Debug.Log("attack player inside");
             }
         }
@@ -69,14 +46,14 @@ public class EnemyBehaviour : MonoBehaviour
                 //如果组为空，则随机一个目标
                 if (outOfArea.Count == 0)
                 {
-                    int rand = Random.Range(0, players.Count);
-                    FindNearestObjAttack(players[rand].transform, enemys);
+                    int rand = Random.Range(0, GameManager.instance.playerSurvive.Count);
+                    FindNearestObjAttack(GameManager.instance.playerSurvive[rand].transform, GameManager.instance.enemySurvive);
                 }
                 else
                 {
                     //如果组不为空，则随机一个目标用组内obj攻击
-                    int rand = Random.Range(0, players.Count);
-                    FindNearestObjAttack(players[rand].transform, outOfArea);
+                    int rand = Random.Range(0, GameManager.instance.playerSurvive.Count);
+                    FindNearestObjAttack(GameManager.instance.playerSurvive[rand].transform, outOfArea);
                 }
                 Debug.Log("attack player outside");
             }
@@ -92,7 +69,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         outOfArea.Clear();
 
-        foreach (var obj in enemys)
+        foreach (var obj in GameManager.instance.enemySurvive)
         {
             if (!WinAreaManager.instance.enemys.Contains(obj))
                 outOfArea.Add(obj);

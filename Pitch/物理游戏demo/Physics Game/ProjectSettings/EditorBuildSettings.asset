@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Abattoir 1.unity
+    guid: db15efa259ed48d4d9a04574f438087d
+  - enabled: 1
+    path: Assets/Scenes/Abattoir 2.unity
+    guid: 4327a0663b2ffcd43985e7d0dd796162
   m_configObjects: {}

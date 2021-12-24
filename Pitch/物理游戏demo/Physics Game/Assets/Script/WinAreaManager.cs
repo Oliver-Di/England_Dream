@@ -110,6 +110,8 @@ public class WinAreaManager : MonoBehaviour
         }
 
         CheckWinCondition();
+        RefreshRoundLight();
+        RefreshSnowColor();
     }
 
     public void AddEnemyOccupyRound()
@@ -129,13 +131,15 @@ public class WinAreaManager : MonoBehaviour
         }
 
         CheckWinCondition();
+        RefreshRoundLight();
+        RefreshSnowColor();
     }
 
     private void CheckWinCondition()
     {
-        if (enemyOccupyNum == 3)
+        if (enemyOccupyNum == 3 || GameManager.instance.playerSurvive.Count == 0)
             GameManager.instance.FailGame();
-        else if (playerOccupyNum == 3)
+        else if (playerOccupyNum == 3 || GameManager.instance.enemySurvive.Count == 0) 
             GameManager.instance.WinGame();
     }
 
