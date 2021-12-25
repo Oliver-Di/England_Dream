@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Item_Up : MonoBehaviour
 {
-    public float force;
+    public float forceMultiply;
+    private float mass;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Enemy"))
         {
-            other.GetComponent<Rigidbody>().AddForce(Vector3.up * force);
+            mass = other.GetComponent<Rigidbody>().mass;
+            other.GetComponent<Rigidbody>().AddForce(Vector3.up * mass * forceMultiply);
         }
     }
 }

@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject teamMenu;
     public GameObject pauseMenu;
     public GameObject miniMap;
+    public GameObject helpPage;
     [Header("摄像机")]
     public GameObject folllowCam;
     public GameObject StartCam;
@@ -69,6 +70,11 @@ public class GameManager : MonoBehaviour
         //玩家操作模式
         gameMode = GameMode.Player;
         Time.timeScale = 1;
+    }
+
+    public void GameHelp()
+    {
+        helpPage.SetActive(true);
     }
 
     public void QuitGame()
@@ -183,6 +189,8 @@ public class GameManager : MonoBehaviour
         StartCam.SetActive(true);
         teamMenu.SetActive(false);
         miniMap.SetActive(false);
+        pauseMenu.SetActive(false);
+        pause = false;
 
         //玩家操作模式
         gameMode = GameMode.Menu;

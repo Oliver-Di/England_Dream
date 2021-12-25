@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaitingBehaviour : MonoBehaviour
 {
     public float waitTime;
     public GameObject EnemyBehaviour;
+    public Text tips;
 
     private bool moving;
     private string lastTag;
@@ -45,6 +47,9 @@ public class WaitingBehaviour : MonoBehaviour
 
     private void WaitObjStop()
     {
+        //进入等待回合
+        tips.text = "Waiting";//设置提示
+
         if (Vector3.Distance(lastPos, lastObj.transform.position) > 0.5f) 
         {
             lastPos = lastObj.transform.position;
@@ -62,6 +67,7 @@ public class WaitingBehaviour : MonoBehaviour
             }
             else//player回合开始
             {
+                tips.text = "Player";//设置提示
                 GameManager.instance.gameMode = GameManager.GameMode.Player;
                 WinAreaManager.instance.AddPlayerOccupyRound();
             }
