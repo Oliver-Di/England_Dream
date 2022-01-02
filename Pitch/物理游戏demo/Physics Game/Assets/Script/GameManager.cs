@@ -162,12 +162,14 @@ public class GameManager : MonoBehaviour
     {
         victoryMenu.SetActive(true);
         gameMode = GameMode.Menu;
+        SoundService.instance.Play("Victory");
     }
 
     public void FailGame()
     {
         failMenu.SetActive(true);
         gameMode = GameMode.Menu;
+        SoundService.instance.Play("Fail");
     }
 
     public void PlayerAgain()

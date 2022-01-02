@@ -1277,7 +1277,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightTower (6)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6082033338046516917, guid: a7cc27e59443c5646a5f36bef140eb53, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a7cc27e59443c5646a5f36bef140eb53, type: 3}
 --- !u!4 &752687044 stripped
 Transform:
@@ -44338,7 +44339,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightTower (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6082033338046516917, guid: a7cc27e59443c5646a5f36bef140eb53, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a7cc27e59443c5646a5f36bef140eb53, type: 3}
 --- !u!4 &2138355511 stripped
 Transform:

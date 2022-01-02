@@ -15,7 +15,6 @@ public class MenuControler : MonoBehaviour
             return;
         }
         instance = this;
-        DontDestroyOnLoad(this);
     }
 
     public GameObject[] boards;
@@ -38,6 +37,8 @@ public class MenuControler : MonoBehaviour
         mainMenu.SetActive(false);
 
         GameSystem.instance.ClearBoard();
+        GameSystem.instance.start = false;
+        GameSystem.instance.overMenu.SetActive(false);
         SoundService.instance.Play("button");
     }
 

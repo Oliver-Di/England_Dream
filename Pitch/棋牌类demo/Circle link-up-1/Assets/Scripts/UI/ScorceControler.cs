@@ -13,7 +13,7 @@ public class ScorceControler : MonoBehaviour
 
     public float reward;
 
-    private float mainScorce;
+    public float mainScorce;
     private float maxScorce;
     private float multiply;
 
@@ -76,5 +76,10 @@ public class ScorceControler : MonoBehaviour
             maxScorce = mainScorce;
             heightestBoard.text = mainScorce.ToString();
         }
+    }
+
+    public void ClearReward()
+    {
+        mainScorce += 200 + multiply * 200;
     }
 }

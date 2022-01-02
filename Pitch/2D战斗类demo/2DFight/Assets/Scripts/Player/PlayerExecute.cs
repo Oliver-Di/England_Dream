@@ -46,6 +46,7 @@ public class PlayerExecute : MonoBehaviour
                     {
                         isExecute = true;
                         GameManager.instance.gameMode = GameManager.GameMode.Wait;
+                        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         anim.SetTrigger("execute");
                     }
                 }

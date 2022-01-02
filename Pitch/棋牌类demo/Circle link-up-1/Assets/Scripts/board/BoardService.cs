@@ -502,6 +502,8 @@ public class BoardService : MonoBehaviour
         SoundService.instance.Play("erase");
         //加分
         ScorceControler.instance.AddScorce();
+        //场上是否还存在棋子
+        Invoke("CheckChessExist", 0.2f);
     }
 
     private bool InSameAxisOrRing(SlotBehaviour a, SlotBehaviour b)
@@ -543,5 +545,28 @@ public class BoardService : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void CheckChessExist()
+    {
+        //如果不存在，则spwan
+        for (int i = 0; i < spawnArea.Count; i++)
+        {
+            Debug.Log(i);
+            if (spawnArea[i].chess != null)
+                return;
+            else if (i == spawnArea.Count - 1)
+            {
+                //奖励分数
+                ScorceControler.instance.ClearReward();
+                GameSystem.instance.WellDone();
+                //重新刷出棋子
+                int count = GameService.instance.gameConfig.startingChessCount;
+                for (int c = 0; c < count; c++)
+                {
+                    GameSystem.instance.TrySpawnChess();
+                }
+            }
+        }
     }
 }

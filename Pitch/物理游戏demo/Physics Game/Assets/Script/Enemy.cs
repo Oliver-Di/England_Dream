@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public string type;
     public bool canAttack;
     public GameObject target;
     public bool isDead;
@@ -53,5 +54,33 @@ public class Enemy : MonoBehaviour
         //行动结束
         WaitingBehaviour.instance.WaitingMove(gameObject);
         target = null;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        switch (type)
+        {
+            case "car":
+                SoundService.instance.Play("car");
+                break;
+            case "gun":
+                SoundService.instance.Play("gun");
+                break;
+            case "guitar_wood":
+                SoundService.instance.Play("guitar_wood");
+                break;
+            case "guitar":
+                SoundService.instance.Play("guitar");
+                break;
+            case "guitar_metal":
+                SoundService.instance.Play("guitar_metal");
+                break;
+            case "metal":
+                SoundService.instance.Play("metal");
+                break;
+            case "wood":
+                SoundService.instance.Play("wood");
+                break;
+        }
     }
 }
