@@ -23,9 +23,9 @@ public class HealingTips : MonoBehaviour
         data.btnBgClose = true;
         data.btnLeft = false;
         data.btnRight = false;
-        data.title = "Healing statue";
-        data.content = " Breaking the statue can get a recovery Buff." +
-            "\n\nTap Anything To Continue";
+        data.title = "Life Altar";
+        data.content = " \nDestroy it for healing." +
+            "\n\n\nTap Anything To Continue";
         data.btnLeftTxt = "Sure";
         data.btnLeftAction = () =>
         {
