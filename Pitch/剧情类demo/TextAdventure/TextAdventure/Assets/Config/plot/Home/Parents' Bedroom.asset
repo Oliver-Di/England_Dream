@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18babe0966456ad448a8c30597c38ae6, type: 3}
-  m_Name: plot-10
+  m_Name: Parents' Bedroom
   m_EditorClassIdentifier: 
-  text: "\u4F60\u77E5\u9053\u65B0\u827A\u672F\u65F6\u671F\u4E48\uFF1F"
-  optionLT: {fileID: 11400000, guid: 71c513769d60ad641be913ed6c2b98d1, type: 2}
-  optionRT: {fileID: 0}
-  optionLB: {fileID: 11400000, guid: 1b11379c01a4deb43a72e3c33adba852, type: 2}
-  optionRB: {fileID: 0}
+  text: Parents' Bedroom
+  optionLT: {fileID: 11400000, guid: 63aacbe28db30c54095b7d7db4bfafe5, type: 2}
+  optionRT: {fileID: 11400000, guid: 78cebc35af445a1468d2c6627f19840e, type: 2}
+  optionLB: {fileID: 11400000, guid: 429f48d0c34fdf34381eb5e8f2365533, type: 2}
+  optionRB: {fileID: 11400000, guid: 61bb59d3b4fd4754aa81df48ec4efe05, type: 2}
   soundName: 
   locationName: Classroom
   color: 0

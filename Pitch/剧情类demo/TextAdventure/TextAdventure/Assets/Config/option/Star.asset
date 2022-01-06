@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92cfcc4db8ebb284cbb051ac2655eb2d, type: 3}
-  m_Name: opt-5-1
+  m_Name: Star
   m_EditorClassIdentifier: 
-  text: "\u55EF"
-  targetPlot: {fileID: 11400000, guid: 1b20cd45fafdea14f9d8e5ee7b8748f1, type: 2}
+  text: 
+  targetPlot: {fileID: 0}
   itemId: 
   color: 0
-  vfx: 3
-  timerFeedback: 1
-  timerFeedbackValue: 14
+  vfx: 0
+  timerFeedback: 0
+  timerFeedbackValue: 0
   score: 0

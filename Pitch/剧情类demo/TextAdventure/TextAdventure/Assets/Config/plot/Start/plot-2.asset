@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18babe0966456ad448a8c30597c38ae6, type: 3}
-  m_Name: plot-1
+  m_Name: plot-2
   m_EditorClassIdentifier: 
-  text: "Hello there!\n\u8FD9\u662F\u4E00\u4E2A\u8C03\u67E5\u95EE\u5377\uFF01"
+  text: 'Oliver is dying.
+
+
+    This is his last dream.'
   optionLT: {fileID: 0}
-  optionRT: {fileID: 11400000, guid: 4a11f1e4f256c6a449357d5cd1488a0a, type: 2}
+  optionRT: {fileID: 0}
   optionLB: {fileID: 0}
-  optionRB: {fileID: 0}
-  soundName: tuto
-  locationName: Road Side
+  optionRB: {fileID: 11400000, guid: bfd4b7907f74cfe46b1ca823652758f6, type: 2}
+  soundName: 
+  locationName: ICU
   color: 0

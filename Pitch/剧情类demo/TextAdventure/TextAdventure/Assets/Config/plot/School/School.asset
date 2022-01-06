@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18babe0966456ad448a8c30597c38ae6, type: 3}
-  m_Name: plot-6
+  m_Name: School
   m_EditorClassIdentifier: 
-  text: "\u8BDD\u8BF4\uFF0C\r\n\u4F60\u5BF9\u8FD1\u73B0\u4EE3\u7684\u827A\u672F\uFF08Contemporary
-    & Modern Art\uFF09\r\n\u6709\u4E00\u70B9\u4E86\u89E3\u4E48\uFF1F"
-  optionLT: {fileID: 11400000, guid: 8237586abcdf3e649b88f0515e7fda6a, type: 2}
+  text: "\u4F60\u77E5\u9053\u65B0\u827A\u672F\u65F6\u671F\u4E48\uFF1F"
+  optionLT: {fileID: 11400000, guid: 71c513769d60ad641be913ed6c2b98d1, type: 2}
   optionRT: {fileID: 0}
-  optionLB: {fileID: 11400000, guid: e18f6dba51f4a624eb580d1f44e45373, type: 2}
+  optionLB: {fileID: 11400000, guid: 1b11379c01a4deb43a72e3c33adba852, type: 2}
   optionRB: {fileID: 0}
-  soundName: BtmBig
+  soundName: 
   locationName: Classroom
-  color: 1
+  color: 0

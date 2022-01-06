@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18babe0966456ad448a8c30597c38ae6, type: 3}
-  m_Name: plot-2
+  m_Name: LivingRoom
   m_EditorClassIdentifier: 
-  text: "\u6E38\u620F\u88AB\u79F0\u4E3A\u7B2C\u4E5D\u827A\u672F\nVideo games are
-    the 9th Art"
+  text: Living Room
   optionLT: {fileID: 0}
-  optionRT: {fileID: 0}
+  optionRT: {fileID: 11400000, guid: e5bc14069803fa34bb57ec822cd9c28f, type: 2}
   optionLB: {fileID: 0}
-  optionRB: {fileID: 11400000, guid: bfd4b7907f74cfe46b1ca823652758f6, type: 2}
+  optionRB: {fileID: 11400000, guid: e5723733837239e49af0c8058370352d, type: 2}
   soundName: 
-  locationName: Road Side
+  locationName: Classroom
   color: 0

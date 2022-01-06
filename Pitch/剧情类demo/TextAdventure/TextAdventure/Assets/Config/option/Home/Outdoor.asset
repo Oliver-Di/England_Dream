@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92cfcc4db8ebb284cbb051ac2655eb2d, type: 3}
-  m_Name: opt-3-2
+  m_Name: Outdoor
   m_EditorClassIdentifier: 
-  text: "\u65E0\u6240\u8C13"
-  targetPlot: {fileID: 11400000, guid: d583ee46330fb0e428438f18194a1a79, type: 2}
+  text: Outdoor
+  targetPlot: {fileID: 0}
   itemId: 
   color: 0
   vfx: 0
   timerFeedback: 0
   timerFeedbackValue: 0
+  score: 0

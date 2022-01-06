@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92cfcc4db8ebb284cbb051ac2655eb2d, type: 3}
   m_Name: opt-2-1
   m_EditorClassIdentifier: 
-  text: "\u55EF"
+  text: hmmm
   targetPlot: {fileID: 11400000, guid: 274ce61db168c2c4c8dae7ead29cd48c, type: 2}
   itemId: 
   color: 0
   vfx: 0
   timerFeedback: 0
   timerFeedbackValue: 0
+  score: 0
