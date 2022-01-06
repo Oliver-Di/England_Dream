@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18babe0966456ad448a8c30597c38ae6, type: 3}
   m_Name: plot-13
   m_EditorClassIdentifier: 
-  text: "\u4F60\u77E5\u9053\u683C\u5F0F\u5854\u5FC3\u7406\u5B66(Gestalt Psychology)\u4E48\uFF1F"
-  optionLT: {fileID: 11400000, guid: ee51520b476c145488bbddbdbf0d4dea, type: 2}
-  optionRT: {fileID: 0}
-  optionLB: {fileID: 11400000, guid: 3941f95aa00549143889d78743c0c8d3, type: 2}
-  optionRB: {fileID: 0}
+  text: You are now at the supermarket, what to get?
+  optionLT: {fileID: 11400000, guid: 5f5b7d45135f9ea4e9bd689f8dc81d15, type: 2}
+  optionRT: {fileID: 11400000, guid: 56364d428a784254f9ef7d2fbb5e1c1a, type: 2}
+  optionLB: {fileID: 11400000, guid: 61bb59d3b4fd4754aa81df48ec4efe05, type: 2}
+  optionRB: {fileID: 11400000, guid: 84323ad33e7c2f6489d263f776424c6d, type: 2}
   soundName: 
-  locationName: Hall
+  locationName: Supermarket
   color: 0

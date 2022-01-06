@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18babe0966456ad448a8c30597c38ae6, type: 3}
   m_Name: plot-6
   m_EditorClassIdentifier: 
-  text: "\u8BDD\u8BF4\uFF0C\r\n\u4F60\u5BF9\u8FD1\u73B0\u4EE3\u7684\u827A\u672F\uFF08Contemporary
-    & Modern Art\uFF09\r\n\u6709\u4E00\u70B9\u4E86\u89E3\u4E48\uFF1F"
-  optionLT: {fileID: 11400000, guid: 8237586abcdf3e649b88f0515e7fda6a, type: 2}
-  optionRT: {fileID: 0}
-  optionLB: {fileID: 11400000, guid: e18f6dba51f4a624eb580d1f44e45373, type: 2}
+  text: Your eyelids got heavy and you fell asleep
+  optionLT: {fileID: 0}
+  optionRT: {fileID: 11400000, guid: a3359c4c399aee440a0801d0561b72f3, type: 2}
+  optionLB: {fileID: 0}
   optionRB: {fileID: 0}
-  soundName: BtmBig
-  locationName: Classroom
-  color: 1
+  soundName: 
+  locationName: Home
+  color: 0

@@ -65,6 +65,11 @@ public class SoundService : MonoBehaviour
             return;
         }
 
+        if (!_siDic.ContainsKey(soundName))
+        {
+            return;
+        }
+
         _soundSource.PlayOneShot(_siDic[soundName], volume);
         _lastSound = soundName;
         _lastSoundFrame = Time.frameCount;

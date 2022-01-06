@@ -23,6 +23,10 @@ public class PlotBehaviour : MonoBehaviour
     {
         Debug.Log(plot);
         scoreText.text = GameSystem.instance.score + "";
+        if (ConfigService.instance.startPlot== plot)
+        {
+            GameSystem.instance.ClearItems();
+        }
 
         tb.Clear();
         optionLT.Setup(null);
@@ -40,6 +44,19 @@ public class PlotBehaviour : MonoBehaviour
             _plot = plot;
             ShowAnimIn();
         }
+        if (GameSystem.instance.fastMode)
+        {
+            optionLT.Setup(_plot.optionLT);
+            optionRT.Setup(_plot.optionRT);
+            optionLB.Setup(_plot.optionLB);
+            optionRB.Setup(_plot.optionRB);
+
+            optionLT.ShowAnimIn();
+            optionRT.ShowAnimIn();
+            optionLB.ShowAnimIn();
+            optionRB.ShowAnimIn();
+        }
+        SoundService.instance.Play(_plot.soundName == "" ? defaultSoundName : _plot.soundName);
     }
 
     public Vector2 inPos;
@@ -48,31 +65,32 @@ public class PlotBehaviour : MonoBehaviour
 
     public void ShowAnimIn()
     {
-        Debug.Log("ShowAnimIn");
+        //Debug.Log("ShowAnimIn");
         plotTrans.anchoredPosition = inPos;
         plotTrans.DOAnchorPos(finalPos, 0.6f).SetEase(Ease.OutCubic).OnComplete(ShowContent);
     }
 
     public void ShowAnimOut(Action next)
     {
-        Debug.Log("ShowAnimOut");
+        //Debug.Log("ShowAnimOut");
         plotTrans.anchoredPosition = finalPos;
         plotTrans.DOAnchorPos(outPos, 0.6f).SetEase(Ease.InBack).OnComplete(() => { next?.Invoke(); });
     }
 
     void ShowContent()
     {
-        Debug.Log("ShowContent");
+        //Debug.Log("ShowContent");
         if (_plot == null)
-        {
             return;
-        }
 
         tb.ShowText(_plot.text);
         tb.SetColor(_plot.color);
-        SoundService.instance.Play(_plot.soundName == "" ? defaultSoundName : _plot.soundName);
+      
         locationText.text = _plot.locationName;
-
+        if (GameSystem.instance.fastMode)
+        {
+            return;
+        }
         tb.OnFinished = () =>
         {
             optionLT.Setup(_plot.optionLT);

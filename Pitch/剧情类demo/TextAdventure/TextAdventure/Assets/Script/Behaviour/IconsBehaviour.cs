@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class IconsBehaviour : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class IconsBehaviour : MonoBehaviour
             if (i.id == s)
             {
                 i.gameObject.SetActive(true);
+                i.transform.DOPunchScale(Vector3.one * 0.25f, 0.6f, 1, 1); 
             }
         }
     }

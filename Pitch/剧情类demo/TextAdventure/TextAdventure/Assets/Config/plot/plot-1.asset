@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18babe0966456ad448a8c30597c38ae6, type: 3}
   m_Name: plot-1
   m_EditorClassIdentifier: 
-  text: "Hello there!\n\u8FD9\u662F\u4E00\u4E2A\u8C03\u67E5\u95EE\u5377\uFF01"
+  text: 'You look around,
+
+    try to find something to do'
   optionLT: {fileID: 0}
   optionRT: {fileID: 11400000, guid: 4a11f1e4f256c6a449357d5cd1488a0a, type: 2}
-  optionLB: {fileID: 0}
-  optionRB: {fileID: 0}
+  optionLB: {fileID: 11400000, guid: 63aacbe28db30c54095b7d7db4bfafe5, type: 2}
+  optionRB: {fileID: 11400000, guid: e18f6dba51f4a624eb580d1f44e45373, type: 2}
   soundName: tuto
-  locationName: Road Side
+  locationName: Home
   color: 0

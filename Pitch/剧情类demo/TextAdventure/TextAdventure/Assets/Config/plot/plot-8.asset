@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18babe0966456ad448a8c30597c38ae6, type: 3}
   m_Name: plot-8
   m_EditorClassIdentifier: 
-  text: "\u4F60\u77E5\u9053\u5370\u8C61\u753B\u6D3E\u4E48\uFF1F"
+  text: you turned off the TV
   optionLT: {fileID: 0}
-  optionRT: {fileID: 11400000, guid: 56364d428a784254f9ef7d2fbb5e1c1a, type: 2}
+  optionRT: {fileID: 11400000, guid: e5bc14069803fa34bb57ec822cd9c28f, type: 2}
   optionLB: {fileID: 0}
-  optionRB: {fileID: 11400000, guid: f9c62efe631d74e4ab068eca10257eb8, type: 2}
+  optionRB: {fileID: 0}
   soundName: 
-  locationName: Classroom
+  locationName: Home
   color: 0

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18babe0966456ad448a8c30597c38ae6, type: 3}
   m_Name: plot-14
   m_EditorClassIdentifier: 
-  text: "\u8FD9\u51E0\u5E74\u624B\u673A\u548C\u7535\u8111\u7CFB\u7EDFUI\u8BBE\u8BA1\u6709\u6241\u5E73\u5316\u8D8B\u52BF\uFF0C\u4E3B\u8981\u662F\u56E0\u4E3A"
-  optionLT: {fileID: 11400000, guid: eeac555b438f09e4a83ff91e7bcf4193, type: 2}
-  optionRT: {fileID: 11400000, guid: 756716329af0f69429e150795cfd625b, type: 2}
-  optionLB: {fileID: 11400000, guid: 34a50c80ce86235418c8395df7ef2223, type: 2}
-  optionRB: {fileID: 11400000, guid: c095655ebdad56e44946ff25d6a14bb5, type: 2}
-  soundName: 
-  locationName: Hall
+  text: You got a pair of gloves. <color=#55FF55>Why a number is on the glove?</color>
+  optionLT: {fileID: 0}
+  optionRT: {fileID: 11400000, guid: 5edaf40feda84744797bb0eec6c19f57, type: 2}
+  optionLB: {fileID: 0}
+  optionRB: {fileID: 0}
+  soundName: ScoreSound
+  locationName: Supermarket
   color: 0

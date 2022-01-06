@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18babe0966456ad448a8c30597c38ae6, type: 3}
   m_Name: plot-3
   m_EditorClassIdentifier: 
-  text: "\u90A3\u4E48\uFF0C\u5176\u4ED6\u516B\u5927\u827A\u672F\u662F\u4EC0\u4E48\u5462\uFF1F"
+  text: You grabbed your cold fried egg out of the fridge and put it in the microwave
   optionLT: {fileID: 0}
-  optionRT: {fileID: 11400000, guid: accb8b15717ab2d4ea28a1c34e17d602, type: 2}
+  optionRT: {fileID: 11400000, guid: 8237586abcdf3e649b88f0515e7fda6a, type: 2}
   optionLB: {fileID: 0}
-  optionRB: {fileID: 11400000, guid: a3359c4c399aee440a0801d0561b72f3, type: 2}
+  optionRB: {fileID: 0}
   soundName: 
-  locationName: Road Side
+  locationName: Home
   color: 0

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18babe0966456ad448a8c30597c38ae6, type: 3}
   m_Name: plot-4
   m_EditorClassIdentifier: 
-  text: "\u7ED8\u753B\u3001\u96D5\u523B\u3001\u5EFA\u7B51\u3001\u97F3\u4E50\u3001\u6587\u5B66\u3001\u821E\u8E48\u3001\u620F\u5267\u3001\u7535\u5F71"
-  optionLT: {fileID: 0}
-  optionRT: {fileID: 0}
+  text: You're now outside, where to go now?
+  optionLT: {fileID: 11400000, guid: 71c513769d60ad641be913ed6c2b98d1, type: 2}
+  optionRT: {fileID: 11400000, guid: 78cebc35af445a1468d2c6627f19840e, type: 2}
   optionLB: {fileID: 0}
-  optionRB: {fileID: 11400000, guid: 74f68983ed1b8ec4fb38cf8948d121e4, type: 2}
+  optionRB: {fileID: 11400000, guid: e0479ad4135cb6e4ea169079ec80aad7, type: 2}
   soundName: 
-  locationName: Classroom
-  color: 3
+  locationName: Outside
+  color: 0

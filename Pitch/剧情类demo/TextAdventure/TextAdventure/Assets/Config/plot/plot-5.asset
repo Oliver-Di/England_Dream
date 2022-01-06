@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18babe0966456ad448a8c30597c38ae6, type: 3}
   m_Name: plot-5
   m_EditorClassIdentifier: 
-  text: "\u6709\u7684\u6E38\u620F\u8D85\u8131\u4E86\u73A9\u6CD5\u7684\u672C\u8EAB\uFF0C\u8BA9\u4F60\u601D\u8003\u56DE\u5473\uFF0C\u672C\u8EAB\u5C31\u5DF2\u7ECF\u662F\u4E00\u4E2A\u827A\u672F\u54C1"
+  text: 'You laid back on your couch and kept watching. The most host''s lucky number
+    is <size=200%>8</size> '
   optionLT: {fileID: 0}
-  optionRT: {fileID: 11400000, guid: e5bc14069803fa34bb57ec822cd9c28f, type: 2}
-  optionLB: {fileID: 0}
-  optionRB: {fileID: 11400000, guid: e5723733837239e49af0c8058370352d, type: 2}
-  soundName: 
-  locationName: Classroom
+  optionRT: {fileID: 11400000, guid: accb8b15717ab2d4ea28a1c34e17d602, type: 2}
+  optionLB: {fileID: 11400000, guid: 74f68983ed1b8ec4fb38cf8948d121e4, type: 2}
+  optionRB: {fileID: 0}
+  soundName: ScoreSound
+  locationName: Home
   color: 0

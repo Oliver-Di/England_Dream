@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18babe0966456ad448a8c30597c38ae6, type: 3}
+  m_Name: plot-solve cut wrong
+  m_EditorClassIdentifier: 
+  text: <size=300%>Boom!!!</size>
+  optionLT: {fileID: 0}
+  optionRT: {fileID: 0}
+  optionLB: {fileID: 11400000, guid: f16478e35439c6a41b123d837998e504, type: 2}
+  optionRB: {fileID: 0}
+  soundName: exp1
+  locationName: Restroom
+  color: 2

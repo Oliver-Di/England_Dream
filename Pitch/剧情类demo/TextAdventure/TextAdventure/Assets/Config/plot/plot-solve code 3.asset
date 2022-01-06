@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18babe0966456ad448a8c30597c38ae6, type: 3}
+  m_Name: plot-solve code 3
+  m_EditorClassIdentifier: 
+  text: the last code... You regret you haven't any university life and you didn't
+    pass the diving exam last week
+  optionLT: {fileID: 11400000, guid: 0155cee587197124a96dd64b153a88c1, type: 2}
+  optionRT: {fileID: 11400000, guid: dc86b85682ad60d45aba0a47596cfcfb, type: 2}
+  optionLB: {fileID: 11400000, guid: 75abe61eb823e5045859bec6b2b82030, type: 2}
+  optionRB: {fileID: 11400000, guid: 1b6140bcecb4bb949b83c921b8af921c, type: 2}
+  soundName: OfferBounce
+  locationName: Restroom
+  color: 0

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18babe0966456ad448a8c30597c38ae6, type: 3}
   m_Name: plot-15
   m_EditorClassIdentifier: 
-  text: "\u50CF\u7D20\u98CE\u7684\u6E38\u620F\uFF0C\u6700\u8FD1\u662F\u771F\u7684\u6D41\u884C\u8D77\u6765\u4E86\u4E48\uFF1F"
-  optionLT: {fileID: 11400000, guid: dd9f39dd48793e54394a448fbf674d53, type: 2}
-  optionRT: {fileID: 0}
-  optionLB: {fileID: 11400000, guid: 1b1d2495ad892a24583d19fe2a0647c4, type: 2}
+  text: You got yourself a new towel, <color=#FF5555>it's red and you like it!</color>
+  optionLT: {fileID: 0}
+  optionRT: {fileID: 11400000, guid: 5edaf40feda84744797bb0eec6c19f57, type: 2}
+  optionLB: {fileID: 0}
   optionRB: {fileID: 0}
-  soundName: 
-  locationName: Hall
+  soundName: ScoreSound
+  locationName: Supermarket
   color: 0

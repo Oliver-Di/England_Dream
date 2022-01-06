@@ -21,6 +21,26 @@ public class OptionBehaviour : MonoBehaviour
         if (_option == null)
             return;
 
+        var items = _option.needItems;
+        var canClick = true;
+        if (items!=null&& items.Count>0)吧
+        {
+            foreach (var i in items)
+            {
+                if (!IconsBehaviour.instance.HasItem(i))
+                {
+                    canClick = false;
+                    break;
+                }
+            }
+        }
+
+        if (!canClick)
+        {
+            SoundService.instance.Play("forbidden");
+            return;
+        }
+
         if (_option.itemId != "")
         {
             IconsBehaviour.instance.AddItem(_option.itemId);
@@ -38,7 +58,7 @@ public class OptionBehaviour : MonoBehaviour
                 break;
 
             case Option.VFX.RedVignette:
-
+                GameSystem.instance.bcg.Play();
                 break;
 
             case Option.VFX.Fireworks:
@@ -48,6 +68,10 @@ public class OptionBehaviour : MonoBehaviour
 
         switch (_option.timerFeedback)
         {
+            case Option.TimerFeedback.None:
+
+                break;
+
             case Option.TimerFeedback.Push:
                 GlobalTimerBehaviour.instance.Add(_option.timerFeedbackValue);
                 break;
@@ -63,6 +87,7 @@ public class OptionBehaviour : MonoBehaviour
 
     public void Setup(Option option)
     {
+        Debug.Log(option);
         _option = option;
         if (option == null)
         {

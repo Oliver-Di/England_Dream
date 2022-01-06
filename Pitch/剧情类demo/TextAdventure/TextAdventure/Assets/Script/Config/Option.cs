@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 [System.Serializable]
 [CreateAssetMenu]
@@ -32,4 +32,6 @@ public class Option : ScriptableObject
     public int timerFeedbackValue;
 
     public int score;
+
+    public List<string> needItems;
 }
