@@ -23,7 +23,7 @@ public class OptionBehaviour : MonoBehaviour
 
         var items = _option.needItems;
         var canClick = true;
-        if (items!=null&& items.Count>0)吧
+        if (items!=null&& items.Count>0)
         {
             foreach (var i in items)
             {
