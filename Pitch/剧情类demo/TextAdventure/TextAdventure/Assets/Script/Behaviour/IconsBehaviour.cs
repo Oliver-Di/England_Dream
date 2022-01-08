@@ -7,6 +7,7 @@ public class IconsBehaviour : MonoBehaviour
     public static IconsBehaviour instance;
 
     public List<IconBehaviour> icons;
+    public List<IconBehaviour> emotionKeys;
 
     private void Awake()
     {
@@ -18,6 +19,11 @@ public class IconsBehaviour : MonoBehaviour
         foreach (var i in icons)
         {
             i.gameObject.SetActive(false);
+        }
+
+        foreach (var j in emotionKeys)
+        {
+            j.gameObject.SetActive(true);
         }
     }
 
