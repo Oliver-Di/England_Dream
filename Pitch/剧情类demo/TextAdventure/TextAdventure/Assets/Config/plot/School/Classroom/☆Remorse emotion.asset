@@ -17,6 +17,6 @@ MonoBehaviour:
   optionRT: {fileID: 0}
   optionLB: {fileID: 11400000, guid: 4987373a5f02d8f459f085a830fc002e, type: 2}
   optionRB: {fileID: 11400000, guid: c4a3ab61b59dec54d975c4798d40b4c5, type: 2}
-  soundName: 
+  soundName: emotion
   locationName: 
   color: 2

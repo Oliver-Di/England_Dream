@@ -20,6 +20,6 @@ MonoBehaviour:
   optionRT: {fileID: 0}
   optionLB: {fileID: 0}
   optionRB: {fileID: 11400000, guid: 4ebe6c62632f17e4aac7ec080edd604b, type: 2}
-  soundName: 
+  soundName: meow
   locationName: 
   color: 0

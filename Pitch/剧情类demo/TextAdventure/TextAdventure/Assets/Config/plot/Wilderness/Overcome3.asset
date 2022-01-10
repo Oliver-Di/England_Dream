@@ -23,6 +23,6 @@ MonoBehaviour:
   optionRT: {fileID: 0}
   optionLB: {fileID: 0}
   optionRB: {fileID: 11400000, guid: e8fd20fd02c3556488f8208200fb89d6, type: 2}
-  soundName: 
+  soundName: heartbeat
   locationName: 
   color: 3

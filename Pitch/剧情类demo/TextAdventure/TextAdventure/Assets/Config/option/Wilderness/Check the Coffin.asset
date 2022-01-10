@@ -16,7 +16,7 @@ MonoBehaviour:
   targetPlot: {fileID: 11400000, guid: f92c0875aac0f2e4eb02b880d5d55040, type: 2}
   itemId: 
   color: 2
-  vfx: 0
+  vfx: 1
   timerFeedback: 0
   timerFeedbackValue: 0
   score: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: 'Oliver suddenly <color=#7200AB>remembered</color> something
 
-    
+
 
     Then
     he put down the little throw pillow'
@@ -22,6 +22,6 @@ MonoBehaviour:
   optionRT: {fileID: 0}
   optionLB: {fileID: 0}
   optionRB: {fileID: 11400000, guid: 7d0301788b97a4547ab0f278e4797ff6, type: 2}
-  soundName: 
+  soundName: heartbeat
   locationName: 
   color: 3

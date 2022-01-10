@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: 'There is a large coffin in the temple
 
-    
 
-    There was a cabinet in
-    the corner with black lines wrapped around it'
+    There was a cabinet in the corner
+    with black lines wrapped around it'
   optionLT: {fileID: 0}
   optionRT: {fileID: 11400000, guid: f7e88bc9bf215814682c44cd4467dbc7, type: 2}
   optionLB: {fileID: 0}

@@ -24,6 +24,6 @@ MonoBehaviour:
   optionRT: {fileID: 0}
   optionLB: {fileID: 11400000, guid: 75ea1c01145c8b345a4e08753171f7ab, type: 2}
   optionRB: {fileID: 0}
-  soundName: 
+  soundName: icon
   locationName: 
   color: 3

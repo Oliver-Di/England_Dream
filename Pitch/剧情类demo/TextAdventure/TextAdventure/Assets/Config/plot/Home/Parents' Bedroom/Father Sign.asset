@@ -17,6 +17,6 @@ MonoBehaviour:
   optionRT: {fileID: 0}
   optionLB: {fileID: 0}
   optionRB: {fileID: 11400000, guid: 007fd4c6c109b87439e63402b85f39d0, type: 2}
-  soundName: 
+  soundName: sigh
   locationName: 
   color: 3

@@ -19,6 +19,6 @@ MonoBehaviour:
   optionRT: {fileID: 11400000, guid: 092961523b4a6c246988103d838706c5, type: 2}
   optionLB: {fileID: 0}
   optionRB: {fileID: 11400000, guid: 847d9474c82ecb34097cccc4d74a1ebe, type: 2}
-  soundName: 
+  soundName: breathe
   locationName: 
   color: 0

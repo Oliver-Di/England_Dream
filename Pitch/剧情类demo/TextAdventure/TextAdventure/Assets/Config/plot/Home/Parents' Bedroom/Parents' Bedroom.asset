@@ -20,6 +20,6 @@ MonoBehaviour:
   optionRT: {fileID: 11400000, guid: e861fbc7a14bbe040bb7abecc73436e4, type: 2}
   optionLB: {fileID: 11400000, guid: 7692cf10e4abc16458a4c86dcbc4520d, type: 2}
   optionRB: {fileID: 0}
-  soundName: 
+  soundName: opendoor
   locationName: 
   color: 1

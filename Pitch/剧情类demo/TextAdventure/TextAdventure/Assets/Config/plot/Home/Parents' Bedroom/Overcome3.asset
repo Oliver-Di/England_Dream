@@ -14,13 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: 'Father smiled
 
-    
 
-    You were crying so sadly that I went to school
-    to retrieve the pieces
+    You were crying so sadly that I went to school to retrieve
+    the pieces
 
-    After I fixed it, I wanted to give it back to you
-    on your birthday, but then your mother was...'
+    After I fixed it, I wanted to give it back to you on your birthday,
+    but then your mother was...'
   optionLT: {fileID: 0}
   optionRT: {fileID: 0}
   optionLB: {fileID: 0}

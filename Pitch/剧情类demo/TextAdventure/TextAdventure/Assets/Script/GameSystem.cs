@@ -9,6 +9,8 @@ public class GameSystem : MonoBehaviour
 
     public static GameSystem instance;
     public GameObject restartButton;
+    public AudioSource mianBGM;
+    public AudioSource writeBGM;
     public int score = 0;
     public bool fastMode;
 
@@ -26,6 +28,7 @@ public class GameSystem : MonoBehaviour
         StartPlot(ConfigService.instance.startPlot);
         SetRestartButton(false);
         score = 0;
+        ResetMusic();
     }
 
     public void StartPlot(Plot plot)
@@ -42,5 +45,17 @@ public class GameSystem : MonoBehaviour
     public void ClearItems()
     {
         IconsBehaviour.instance.Clear();
+    }
+
+    public void ResetMusic()
+    {
+        mianBGM.enabled = true;
+        writeBGM.enabled = false;
+    }
+
+    public void OverMusic()
+    {
+        mianBGM.enabled = false;
+        writeBGM.enabled = true;
     }
 }

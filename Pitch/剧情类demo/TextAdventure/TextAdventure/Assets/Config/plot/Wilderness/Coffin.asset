@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: 'Oliver slowly approached the coffin
 
-    
 
     The coffin suddenly shattered
     and a <color=#AB0000>zombie</color> jumped out of it
@@ -25,6 +24,6 @@ MonoBehaviour:
   optionRT: {fileID: 0}
   optionLB: {fileID: 11400000, guid: b8bff3c04ff40fc438869617dea0c52c, type: 2}
   optionRB: {fileID: 11400000, guid: 3a4092389970d7746a11a61522782c3d, type: 2}
-  soundName: 
+  soundName: breathe
   locationName: 
   color: 2

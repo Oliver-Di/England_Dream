@@ -22,5 +22,5 @@ MonoBehaviour:
   score: 0
   needItems:
   - SmallCard
-  - CondolenceLetter
+  - Condolence
   - Gown

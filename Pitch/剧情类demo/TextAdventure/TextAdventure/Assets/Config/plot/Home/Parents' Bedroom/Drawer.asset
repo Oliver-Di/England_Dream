@@ -21,6 +21,6 @@ MonoBehaviour:
   optionRT: {fileID: 11400000, guid: 8a520910959b294408fb2c51d4b2924f, type: 2}
   optionLB: {fileID: 11400000, guid: 3550d5becd96c914288644c76d04ab0e, type: 2}
   optionRB: {fileID: 11400000, guid: c23bf5258bbd8b9438f29b9852f4decb, type: 2}
-  soundName: 
+  soundName: unlocking
   locationName: 
   color: 0

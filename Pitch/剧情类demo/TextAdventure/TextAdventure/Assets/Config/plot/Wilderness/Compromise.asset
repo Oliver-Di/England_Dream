@@ -14,13 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: 'Oliver shouted for help
 
-    
 
     Then <color=#7200AB>fainted</color>'
   optionLT: {fileID: 0}
   optionRT: {fileID: 0}
   optionLB: {fileID: 0}
   optionRB: {fileID: 11400000, guid: be5b4707b741756499b31bed19b9ee84, type: 2}
-  soundName: 
+  soundName: breathe
   locationName: 
   color: 2

@@ -15,7 +15,7 @@ MonoBehaviour:
   text: 'This is the <color=#AB0000>zombie</color> that Oliver has been afraid of
     since childhood
 
-    
+
 
     Oliver''s body was cold, and <color=#AB0000>fear</color>
     emotion filled his mind'
@@ -23,6 +23,6 @@ MonoBehaviour:
   optionRT: {fileID: 11400000, guid: 68c7bf27be4dd5b45af3c9e90c79a43d, type: 2}
   optionLB: {fileID: 0}
   optionRB: {fileID: 11400000, guid: 48f6600aa3f19054d9fa6b4ebc1d0132, type: 2}
-  soundName: 
+  soundName: emotion
   locationName: 
   color: 2

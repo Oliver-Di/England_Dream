@@ -14,17 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: 'Oliver dragged down a black line
 
-    
 
-    The cabinet door suddenly
-    opened, and a <color=#AB0000>black shadow</color> flew out from inside
+    The cabinet door suddenly opened,
+    and a <color=#AB0000>black shadow</color> flew out from inside
 
-    Then
-    the <color=#AB0000>black shadow</color> penetrated directly into the coffin'
+    Then the
+    <color=#AB0000>black shadow</color> penetrated directly into the coffin'
   optionLT: {fileID: 0}
   optionRT: {fileID: 0}
   optionLB: {fileID: 11400000, guid: b8bff3c04ff40fc438869617dea0c52c, type: 2}
   optionRB: {fileID: 11400000, guid: ef4f31467c920e543b3b88b1f5d209b7, type: 2}
-  soundName: 
+  soundName: heartbeat
   locationName: 
   color: 2
