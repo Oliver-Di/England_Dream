@@ -19,7 +19,7 @@ MonoBehaviour:
     with black lines wrapped around it'
   optionLT: {fileID: 0}
   optionRT: {fileID: 11400000, guid: f7e88bc9bf215814682c44cd4467dbc7, type: 2}
-  optionLB: {fileID: 0}
+  optionLB: {fileID: 11400000, guid: b8bff3c04ff40fc438869617dea0c52c, type: 2}
   optionRB: {fileID: 11400000, guid: f64706ccaff59094aa3f0148a4ba65b0, type: 2}
   soundName: 
   locationName: 

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: Diary
   targetPlot: {fileID: 11400000, guid: c5817919ec0603c42b9da40f1500b641, type: 2}
-  itemId: 
+  itemId: MomDiary
   color: 0
   vfx: 0
   timerFeedback: 0

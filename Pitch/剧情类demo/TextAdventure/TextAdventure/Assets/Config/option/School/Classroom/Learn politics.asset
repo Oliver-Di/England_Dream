@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: Learn politics
   targetPlot: {fileID: 11400000, guid: 881670df51f57a647a09386d99e153ca, type: 2}
-  itemId: 
+  itemId: Materialism
   color: 1
   vfx: 0
   timerFeedback: 0
